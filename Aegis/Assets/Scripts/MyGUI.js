@@ -1,29 +1,34 @@
 ﻿#pragma strict
 /*
 *  This class has the potential to become monolithic. May be broken down into some 
-*  sub-scripts
+*  sub-scripts that aren't components. GUI code is weird. Check out the UnityGUI learning resources if you're confused, they're nice.
 */
 
 var player : GameObject;
 var boss : GameObject;
+
+//custom styles
 var healthbar : GUIStyle;
 var border : GUIStyle;
 var heat : GUIStyle;
+
 var enemiesForHealthbars : GameObject[];
 
+//stuff to grab from Stats component
 private var maxHealth : float;
 private var currentHealth : float;
-
 private var maxHeat : float;
 private var currentHeat : float;
 
-private var paused : boolean = false;
+//paused variables
+var paused : boolean = false; //are we paused?!
 private var timePausedHit : float = 0;
 private var pausedCooldown : float = 1; //without this the Input manager will register pause/unpause several times in a frame
+private var inputMenu : boolean = false; //are we in the input submenu?
 
 function Start (){
 	maxHealth = player.GetComponent(Stats).maxHealth;
-	maxHeat = player.GetComponent(Stats).maxHeat;
+	maxHeat = player.GetComponent(PlayerStats).maxHeat;
 }
 
 function Update (){
@@ -51,10 +56,10 @@ function OnGUI () {
 	/**** Heat bar ****/
 		GUI.Label (Rect(155, 25, 110 * PercentHeat(), 29),"", heat);
 		GUI.Label (Rect(155-1, 24, 112, 30),
-			""+Mathf.RoundToInt(player.GetComponent(Stats).heat)+" / "+maxHeat, border);
+			""+Mathf.RoundToInt(player.GetComponent(PlayerStats).heat)+" / "+maxHeat, border);
 			
 	/**** Overheat ****/
-		if (player.GetComponent(Stats).overheat){
+		if (player.GetComponent(PlayerStats).overheat){
 			GUI.Label (Rect(Screen.width/2, Screen.height/2, Screen.width/2+100, Screen.height/2+100), 
 				"OVERHEAT");
 				
@@ -81,21 +86,36 @@ function OnGUI () {
 	}
 	/**** Pause Menu ****/
 	if (paused){	//pause game
+		
 		//GUI.DrawTexture(Rect(0,0,Screen.width(),Screen.height()),alphagrey,true,10.0f); //dim the screen with negro-engineered filter since filters are only for Pro
 		GUI.BeginGroup(Rect(Screen.width/2 - 50, Screen.height/2 - 50, 100, 100)); //GUI organization tool
 		GUI.Box (Rect(0, 0, 100, 100),"Paused");
-		if (!paused){
+		//basic menu
+		if (!inputMenu){
 			if (GUI.Button (Rect(10,20,80,30),"Main Menu")){
 				//Application.LoadLevel("Main Menu");
 			}
 			if (GUI.Button (Rect(10,60,80,30),"Input")){
+				inputMenu = true;
 				//another box of buttons
 			}
 		}
+		
+		//input submenu
+		if (inputMenu){
+			if (GUI.Button (Rect(5,20,90,30),"Mouse/Keyboard")){
+				player.GetComponent(PlayerStats).usingMouseAndKeyboard = true;
+				player.GetComponent(PlayerStats).usingXboxController = false;
+			}
+			if (GUI.Button (Rect(5,60,90,30),"Xbox Controller")){
+				player.GetComponent(PlayerStats).usingXboxController = true;
+				player.GetComponent(PlayerStats).usingMouseAndKeyboard = false;
+			}
+			if (GUI.Button (Rect(5,100,90,30),"Back")){
+				inputMenu = false;
+			}
+		}
 		GUI.EndGroup ();
-	}
-	if (!paused){	//and unpause
-
 	}
 }
 
@@ -106,6 +126,6 @@ function PercentHealth (gameObject : GameObject){
 }
 
 function PercentHeat(){
-	var percent : float = player.GetComponent(Stats).heat/maxHeat;
+	var percent : float = player.GetComponent(PlayerStats).heat/maxHeat;
 	return percent;
 }

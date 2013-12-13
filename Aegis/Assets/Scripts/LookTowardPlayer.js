@@ -1,4 +1,7 @@
 ﻿#pragma strict
+/*
+* Enemy faces Player unit. Trigger is largely redundant to Triggered Awaken but could be useful later. 
+*/
 var player : GameObject;
 var trigger : GameObject;
 var turnSpeed : float = 2;
@@ -7,6 +10,7 @@ private var entered : boolean = false;
 private var once : boolean = false;
 private var startTime : float;
 private var step : float;
+
 function Start () {
 	if (trigger == null){
 		entered = true;

@@ -1,10 +1,15 @@
 ﻿#pragma strict
-var destination : GameObject;
+/*
+* trigger is largely redundant but might as well stay in. Has a simple patrol between two points built into it. Will upgrade to an 
+* array of points of to patrol between when we get to it.
+*/
+
+var destination : GameObject; //just make an empty gameObject thats just a transform to serve as this
 var speed : float;
 var trigger : GameObject;
 var entered : boolean = false;
 
-var patrol : boolean;
+var patrol : boolean; //is this going to patrol?
 private var returning : boolean = false; 
 
 private var start : Vector3;

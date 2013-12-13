@@ -212,7 +212,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
   m_Name: 
@@ -271,15 +271,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ae4ed71e05f8a46945cec6688ddbf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 86d7b76936d373345b60c4e7b306ec72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBox: {fileID: 0}
-  entered: 0
-  componentsToDisable:
-  - {fileID: 11400006}
-  - {fileID: 11400004}
-  - {fileID: 11400000}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

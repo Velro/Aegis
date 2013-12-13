@@ -1,35 +1,14 @@
 ﻿#pragma strict
+/*
+* I like having the asteroids as physics objects. Just pick somewhere you want them to head and a force. Note that the distance of the destination
+* to the asteroid will affect the force. IE a farther destination will result in a faster asteroid
+*/
+
 var destination : GameObject;
-var trigger : GameObject;
-var entered : boolean = false;
 var force : float = 1;
 
-private var startTime : float;
-private var enterOnce : boolean = true;
-private var applyForceOnce : boolean = true;
 
-function Start () {
-	if (trigger  == null){
-		entered = true;
-	}
-}
-
-function Update () {
-	if (!entered){
-		CheckTrigger();
-	} else if (applyForceOnce){
-		rigidbody.AddForce(destination.transform.position.x*force, 0, destination.transform.position.z*force);
-		//rigidbody.AddRelativeTorque(Vector3(Random.value*5, Random.value*5, Random.value*5));
-		applyForceOnce = false;
-	}
-	
-}
-
-function CheckTrigger(){
-	entered = trigger.GetComponent(TriggeredAwaken).hit;
-	if (entered && enterOnce){
-		entered = true;
-		startTime = Time.time;
-		enterOnce = false;
-	}
+function Awake () {
+	rigidbody.AddForce(destination.transform.position.x*force, 0, destination.transform.position.z*force);
+	//rigidbody.AddRelativeTorque(Vector3(Random.value*5, Random.value*5, Random.value*5)); //add some random spin to the asteroids eventually
 }

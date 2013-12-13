@@ -1,4 +1,7 @@
 ﻿#pragma strict
+/*
+* Script for pushing our linear bullets. 
+*/
 var speed : float;
 var left : boolean = false;
 var right : boolean = false;

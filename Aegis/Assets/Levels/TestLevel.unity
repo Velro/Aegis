@@ -183,8 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &30409532
 MonoBehaviour:
@@ -201,13 +199,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &30409533
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -285,8 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &66010639
 MonoBehaviour:
@@ -303,13 +293,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &66010640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -401,13 +385,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &77412253
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -452,8 +430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 1006483097}
-  trigger: {fileID: 0}
-  entered: 0
   force: 10
 --- !u!65 &77412256
 BoxCollider:
@@ -604,8 +580,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 1006483097}
-  trigger: {fileID: 0}
-  entered: 0
   force: 10
 --- !u!114 &115460797
 MonoBehaviour:
@@ -622,13 +596,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &115460798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -718,13 +686,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &121155141
 Renderer:
   m_ObjectHideFlags: 0
@@ -809,8 +771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &133421624
 MonoBehaviour:
@@ -827,13 +787,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &133421625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -923,13 +877,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &140673479
 Renderer:
   m_ObjectHideFlags: 0
@@ -1014,13 +962,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &141190476
 Renderer:
   m_ObjectHideFlags: 0
@@ -1145,6 +1087,7 @@ GameObject:
   - 114: {fileID: 157646181}
   - 143: {fileID: 157646178}
   - 65: {fileID: 157646183}
+  - 114: {fileID: 157646184}
   m_Layer: 9
   m_Name: player
   m_TagString: Player
@@ -1219,13 +1162,7 @@ MonoBehaviour:
   damage: 10
   health: 100
   maxHealth: 100
-  heat: 25
-  maxHeat: 100
   speed: 80
-  heatCooldownRate: 2
-  overheat: 0
-  overheatTime: 2
-  speedReduction: .5
 --- !u!114 &157646181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,9 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8814e7921f8fc345ac23cfcf005f3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSpeed: 10
   sight: {fileID: 1335909571}
-  sensitivity: 5
   bullet: {fileID: 100000, guid: 6e03d8fc84984a74491f89edfc43281a, type: 2}
   heatCost: 3
   cooldown: .174999997
@@ -1270,6 +1205,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 20, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &157646184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 157646175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4eec6d07be0efb4fa1e4e5c3454a458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heat: 50
+  maxHeat: 100
+  heatCooldownRate: 1
+  overheat: 0
+  overheatTime: 1
+  speedReduction: .5
+  usingXboxController: 0
+  usingMouseAndKeyboard: 1
 --- !u!1 &166107889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,13 +1261,7 @@ MonoBehaviour:
   damage: 5
   health: 1
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!114 &166107891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,13 +1395,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &186735878
 Renderer:
   m_ObjectHideFlags: 0
@@ -1579,7 +1521,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 194636796}
   - 65: {fileID: 194636797}
-  - 114: {fileID: 194636798}
   m_Layer: 8
   m_Name: ScreenBarrier
   m_TagString: ScreenBoundary
@@ -1610,21 +1551,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 500}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &194636798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 194636795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cd535327a6b0e42b4b1cc2c3be60fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  top: 0
-  left: 0
-  right: 1
-  bottom: 0
 --- !u!1 &220455972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 157646175}
-  trigger: {fileID: 0}
+  trigger: {fileID: 1406289477}
   turnSpeed: 2
 --- !u!114 &230845268
 MonoBehaviour:
@@ -1749,13 +1675,7 @@ MonoBehaviour:
   damage: 10
   health: 40
   maxHealth: 40
-  heat: 50
-  maxHeat: 100
   speed: 20
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &230845269
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1796,7 +1716,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2018214083}
   m_GameObject: {fileID: 230845265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
   m_Name: 
@@ -1841,15 +1761,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 230845265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ae4ed71e05f8a46945cec6688ddbf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 86d7b76936d373345b60c4e7b306ec72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBox: {fileID: 1406289477}
-  entered: 0
-  componentsToDisable:
-  - {fileID: 230845267}
-  - {fileID: 230845271}
-  - {fileID: 230845268}
 --- !u!1 &250394107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,13 +1855,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &252628924
 Renderer:
   m_ObjectHideFlags: 0
@@ -2032,8 +1940,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &258038198
 MonoBehaviour:
@@ -2050,13 +1956,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &258038199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2179,13 +2079,7 @@ MonoBehaviour:
   damage: 10
   health: 40
   maxHealth: 40
-  heat: 50
-  maxHeat: 100
   speed: 20
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &259264570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2226,7 +2120,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 502814514}
   m_GameObject: {fileID: 259264566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
   m_Name: 
@@ -2271,15 +2165,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 259264566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ae4ed71e05f8a46945cec6688ddbf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 86d7b76936d373345b60c4e7b306ec72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBox: {fileID: 1406289477}
-  entered: 0
-  componentsToDisable:
-  - {fileID: 259264568}
-  - {fileID: 259264572}
-  - {fileID: 259264569}
 --- !u!1 &266792608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,8 +2201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &266792610
 MonoBehaviour:
@@ -2331,13 +2217,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &266792611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2485,8 +2365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &276409401
 MonoBehaviour:
@@ -2503,13 +2381,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &276409402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2599,8 +2471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &280142852
 MonoBehaviour:
@@ -2617,13 +2487,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &280142853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2854,8 +2718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 1006483097}
-  trigger: {fileID: 0}
-  entered: 0
   force: 10
 --- !u!114 &351511712
 MonoBehaviour:
@@ -2872,13 +2734,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &351511713
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3117,13 +2973,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &377609821
 Renderer:
   m_ObjectHideFlags: 0
@@ -3175,70 +3025,6 @@ Transform:
   m_LocalScale: {x: 43.75, y: 87.4078369, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1001 &387450131
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 241.675812
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: .925892234
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: triggerBox
-      value: 
-      objectReference: {fileID: 1406289477}
-    - target: {fileID: 11400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 843053772}
-    - target: {fileID: 11400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: trigger
-      value: 
-      objectReference: {fileID: 1406289477}
-    - target: {fileID: 11400006, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 157646175}
-    - target: {fileID: 11400006, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: trigger
-      value: 
-      objectReference: {fileID: 1406289477}
-    - target: {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-      propertyPath: triggerBox
-      value: 
-      objectReference: {fileID: 1406289477}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_RootGameObject: {fileID: 1290047205}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1001 &419711055
 Prefab:
   m_ObjectHideFlags: 0
@@ -3613,11 +3399,24 @@ Prefab:
       propertyPath: maxHealth
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+    - target: {fileID: 0}
       propertyPath: triggerBox
       value: 
       objectReference: {fileID: 1406289477}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
   m_RootGameObject: {fileID: 259264566}
   m_IsPrefabParent: 0
@@ -3655,13 +3454,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &519226071
 Renderer:
   m_ObjectHideFlags: 0
@@ -3758,8 +3551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &531087046
 MonoBehaviour:
@@ -3776,13 +3567,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &531087047
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3860,8 +3645,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &534055780
 MonoBehaviour:
@@ -3878,13 +3661,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &534055781
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3986,8 +3763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &555469249
 MonoBehaviour:
@@ -4004,13 +3779,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &555469250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4100,8 +3869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &558697644
 MonoBehaviour:
@@ -4118,13 +3885,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &558697645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4258,8 +4019,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &615020938
 MonoBehaviour:
@@ -4276,13 +4035,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &615020939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4372,13 +4125,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &620127041
 Renderer:
   m_ObjectHideFlags: 0
@@ -4586,8 +4333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &654012059
 MonoBehaviour:
@@ -4604,13 +4349,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &654012060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4849,13 +4588,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &720402081
 Renderer:
   m_ObjectHideFlags: 0
@@ -5008,13 +4741,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &765289291
 Renderer:
   m_ObjectHideFlags: 0
@@ -5341,13 +5068,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &836557158
 Renderer:
   m_ObjectHideFlags: 0
@@ -5555,13 +5276,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &931231080
 Renderer:
   m_ObjectHideFlags: 0
@@ -5769,13 +5484,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &960377267
 Renderer:
   m_ObjectHideFlags: 0
@@ -5872,8 +5581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &974849378
 MonoBehaviour:
@@ -5890,13 +5597,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &974849379
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5986,8 +5687,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &975652545
 MonoBehaviour:
@@ -6004,13 +5703,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &975652546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6392,13 +6085,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1051062169
 Renderer:
   m_ObjectHideFlags: 0
@@ -6575,13 +6262,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1080293338
 Renderer:
   m_ObjectHideFlags: 0
@@ -6666,13 +6347,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1082180044
 Renderer:
   m_ObjectHideFlags: 0
@@ -6815,8 +6490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1085674342
 MonoBehaviour:
@@ -6833,13 +6506,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1085674343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7060,13 +6727,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1129949476
 Renderer:
   m_ObjectHideFlags: 0
@@ -7180,7 +6841,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1172386168}
@@ -7199,14 +6860,14 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3300000, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1172386166}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1172386168
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1172386166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.68604279, y: -.033241272, z: -.165117621}
@@ -7218,7 +6879,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400008, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1172386166}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7234,7 +6895,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400010, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1172386166}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7479,8 +7140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1214717942
 MonoBehaviour:
@@ -7497,13 +7156,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1214717943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7587,14 +7240,13 @@ GameObject:
   - 114: {fileID: 1232196032}
   - 114: {fileID: 1232196030}
   - 54: {fileID: 1232196031}
-  - 114: {fileID: 1232196029}
   m_Layer: 12
   m_Name: boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1232196028
 Transform:
   m_ObjectHideFlags: 0
@@ -7610,23 +7262,6 @@ Transform:
   - {fileID: 2002096878}
   - {fileID: 907464423}
   m_Father: {fileID: 0}
---- !u!114 &1232196029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1232196027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ae4ed71e05f8a46945cec6688ddbf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerBox: {fileID: 1926161008}
-  entered: 0
-  componentsToDisable:
-  - {fileID: 1232196032}
-  - {fileID: 1232196030}
-  - {fileID: 1232196033}
 --- !u!114 &1232196030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7642,13 +7277,7 @@ MonoBehaviour:
   damage: 10
   health: 150
   maxHealth: 150
-  heat: 50
-  maxHeat: 100
   speed: 30
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1232196031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7812,8 +7441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1284262804
 MonoBehaviour:
@@ -7830,13 +7457,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1284262805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7885,7 +7506,7 @@ BoxCollider:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1290047212}
@@ -7909,7 +7530,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7919,19 +7540,13 @@ MonoBehaviour:
   damage: 10
   health: 40
   maxHealth: 40
-  heat: 50
-  maxHeat: 100
   speed: 20
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1290047207
 Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5400000, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   serializedVersion: 2
   m_Mass: 1
@@ -7947,7 +7562,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400002, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7964,9 +7579,9 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400004, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
   m_Name: 
@@ -7979,7 +7594,7 @@ BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 6500000, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -7993,7 +7608,7 @@ Animator:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 9500000, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d35cb3b8e854e3345bad13cbc910c838, type: 3}
@@ -8006,7 +7621,7 @@ Animator:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 241.675812, y: 0, z: .925892234}
@@ -8020,7 +7635,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400006, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -8035,19 +7650,13 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1290047205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ae4ed71e05f8a46945cec6688ddbf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 86d7b76936d373345b60c4e7b306ec72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBox: {fileID: 1406289477}
-  entered: 0
-  componentsToDisable:
-  - {fileID: 1290047213}
-  - {fileID: 1290047209}
-  - {fileID: 1290047206}
 --- !u!1 &1290149627
 GameObject:
   m_ObjectHideFlags: 0
@@ -8081,13 +7690,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1290149629
 Renderer:
   m_ObjectHideFlags: 0
@@ -8297,13 +7900,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1303290681
 Renderer:
   m_ObjectHideFlags: 0
@@ -8388,13 +7985,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1310618004
 Renderer:
   m_ObjectHideFlags: 0
@@ -8977,6 +8568,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   enemiesForHealthbars: []
+  paused: 0
 --- !u!1 &1406289477
 GameObject:
   m_ObjectHideFlags: 0
@@ -9006,6 +8598,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
+  toEnable:
+  - {fileID: 230845265}
+  - {fileID: 259264566}
+  - {fileID: 1290047205}
 --- !u!65 &1406289479
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9127,13 +8723,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1419039190
 Renderer:
   m_ObjectHideFlags: 0
@@ -9185,6 +8775,66 @@ Transform:
   m_LocalScale: {x: 50, y: 87.4078369, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1001 &1430556424
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 241.675812
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: .925892234
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: triggerBox
+      value: 
+      objectReference: {fileID: 1406289477}
+    - target: {fileID: 11400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 843053772}
+    - target: {fileID: 11400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1406289477}
+    - target: {fileID: 11400006, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 157646175}
+    - target: {fileID: 11400006, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1406289477}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+  m_RootGameObject: {fileID: 1290047205}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1460265629
 GameObject:
   m_ObjectHideFlags: 0
@@ -9218,8 +8868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1460265631
 MonoBehaviour:
@@ -9236,13 +8884,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1460265632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9332,13 +8974,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1521869294
 Renderer:
   m_ObjectHideFlags: 0
@@ -9523,7 +9159,6 @@ GameObject:
   - 4: {fileID: 1563608168}
   - 33: {fileID: 1563608167}
   - 65: {fileID: 1563608166}
-  - 114: {fileID: 1563608169}
   m_Layer: 8
   m_Name: ScreenBarrier
   m_TagString: ScreenBoundary
@@ -9561,21 +9196,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1026774895}
---- !u!114 &1563608169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1563608164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cd535327a6b0e42b4b1cc2c3be60fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  top: 1
-  left: 0
-  right: 0
-  bottom: 0
 --- !u!1001 &1566172780
 Prefab:
   m_ObjectHideFlags: 0
@@ -9861,13 +9481,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1625012785
 Renderer:
   m_ObjectHideFlags: 0
@@ -10029,8 +9643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 1006483097}
-  trigger: {fileID: 0}
-  entered: 0
   force: 10
 --- !u!114 &1654275930
 MonoBehaviour:
@@ -10047,13 +9659,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1654275931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10225,7 +9831,7 @@ Prefab:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100004, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1670072737}
@@ -10242,7 +9848,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400004, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1670072736}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: -.707106829}
   m_LocalPosition: {x: .866577148, y: 0, z: .066488266}
@@ -10254,7 +9860,7 @@ Renderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2300000, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1670072736}
   m_Enabled: 1
   m_CastShadows: 1
@@ -10276,7 +9882,7 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3300002, guid: a7f77fe7a9621c447846b9ec375100fb,
     type: 2}
-  m_PrefabInternal: {fileID: 387450131}
+  m_PrefabInternal: {fileID: 1430556424}
   m_GameObject: {fileID: 1670072736}
   m_Mesh: {fileID: 4300000, guid: d35cb3b8e854e3345bad13cbc910c838, type: 3}
 --- !u!1 &1703802616
@@ -10356,7 +9962,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1711231574}
   - 65: {fileID: 1711231575}
-  - 114: {fileID: 1711231576}
   m_Layer: 8
   m_Name: ScreenBarrier
   m_TagString: ScreenBoundary
@@ -10387,21 +9992,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 500}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1711231576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1711231573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cd535327a6b0e42b4b1cc2c3be60fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  top: 0
-  left: 1
-  right: 0
-  bottom: 0
 --- !u!1 &1763519749
 GameObject:
   m_ObjectHideFlags: 0
@@ -10447,8 +10037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1763519752
 MonoBehaviour:
@@ -10465,13 +10053,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1763519753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10619,8 +10201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1775277229
 MonoBehaviour:
@@ -10637,13 +10217,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1775277230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10733,8 +10307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &1794646259
 MonoBehaviour:
@@ -10751,13 +10323,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &1794646260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10944,13 +10510,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!1001 &1869318223
 Prefab:
   m_ObjectHideFlags: 0
@@ -11171,13 +10731,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &1900639254
 Renderer:
   m_ObjectHideFlags: 0
@@ -11258,6 +10812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
+  toEnable:
+  - {fileID: 1232196027}
 --- !u!65 &1926161010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11501,8 +11057,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &2008148903
 MonoBehaviour:
@@ -11519,13 +11073,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &2008148904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11617,7 +11165,7 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+    - target: {fileID: 0}
       propertyPath: triggerBox
       value: 
       objectReference: {fileID: 1406289477}
@@ -11633,7 +11181,24 @@ Prefab:
       propertyPath: triggerBox
       value: 
       objectReference: {fileID: 1406289477}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1406289477}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
   m_RootGameObject: {fileID: 230845265}
   m_IsPrefabParent: 0
@@ -11671,13 +11236,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &2041039962
 Renderer:
   m_ObjectHideFlags: 0
@@ -11762,13 +11321,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &2047340471
 Renderer:
   m_ObjectHideFlags: 0
@@ -12111,8 +11664,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 85938734}
-  trigger: {fileID: 0}
-  entered: 0
   force: 2
 --- !u!114 &2094975497
 MonoBehaviour:
@@ -12129,13 +11680,7 @@ MonoBehaviour:
   damage: 10
   health: 10
   maxHealth: 10
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &2094975498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12285,13 +11830,7 @@ MonoBehaviour:
   damage: 10
   health: 1
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!54 &2109015795
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12341,13 +11880,7 @@ MonoBehaviour:
   damage: 10
   health: 9.99999944e+27
   maxHealth: 100
-  heat: 50
-  maxHeat: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!23 &2121165222
 Renderer:
   m_ObjectHideFlags: 0

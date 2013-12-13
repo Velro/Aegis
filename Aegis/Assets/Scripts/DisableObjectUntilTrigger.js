@@ -1,10 +1,16 @@
 ﻿#pragma strict
+/*
+* This class lets us disable a gameObject's specific components until we hit a trigger. I made this because I didn't think my logic through.
+* Might be useful later though.
+*
+*/
+
 var triggerBox : GameObject;
 var entered : boolean = false;
 var componentsToDisable : Behaviour[];
 private var once : boolean = true;
 
-//behaviour is a subset of component that encompasses
+//behaviour is a subset of component
 function Start () {
 	for (var component : Behaviour in componentsToDisable){
 		component.enabled = false;

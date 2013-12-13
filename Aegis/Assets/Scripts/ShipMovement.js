@@ -1,11 +1,11 @@
 ﻿#pragma strict
 
+/*
+* Very no-frills movement class. Unity has a lot of API resources for moving players
+*/
 private var moveDirection : Vector3 = Vector3.zero;
 private var controller : CharacterController;
 
-function Start () { 
-
-}
 
 function Awake () {
 	controller = GetComponent (CharacterController);
@@ -19,5 +19,5 @@ function Update () {
 	controller.Move(moveDirection * Time.deltaTime);
 	
 /**** Physics ****/
-	transform.position.y = 0; //dont let collisions knock it out of 2d plane
+	transform.position.y = 0; //dont let collisions knock it out of XZ plane
 }	

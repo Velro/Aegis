@@ -10,8 +10,8 @@ var heatCooldownRate : float = 1;
 var overheat : boolean = false;
 var overheatTime : float = 1;			//time you are overheated
 var speedReduction : float = 0.5;		//overheat penalty
-var usingXboxController : boolean = false; //xbox stated explicitly because setup will be a little different with other controllers *sigh*
-var usingMouseAndKeyboard : boolean = true;
+public static var usingXboxController : boolean = false; //xbox stated explicitly because setup will be a little different with other controllers *sigh*
+public static var usingMouseAndKeyboard : boolean = true;
 
 private var beginOverheat : float;
 

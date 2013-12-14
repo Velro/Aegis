@@ -22,6 +22,7 @@ private var currentHeat : float;
 
 //paused variables
 var paused : boolean = false; //are we paused?!
+var alphagrey : Texture2D;
 private var timePausedHit : float = 0;
 private var pausedCooldown : float = 1; //without this the Input manager will register pause/unpause several times in a frame
 private var inputMenu : boolean = false; //are we in the input submenu?
@@ -87,15 +88,15 @@ function OnGUI () {
 	/**** Pause Menu ****/
 	if (paused){	//pause game
 		
-		//GUI.DrawTexture(Rect(0,0,Screen.width(),Screen.height()),alphagrey,true,10.0f); //dim the screen with negro-engineered filter since filters are only for Pro
-		GUI.BeginGroup(Rect(Screen.width/2 - 50, Screen.height/2 - 50, 100, 100)); //GUI organization tool
-		GUI.Box (Rect(0, 0, 100, 100),"Paused");
+		GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height),alphagrey,ScaleMode.StretchToFill, true, 1.0f); //dim the screen with negro-engineered filter since filters are only for Pro
+		GUI.BeginGroup(Rect(Screen.width/2 - 50, Screen.height/2 - 50, 140, 140)); //GUI organization tool
+		GUI.Box (Rect(0, 0, 140, 140),"Paused");
 		//basic menu
 		if (!inputMenu){
-			if (GUI.Button (Rect(10,20,80,30),"Main Menu")){
-				//Application.LoadLevel("Main Menu");
+			if (GUI.Button (Rect(30,20,80,30),"Main Menu")){
+				Application.LoadLevel("MainMenu");
 			}
-			if (GUI.Button (Rect(10,60,80,30),"Input")){
+			if (GUI.Button (Rect(30,60,80,30),"Input")){
 				inputMenu = true;
 				//another box of buttons
 			}
@@ -103,15 +104,15 @@ function OnGUI () {
 		
 		//input submenu
 		if (inputMenu){
-			if (GUI.Button (Rect(5,20,90,30),"Mouse/Keyboard")){
+			if (GUI.Button (Rect(5,20,110,30),"Mouse/Keyboard")){
 				player.GetComponent(PlayerStats).usingMouseAndKeyboard = true;
 				player.GetComponent(PlayerStats).usingXboxController = false;
 			}
-			if (GUI.Button (Rect(5,60,90,30),"Xbox Controller")){
+			if (GUI.Button (Rect(15,60,110,30),"Xbox Controller")){
 				player.GetComponent(PlayerStats).usingXboxController = true;
 				player.GetComponent(PlayerStats).usingMouseAndKeyboard = false;
 			}
-			if (GUI.Button (Rect(5,100,90,30),"Back")){
+			if (GUI.Button (Rect(15,100,110,30),"Back")){
 				inputMenu = false;
 			}
 		}

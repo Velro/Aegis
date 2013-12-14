@@ -1,13 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ShipAiming.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MyGUI.js">
     <Files>
-      <File FileName="Assets\Scripts\MyGUI.js" Line="24" Column="48" />
-      <File FileName="Assets\Scripts\ShipAiming.js" Line="20" Column="123" />
-      <File FileName="Assets\Scripts\ShipMovement.js" Line="4" Column="85" />
-      <File FileName="Assets\Scripts\DealDamage.js" Line="6" Column="1" />
-      <File FileName="Assets\Scripts\Stats.js" Line="13" Column="29" />
-      <File FileName="Assets\Scripts\PlayerStats.js" Line="27" Column="36" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ParallaxSpeed.js" Line="10" Column="54" />
+      <File FileName="Assets\Scripts\MyGUI.js" Line="111" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

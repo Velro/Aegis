@@ -22,7 +22,12 @@ function Update () {
 		CheckTrigger();
 	} else if (player != null){
 		transform.LookAt(player.transform.position);
-
+		if (transform.parent != null){
+			if (transform.parent.name == "turret"){ 
+				transform.localRotation *= Quaternion.Euler(-90, -180, -270);
+				Debug.Log("looktowards");
+			}
+		}
 	}
 }
 

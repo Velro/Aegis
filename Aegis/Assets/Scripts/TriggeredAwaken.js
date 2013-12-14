@@ -10,7 +10,9 @@ function OnTriggerEnter (other : Collider){
 		hit = true;
 		Debug.Log("Entered trigger "+gameObject.name);
 		for (var object : GameObject in toEnable){
-			object.SetActive(true);
+			if (object != null){
+				object.SetActive(true);
+			}
 		}
 	}
 }

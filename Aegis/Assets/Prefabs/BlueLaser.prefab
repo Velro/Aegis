@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106829, y: 6.18172464e-08, z: -6.18172464e-08, w: -.707106829}
-  m_LocalPosition: {x: -363.760651, y: 0, z: 0}
+  m_LocalPosition: {x: -15.9695959, y: 14.8422089, z: -12.6365604}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,13 +68,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: .100000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -101,13 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   health: 1
-  heat: 50
-  maxHeat: 100
+  maxHealth: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bab93e1a2c7eb4b9dae28ed1bf0785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 900
+  speed: 1800
   left: 1
   right: 0
 --- !u!114 &11400004

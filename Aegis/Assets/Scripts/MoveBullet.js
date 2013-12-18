@@ -9,14 +9,17 @@ var right : boolean = false;
 
 function Awake () {
 	if (right){
-		transform.rotation.x = 90;
-		transform.rotation.z = 0;
+		//transform.rotation.x += 90;
+		//transform.rotation.z = 0;
 		rigidbody.AddForce(transform.right * speed);
+		transform.position.y = 0;
+
 	}
 	if (left){
-		transform.rotation.x = 90;
-		transform.rotation.z = 0;
-		rigidbody.AddForce(transform.right * -speed);
+		//transform.rotation.x += 90;
+		//transform.rotation.z = 0;
+		rigidbody.AddForce(-(transform.right * speed));
+		transform.position.y = 0;
 	}
 }
 

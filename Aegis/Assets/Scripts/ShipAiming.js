@@ -22,7 +22,7 @@ function Update () {
 		gameObject.GetComponent(PlayerStats).heat += heatCost; //up the heat
 		var instance : GameObject;
 		instance = Instantiate (bullet, sight.transform.position,sight.transform.rotation);
-		instance.transform.localRotation.eulerAngles.x = 90; //because XZ plane
+		instance.transform.localRotation.eulerAngles.x += 90; //because XZ plane
 		Destroy (instance, 5); //after 5 seconds the bullet is way off the screen. This is for clean up
 		lastShot = Time.time;
 	}

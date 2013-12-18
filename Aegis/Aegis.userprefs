@@ -1,14 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LookTowardPlayer.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MoveBullet.js">
     <Files>
-      <File FileName="Assets\Scripts\AIShoot.js" Line="22" Column="51" />
+      <File FileName="Assets\Scripts\LookTowardPlayer.js" Line="28" Column="34" />
+      <File FileName="Assets\Scripts\AIShoot.js" Line="8" Column="32" />
       <File FileName="Assets\Scripts\DealDamage.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ParallaxSpeed.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MyGUI.js" Line="111" Column="27" />
-      <File FileName="Assets\Scripts\LookTowardPlayer.js" Line="27" Column="52" />
+      <File FileName="Assets\Scripts\MyGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LookTowardPlayer.js" Line="28" Column="34" />
       <File FileName="Assets\Scripts\ShipAiming.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TriggeredAwaken.js" Line="18" Column="2" />
+      <File FileName="Assets\Scripts\TriggeredAwaken.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MoveBullet.js" Line="12" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

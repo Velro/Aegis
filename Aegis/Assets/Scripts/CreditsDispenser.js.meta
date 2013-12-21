@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 891e7913fb9544c428b5c54535caeb48
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - smallCredit: {fileID: 100000, guid: 5a86a1d3d333e9c49bcaac04856671ae, type: 2}
+  - mediumCredit: {fileID: 100000, guid: e860a4814a20df0419c47e87e0c338a6, type: 2}
+  - largeCredit: {fileID: 100000, guid: cab674faf200e77408b222b33fec6be6, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

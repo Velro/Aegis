@@ -11,6 +11,7 @@ var boss : GameObject;
 var healthbar : GUIStyle;
 var border : GUIStyle;
 var heat : GUIStyle;
+var credits : GUIStyle;
 
 var enemiesForHealthbars : GameObject[];
 
@@ -61,10 +62,12 @@ function OnGUI () {
 			
 	/**** Overheat ****/
 		if (player.GetComponent(PlayerStats).overheat){
-			GUI.Label (Rect(Screen.width/2, Screen.height/2, Screen.width/2+100, Screen.height/2+100), 
+			GUI.Label (Rect(Screen.width/2, Screen.height/2, 100, 100), 
 				"OVERHEAT");
-				
-		}
+		}		
+	/**** Credits ****/
+	GUI.Label (Rect(Screen.width/2,25, 110, 30), "Credits "+player.GetComponent(PlayerStats).creditsThisLevel, credits);
+		
 	} else {
 	/**** Dying ****/
 		if (GUI.Button (Rect((Screen.width/2)-35, (Screen.height/2)-15, 70, 30), 

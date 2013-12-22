@@ -12,6 +12,11 @@ var healthbar : GUIStyle;
 var border : GUIStyle;
 var heat : GUIStyle;
 var credits : GUIStyle;
+var weaponsBackground : GUIStyle;
+var weapon1 : GUIStyle;
+var weapon2 : GUIStyle;
+var weapon3 : GUIStyle;
+var weapon4 : GUIStyle;
 
 var enemiesForHealthbars : GameObject[];
 
@@ -66,7 +71,18 @@ function OnGUI () {
 				"OVERHEAT");
 		}		
 	/**** Credits ****/
-	GUI.Label (Rect(Screen.width/2,25, 110, 30), "Credits "+player.GetComponent(PlayerStats).creditsThisLevel, credits);
+		GUI.Label (Rect(Screen.width/2,25, 110, 30), "Credits "+player.GetComponent(PlayerStats).creditsThisLevel, credits);
+		
+	/**** Weapons ****/
+		GUI.BeginGroup (Rect(Screen.width-320, 30, Screen.width-30, 240));
+		GUI.Box(Rect(0,0,290,210),"box", weaponsBackground);
+		//weapon One
+		GUI.Label(Rect(10,10,135,90), "Weapon 1", weapon1);
+		GUI.Label(Rect(145,10,135,90), "Weapon 2", weapon2);
+		GUI.EndGroup ();
+		//GUI.Label (Rect(155, 25, 110 * PercentHeat(), 29),"", heat);
+		//GUI.Label (Rect(155-1, 24, 112, 30),
+		//	""+Mathf.RoundToInt(player.GetComponent(PlayerStats).heat)+" / "+maxHeat, border);
 		
 	} else {
 	/**** Dying ****/

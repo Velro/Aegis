@@ -13,6 +13,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: asteroid_mesh
   m_TagString: Untagged
@@ -43,9 +44,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: .997568727, w: .0696904212}
-  m_LocalPosition: {x: 138.390182, y: -10.5982742, z: 0}
-  m_LocalScale: {x: .907573402, y: .907573581, z: .907573581}
+  m_LocalRotation: {x: .000368738576, y: -.707106709, z: .707106709, w: .000368738576}
+  m_LocalPosition: {x: 141.393692, y: -5.49862762e-06, z: -32.4029999}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -87,7 +88,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Mesh: {fileID: 4300000, guid: fcc3b3759d59c7b47b6d1e7ec1707e35, type: 3}
+  m_Mesh: {fileID: 4300000, guid: de7be60a684ab764d9e8673cbd6a720a, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -95,13 +96,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 8
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -113,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 24, y: 5, z: 0}
+  m_Size: {x: 20, y: 20, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,13 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   health: 10
-  heat: 50
-  maxHeat: 100
+  maxHealth: 10
   speed: 1
-  cooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,9 +157,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  trigger: {fileID: 0}
-  entered: 0
-  force: 25
+  force: 2
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891e7913fb9544c428b5c54535caeb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallCredit: {fileID: 100000, guid: 5a86a1d3d333e9c49bcaac04856671ae, type: 2}
+  mediumCredit: {fileID: 100000, guid: e860a4814a20df0419c47e87e0c338a6, type: 2}
+  largeCredit: {fileID: 100000, guid: cab674faf200e77408b222b33fec6be6, type: 2}
+  customAmount: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

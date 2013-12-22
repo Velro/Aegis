@@ -1,6 +1,7 @@
 ﻿#pragma strict
 var amount : int = 0;
 var speed : float = 1;
+var pickupCredits : AudioClip;
 private var origin : Vector3;
 private var destination : Vector3;
 private var distance : float;
@@ -22,6 +23,7 @@ function Update(){
 function OnTriggerEnter (other : Collider){
 	if (other.tag == "Player"){
 		other.GetComponent(PlayerStats).creditsThisLevel += amount;
-		Destroy (gameObject);
+		other.GetComponent(AudioSource).PlayOneShot(pickupCredits);
+		Destroy(gameObject);
 	}
 }

@@ -6,6 +6,7 @@ var sight : GameObject;
 var bullet : GameObject;
 var heatCost : float = 1;	//for basic bullet
 var cooldown : float = 0.1;
+var laser : AudioClip;
 private var lastShot : float = 0;
 private var mouseX : float = 0;
 private var mouseY : float = 0;
@@ -22,6 +23,7 @@ function Update () {
 		gameObject.GetComponent(PlayerStats).heat += heatCost; //up the heat
 		var instance : GameObject;
 		instance = Instantiate (bullet, sight.transform.position,sight.transform.rotation);
+		audio.PlayOneShot(laser);
 		instance.transform.localRotation.eulerAngles.x += 90; //because XZ plane
 		Destroy (instance, 5); //after 5 seconds the bullet is way off the screen. This is for clean up
 		lastShot = Time.time;

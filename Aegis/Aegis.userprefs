@@ -1,14 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CreditsDispenser.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MyGUI.js">
     <Files>
-      <File FileName="Assets\Scripts\DealDamage.js" Line="21" Column="39" />
-      <File FileName="Assets\Scripts\MyGUI.js" Line="67" Column="4" />
-      <File FileName="Assets\Scripts\PlayerStats.js" Line="16" Column="32" />
-      <File FileName="Assets\Scripts\Stats.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CreditsDispenser.js" Line="36" Column="115" />
-      <File FileName="Assets\Scripts\Credit.js" Line="18" Column="54" />
-      <File FileName="Assets\Scripts\MoveTowardDestination.js" Line="33" Column="1" />
+      <File FileName="Assets\Scripts\TurretAI.js" Line="41" Column="82" />
+      <File FileName="Assets\Scripts\CorsairAI.js" Line="25" Column="3" />
+      <File FileName="Assets\Scripts\MyGUI.js" Line="81" Column="24" />
+      <File FileName="Assets\Scripts\ShipAiming.js" Line="26" Column="28" />
+      <File FileName="Assets\Scripts\Credit.js" Line="27" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

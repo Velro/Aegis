@@ -112,15 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85b0937f7a91f94ab206a2d60b62322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 0
   health: 1
-  heat: 50
-  maxHeat: 100
+  maxHealth: 100
   speed: 1
-  heatCooldownRate: 1
-  overheat: 0
-  overheatTime: 1
-  speedReduction: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

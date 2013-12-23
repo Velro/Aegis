@@ -1,9 +1,5 @@
 ﻿#pragma strict
 
-/*
-* 
-*/
-
 var heat : float = 50;
 var maxHeat : float = 100;
 var heatCooldownRate : float = 1; 		
@@ -14,12 +10,41 @@ public static var usingXboxController : boolean = false; //xbox stated explicitl
 public static var usingMouseAndKeyboard : boolean = true;
 var totalCredits : int  = 0;
 var creditsThisLevel : int = 0;
-
 private var beginOverheat : float;
 
+class WeaponLevel extends System.Object{
+	var damage : float;
+	var heatPerShot : float;
+	var cooldown : float;
+	
+	@System.NonSerialized
+	var lastShot : float;
+}
 
-function Start () {
+class Weapon extends System.Object {
+	var level : int = 0;
+	var name : String;
+	var currentLevel : WeaponLevel;
+	var level0 : WeaponLevel;
+	var level1 : WeaponLevel;
+	var level2 : WeaponLevel;
+	var level3 : WeaponLevel;	
+}
 
+var weapons : Weapon[];
+var VulcanCannonStats : Weapon;
+
+function Awake () {
+	weapons = new Weapon[4];
+	if (VulcanCannonStats.level >= 0){
+		weapons[0] = VulcanCannonStats;
+		
+		if (VulcanCannonStats.level == 0)VulcanCannonStats.currentLevel = VulcanCannonStats.level0;
+		if (VulcanCannonStats.level == 1)VulcanCannonStats.currentLevel = VulcanCannonStats.level1;
+		if (VulcanCannonStats.level == 2)VulcanCannonStats.currentLevel = VulcanCannonStats.level2;
+		if (VulcanCannonStats.level == 3)VulcanCannonStats.currentLevel = VulcanCannonStats.level3;
+		gameObject.AddComponent(VulcanCannon);
+	}
 }
 
 function Update () {

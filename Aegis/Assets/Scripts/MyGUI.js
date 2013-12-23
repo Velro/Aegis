@@ -17,14 +17,9 @@ var weapon1 : GUIStyle;
 var weapon2 : GUIStyle;
 var weapon3 : GUIStyle;
 var weapon4 : GUIStyle;
+var cooldown : GUIStyle;
 
 var enemiesForHealthbars : GameObject[];
-
-//stuff to grab from Stats component
-private var maxHealth : float;
-private var currentHealth : float;
-private var maxHeat : float;
-private var currentHeat : float;
 
 //paused variables
 var paused : boolean = false; //are we paused?!
@@ -32,12 +27,17 @@ var alphagrey : Texture2D;
 private var timePausedHit : float = 0;
 private var pausedCooldown : float = 1; //without this the Input manager will register pause/unpause several times in a frame
 private var inputMenu : boolean = false; //are we in the input submenu?
+private var playerStats : PlayerStats;
+private var name0 : String;
 
-function Start (){
-	maxHealth = player.GetComponent(Stats).maxHealth;
-	maxHeat = player.GetComponent(PlayerStats).maxHeat;
+function Awake (){
+	playerStats = player.GetComponent(PlayerStats);
+	
 }
+function Start (){
+	
 
+}
 function Update (){
 	if (Input.GetButtonDown("Pause") && paused == false && Time.realtimeSinceStartup - timePausedHit > pausedCooldown){	//pause game
 		Time.timeScale = 0;
@@ -53,36 +53,43 @@ function Update (){
 	}
 }
 function OnGUI () {
+	
 	/**** Health bar ****/
 	if (player != null){
 		//Rects work at Rect(screenPosition X, screenPosition Y, width, height) all in pixels
 		GUI.Label (Rect(30, 25, 110 * PercentHealth(player), 29),"", healthbar);
 		GUI.Label (Rect(30-1, 24, 112, 30),
-			""+Mathf.RoundToInt(player.GetComponent(Stats).health)+" / "+maxHealth, border);
-			
+			""+Mathf.RoundToInt(player.GetComponent(Stats).health)+" / "+player.GetComponent(Stats).maxHealth, border);
+	//		
 	/**** Heat bar ****/
 		GUI.Label (Rect(155, 25, 110 * PercentHeat(), 29),"", heat);
 		GUI.Label (Rect(155-1, 24, 112, 30),
-			""+Mathf.RoundToInt(player.GetComponent(PlayerStats).heat)+" / "+maxHeat, border);
+			""+Mathf.RoundToInt(playerStats.heat)+" / "+playerStats.maxHeat, border);
 			
 	/**** Overheat ****/
-		if (player.GetComponent(PlayerStats).overheat){
+		if (playerStats.overheat){
 			GUI.Label (Rect(Screen.width/2, Screen.height/2, 100, 100), 
 				"OVERHEAT");
 		}		
 	/**** Credits ****/
-		GUI.Label (Rect(Screen.width/2,25, 110, 30), "Credits "+player.GetComponent(PlayerStats).creditsThisLevel, credits);
+		GUI.Label (Rect(Screen.width/2,25, 110, 30), "Credits "+playerStats.creditsThisLevel, credits);
 		
 	/**** Weapons ****/
-		GUI.BeginGroup (Rect(Screen.width-320, 30, Screen.width-30, 240));
-		GUI.Box(Rect(0,0,290,210),"box", weaponsBackground);
-		//weapon One
-		GUI.Label(Rect(10,10,135,90), "Weapon 1", weapon1);
-		GUI.Label(Rect(145,10,135,90), "Weapon 2", weapon2);
+		GUI.BeginGroup (Rect(Screen.width-300, 30, Screen.width-30, 120));
+			GUI.Box(Rect(0,0,Screen.width,Screen.height),"", weaponsBackground);
+			//weapon 0ne 
+			GUI.Label(Rect(11,11,118*percentCooldown(0),43), "", cooldown);
+			GUI.Label(Rect(10,10,120,45), playerStats.weapons[0].name, border);
+			//weapon two
+			//GUI.Label(Rect(11,11,118,63), "", cooldown);
+			GUI.Label(Rect(140,10,120,45), "Weapon 2", border);
+			//weapon three
+			//GUI.Label(Rect(11,11,118,63), "", cooldown);
+			GUI.Label(Rect(10,65,120,45), "Weapon 3", border);
+			//weapon four
+			//GUI.Label(Rect(11,11,118,63), "", cooldown);
+			GUI.Label(Rect(140,65,120,45), "Weapon 4", border);
 		GUI.EndGroup ();
-		//GUI.Label (Rect(155, 25, 110 * PercentHeat(), 29),"", heat);
-		//GUI.Label (Rect(155-1, 24, 112, 30),
-		//	""+Mathf.RoundToInt(player.GetComponent(PlayerStats).heat)+" / "+maxHeat, border);
 		
 	} else {
 	/**** Dying ****/
@@ -96,6 +103,7 @@ function OnGUI () {
 		GUI.Label (Rect(Screen.width/2, Screen.height/2, Screen.width/2-100, Screen.height/2+120), 
 			"End Test Level");
 	}
+	
 	/**** Enemy health bars ****/
 	for (var enemy : GameObject in enemiesForHealthbars){
 		if (enemy != null){
@@ -104,6 +112,9 @@ function OnGUI () {
 				,40*PercentHealth(enemy),4),"",healthbar);
 		}
 	}
+	
+	
+	
 	/**** Pause Menu ****/
 	if (paused){	//pause game
 		
@@ -124,12 +135,12 @@ function OnGUI () {
 		//input submenu
 		if (inputMenu){
 			if (GUI.Button (Rect(5,20,110,30),"Mouse/Keyboard")){
-				player.GetComponent(PlayerStats).usingMouseAndKeyboard = true;
-				player.GetComponent(PlayerStats).usingXboxController = false;
+				playerStats.usingMouseAndKeyboard = true;
+				playerStats.usingXboxController = false;
 			}
 			if (GUI.Button (Rect(15,60,110,30),"Xbox Controller")){
-				player.GetComponent(PlayerStats).usingXboxController = true;
-				player.GetComponent(PlayerStats).usingMouseAndKeyboard = false;
+				playerStats.usingXboxController = true;
+				playerStats.usingMouseAndKeyboard = false;
 			}
 			if (GUI.Button (Rect(15,100,110,30),"Back")){
 				inputMenu = false;
@@ -140,12 +151,20 @@ function OnGUI () {
 }
 
 function PercentHealth (gameObject : GameObject){
-	var thisMaxHealth : float = gameObject.GetComponent(Stats).maxHealth;
-	var percent : float =  gameObject.GetComponent(Stats).health/thisMaxHealth;
+	var thisMaxHealth : float = player.GetComponent(Stats).maxHealth;
+	var percent : float =  player.GetComponent(Stats).health/thisMaxHealth;
 	return percent;
 }
 
 function PercentHeat(){
-	var percent : float = player.GetComponent(PlayerStats).heat/maxHeat;
+	var percent : float = playerStats.heat/playerStats.maxHeat;
+	return percent;
+}
+
+function percentCooldown (weaponNumber : int){
+	var cooldown : float = playerStats.weapons[weaponNumber].currentLevel.cooldown;
+	var lastShot : float =playerStats.weapons[weaponNumber].currentLevel.lastShot;
+	var percent : float = (Time.time - lastShot) / cooldown; 
+	if (percent > 0.99)percent = 1;
 	return percent;
 }

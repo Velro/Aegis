@@ -95,7 +95,7 @@ function OnGUI () {
 	/**** Dying ****/
 		if (GUI.Button (Rect((Screen.width/2)-35, (Screen.height/2)-15, 70, 30), 
 				"Replay?")){
-			Application.LoadLevel("TestLevel");
+			Application.LoadLevel("MainMenu");
 		}
 	}
 	/**** Kill boss ****/
@@ -124,7 +124,10 @@ function OnGUI () {
 		//basic menu
 		if (!inputMenu){
 			if (GUI.Button (Rect(30,20,80,30),"Main Menu")){
+				paused = false;
+				Time.timeScale = 1;
 				Application.LoadLevel("MainMenu");
+				
 			}
 			if (GUI.Button (Rect(30,60,80,30),"Input")){
 				inputMenu = true;
@@ -151,8 +154,11 @@ function OnGUI () {
 }
 
 function PercentHealth (gameObject : GameObject){
-	var thisMaxHealth : float = player.GetComponent(Stats).maxHealth;
-	var percent : float =  player.GetComponent(Stats).health/thisMaxHealth;
+	var percent : float = 0;
+	if (player != null){
+		var thisMaxHealth : float = player.GetComponent(Stats).maxHealth;
+		percent =  player.GetComponent(Stats).health/thisMaxHealth;
+	}
 	return percent;
 }
 

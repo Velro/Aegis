@@ -17,4 +17,7 @@ function Update () {
 	var distanceCovered = (Time.time - timeStarted) * scrollSpeed;
 	var fracJourney = distanceCovered / end;
 	transform.position.x = Mathf.Lerp(start, end, fracJourney);
+	//if (transform.position.x == endPoint.transform.position.x){
+	//	transform.FindChild("background").GetComponent(ParallaxSpeed).parallaxing = false;
+	//}
 }

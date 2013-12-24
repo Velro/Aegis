@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106829, y: 6.18172464e-08, z: -6.18172464e-08, w: -.707106829}
-  m_LocalPosition: {x: -362.961212, y: 203.49855, z: 0}
+  m_LocalPosition: {x: -26.7357998, y: 9.85706997, z: -13.379879}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,11 +67,11 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: .100000001
+  m_Mass: 1.00000001e-07
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -82,7 +82,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .25, y: .25, z: .25}
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bab93e1a2c7eb4b9dae28ed1bf0785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 900
   left: 0
   right: 1
 --- !u!114 &11400002
@@ -112,10 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85b0937f7a91f94ab206a2d60b62322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
   health: 1
-  maxHealth: 100
-  speed: 1
+  maxHealth: 1
+  speed: 200
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

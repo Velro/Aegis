@@ -33,6 +33,8 @@ function Update () {
 			var relativePos = (transform.position+Vector3(yAxis,0, xAxis)) - transform.position;
 			var rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 			sight.transform.rotation = rotation;
+		} else {
+			sight.transform.localRotation = Quaternion.Euler(270,0,0);
 		}
 	}
 }

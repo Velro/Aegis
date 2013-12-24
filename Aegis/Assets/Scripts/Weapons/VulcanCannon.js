@@ -10,6 +10,7 @@ var lastShot : float = 0;
 var playerStats : PlayerStats;
 
 function Start () {
+	bullet = Resources.Load("Prefabs/GreenLaser", GameObject);
 	playerStats = gameObject.GetComponent(PlayerStats);
 	sight = transform.FindChild("gun").gameObject;
 	heatCost = playerStats.VulcanCannonStats.currentLevel.heatPerShot;

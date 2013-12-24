@@ -1,4 +1,5 @@
 ﻿#pragma strict
+@script AddComponentMenu("EnemyAI/Look Toward Player")
 /*
 * Enemy faces Player unit. Trigger is largely redundant to Triggered Awaken but could be useful later. 
 */

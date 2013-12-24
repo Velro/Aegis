@@ -1,4 +1,7 @@
-﻿var lookAt : GameObject;
+﻿#pragma strict
+@script AddComponentMenu("EnemyAI/Corsair")
+
+var lookAt : GameObject;
 var bullet : GameObject;	//gameObject to be used. should be a prefab
 var cooldown : float;		//how long of a wait between shots? in seconds
 var blasterSound : AudioClip;

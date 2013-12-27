@@ -1,14 +1,14 @@
 ﻿#pragma strict
 @script AddComponentMenu("EnemyAI/Curve Paths")
-// FollowAnimationCurve.js
-// This script has to go outside of the Editor Folder.
 
-var curveX : AnimationCurve = AnimationCurve.Linear(0,0,Screen.width, Screen.height);
-var curveZ : AnimationCurve = AnimationCurve.Linear(0,0,Screen.width, Screen.height);
-var speed : float = 1;
+//var paths : Transform[,] = new Transform[10,3];
+var pathPoints : Transform[];
+var speed : float = 25;
 
-function Update() {
-	transform.position = Vector3(curveX.Evaluate(Time.time*speed),
-								transform.position.y,
-								curveZ.Evaluate(Time.time*speed));
+private var t : float;
+
+function Update () {
+    transform.position = Spline.MoveOnPath(pathPoints, transform.position, t,
+    	speed,100,EasingType.Sine, true, true);
+   // t += Time.deltaTime/10;
 }

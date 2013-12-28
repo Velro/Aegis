@@ -1,7 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyAI\CurvePaths.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Camera\ParallaxSpeed.js">
     <Files>
+      <File FileName="Assets\Scripts\Camera\ParallaxSpeed.js" Line="19" Column="34" />
       <File FileName="Assets\Scripts\EnemyAI\CurvePaths.js" Line="5" Column="1" />
       <File FileName="Assets\Scripts\Camera\CameraScroll.js" Line="1" Column="1" />
     </Files>

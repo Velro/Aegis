@@ -2,25 +2,22 @@
 var speed1 : float = 1;
 var speed2 : float = 1;
 var speed3 : float = 1;
-var texSizeX : float = 200; //for tiling
+var texSizeX : float = 200; //largely arbitrary. Adjust until it looks right
 var texSizeY : float = 150;
 var parallaxing : boolean = true;
 private var screenSpeed : float = 0;
-private var unitWidth : float = 0;
-private var unitHeight : float = 0;
-
+var screenSize : Vector2;
+var tileSize : Vector2;
 function Start () {
-	var v : Vector2 = Vector2(Camera.main.pixelWidth/texSizeX, Camera.main.pixelHeight/texSizeY);
+	screenSize = Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
 	screenSpeed = transform.parent.GetComponent(CameraScroll).scrollSpeed;
-	var p : Vector3 = Camera.main.ScreenToWorldPoint (Vector3 (Camera.main.pixelWidth,Camera.main.nearClipPlane,Camera.main.pixelHeight));
-	unitWidth = p.x;
-	unitHeight = p.z;
-	transform.localScale.x = unitWidth;
-	transform.localScale.y = unitHeight;
+	transform.localScale.x = screenSize.x;
+	transform.localScale.y = screenSize.y;
+	tileSize.x = screenSize.x / texSizeX;
+	tileSize.y = screenSize.x / texSizeY;
 	var materials : Material[] = gameObject.renderer.materials;
 	for (var material in materials){
-		
-		material.SetTextureScale("_MainTex",v);
+		material.SetTextureScale("_MainTex",tileSize);
 	}
 }
 

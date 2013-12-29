@@ -150,7 +150,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire2
-    descriptiveName: 
+    descriptiveName: Controller Left Trigger
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 1

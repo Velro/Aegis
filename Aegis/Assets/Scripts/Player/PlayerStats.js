@@ -19,6 +19,7 @@ class WeaponLevel extends System.Object{
 	
 	@System.NonSerialized
 	var lastShot : float;
+
 }
 
 class Weapon extends System.Object {
@@ -28,23 +29,35 @@ class Weapon extends System.Object {
 	var level0 : WeaponLevel;
 	var level1 : WeaponLevel;
 	var level2 : WeaponLevel;
-	var level3 : WeaponLevel;	
+	var level3 : WeaponLevel;
+	@System.NonSerialized
+	var input : String;
 }
 
 var weapons : Weapon[];
 var VulcanCannonStats : Weapon;
+var FusionBeamStats : Weapon;
 
 function Awake () {
 	weapons = new Weapon[4];
 	if (VulcanCannonStats.level >= 0){
 		weapons[0] = VulcanCannonStats;
-		
 		if (VulcanCannonStats.level == 0)VulcanCannonStats.currentLevel = VulcanCannonStats.level0;
 		if (VulcanCannonStats.level == 1)VulcanCannonStats.currentLevel = VulcanCannonStats.level1;
 		if (VulcanCannonStats.level == 2)VulcanCannonStats.currentLevel = VulcanCannonStats.level2;
 		if (VulcanCannonStats.level == 3)VulcanCannonStats.currentLevel = VulcanCannonStats.level3;
 		gameObject.AddComponent(VulcanCannon);
 	}
+	if (FusionBeamStats.level >= 0){
+		weapons[1] = FusionBeamStats;
+		if (VulcanCannonStats.level == 0)FusionBeamStats.currentLevel = FusionBeamStats.level0;
+		if (VulcanCannonStats.level == 1)FusionBeamStats.currentLevel = FusionBeamStats.level1;
+		if (VulcanCannonStats.level == 2)FusionBeamStats.currentLevel = FusionBeamStats.level2;
+		if (VulcanCannonStats.level == 3)FusionBeamStats.currentLevel = FusionBeamStats.level3;	
+		gameObject.AddComponent(FusionBeam);
+	}
+	weapons[0].input = "Fire1";
+	weapons[1].input = "Fire2";
 }
 
 function Update () {

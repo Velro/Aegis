@@ -22,31 +22,42 @@ function Start () {
 	cooldown = playerStats.FusionBeamStats.currentLevel.cooldown;
 	input = playerStats.FusionBeamStats.input;
 }
-
+var instance : GameObject;
 function Update () {
-	var instance : GameObject;
+	
 	if (((Input.GetButton(input) && playerStats.usingMouseAndKeyboard) || (playerStats.usingXboxController && Input.GetAxis(input) < 0)) 
 			&& !gameObject.GetComponent(PlayerStats).overheat //make sure we're not overheating
-			&& Time.time - playerStats.FusionBeamStats.currentLevel.lastShot > cooldown
-			&& currentChargeTime  < chargeTime){ //charge doesn't go beyond chargeTime
-		currentChargeTime += Time.deltaTime;
-	} else if (currentChargeTime >= chargeTime){ //charge maxed
-		if (currentShootTime < duration && Input.GetButton(input) && instantiateOnce == false){ //start beam
-			instantiateOnce = true;
+			&& Time.time - playerStats.FusionBeamStats.currentLevel.lastShot > cooldown)
+	{
+		if (currentChargeTime  < chargeTime){
+			currentChargeTime += Time.deltaTime;
+		} else if (currentChargeTime > 0 && instantiateOnce == false){ //if button is let go before fully charged, empty
+	 		currentChargeTime = 0; 
+	 	}
+	 }
+	if (currentChargeTime >= chargeTime)
+	{ //charge maxed
+		if (currentShootTime < duration && Input.GetButton(input) && instantiateOnce == false) //start beam
+		{
 			instance = Instantiate(beam, transform.position, Quaternion.identity);	
-			Debug.Log("Instantiated");
+			instantiateOnce = true;
+			Debug.Log("Beam Instantiated");
 		} else if (Input.GetButton(input) && instantiateOnce == true && currentShootTime < duration){ //tick time shot while held
 			currentShootTime += Time.deltaTime;
 		} else if (instantiateOnce == true && Input.GetButton(input) == false){ //let Go
-			Debug.Log("let go during shoot");
+			Debug.Log("let go during shoot."+"Destroy "+instance.name);
 			Destroy (instance);
-			playerStats.VulcanCannonStats.currentLevel.lastShot = Time.time;
+			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
+			instantiateOnce = false;
+			currentShootTime = 0;
+			currentChargeTime = 0;
 		} else if (currentShootTime >= duration){ //held through hold duration
-			Debug.Log("end shoot");
+			if(instance != null)Debug.Log("end shoot"+"Destroy "+instance.name);
 			Destroy (instance);
-			playerStats.VulcanCannonStats.currentLevel.lastShot = Time.time;
-		}
-	} else if (currentChargeTime > 0){ //if button is let go before fully charged, empty
-	 	currentChargeTime = 0; 
+			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
+			instantiateOnce = false;
+			currentShootTime = 0;
+			currentChargeTime = 0;
+		}	
 	}
 }

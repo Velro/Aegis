@@ -82,7 +82,9 @@ function OnGUI () {
 			GUI.Label(Rect(10,10,120,45), playerStats.weapons[0].name, border);
 			//weapon two
 			//GUI.Label(Rect(11,11,118,63), "", cooldown);
-			GUI.Label(Rect(140,10,120,45), "Weapon 2", border);
+			//GUI.Label(Rect(140,10,120,45), "Weapon 2", border);
+			GUI.Label(Rect(141,11,118*percentCooldown(1),43), "", cooldown);
+			GUI.Label(Rect(140,10,120,45), playerStats.weapons[1].name, border);
 			//weapon three
 			//GUI.Label(Rect(11,11,118,63), "", cooldown);
 			GUI.Label(Rect(10,65,120,45), "Weapon 3", border);

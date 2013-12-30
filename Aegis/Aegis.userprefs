@@ -1,11 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\FusionBeam.js">
     <Files>
+      <File FileName="Assets\Scripts\Weapons\FusionBeam.js" Line="64" Column="6" />
       <File FileName="Assets\Scripts\Credit.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\FusionBeam.js" Line="57" Column="68" />
+      <File FileName="Assets\Scripts\Weapons\FusionBeam.js" Line="64" Column="6" />
       <File FileName="Assets\Scripts\Weapons\FusionBeamInstance.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Weapons\VulcanCannon.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

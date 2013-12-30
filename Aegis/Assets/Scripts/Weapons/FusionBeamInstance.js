@@ -1,4 +1,6 @@
 ﻿#pragma strict
+//TODO inherit damage from fusion beam levelling
+
 var damage : float;
 var player : GameObject;
 private var nozzle : Transform;

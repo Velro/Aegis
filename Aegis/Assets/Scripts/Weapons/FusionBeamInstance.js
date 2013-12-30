@@ -1,13 +1,18 @@
 ﻿#pragma strict
 var damage : float;
 var player : GameObject;
+private var nozzle : Transform;
+
 function Awake () {
 	player = GameObject.FindWithTag("Player");
 }
 
+function Start () {
+	nozzle = player.transform.FindChild("nozzle");
+}
 function Update (){
 	CheckStats();
-	transform.position = player.transform.position;
+	transform.position = nozzle.position;
 }	
 function OnTriggerStay (other : Collider){
 	other.GetComponent(Stats).health -= damage * Time.deltaTime;

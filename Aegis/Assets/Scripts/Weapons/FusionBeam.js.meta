@@ -4,6 +4,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - beam: {fileID: 100000, guid: 8c1751d3bd417fe42ad8fccdb4f02f93, type: 2}
+  - beamCharging: {fileID: 100000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
   - blast: {fileID: 8300000, guid: cb9719b0204a2fb47b58a40af10354b2, type: 3}
   - playerStats: {instanceID: 0}
   executionOrder: 0

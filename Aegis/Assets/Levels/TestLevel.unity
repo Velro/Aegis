@@ -949,105 +949,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 704426393}
---- !u!1 &85783663
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-  m_PrefabInternal: {fileID: 107621221}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 85783667}
-  - 33: {fileID: 85783666}
-  - 23: {fileID: 85783664}
-  m_Layer: 0
-  m_Name: beamCharging
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &85783664
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300000, guid: b60c41874faecf4479ba592695f0f90f,
-    type: 2}
-  m_PrefabInternal: {fileID: 107621221}
-  m_GameObject: {fileID: 85783663}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: a15ec34b9d79ad343b746b1c53b06f7b, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
---- !u!33 &85783666
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300000, guid: b60c41874faecf4479ba592695f0f90f,
-    type: 2}
-  m_PrefabInternal: {fileID: 107621221}
-  m_GameObject: {fileID: 85783663}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &85783667
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-  m_PrefabInternal: {fileID: 107621221}
-  m_GameObject: {fileID: 85783663}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -963.451904, y: 0, z: 34.1010056}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!1001 &107621221
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -963.451904
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 34.1010056
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .707106829
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .707106829
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6400000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
-  m_RootGameObject: {fileID: 85783663}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &115460795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,49 +1874,60 @@ MonoBehaviour:
   VulcanCannonStats:
     level: 0
     name: Vulcan Cannon
-    currentLevel:
-      damage: 0
-      heatPerShot: 0
-      cooldown: 0
     level0:
       damage: 10
-      heatPerShot: 3.20000005
+      heatCost: 0
       cooldown: .400000006
     level1:
       damage: 12
-      heatPerShot: 3.4000001
+      heatCost: 0
       cooldown: .300000012
     level2:
       damage: 14
-      heatPerShot: 3.5999999
+      heatCost: 0
       cooldown: .200000003
     level3:
       damage: 16
-      heatPerShot: 3.79999995
+      heatCost: 0
       cooldown: .100000001
   FusionBeamStats:
     level: 0
     name: Fusion Beam
-    currentLevel:
-      damage: 0
-      heatPerShot: 0
-      cooldown: 0
     level0:
       damage: 50
-      heatPerShot: 50
+      heatCost: 0
       cooldown: 2
     level1:
       damage: 60
-      heatPerShot: 50
+      heatCost: 0
       cooldown: 10
     level2:
       damage: 70
-      heatPerShot: 50
+      heatCost: 0
       cooldown: 10
     level3:
       damage: 80
-      heatPerShot: 50
+      heatCost: 0
       cooldown: 10
+  ShieldStats:
+    level: 0
+    name: Shield
+    level0:
+      damage: 0
+      heatCost: 10
+      cooldown: 0
+    level1:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+    level2:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+    level3:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
 --- !u!82 &157646185
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12546,9 +12458,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   enemiesForHealthbars:
-  - {fileID: 1290047205}
-  - {fileID: 259264566}
-  - {fileID: 230845265}
+  - {fileID: 0}
   paused: 0
   alphagrey: {fileID: 2800000, guid: cecdc9dd7b568ab448a620447eae36b5, type: 3}
 --- !u!1 &1406289477

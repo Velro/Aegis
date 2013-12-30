@@ -14,7 +14,7 @@ private var beginOverheat : float;
 
 class WeaponLevel extends System.Object{
 	var damage : float;
-	var heatPerShot : float;
+	var heatCost : float;
 	var cooldown : float;
 	
 	@System.NonSerialized
@@ -25,18 +25,21 @@ class WeaponLevel extends System.Object{
 class Weapon extends System.Object {
 	var level : int = 0;
 	var name : String;
-	var currentLevel : WeaponLevel;
 	var level0 : WeaponLevel;
 	var level1 : WeaponLevel;
 	var level2 : WeaponLevel;
 	var level3 : WeaponLevel;
 	@System.NonSerialized
 	var input : String;
+	@System.NonSerialized
+	var currentLevel : WeaponLevel;
 }
 
 var weapons : Weapon[];
 var VulcanCannonStats : Weapon;
 var FusionBeamStats : Weapon;
+var ShieldStats : Weapon;
+
 
 function Awake () {
 	weapons = new Weapon[4];
@@ -50,14 +53,23 @@ function Awake () {
 	}
 	if (FusionBeamStats.level >= 0){
 		weapons[1] = FusionBeamStats;
-		if (VulcanCannonStats.level == 0)FusionBeamStats.currentLevel = FusionBeamStats.level0;
-		if (VulcanCannonStats.level == 1)FusionBeamStats.currentLevel = FusionBeamStats.level1;
-		if (VulcanCannonStats.level == 2)FusionBeamStats.currentLevel = FusionBeamStats.level2;
-		if (VulcanCannonStats.level == 3)FusionBeamStats.currentLevel = FusionBeamStats.level3;	
+		if (FusionBeamStats.level == 0)FusionBeamStats.currentLevel = FusionBeamStats.level0;
+		if (FusionBeamStats.level == 1)FusionBeamStats.currentLevel = FusionBeamStats.level1;
+		if (FusionBeamStats.level == 2)FusionBeamStats.currentLevel = FusionBeamStats.level2;
+		if (FusionBeamStats.level == 3)FusionBeamStats.currentLevel = FusionBeamStats.level3;	
 		gameObject.AddComponent(FusionBeam);
+	}
+	if (ShieldStats.level >= 0){
+		weapons[2] = ShieldStats;
+		if (ShieldStats.level == 0)ShieldStats.currentLevel = ShieldStats.level0;
+		if (ShieldStats.level == 1)ShieldStats.currentLevel = ShieldStats.level1;
+		if (ShieldStats.level == 2)ShieldStats.currentLevel = ShieldStats.level2;
+		if (ShieldStats.level == 3)ShieldStats.currentLevel = ShieldStats.level3;	
+		gameObject.AddComponent(Shield);
 	}
 	weapons[0].input = "Fire1";
 	weapons[1].input = "Fire2";
+	weapons[2].input = "Fire3";
 }
 
 function Update () {

@@ -21,7 +21,7 @@ private var nozzle : Transform;
 function Start () {
 	beam = Resources.Load("Prefabs/FusionBeam", GameObject);
 	playerStats = gameObject.GetComponent(PlayerStats);
-	heatCost = playerStats.FusionBeamStats.currentLevel.heatPerShot;
+	heatCost = playerStats.FusionBeamStats.currentLevel.heatCost;
 	damage = playerStats.FusionBeamStats.currentLevel.damage;
 	cooldown = playerStats.FusionBeamStats.currentLevel.cooldown;
 	input = playerStats.FusionBeamStats.input;

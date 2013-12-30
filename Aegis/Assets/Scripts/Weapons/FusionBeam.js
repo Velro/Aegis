@@ -30,7 +30,7 @@ function Start () {
 
 private var thisBeam : GameObject;
 private var thisBeamCharging : GameObject;
-function Update () {
+function Update (){
 	
 	if (((Input.GetButton(input) && playerStats.usingMouseAndKeyboard) || (playerStats.usingXboxController && Input.GetAxis(input) < 0)) 
 			&& !gameObject.GetComponent(PlayerStats).overheat //make sure we're not overheating
@@ -48,35 +48,39 @@ function Update () {
 			color.a += Time.deltaTime;
 			thisBeamCharging.renderer.material.SetColor("_TintColor",color); 
 
-		} else if (currentChargeTime > 0 && instantiateChargingOnce == true && Input.GetButton(input) == false){ //if button is let go before fully charged, empty
-	 		Destroy(thisBeamCharging);
-	 		instantiateChargingOnce = false;
-	 	}
+		}
 	}
+	if ((currentChargeTime > 0 && instantiateChargingOnce == true && Input.GetButton(input) == false) 
+			|| currentChargeTime >= chargeTime){ //if button is let go before fully charged, empty
+	 	Destroy(thisBeamCharging);
+	 	instantiateChargingOnce = false;
+	 }
 
-	if (currentChargeTime >= chargeTime || instantiateBeamOnce == true)
+	if (currentChargeTime >= chargeTime)
 	{ //charge maxed
 		if (currentShootTime < duration && Input.GetButton(input) && instantiateBeamOnce == false){ //start beam
 			thisBeam = Instantiate(beam, transform.FindChild("nozzle").position, Quaternion.identity);	
 			instantiateBeamOnce = true;
-			Debug.Log("Beam Instantiated");
+			//Debug.Log("Beam Instantiated");
+			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
 			gameObject.GetComponent(PlayerStats).heat += heatCost;	
 		} else if (Input.GetButton(input) && instantiateBeamOnce == true){ //tick time shot while held
-			Debug.Log("tick");
+			//Debug.Log("tick");
 			currentShootTime += Time.deltaTime;
-			currentChargeTime = 0;
 		} else if (instantiateBeamOnce == true && Input.GetButton(input) == false){ //let Go
-			Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);
+			//Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);
 			Destroy (thisBeam);
-			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
 			instantiateBeamOnce = false;
 			currentShootTime = 0;
-		} else if (currentShootTime >= duration){ //held through hold duration
+			currentChargeTime = 0;
+		}
+		if (currentShootTime >= duration){ //held through hold duration
 			if(thisBeam != null)Debug.Log("end shoot"+"Destroy "+thisBeam.name);
 			Destroy (thisBeam);
 			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
 			instantiateBeamOnce = false;
 			currentShootTime = 0;
+			currentChargeTime = 0;
 		}	
 	}
 }

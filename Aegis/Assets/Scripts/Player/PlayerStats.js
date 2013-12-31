@@ -39,7 +39,7 @@ var weapons : Weapon[];
 var VulcanCannonStats : Weapon;
 var FusionBeamStats : Weapon;
 var ShieldStats : Weapon;
-
+var CoolantTankStats : Weapon;
 
 function Awake () {
 	weapons = new Weapon[4];
@@ -67,9 +67,18 @@ function Awake () {
 		if (ShieldStats.level == 3)ShieldStats.currentLevel = ShieldStats.level3;	
 		gameObject.AddComponent(Shield);
 	}
+	if (CoolantTankStats.level >= 0){
+		weapons[3] = CoolantTankStats;
+		if (CoolantTankStats.level == 0)CoolantTankStats.currentLevel = CoolantTankStats.level0;
+		if (CoolantTankStats.level == 1)CoolantTankStats.currentLevel = CoolantTankStats.level1;
+		if (CoolantTankStats.level == 2)CoolantTankStats.currentLevel = CoolantTankStats.level2;
+		if (CoolantTankStats.level == 3)CoolantTankStats.currentLevel = CoolantTankStats.level3;	
+		gameObject.AddComponent(CoolantTank);
+	}
 	weapons[0].input = "Fire1";
 	weapons[1].input = "Fire2";
 	weapons[2].input = "Fire3";
+	weapons[3].input = "Fire4";
 }
 
 function Update () {

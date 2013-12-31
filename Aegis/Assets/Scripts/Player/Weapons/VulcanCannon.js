@@ -21,10 +21,9 @@ function Start () {
 }
 
 function Update () {
-	
 	if (((Input.GetButtonDown(input) && playerStats.usingMouseAndKeyboard) || (playerStats.usingXboxController && Input.GetAxis(input) < 0)) 
-			&& !gameObject.GetComponent(PlayerStats).overheat && //make sure we're not overheating
-			Time.time - playerStats.VulcanCannonStats.currentLevel.lastShot > cooldown)
+			&& !gameObject.GetComponent(PlayerStats).overheat //make sure we're not overheating
+			&& Time.time - playerStats.VulcanCannonStats.currentLevel.lastShot > cooldown)
 	{
 		gameObject.GetComponent(PlayerStats).heat += heatCost; //up the heat
 		var instance : GameObject;

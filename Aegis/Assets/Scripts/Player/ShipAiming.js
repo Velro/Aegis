@@ -5,8 +5,8 @@
 var sight : GameObject;
 private var mouseX : float = 0;
 private var mouseY : float = 0;
-
 private var diff : float;
+
 function Start () {
 	diff = Camera.main.transform.position.y + sight.transform.position.y;
 }

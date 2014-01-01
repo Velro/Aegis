@@ -1,12 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerStats.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyAI\CurvePaths.js">
     <Files>
       <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="20" Column="2" />
-      <File FileName="Assets\Scripts\Player\Weapons\VulcanCannon.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DealDamage.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\ShipAiming.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="76" Column="34" />
+      <File FileName="Assets\Scripts\EnemyAI\CurvePaths.js" Line="18" Column="25" />
+      <File FileName="Assets\Plugins\radical\System\Curves.cs" Line="282" Column="244" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

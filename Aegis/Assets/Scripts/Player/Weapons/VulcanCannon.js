@@ -1,5 +1,6 @@
 ﻿#pragma strict
-@script AddComponentMenu("Player Weapons/Vulcan Cannon")
+@script AddComponentMenu("Player/Weapons/Vulcan Cannon")
+
 var sight : GameObject;
 var bullet : GameObject;
 private var heatCost : float = 0;	//for basic bullet

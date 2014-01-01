@@ -7,6 +7,7 @@ private var pathPoints : Transform[];
 private var speed : float = 25;
 var rotateToPath : boolean = false;
 private var t : float;
+private var q : Quaternion;
 
 function Start () {
 	pathPoints = new Transform[parentPath.childCount];
@@ -20,6 +21,7 @@ function Start () {
 	} else {
 		Debug.Log("No Stats attached on "+gameObject.name+" or parent");
 	}
+	q = transform.rotation;
 }
 
 function Update () {
@@ -28,10 +30,9 @@ function Update () {
 	    	speed,100,EasingType.Sine, true, true);
     }
     if (rotateToPath){
-    	transform.position = Spline.MoveOnPath(pathPoints, transform.position, t,// transform.rotation,
+    	transform.position = Spline.MoveOnPath(pathPoints, transform.position, t, q,
 	    	speed,100f,EasingType.Sine, true, true);
+	    q.eulerAngles.x = 90;
+	    transform.rotation = q;
     }
 }
-
-//MoveOnPath(Path pts, Vector3 currentPosition, ref float pathPosition, ref Quaternion rotation,  float maxSpeed=1f, float smoothnessFactor=100, EasingType ease = EasingType.Linear, bool easeIn = true, bool easeOut = true)
-

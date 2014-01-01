@@ -12,6 +12,8 @@ var totalCredits : int  = 0;
 var creditsThisLevel : int = 0;
 private var beginOverheat : float;
 
+
+
 class WeaponLevel extends System.Object{
 	var damage : float;
 	var heatCost : float;

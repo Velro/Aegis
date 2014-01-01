@@ -105,6 +105,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12e845de327fbb4b9689cb47b14e7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgrades:
+  - name: Vulcan Cannon
+    cost: 20
+    selected: 0
+  - name: Fusion Beam
+    cost: 20
+    selected: 0
+  - name: Vulcan Cannon
+    cost: 20
+    selected: 0
+  - name: Vulcan Cannon
+    cost: 20
+    selected: 0
 --- !u!81 &1432634193
 AudioListener:
   m_ObjectHideFlags: 0

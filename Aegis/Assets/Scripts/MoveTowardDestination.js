@@ -21,7 +21,6 @@ private var once : boolean;	//only count one entrance into the trigger
 function Start () {
 	start = transform.position;
 	end = destination.transform.position;
-	
 	journeyLength = Vector3.Distance(start,end);
 }
 
@@ -31,6 +30,7 @@ function Update () {
 		if (entered && patrol == false){
 			var distanceCovered : float = (Time.time - startTime) * speed;
 			var fracJourney : float = distanceCovered / journeyLength;
+			Debug.Log(fracJourney);
 			transform.position = Vector3.Lerp(start, end, fracJourney);
 			
 			if (transform.position == end){

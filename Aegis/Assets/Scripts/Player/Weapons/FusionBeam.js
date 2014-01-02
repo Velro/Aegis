@@ -1,5 +1,5 @@
 ﻿#pragma strict
-@script AddComponentMenu("Player Weapons/Fusion Beam")
+@script AddComponentMenu("Player/Weapons/Fusion Beam")
 var beam : GameObject;
 var beamCharging : GameObject;
 private var heatCost : float = 0;	//for basic bullet

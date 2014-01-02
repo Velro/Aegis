@@ -53,7 +53,6 @@ function Update (){
 	}
 }
 function OnGUI () {
-	
 	/**** Health bar ****/
 	if (player != null){
 		//Rects work at Rect(screenPosition X, screenPosition Y, width, height) all in pixels
@@ -88,7 +87,8 @@ function OnGUI () {
 			GUI.Label(Rect(10,65,120,45), playerStats.weapons[2].name, border);
 			//weapon four
 			//GUI.Label(Rect(11,11,118,63), "", cooldown);
-			GUI.Label(Rect(140,65,120,45), "Weapon 4", border);
+			GUI.Label(Rect(141,66,118*percentCooldown(3),43), "", cooldown);
+			GUI.Label(Rect(140,65,120,45), playerStats.weapons[3].name, border);
 		GUI.EndGroup ();
 		
 	} else {
@@ -103,7 +103,6 @@ function OnGUI () {
 		GUI.Label (Rect(Screen.width/2, Screen.height/2, Screen.width/2-100, Screen.height/2+120), 
 			"End Test Level");
 	}
-	
 	/**** Enemy health bars ****/
 	for (var enemy : GameObject in enemiesForHealthbars){
 		if (enemy != null){
@@ -112,8 +111,6 @@ function OnGUI () {
 				,40*PercentHealth(enemy),4),"",healthbar);
 		}
 	}
-	
-	
 	
 	/**** Pause Menu ****/
 	if (paused){	//pause game

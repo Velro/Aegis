@@ -25,7 +25,13 @@ function Update () {
 }
 
 function OnTriggerEnter (other : Collider) {
-	if (other.GetComponent(Stats) != null)other.GetComponent(Stats).health -= damage;
+	if (other.gameObject.GetComponent(Stats) != null){
+		other.gameObject.GetComponent(Stats).health -= damage;
+	} else if (other.transform.parent.gameObject.GetComponent(Stats) != null){
+		other.transform.parent.gameObject.GetComponent(Stats).health -= damage;
+	} else {
+		Debug.Log("other and its parents has no stats");
+	}
 	if (gameObject != null)Destroy (gameObject);
 }
 

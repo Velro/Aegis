@@ -1,5 +1,5 @@
 ﻿#pragma strict
-@script AddComponentMenu("EnemyAI/Scene Pathing Lines")
+@script AddComponentMenu("Scene View Helpers/Scene Pathing Lines")
 
 var color : Color = Color.red;
 

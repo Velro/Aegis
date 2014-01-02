@@ -433,6 +433,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
   m_RootGameObject: {fileID: 1784072128}
@@ -447,7 +451,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 32360605}
   - 95: {fileID: 32360604}
-  - 114: {fileID: 32360606}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -482,18 +485,6 @@ Transform:
   m_Children:
   - {fileID: 1962904015}
   m_Father: {fileID: 0}
---- !u!114 &32360606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32360603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &39375594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1106,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 110799295}
   - 95: {fileID: 110799294}
-  - 114: {fileID: 110799296}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -1150,18 +1140,6 @@ Transform:
   m_Children:
   - {fileID: 363709497}
   m_Father: {fileID: 0}
---- !u!114 &110799296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110799293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &115460795
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,6 +4329,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
   m_RootGameObject: {fileID: 520403429}
@@ -5401,7 +5383,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 382003740}
   - 95: {fileID: 382003739}
-  - 114: {fileID: 382003741}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -5436,18 +5417,6 @@ Transform:
   m_Children:
   - {fileID: 1774211802}
   m_Father: {fileID: 0}
---- !u!114 &382003741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 382003738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &382401630
 GameObject:
   m_ObjectHideFlags: 0
@@ -7011,7 +6980,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 550898261}
   - 95: {fileID: 550898262}
-  - 114: {fileID: 550898263}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -7046,18 +7014,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &550898263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 550898260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &555469246
 GameObject:
   m_ObjectHideFlags: 0
@@ -8892,7 +8848,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 743194067}
   - 95: {fileID: 743194066}
-  - 114: {fileID: 743194068}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -8927,18 +8882,6 @@ Transform:
   m_Children:
   - {fileID: 1171929458}
   m_Father: {fileID: 0}
---- !u!114 &743194068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 743194065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1001 &744750978
 Prefab:
   m_ObjectHideFlags: 0
@@ -9367,7 +9310,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 774507307}
   - 95: {fileID: 774507306}
-  - 114: {fileID: 774507308}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -9402,18 +9344,6 @@ Transform:
   m_Children:
   - {fileID: 505545433}
   m_Father: {fileID: 0}
---- !u!114 &774507308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 774507305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &777575496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9819,7 +9749,7 @@ Transform:
   m_PrefabInternal: {fileID: 1407495004}
   m_GameObject: {fileID: 874996211}
   m_LocalRotation: {x: .0597126596, y: .0654947832, z: .938304543, w: -.33425951}
-  m_LocalPosition: {x: 1.14985204, y: 6.58270216, z: 11.1315536}
+  m_LocalPosition: {x: -5.77278233, y: 1.12403417, z: 11.2285194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 364338360}
@@ -10132,7 +10062,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 926221201}
   - 95: {fileID: 926221202}
-  - 114: {fileID: 926221203}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -10167,18 +10096,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &926221203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 926221200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1001 &927129192
 Prefab:
   m_ObjectHideFlags: 0
@@ -10834,7 +10751,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 965777817}
   - 95: {fileID: 965777818}
-  - 114: {fileID: 965777819}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -10869,18 +10785,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &965777819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965777816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &974849375
 GameObject:
   m_ObjectHideFlags: 0
@@ -12764,7 +12668,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1115822855}
   - 95: {fileID: 1115822856}
-  - 114: {fileID: 1115822857}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -12799,18 +12702,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1115822857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1115822854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1117509207
 GameObject:
   m_ObjectHideFlags: 0
@@ -12931,7 +12822,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1125133166}
   - 95: {fileID: 1125133167}
-  - 114: {fileID: 1125133168}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -12966,18 +12856,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1125133168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125133165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1155915854
 GameObject:
   m_ObjectHideFlags: 0
@@ -14319,7 +14197,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1276397194}
   - 95: {fileID: 1276397195}
-  - 114: {fileID: 1276397196}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -14354,18 +14231,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1276397196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1276397193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1284262801
 GameObject:
   m_ObjectHideFlags: 0
@@ -16357,6 +16222,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
   m_RootGameObject: {fileID: 1090103269}
@@ -16371,7 +16240,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1395972105}
   - 95: {fileID: 1395972106}
-  - 114: {fileID: 1395972107}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -16406,18 +16274,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1395972107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1395972104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1406289477
 GameObject:
   m_ObjectHideFlags: 0
@@ -16577,6 +16433,18 @@ Prefab:
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: d7e29bce9fbaaa649afa0fac9caa7bc2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.77278233
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: d7e29bce9fbaaa649afa0fac9caa7bc2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.12403417
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: d7e29bce9fbaaa649afa0fac9caa7bc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.2285194
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7e29bce9fbaaa649afa0fac9caa7bc2, type: 3}
   m_RootGameObject: {fileID: 364338355}
@@ -16676,7 +16544,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1411467809}
   - 95: {fileID: 1411467810}
-  - 114: {fileID: 1411467811}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -16711,18 +16578,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1411467811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1411467808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1001 &1414060307
 Prefab:
   m_ObjectHideFlags: 0
@@ -17328,7 +17183,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1500030545}
   - 95: {fileID: 1500030546}
-  - 114: {fileID: 1500030547}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -17363,18 +17217,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1500030547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500030544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1518582962
 GameObject:
   m_ObjectHideFlags: 0
@@ -17384,7 +17226,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1518582964}
   - 95: {fileID: 1518582963}
-  - 114: {fileID: 1518582965}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -17421,18 +17262,6 @@ Transform:
   - {fileID: 1985156349}
   - {fileID: 411625630}
   m_Father: {fileID: 0}
---- !u!114 &1518582965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1518582962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1521869292
 GameObject:
   m_ObjectHideFlags: 0
@@ -17664,26 +17493,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjects:
-  - {fileID: 110799293}
-  - {fileID: 32360603}
-  - {fileID: 382003738}
-  - {fileID: 1115822854}
-  - {fileID: 1125133165}
-  - {fileID: 1581546680}
-  - {fileID: 550898260}
   - {fileID: 743194065}
   - {fileID: 774507305}
+  - {fileID: 965777816}
+  - {fileID: 926221200}
   - {fileID: 1276397193}
+  - {fileID: 32360603}
+  - {fileID: 1115822854}
+  - {fileID: 550898260}
+  - {fileID: 1411467808}
   - {fileID: 1500030544}
   - {fileID: 1518582962}
-  - {fileID: 926221200}
-  - {fileID: 1395972104}
-  - {fileID: 1411467808}
+  - {fileID: 1581546680}
   - {fileID: 2095545432}
-  - {fileID: 965777816}
   - {fileID: 1694376678}
   - {fileID: 1756601322}
   - {fileID: 1777151091}
+  - {fileID: 1395972104}
+  - {fileID: 1125133165}
+  - {fileID: 110799293}
+  - {fileID: 382003738}
 --- !u!4 &1558381696
 Transform:
   m_ObjectHideFlags: 0
@@ -18303,7 +18132,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1581546681}
   - 95: {fileID: 1581546682}
-  - 114: {fileID: 1581546683}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -18338,18 +18166,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &1581546683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1581546680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1001 &1582644718
 Prefab:
   m_ObjectHideFlags: 0
@@ -19552,7 +19368,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1694376680}
   - 95: {fileID: 1694376679}
-  - 114: {fileID: 1694376681}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -19587,18 +19402,6 @@ Transform:
   m_Children:
   - {fileID: 632545331}
   m_Father: {fileID: 0}
---- !u!114 &1694376681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1694376678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1703710395
 GameObject:
   m_ObjectHideFlags: 0
@@ -20094,7 +19897,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1756601324}
   - 95: {fileID: 1756601323}
-  - 114: {fileID: 1756601325}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -20129,18 +19931,6 @@ Transform:
   m_Children:
   - {fileID: 1749033433}
   m_Father: {fileID: 0}
---- !u!114 &1756601325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1756601322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1763519749
 GameObject:
   m_ObjectHideFlags: 0
@@ -20589,7 +20379,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1777151093}
   - 95: {fileID: 1777151092}
-  - 114: {fileID: 1777151094}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -20624,18 +20413,6 @@ Transform:
   m_Children:
   - {fileID: 1805182407}
   m_Father: {fileID: 0}
---- !u!114 &1777151094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1777151091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1 &1782892980
 GameObject:
   m_ObjectHideFlags: 0
@@ -21197,6 +20974,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
       propertyPath: m_LocalScale.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
@@ -23646,7 +23427,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2095545434}
   - 95: {fileID: 2095545433}
-  - 114: {fileID: 2095545435}
   m_Layer: 0
   m_Name: oomdassa_cloudplane_mesh
   m_TagString: Untagged
@@ -23681,18 +23461,6 @@ Transform:
   m_Children:
   - {fileID: 343305099}
   m_Father: {fileID: 0}
---- !u!114 &2095545435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2095545432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730ee9e588a05fa4dafa2503da5b7d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!1001 &2099264775
 Prefab:
   m_ObjectHideFlags: 0
@@ -23998,6 +23766,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
       propertyPath: m_LocalScale.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6de191cb658be489cf116521bdb7c3, type: 3}

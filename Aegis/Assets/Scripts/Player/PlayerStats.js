@@ -8,7 +8,7 @@ var overheatTime : float = 1;			//time you are overheated
 var speedReduction : float = 0.5;		//overheat penalty
 public static var usingXboxController : boolean = false; //xbox stated explicitly because setup will be a little different with other controllers *sigh*
 public static var usingMouseAndKeyboard : boolean = true;
-var totalCredits : int  = 0;
+public static var totalCredits : int  = 5000;
 var creditsThisLevel : int = 0;
 private var beginOverheat : float;
 

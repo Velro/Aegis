@@ -18,17 +18,26 @@ var weapon2 : GUIStyle;
 var weapon3 : GUIStyle;
 var weapon4 : GUIStyle;
 var cooldown : GUIStyle;
+var levelUp : GUIStyle;
 
 var enemiesForHealthbars : GameObject[];
 
-//paused variables
 var paused : boolean = false; //are we paused?!
 var alphagrey : Texture2D;
 private var timePausedHit : float = 0;
 private var pausedCooldown : float = 1; //without this the Input manager will register pause/unpause several times in a frame
 private var inputMenu : boolean = false; //are we in the input submenu?
 private var playerStats : PlayerStats;
-private var name0 : String;
+var levelUpDisplayTime : float;
+
+@System.NonSerializedAttribute
+var boolLevel : boolean = false;
+@System.NonSerializedAttribute
+var levelledName : String;
+@System.NonSerializedAttribute
+var levelledLevel : int;
+@System.NonSerializedAttribute
+var levelledTime : float;
 
 function Awake (){
 	playerStats = player.GetComponent(PlayerStats);
@@ -111,6 +120,13 @@ function OnGUI () {
 				,40*PercentHealth(enemy),4),"",healthbar);
 		}
 	}
+	/**** Level Up ****/
+	if (boolLevel == true){
+		if (Time.time < levelledTime + levelUpDisplayTime){
+			GUI.Label(Rect(Screen.width/2, Screen.height/2, 200, 100), levelledName+" is level "+levelledLevel, levelUp);
+		}
+	}
+		
 	
 	/**** Pause Menu ****/
 	if (paused){	//pause game
@@ -171,3 +187,6 @@ function percentCooldown (weaponNumber : int){
 	if (percent > 0.99)percent = 1;
 	return percent;
 }
+
+
+

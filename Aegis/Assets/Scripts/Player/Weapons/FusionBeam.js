@@ -17,6 +17,10 @@ private var instantiateBeamOnce : boolean = false;
 private var instantiateChargingOnce : boolean = false;
 private var instantiateChargingOnceTime : float = 0;
 private var nozzle : Transform;
+var level0Size : Vector3 = Vector3(1.5, 4, 2);
+var level1Size : Vector3 = Vector3(1.75, 4, 3);
+var level2Size : Vector3 = Vector3(2, 4, 4);
+var level3Size : Vector3 = Vector3(2.25, 4, 5);
 
 function Start () {
 	beam = Resources.Load("Prefabs/FusionBeam", GameObject);
@@ -61,6 +65,11 @@ function Update (){
 		if (currentShootTime < duration && Input.GetButton(input) && instantiateBeamOnce == false){ //start beam
 			thisBeam = Instantiate(beam, transform.FindChild("nozzle").position, Quaternion.identity);	
 			instantiateBeamOnce = true;
+			thisBeam.GetComponent(Stats).damage = damage;
+			if (playerStats.FusionBeamStats.level == 0)thisBeam.transform.localScale = level0Size; 
+			if (playerStats.FusionBeamStats.level == 1)thisBeam.transform.localScale = level1Size;
+			if (playerStats.FusionBeamStats.level == 2)thisBeam.transform.localScale = level2Size;
+			if (playerStats.FusionBeamStats.level == 3)thisBeam.transform.localScale = level3Size;
 			//Debug.Log("Beam Instantiated");
 			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
 			gameObject.GetComponent(PlayerStats).heat += heatCost;	

@@ -12,6 +12,6 @@ var damage : float = 1;
 var health : float = 10;
 var maxHealth : float = 100;
 var speed : float = 1;
-
+var exp : float = 10;
 
 

@@ -9,6 +9,11 @@ var explosion : GameObject; //explosion effect
 var destructionTime : float = 4;	//delay on destroying the explosion effect object (cleaning up)
 var explosionPosition : Vector3 = Vector3.zero; //explosion position offset if we need it in case the origin isn't centered *cough*
 private var damage : float;
+private var player : GameObject;
+
+function Start () {
+	player = GameObject.FindWithTag("Player");
+}
 
 function OnCollisionEnter (other : Collision){
 	if (explosion != null && other.gameObject.name != gameObject.name 
@@ -39,6 +44,7 @@ function Update () {
 		if (gameObject.GetComponent(CreditsDispenser) != null){
 			gameObject.GetComponent(CreditsDispenser).RollToDrop();
 		}
+		if (player!= null)player.GetComponent(PlayerStats).GiveExp(gameObject.GetComponent(Stats).exp, Time.time);
 		Destroy (clone, destructionTime); //kill explosion effect after delay
 		Destroy (gameObject);
 	}

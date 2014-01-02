@@ -2024,7 +2024,7 @@ Animator:
   m_PrefabInternal: {fileID: 1063651702}
   m_GameObject: {fileID: 157646175}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3a4c1ed9c0ddd184788312d7b594878d, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 79fe14548dba54d428028e8d25d47199, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
@@ -2052,7 +2052,7 @@ CharacterController:
   m_GameObject: {fileID: 157646175}
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 8
+  m_Radius: 14
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
@@ -2127,7 +2127,6 @@ MonoBehaviour:
   overheat: 0
   overheatTime: 1
   speedReduction: .5
-  totalCredits: 0
   creditsThisLevel: 0
   weapons: []
   VulcanCannonStats:
@@ -5439,7 +5438,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 382401630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.2906952, y: .488582671, z: -5.8243586e-08}
+  m_LocalPosition: {x: 18.6546478, y: .488582671, z: -5.8243586e-08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 157646177}
@@ -6459,7 +6458,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 990490d6a278d7e4787cd14aa5a6d31a, type: 2}
+  - {fileID: 2100000, guid: 07ffe603ff889e44bbba2915d948f826, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -7401,7 +7400,7 @@ Transform:
   m_GameObject: {fileID: 600447747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: .100000001, z: 8}
+  m_LocalScale: {x: 10, y: .100000001, z: 10}
   m_Children: []
   m_Father: {fileID: 1335909572}
 --- !u!23 &600447749
@@ -15182,7 +15181,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1335909571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.9750824, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 600447748}
@@ -15580,7 +15579,7 @@ MonoBehaviour:
   healthbar:
     m_Name: healthbar
     m_Normal:
-      m_Background: {fileID: 2800000, guid: f808be387156e27488cf70bbced4ffa8, type: 3}
+      m_Background: {fileID: 2800000, guid: fda0187bfb73beb4da4fb3989854631b, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -15639,7 +15638,7 @@ MonoBehaviour:
   border:
     m_Name: border
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 4a8499181c0e37840a49481919118782, type: 3}
+      m_Background: {fileID: 2800000, guid: 1d1277a5d289725419c78bb35fb0a395, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -15698,7 +15697,7 @@ MonoBehaviour:
   heat:
     m_Name: heat
     m_Normal:
-      m_Background: {fileID: 2800000, guid: af40f478cb4288448ac4ef8131cd3775, type: 3}
+      m_Background: {fileID: 2800000, guid: c9423f213f85ed949bfa6fa5d9d757bf, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -15816,7 +15815,7 @@ MonoBehaviour:
   weaponsBackground:
     m_Name: weaponsBackground
     m_Normal:
-      m_Background: {fileID: 2800000, guid: cecdc9dd7b568ab448a620447eae36b5, type: 3}
+      m_Background: {fileID: 0}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -15875,7 +15874,7 @@ MonoBehaviour:
   weapon1:
     m_Name: weapon1
     m_Normal:
-      m_Background: {fileID: 2800000, guid: f808be387156e27488cf70bbced4ffa8, type: 3}
+      m_Background: {fileID: 2800000, guid: fda0187bfb73beb4da4fb3989854631b, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -16111,7 +16110,7 @@ MonoBehaviour:
   cooldown:
     m_Name: cooldown
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 406d3d85326831c43aa0148326ed51d7, type: 3}
+      m_Background: {fileID: 2800000, guid: 6ddf99b6acb8c3d418806dffd989e853, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -16170,7 +16169,7 @@ MonoBehaviour:
   enemiesForHealthbars:
   - {fileID: 0}
   paused: 0
-  alphagrey: {fileID: 2800000, guid: cecdc9dd7b568ab448a620447eae36b5, type: 3}
+  alphagrey: {fileID: 2800000, guid: 6ddf99b6acb8c3d418806dffd989e853, type: 3}
 --- !u!1001 &1380319976
 Prefab:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 @script AddComponentMenu("Player/Devices/Shield")
 
 var shield : GameObject;
-var distanceFromShip : float = 12;
+var distanceFromShip : float = 13; //alter this directly to change
 private var sight : Transform;
 private var playerStats : PlayerStats;
 private var heatPerSecond : float = 0;

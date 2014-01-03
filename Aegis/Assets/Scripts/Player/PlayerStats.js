@@ -40,6 +40,7 @@ class Weapon extends System.Object {
 	var currentExp : float;
 }
 
+var allEquipables = new Array();
 var weapons : Weapon[];
 var VulcanCannonStats : Weapon;
 var FusionBeamStats : Weapon;
@@ -47,7 +48,18 @@ var ShieldStats : Weapon;
 var CoolantTankStats : Weapon;
 
 function Awake () {
+	var AllEquipables = new Array(VulcanCannonStats, FusionBeamStats,ShieldStats,CoolantTankStats);
+	var convAllEquipables :Weapon[] = allEquipables.ToBuiltin(Weapon) as Weapon[];
 	weapons = new Weapon[4];
+	var weaponsIndex : int = 0;
+	for (var i : int = 0; i < UpgroidsGUI.selections.length; i++){
+		for (var k : int = 0; k < convAllEquipables.length; k++){
+			if (UpgroidsGUI.selections[i] == convAllEquipables[k].name){	
+				weapons[weaponsIndex] = convAllEquipables[k];
+				weaponsIndex++;
+			}
+		}
+	}
 	if (VulcanCannonStats.level >= 0){
 		weapons[0] = VulcanCannonStats;
 		gameObject.AddComponent(VulcanCannon);

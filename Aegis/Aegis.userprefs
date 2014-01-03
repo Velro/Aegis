@@ -1,12 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Devices\Shield.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerStats.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="4" Column="39" />
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="4" Column="39" />
-      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\MyGUI.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="23" Column="16" />
+      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="71" Column="3" />
+      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="56" Column="46" />
+      <File FileName="Assets\Scripts\GUI\MyGUI.js" Line="126" Column="113" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

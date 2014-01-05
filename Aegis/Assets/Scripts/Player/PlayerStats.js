@@ -48,19 +48,21 @@ var ShieldStats : Weapon;
 var CoolantTankStats : Weapon;
 
 function Awake () {
-	var AllEquipables = new Array(VulcanCannonStats, FusionBeamStats,ShieldStats,CoolantTankStats);
+	var allEquipables = new Array(VulcanCannonStats, FusionBeamStats,ShieldStats,CoolantTankStats);
 	var convAllEquipables :Weapon[] = allEquipables.ToBuiltin(Weapon) as Weapon[];
 	weapons = new Weapon[4];
 	var weaponsIndex : int = 0;
 	for (var i : int = 0; i < UpgroidsGUI.selections.length; i++){
 		for (var k : int = 0; k < convAllEquipables.length; k++){
-			if (UpgroidsGUI.selections[i] == convAllEquipables[k].name){	
+			if (UpgroidsGUI.selections[i] == convAllEquipables[k].name){
 				weapons[weaponsIndex] = convAllEquipables[k];
+				var str = convAllEquipables[k].name.Replace(' ','');
+				gameObject.AddComponent(""+str);
 				weaponsIndex++;
 			}
 		}
 	}
-	if (VulcanCannonStats.level >= 0){
+	/*if (VulcanCannonStats.level >= 0){
 		weapons[0] = VulcanCannonStats;
 		gameObject.AddComponent(VulcanCannon);
 	}
@@ -75,7 +77,7 @@ function Awake () {
 	if (CoolantTankStats.level >= 0){
 		weapons[3] = CoolantTankStats;
 		gameObject.AddComponent(CoolantTank);
-	}
+	}*/
 	weapons[0].input = "Fire1";
 	weapons[1].input = "Fire2";
 	weapons[2].input = "Fire3";

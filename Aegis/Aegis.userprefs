@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InputCoordinator.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\UpgroidsGUI.js">
     <Files>
-      <File FileName="Assets\Plugins\JoystickController.cs" Line="24" Column="5" />
-      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="149" Column="2" />
+      <File FileName="Assets\Scripts\GUI\StarMapGUI.js" Line="37" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

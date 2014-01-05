@@ -24,6 +24,7 @@ var level3Size : Vector3 = Vector3(2.25, 4, 5);
 
 function Start () {
 	beam = Resources.Load("Prefabs/FusionBeam", GameObject);
+	beamCharging = Resources.Load("Prefabs/BeamCharging",GameObject);
 	playerStats = gameObject.GetComponent(PlayerStats);
 	heatCost = playerStats.FusionBeamStats.currentLevel.heatCost;
 	damage = playerStats.FusionBeamStats.currentLevel.damage;

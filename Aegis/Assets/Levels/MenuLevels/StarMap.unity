@@ -74,21 +74,19 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
---- !u!1 &1237392898
+--- !u!1 &433752989
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1237392904}
-  - 20: {fileID: 1237392903}
-  - 92: {fileID: 1237392902}
-  - 124: {fileID: 1237392901}
-  - 81: {fileID: 1237392900}
-  - 114: {fileID: 1237392899}
-  - 114: {fileID: 1237392906}
-  - 114: {fileID: 1237392905}
+  - 4: {fileID: 433752994}
+  - 20: {fileID: 433752993}
+  - 92: {fileID: 433752992}
+  - 124: {fileID: 433752991}
+  - 81: {fileID: 433752990}
+  - 114: {fileID: 433752995}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -96,65 +94,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1237392899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12e845de327fbb4b9689cb47b14e7f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allUpgrades:
-  - name: Vulcan Cannon
-    cost: 200
-    bool: 0
-    bought: 0
-    selected: 0
-  - name: Fusion Beam
-    cost: 200
-    bool: 0
-    bought: 0
-    selected: 0
-  - name: 
-    cost: 0
-    bool: 0
-    bought: 0
-    selected: 0
-  - name: 
-    cost: 0
-    bool: 0
-    bought: 0
-    selected: 0
---- !u!81 &1237392900
+--- !u!81 &433752990
 AudioListener:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
+  m_GameObject: {fileID: 433752989}
   m_Enabled: 1
---- !u!124 &1237392901
+--- !u!124 &433752991
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
+  m_GameObject: {fileID: 433752989}
   m_Enabled: 1
---- !u!92 &1237392902
+--- !u!92 &433752992
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
+  m_GameObject: {fileID: 433752989}
   m_Enabled: 1
---- !u!20 &1237392903
+--- !u!20 &433752993
 Camera:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
+  m_GameObject: {fileID: 433752989}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -178,36 +144,28 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
   m_OcclusionCulling: 1
---- !u!4 &1237392904
+--- !u!4 &433752994
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
+  m_GameObject: {fileID: 433752989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!114 &1237392905
+--- !u!114 &433752995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
+  m_GameObject: {fileID: 433752989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abfc0c963531bad48aa999385c10c22d, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a0ac2ca9038a34888320bdb6edb000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1237392906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237392898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b263be32fc4c6748b136358e087d9f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  paused: 0
+  confirmMenuOpened: 0
+  pauseButton: 

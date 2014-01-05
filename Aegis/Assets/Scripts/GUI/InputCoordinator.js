@@ -33,7 +33,7 @@ function OnGUI () {
 	}
 	//Debug.Log("Right Trigger name: "+rightTrigger.axis+" Right trigger bool: "+rightTrigger.positive+" Raw Input "+Input.GetAxisRaw(rightTrigger.axis));
 	//Debug.Log("Left Trigger name: "+leftTrigger.axis+" Left trigger bool: "+leftTrigger.positive);
-	if (rightBumper 
+	if (rightBumper){} 
 	//left = right -1 on oxblock
 }
 

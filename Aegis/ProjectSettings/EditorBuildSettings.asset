@@ -6,8 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/MainMenu.unity
+    path: Assets/Levels/MenuLevels/MainMenu.unity
   - enabled: 1
-    path: Assets/Levels/UpgradesMenu.unity
+    path: Assets/Levels/MenuLevels/UpgradesMenu.unity
   - enabled: 1
     path: Assets/Levels/TestLevel.unity
+  - enabled: 1
+    path: Assets/Levels/MenuLevels/StarMap.unity

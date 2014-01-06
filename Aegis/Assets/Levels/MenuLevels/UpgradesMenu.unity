@@ -87,8 +87,8 @@ GameObject:
   - 124: {fileID: 1237392901}
   - 81: {fileID: 1237392900}
   - 114: {fileID: 1237392899}
-  - 114: {fileID: 1237392906}
   - 114: {fileID: 1237392905}
+  - 114: {fileID: 1237392906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -110,25 +110,173 @@ MonoBehaviour:
   allUpgrades:
   - name: Vulcan Cannon
     cost: 200
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Blunder Buster
+    cost: 200
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Glaive
+    cost: 200
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Irradiated Slugs
+    cost: 50
+    description: 
     bool: 0
     bought: 0
     selected: 0
   - name: Fusion Beam
-    cost: 200
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Thunderclap
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Planet Killer
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Extractor Beam
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Flame Sprayer
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Arc 'Nade
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Cluster Charge
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Heat Seekers
+    cost: 50
+    description: 
     bool: 0
     bought: 0
     selected: 0
   - name: Shield
-    cost: 200
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Nano Repair
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Cash Magnet
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Ram Drill
+    cost: 50
+    description: 
     bool: 0
     bought: 0
     selected: 0
   - name: Coolant Tank
     cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Deploy Barricade
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Deploy Singularity
+    cost: 50
+    description: 
+    bool: 0
+    bought: 0
+    selected: 0
+  - name: Mini Gunners
+    cost: 50
+    description: 
     bool: 0
     bought: 0
     selected: 0
   convUnlockedUpgrades: []
+  toBeBought: 0
+  confirmEquipPurchaseBool: 0
+  toBeEquipped: 0
+  equipSelectionBool: 0
+  supportBayRect:
+    serializedVersion: 2
+    x: 20
+    y: 20
+    width: 400
+    height: 400
+  confirmStarMap: 0
+  physicalWeaponsRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 132
+    height: 448
+  energyWeaponsRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 132
+    height: 448
+  explosiveWeaponsRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 132
+    height: 448
+  devicesRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 265
+    height: 448
+  buttonRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 122
+    height: 60
+  currentState: 0
+  popupRect:
+    serializedVersion: 2
+    x: 400
+    y: 300
+    width: 250
+    height: 150
 --- !u!81 &1237392900
 AudioListener:
   m_ObjectHideFlags: 0

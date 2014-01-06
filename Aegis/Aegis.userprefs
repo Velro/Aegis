@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\UpgroidsGUI.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="149" Column="2" />
-      <File FileName="Assets\Scripts\GUI\StarMapGUI.js" Line="37" Column="23" />
+      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="263" Column="64" />
+      <File FileName="Assets\Scripts\GUI\StarMapGUI.js" Line="80" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

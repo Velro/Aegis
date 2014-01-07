@@ -15,11 +15,11 @@ function Update () {
 /**** Move Ship Input ****/
 	var horizontal : float;
 	var vertical : float;
-	if (gameObject.GetComponent(PlayerStats).usingXboxController == true){
-		horizontal = Input.GetAxis("MoveHorizontalJoy");
-		vertical = Input.GetAxis("MoveVerticalJoy");
+	if (InputCoordinator.usingController == true){
+		horizontal = Input.GetAxis(InputCoordinator.leftStickHor);
+		vertical = Input.GetAxis(InputCoordinator.leftStickVert);
 	}
-	if (gameObject.GetComponent(PlayerStats).usingMouseAndKeyboard == true){
+	if (InputCoordinator.usingMouseAndKeyboard == true){
 		horizontal = Input.GetAxis("MoveHorizontalKey");
 		vertical = Input.GetAxis("MoveVerticalKey");	
 	}	

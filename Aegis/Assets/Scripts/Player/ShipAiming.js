@@ -6,17 +6,16 @@ var sight : GameObject;
 private var mouseX : float = 0;
 private var mouseY : float = 0;
 private var diff : float;
-
+private var playerStats : PlayerStats;
 function Start () {
 	diff = Camera.main.transform.position.y + sight.transform.position.y;
+	playerStats = gameObject.GetComponent(PlayerStats);
 }
 
 function Update () {
-	var playerStats : PlayerStats = gameObject.GetComponent(PlayerStats);
-
 	
 	/**** Mouse Input ***/
-	if (playerStats.usingMouseAndKeyboard && Camera.main.GetComponent(MyGUI).paused == false){
+	if (InputCoordinator.usingMouseAndKeyboard && Camera.main.GetComponent(MyGUI).paused == false){
 		mouseX = Input.mousePosition.x;
 		mouseY = Input.mousePosition.y;
 		var worldPos = Camera.main.ScreenToWorldPoint(Vector3(mouseX, mouseY, diff));
@@ -26,9 +25,9 @@ function Update () {
 	}
 	
 	/**** Controller Input ****/
-	if (playerStats.usingXboxController){
-		var xAxis = Input.GetAxis("AimHorizontal");
-		var yAxis = Input.GetAxis("AimVertical");
+	if (InputCoordinator.usingController){
+		var xAxis = Input.GetAxis(InputCoordinator.rightStickHor);
+		var yAxis = Input.GetAxis(InputCoordinator.rightStickVert);
 		if (xAxis != 0 || yAxis != 0){
 			var relativePos = (transform.position+Vector3(yAxis,0, xAxis)) - transform.position;
 			var rotation = Quaternion.LookRotation(relativePos, Vector3.up);

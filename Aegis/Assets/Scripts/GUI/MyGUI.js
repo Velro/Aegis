@@ -151,12 +151,12 @@ function OnGUI () {
 		//input submenu
 		if (inputMenu){
 			if (GUI.Button (Rect(5,20,110,30),"Mouse/Keyboard")){
-				playerStats.usingMouseAndKeyboard = true;
-				playerStats.usingXboxController = false;
+				InputCoordinator.usingMouseAndKeyboard = true;
+				InputCoordinator.usingController = false;
 			}
-			if (GUI.Button (Rect(15,60,110,30),"Xbox Controller")){
-				playerStats.usingXboxController = true;
-				playerStats.usingMouseAndKeyboard = false;
+			if (GUI.Button (Rect(15,60,110,30),"Controller")){
+				InputCoordinator.usingController = true;
+				InputCoordinator.usingMouseAndKeyboard = false;
 			}
 			if (GUI.Button (Rect(15,100,110,30),"Back")){
 				inputMenu = false;

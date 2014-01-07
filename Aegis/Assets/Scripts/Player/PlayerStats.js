@@ -7,8 +7,7 @@ var overheat : boolean = false;
 var overheatTime : float = 1;			//time you are overheated
 var speedReduction : float = 0.5;		//overheat penalty
 var expWindow : float = 2;
-public static var usingXboxController : boolean = false; //xbox stated explicitly because setup will be a little different with other controllers *sigh*
-public static var usingMouseAndKeyboard : boolean = true;
+
 public static var totalCredits : int  = 5000;
 var creditsThisLevel : int = 0;
 private var beginOverheat : float;
@@ -62,26 +61,10 @@ function Awake () {
 			}
 		}
 	}
-	/*if (VulcanCannonStats.level >= 0){
-		weapons[0] = VulcanCannonStats;
-		gameObject.AddComponent(VulcanCannon);
-	}
-	if (FusionBeamStats.level >= 0){
-		weapons[1] = FusionBeamStats;	
-		gameObject.AddComponent(FusionBeam);
-	}
-	if (ShieldStats.level >= 0){
-		weapons[2] = ShieldStats;	
-		gameObject.AddComponent(Shield);
-	}
-	if (CoolantTankStats.level >= 0){
-		weapons[3] = CoolantTankStats;
-		gameObject.AddComponent(CoolantTank);
-	}*/
-	weapons[0].input = "Fire1";
-	weapons[1].input = "Fire2";
-	weapons[2].input = "Fire3";
-	weapons[3].input = "Fire4";
+	weapons[0].input = InputCoordinator.weaponOne;
+	weapons[1].input = InputCoordinator.weaponTwo;
+	weapons[2].input = InputCoordinator.weaponThree;
+	weapons[3].input = InputCoordinator.weaponFour;
 	CheckLevel();
 }
 

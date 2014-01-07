@@ -37,7 +37,7 @@ private var thisBeam : GameObject;
 private var thisBeamCharging : GameObject;
 function Update (){
 	
-	if (((Input.GetButton(input) && playerStats.usingMouseAndKeyboard) || (playerStats.usingXboxController && Input.GetAxis(input) < 0)) 
+	if (((Input.GetButton(input) && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetAxis(input) < 0)) 
 			&& !gameObject.GetComponent(PlayerStats).overheat //make sure we're not overheating
 			&& Time.time - playerStats.FusionBeamStats.currentLevel.lastShot > cooldown)
 	{

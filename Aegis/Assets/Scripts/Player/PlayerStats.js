@@ -41,19 +41,25 @@ class Weapon extends System.Object {
 
 var allEquipables = new Array();
 var weapons : Weapon[];
+selections = new String[4];
 var VulcanCannonStats : Weapon;
 var FusionBeamStats : Weapon;
 var ShieldStats : Weapon;
 var CoolantTankStats : Weapon;
+var selections : String[];
+
 
 function Awake () {
+	if (Application.platform != RuntimePlatform.WindowsEditor){
+		selections = UpgroidsGUI.selections.ToBuiltin(String) as String[];
+	}
 	var allEquipables = new Array(VulcanCannonStats, FusionBeamStats,ShieldStats,CoolantTankStats);
 	var convAllEquipables :Weapon[] = allEquipables.ToBuiltin(Weapon) as Weapon[];
 	weapons = new Weapon[4];
 	var weaponsIndex : int = 0;
-	for (var i : int = 0; i < UpgroidsGUI.selections.length; i++){
+	for (var i : int = 0; i < selections.length; i++){
 		for (var k : int = 0; k < convAllEquipables.length; k++){
-			if (UpgroidsGUI.selections[i] == convAllEquipables[k].name){
+			if (selections[i] == convAllEquipables[k].name){
 				weapons[weaponsIndex] = convAllEquipables[k];
 				var str = convAllEquipables[k].name.Replace(' ','');
 				gameObject.AddComponent(""+str);

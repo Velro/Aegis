@@ -74,12 +74,7 @@ function OnGUI (){
 			if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
 			break;
 	}
-	ButtonLabels();
-	otherCamera.GetComponent(ThreeDeeIcons).Go();         
-}
-
-function OnPostRender(){
-	
+	ButtonLabels();         
 }
 
 function Title (){
@@ -269,6 +264,7 @@ function BuyEquips (){
 			GUI.Button(buttonRect,str3);
 			GUI.Label(buttonRect,"",checkStyle);
 		}
+		otherCamera.GetComponent(ThreeDeeIcons).Go();
 	}
 	
 	/**** Devices2 ****/

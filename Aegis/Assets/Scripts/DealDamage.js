@@ -10,29 +10,53 @@ var destructionTime : float = 4;	//delay on destroying the explosion effect obje
 var explosionPosition : Vector3 = Vector3.zero; //explosion position offset if we need it in case the origin isn't centered *cough*
 private var damage : float;
 private var player : GameObject;
+var damageEffects : boolean = true;
+var whiteEffect : Material;
+var redEffect : Material;
+private var r : Renderer;
+private var m : Material[];
+var currentHealth : float;
+private var flashing : boolean = false;
+private var beganFlashing : float;
+private var flashDuration : float;
 
-function Start () {
+function Awake () {
+	flashDuration = 0.5;
 	player = GameObject.FindWithTag("Player");
+	if (damageEffects == true){
+		whiteEffect = Resources.Load("Materials/flash_white_mat", Material);
+		redEffect = Resources.Load("Materials/flash_red_mat", Material);
+		r =  gameObject.GetComponentInChildren(Renderer);
+		m = r.materials;
+	}
+	currentHealth = FindHealth();
 }
 
+
 function OnCollisionEnter (other : Collision){
-	if (explosion != null && other.gameObject.name != gameObject.name 
-			&& other.gameObject.GetComponent(Stats) != null){ //damage isn't dealt to collisions with other objects of the same name. This will prevent tight packs of enemies killing themselves.
-		damage = other.gameObject.GetComponent(Stats).damage; //retrieve how much damage "other" does
+	if (explosion != null && other.gameObject.name != gameObject.name){ //damage isn't dealt to collisions with other objects of the same name. This will prevent tight packs of enemies killing themselves.
+		
+		if (other.gameObject.GetComponent(Stats)!= null){
+			damage = other.gameObject.GetComponent(Stats).damage; //retrieve how much damage "other" does
+		} else if (other.transform.parent.gameObject.GetComponent(Stats) != null){
+			damage = other.transform.parent.gameObject.GetComponent(Stats).damage;
+			Debug.Log("parent's damage grabbed");
+		} else {
+			Debug.Log("No Stats on gameObject or parent");
+		}
+		
 		if (gameObject.GetComponent(Stats) != null){
 			gameObject.GetComponent(Stats).health -= damage;
-		} else if (transform.parent.gameObject.GetComponent(Stats) != null){
+		} else if (transform.parent.gameObject.GetComponent(Stats) != null && other.transform.parent != transform.parent){
 			transform.parent.gameObject.GetComponent(Stats).health -= damage;
-			Debug.Log(transform.parent.gameObject.name);	
+			Debug.Log("Child of "+transform.parent.gameObject.name+" hit");	
 		}
 		if (other.gameObject.tag == "Bullet"){
 			Destroy (other.gameObject);
 		}
-	} else {
-	
 	}
 	if (gameObject.tag == "Player"){
-		Debug.Log(other.gameObject.name);
+		Debug.Log("Player hitting "+other.gameObject.name);
 	}
 }
 
@@ -44,9 +68,33 @@ function Update () {
 		if (gameObject.GetComponent(CreditsDispenser) != null){
 			gameObject.GetComponent(CreditsDispenser).RollToDrop();
 		}
-		if (player!= null)player.GetComponent(PlayerStats).GiveExp(gameObject.GetComponent(Stats).exp, Time.time);
+		if (player!= null){
+			var exp : float = 0;
+			if (gameObject.GetComponent(Stats) != null){
+				exp = gameObject.GetComponent(Stats).exp;
+			} else if (transform.parent.gameObject.GetComponent(Stats) != null){
+				exp = transform.parent.gameObject.GetComponent(Stats).exp;
+			}
+			player.GetComponent(PlayerStats).GiveExp(exp, Time.time);
+			
+		}
 		Destroy (clone, destructionTime); //kill explosion effect after delay
 		Destroy (gameObject);
+	}
+	if (damageEffects == true){
+		if (currentHealth > FindHealth()){
+			currentHealth = FindHealth();
+			beganFlashing = Time.time + flashDuration;
+			flashing = true;
+		}
+		if (flashing == true && Time.time < beganFlashing){
+			FlashWhite();	
+		}
+		if (flashing == true && Time.time > beganFlashing){   
+			Debug.Log("end flashing");
+			r.materials = m; 
+			flashing = false;
+		}
 	}
 }
 
@@ -61,3 +109,34 @@ function FindHealth () {
 	}
 	return health;
 }
+
+var bool : boolean = true;
+var lastFlash : float = 0;
+var newMats : Material[];
+function FlashWhite () {
+	
+	if (bool == false && Time.time > lastFlash){
+		newMats = new Material[r.materials.length];
+		for (var i : int = 0; i < r.materials.length; i++){
+			newMats[i] = whiteEffect;
+		}
+		r.materials = newMats;
+		lastFlash = Time.time + 0.015;
+		bool = !bool;
+	}
+	if (bool == true && Time.time > lastFlash){
+		r.materials = m; 
+		lastFlash = Time.time + 0.015;
+		bool = !bool;
+	}
+}
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,9 @@ private var speed : float;
 private var damage : float;
 var left : boolean = false;
 var right : boolean = false;
+var strongAgainst : EnemyType = EnemyType.Organic;
+var weaponType : WeaponType = WeaponType.Projectile;
+var superEffectiveCoef : float = 2;
 
 function Update () {
 	CheckStats();
@@ -26,10 +29,18 @@ function Update () {
 
 function OnTriggerEnter (other : Collider) {
 	if (other.gameObject.GetComponent(Stats) != null){
-		other.gameObject.GetComponent(Stats).health -= damage;
+		if (other.gameObject.GetComponent(Stats).enemyType == strongAgainst){
+			other.gameObject.GetComponent(Stats).health -= damage * superEffectiveCoef;
+		} else {
+			other.gameObject.GetComponent(Stats).health -= damage;
+		}
 	} else if (other.transform.parent != null){
 		if (other.transform.parent.gameObject.GetComponent(Stats) != null){
-			other.transform.parent.gameObject.GetComponent(Stats).health -= damage;
+			if (other.transform.parent.gameObject.GetComponent(Stats).enemyType == strongAgainst){
+				other.transform.parent.gameObject.GetComponent(Stats).health -= damage*superEffectiveCoef;
+			} else {
+				other.transform.parent.gameObject.GetComponent(Stats).health -= damage;
+			}
 		}
 	} else {
 		Debug.Log("other and its parents has no stats");

@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\UpgroidsGUI.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DealDamage.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="66" Column="68" />
-      <File FileName="Assets\Scripts\GUI\ThreeDeeIcons.js" Line="13" Column="18" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="119" Column="46" />
+      <File FileName="Assets\Scripts\Player\Weapons\VulcanCannon.js" Line="15" Column="2" />
+      <File FileName="Assets\Scripts\MoveBullet.js" Line="11" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

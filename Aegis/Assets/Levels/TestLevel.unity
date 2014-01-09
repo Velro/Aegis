@@ -101,6 +101,64 @@ Transform:
   m_Children:
   - {fileID: 1609832800}
   m_Father: {fileID: 823804359}
+--- !u!1 &6485972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 6485973}
+  - 33: {fileID: 6485975}
+  - 23: {fileID: 6485974}
+  m_Layer: 0
+  m_Name: segment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6485973
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  m_GameObject: {fileID: 6485972}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1704416076}
+--- !u!23 &6485974
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  m_GameObject: {fileID: 6485972}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 0eb91dd3fdddafd41817aca51748d146, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &6485975
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  m_GameObject: {fileID: 6485972}
+  m_Mesh: {fileID: 4300000, guid: ebd8af1dbdf43dd49a6d88b82a078041, type: 3}
 --- !u!1 &8678439
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +302,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 50
+  enemyType: 0
 --- !u!54 &8678446
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -275,6 +334,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &8678449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -303,6 +369,58 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!1001 &12188417
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1680602271}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.35583496
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.8587132
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: .65328151
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: .270598054
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: .270598054
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: .65328151
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_RootGameObject: {fileID: 993470345}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &18615117
 Prefab:
   m_ObjectHideFlags: 0
@@ -617,6 +735,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &49738013
 Renderer:
   m_ObjectHideFlags: 0
@@ -823,6 +942,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 10
+  enemyType: 0
 --- !u!54 &63189393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -854,6 +974,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &63189396
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -896,7 +1023,6 @@ GameObject:
   - 114: {fileID: 66010639}
   - 114: {fileID: 66010638}
   - 114: {fileID: 66010645}
-  - 114: {fileID: 66010644}
   m_Layer: 0
   m_Name: asteroid_mesh
   m_TagString: Untagged
@@ -935,6 +1061,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &66010640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -966,6 +1093,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &66010642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -991,21 +1125,6 @@ Transform:
   m_Children:
   - {fileID: 472917823}
   m_Father: {fileID: 0}
---- !u!114 &66010644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 66010637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891e7913fb9544c428b5c54535caeb48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallCredit: {fileID: 100000, guid: 5a86a1d3d333e9c49bcaac04856671ae, type: 2}
-  mediumCredit: {fileID: 100000, guid: e860a4814a20df0419c47e87e0c338a6, type: 2}
-  largeCredit: {fileID: 100000, guid: cab674faf200e77408b222b33fec6be6, type: 2}
-  customAmount: 0
 --- !u!114 &66010645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1351,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &115460798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1263,6 +1383,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &115460800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1354,6 +1481,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &121155141
 Renderer:
   m_ObjectHideFlags: 0
@@ -1440,6 +1568,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &123414332
 Renderer:
   m_ObjectHideFlags: 0
@@ -1604,6 +1733,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &133421625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1635,6 +1765,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &133421627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1798,6 +1935,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: fb3c2bfd0f1bb84468106a9f94e26d31, type: 3}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 8200000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
@@ -1841,6 +1982,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &140673479
 Renderer:
   m_ObjectHideFlags: 0
@@ -1927,6 +2069,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &141190476
 Renderer:
   m_ObjectHideFlags: 0
@@ -2131,6 +2274,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 80
   exp: 10
+  enemyType: 3
 --- !u!114 &157646181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,6 +2289,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!114 &157646182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,6 +2360,7 @@ MonoBehaviour:
       damage: 16
       heatCost: 3.20000005
       cooldown: .100000001
+    weaponType: 0
   FusionBeamStats:
     level: 0
     name: Fusion Beam
@@ -2228,6 +2380,7 @@ MonoBehaviour:
       damage: 80
       heatCost: 50
       cooldown: 10
+    weaponType: 2
   ShieldStats:
     level: 0
     name: Shield
@@ -2247,6 +2400,7 @@ MonoBehaviour:
       damage: 0
       heatCost: 10
       cooldown: 0
+    weaponType: 3
   CoolantTankStats:
     level: 0
     name: Coolant Tank
@@ -2266,6 +2420,7 @@ MonoBehaviour:
       damage: 0
       heatCost: 0
       cooldown: 30
+    weaponType: 3
   selections:
   - Vulcan Cannon
   - Fusion Beam
@@ -2425,6 +2580,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &186735878
 Renderer:
   m_ObjectHideFlags: 0
@@ -2931,6 +3087,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 10
+  enemyType: 0
 --- !u!54 &230845269
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2978,6 +3135,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &230845272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3111,6 +3275,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &238216984
 Renderer:
   m_ObjectHideFlags: 0
@@ -3281,6 +3446,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &252628924
 Renderer:
   m_ObjectHideFlags: 0
@@ -3367,6 +3533,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &253768452
 Renderer:
   m_ObjectHideFlags: 0
@@ -3497,6 +3664,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &258038199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3528,6 +3696,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &258038201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3713,6 +3888,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 10
+  enemyType: 0
 --- !u!54 &259264570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3760,6 +3936,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &259264573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3986,6 +4169,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &266792611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4017,6 +4201,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &266792613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4184,6 +4375,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &276409402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4215,6 +4407,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &276409404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4324,6 +4523,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &280142853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4355,6 +4555,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &280142855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5012,6 +5219,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &351511713
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5043,6 +5251,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &351511715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5299,6 +5514,7 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 0
   exp: 10
+  enemyType: 0
 --- !u!114 &364338357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,6 +5529,13 @@ MonoBehaviour:
   explosion: {fileID: 0}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &364338358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5499,6 +5722,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &377609821
 Renderer:
   m_ObjectHideFlags: 0
@@ -5799,6 +6023,10 @@ Prefab:
     - target: {fileID: 5400000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
@@ -6251,6 +6479,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1063651702}
   m_GameObject: {fileID: 432324857}
   m_Mesh: {fileID: 4300000, guid: 79fe14548dba54d428028e8d25d47199, type: 3}
+--- !u!1001 &434529012
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1680602271}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.35583496
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.8587132
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: .65328151
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: .270598054
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: .270598054
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: .65328151
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_RootGameObject: {fileID: 1704416075}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &455712650
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,6 +6591,7 @@ MonoBehaviour:
   maxHealth: 1.00000003e+16
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!114 &462300011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6325,6 +6606,13 @@ MonoBehaviour:
   explosion: {fileID: 0}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 0
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &462300012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6916,6 +7204,7 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 0
   exp: 10
+  enemyType: 0
 --- !u!114 &511705296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6930,6 +7219,13 @@ MonoBehaviour:
   explosion: {fileID: 0}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!1 &519226069
 GameObject:
   m_ObjectHideFlags: 0
@@ -6965,6 +7261,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &519226071
 Renderer:
   m_ObjectHideFlags: 0
@@ -7124,6 +7421,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &531087047
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7155,6 +7453,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &531087049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7252,6 +7557,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &534055781
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7283,6 +7589,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &534055783
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7473,6 +7786,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &555469250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7504,6 +7818,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &555469252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7613,6 +7934,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &558697645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7644,6 +7966,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &558697647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7877,6 +8206,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 542f86e4e34b523499e0f073b1355e1a, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!114 &611497516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7894,6 +8230,7 @@ MonoBehaviour:
   maxHealth: 50
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!65 &611497517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8089,6 +8426,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 50
+  enemyType: 0
 --- !u!54 &611856885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8120,6 +8458,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &611856887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8247,6 +8592,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &615020939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8278,6 +8624,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &615020941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8369,6 +8722,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &620127041
 Renderer:
   m_ObjectHideFlags: 0
@@ -8572,6 +8926,8 @@ GameObject:
   - 95: {fileID: 626202539}
   - 114: {fileID: 626202538}
   - 65: {fileID: 626202541}
+  - 114: {fileID: 626202542}
+  - 54: {fileID: 626202543}
   m_Layer: 0
   m_Name: spaceworm_middle_mesh
   m_TagString: Untagged
@@ -8631,6 +8987,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 6, z: 6}
   m_Center: {x: 0, y: .5, z: 0}
+--- !u!114 &626202542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 626202537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  destructionTime: 4
+  explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
+--- !u!54 &626202543
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 626202537}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &632545330
 GameObject:
   m_ObjectHideFlags: 0
@@ -8858,6 +9250,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &654012060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8889,6 +9282,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &654012062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8971,6 +9371,58 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1001 &666984375
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1680602271}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.35583496
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.8587132
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: .65328151
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: .270598054
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: .270598054
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: .65328151
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_RootGameObject: {fileID: 716817646}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &668997593
 Prefab:
   m_ObjectHideFlags: 0
@@ -9274,6 +9726,114 @@ Prefab:
   m_RootGameObject: {fileID: 965777816}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &716817646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 716817647}
+  - 95: {fileID: 716817650}
+  - 114: {fileID: 716817649}
+  - 65: {fileID: 716817648}
+  - 114: {fileID: 716817651}
+  - 54: {fileID: 716817652}
+  m_Layer: 0
+  m_Name: spaceworm_middle_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &716817647
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  m_GameObject: {fileID: 716817646}
+  m_LocalRotation: {x: .653281569, y: .270597845, z: .270597845, w: .653281569}
+  m_LocalPosition: {x: 1.35583496, y: -.250000358, z: -38.6734772}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 1216775338}
+  m_Father: {fileID: 1680602271}
+--- !u!65 &716817648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716817646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: .5, z: 0}
+--- !u!114 &716817649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716817646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfb550d1e5d78b4f927413f99dd00e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPath: {fileID: 1951741200}
+  rotateToPath: 1
+--- !u!95 &716817650
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  m_GameObject: {fileID: 716817646}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
+--- !u!114 &716817651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716817646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  destructionTime: 4
+  explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
+--- !u!54 &716817652
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716817646}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &717660342
 GameObject:
   m_ObjectHideFlags: 0
@@ -9335,6 +9895,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &720402081
 Renderer:
   m_ObjectHideFlags: 0
@@ -9676,6 +10237,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &760704148
 Renderer:
   m_ObjectHideFlags: 0
@@ -9850,6 +10412,10 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
@@ -9926,6 +10492,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &765289291
 Renderer:
   m_ObjectHideFlags: 0
@@ -10227,6 +10794,8 @@ GameObject:
   - 95: {fileID: 823804358}
   - 114: {fileID: 823804360}
   - 65: {fileID: 823804361}
+  - 114: {fileID: 823804362}
+  - 54: {fileID: 823804363}
   m_Layer: 0
   m_Name: spaceworm_head_mesh
   m_TagString: Untagged
@@ -10288,6 +10857,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 6, z: 4}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &823804362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823804357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  destructionTime: 4
+  explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
+--- !u!54 &823804363
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823804357}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &836557156
 GameObject:
   m_ObjectHideFlags: 0
@@ -10323,6 +10928,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &836557158
 Renderer:
   m_ObjectHideFlags: 0
@@ -10642,6 +11248,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &919444143
 Renderer:
   m_ObjectHideFlags: 0
@@ -10704,6 +11311,8 @@ GameObject:
   - 95: {fileID: 920877595}
   - 114: {fileID: 920877596}
   - 65: {fileID: 920877597}
+  - 114: {fileID: 920877598}
+  - 54: {fileID: 920877599}
   m_Layer: 0
   m_Name: spaceworm_middle_mesh
   m_TagString: Untagged
@@ -10763,6 +11372,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 6, z: 6}
   m_Center: {x: 0, y: .5, z: 0}
+--- !u!114 &920877598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920877593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  destructionTime: 4
+  explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
+--- !u!54 &920877599
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920877593}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &923936970
 GameObject:
   m_ObjectHideFlags: 0
@@ -10947,6 +11592,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &931231080
 Renderer:
   m_ObjectHideFlags: 0
@@ -11279,6 +11925,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: fb3c2bfd0f1bb84468106a9f94e26d31, type: 3}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 8200000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
@@ -11429,6 +12079,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &960377267
 Renderer:
   m_ObjectHideFlags: 0
@@ -11587,6 +12238,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &974849379
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11618,6 +12270,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &974849381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11711,6 +12370,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &975652546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11742,6 +12402,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &975652548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11806,6 +12473,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &980116950
 Renderer:
   m_ObjectHideFlags: 0
@@ -12009,6 +12677,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &989522684
 Renderer:
   m_ObjectHideFlags: 0
@@ -12060,6 +12729,114 @@ Transform:
   m_LocalScale: {x: 55.2346306, y: 74.1626587, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &993470345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 993470346}
+  - 95: {fileID: 993470349}
+  - 114: {fileID: 993470348}
+  - 65: {fileID: 993470347}
+  - 114: {fileID: 993470350}
+  - 54: {fileID: 993470351}
+  m_Layer: 0
+  m_Name: spaceworm_middle_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993470346
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  m_GameObject: {fileID: 993470345}
+  m_LocalRotation: {x: .653281569, y: .270597845, z: .270597845, w: .653281569}
+  m_LocalPosition: {x: 1.35583496, y: -.250000179, z: -50.991684}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 1598883387}
+  m_Father: {fileID: 1680602271}
+--- !u!65 &993470347
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993470345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: .5, z: 0}
+--- !u!114 &993470348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993470345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfb550d1e5d78b4f927413f99dd00e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPath: {fileID: 1951741200}
+  rotateToPath: 1
+--- !u!95 &993470349
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  m_GameObject: {fileID: 993470345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
+--- !u!114 &993470350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993470345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  destructionTime: 4
+  explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
+--- !u!54 &993470351
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993470345}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1000901130
 GameObject:
   m_ObjectHideFlags: 0
@@ -12459,6 +13236,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1051062169
 Renderer:
   m_ObjectHideFlags: 0
@@ -12680,6 +13458,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1080293338
 Renderer:
   m_ObjectHideFlags: 0
@@ -12766,6 +13545,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1082180044
 Renderer:
   m_ObjectHideFlags: 0
@@ -12987,6 +13767,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1085674343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13018,6 +13799,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1085674345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13271,6 +14059,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1108115728
 Renderer:
   m_ObjectHideFlags: 0
@@ -13510,6 +14299,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1119064605
 Renderer:
   m_ObjectHideFlags: 0
@@ -13717,6 +14507,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1158919144
 Renderer:
   m_ObjectHideFlags: 0
@@ -13875,6 +14666,7 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 0
   exp: 10
+  enemyType: 0
 --- !u!114 &1160399696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13889,6 +14681,13 @@ MonoBehaviour:
   explosion: {fileID: 0}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1160399697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14316,6 +15115,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1203331688
 Renderer:
   m_ObjectHideFlags: 0
@@ -14431,6 +15231,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1214717943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14462,6 +15263,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1214717945
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14491,6 +15299,64 @@ MonoBehaviour:
   mediumCredit: {fileID: 100000, guid: e860a4814a20df0419c47e87e0c338a6, type: 2}
   largeCredit: {fileID: 100000, guid: cab674faf200e77408b222b33fec6be6, type: 2}
   customAmount: 0
+--- !u!1 &1216775337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1216775338}
+  - 33: {fileID: 1216775340}
+  - 23: {fileID: 1216775339}
+  m_Layer: 0
+  m_Name: segment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1216775338
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  m_GameObject: {fileID: 1216775337}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 716817647}
+--- !u!23 &1216775339
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  m_GameObject: {fileID: 1216775337}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 0eb91dd3fdddafd41817aca51748d146, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1216775340
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 666984375}
+  m_GameObject: {fileID: 1216775337}
+  m_Mesh: {fileID: 4300000, guid: ebd8af1dbdf43dd49a6d88b82a078041, type: 3}
 --- !u!1 &1218152731
 GameObject:
   m_ObjectHideFlags: 0
@@ -14696,6 +15562,7 @@ MonoBehaviour:
   maxHealth: 150
   speed: 30
   exp: 10
+  enemyType: 0
 --- !u!54 &1232196031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14743,6 +15610,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1232196034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14960,6 +15834,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: bd943c792514675e464dfc7a8c26d3e0, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!114 &1237093601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14989,6 +15870,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 5
   exp: 20
+  enemyType: 0
 --- !u!95 &1237093603
 Animator:
   serializedVersion: 2
@@ -15169,6 +16051,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1284262805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15200,6 +16083,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1284262807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15269,6 +16159,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 10
+  enemyType: 0
 --- !u!54 &1290047207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15316,6 +16207,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1290047210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15479,6 +16377,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1290149629
 Renderer:
   m_ObjectHideFlags: 0
@@ -15726,6 +16625,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1303290681
 Renderer:
   m_ObjectHideFlags: 0
@@ -15812,6 +16712,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1310618004
 Renderer:
   m_ObjectHideFlags: 0
@@ -16737,7 +17638,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_Alignment: 4
@@ -16796,7 +17697,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_Alignment: 0
@@ -16855,7 +17756,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_Alignment: 0
@@ -16914,7 +17815,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_Alignment: 0
@@ -17091,7 +17992,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 5
     m_FontStyle: 0
     m_Alignment: 0
@@ -17482,6 +18383,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1409132155
 Renderer:
   m_ObjectHideFlags: 0
@@ -17750,6 +18652,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1419039190
 Renderer:
   m_ObjectHideFlags: 0
@@ -17987,6 +18890,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1460265632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18018,6 +18922,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1460265634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18323,6 +19234,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1521869294
 Renderer:
   m_ObjectHideFlags: 0
@@ -19391,6 +20303,64 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 555469247}
+--- !u!1 &1598883386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1598883387}
+  - 33: {fileID: 1598883389}
+  - 23: {fileID: 1598883388}
+  m_Layer: 0
+  m_Name: segment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598883387
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  m_GameObject: {fileID: 1598883386}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 993470346}
+--- !u!23 &1598883388
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  m_GameObject: {fileID: 1598883386}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 0eb91dd3fdddafd41817aca51748d146, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1598883389
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 12188417}
+  m_GameObject: {fileID: 1598883386}
+  m_Mesh: {fileID: 4300000, guid: ebd8af1dbdf43dd49a6d88b82a078041, type: 3}
 --- !u!1 &1604958710
 GameObject:
   m_ObjectHideFlags: 0
@@ -19572,6 +20542,10 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
@@ -19671,6 +20645,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1625012785
 Renderer:
   m_ObjectHideFlags: 0
@@ -19893,6 +20868,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: fb3c2bfd0f1bb84468106a9f94e26d31, type: 3}
+    - target: {fileID: 100002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 11400002, guid: a7f77fe7a9621c447846b9ec375100fb, type: 2}
@@ -19964,6 +20943,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1654275931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19995,6 +20975,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1654275933
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20166,6 +21153,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 50
+  enemyType: 0
 --- !u!54 &1658109688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20197,6 +21185,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1658109690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20489,7 +21484,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1680602271}
   - 114: {fileID: 1680602272}
-  - 114: {fileID: 1680602273}
   m_Layer: 0
   m_Name: SpaceWorm
   m_TagString: Untagged
@@ -20510,6 +21504,9 @@ Transform:
   - {fileID: 823804359}
   - {fileID: 626202540}
   - {fileID: 920877594}
+  - {fileID: 716817647}
+  - {fileID: 993470346}
+  - {fileID: 1704416076}
   m_Father: {fileID: 0}
 --- !u!114 &1680602272
 MonoBehaviour:
@@ -20527,20 +21524,7 @@ MonoBehaviour:
   maxHealth: 200
   speed: 40
   exp: 10
---- !u!114 &1680602273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1680602270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 100000, guid: bd943c792514675e464dfc7a8c26d3e0, type: 2}
-  destructionTime: 4
-  explosionPosition: {x: 0, y: 0, z: 0}
+  enemyType: 0
 --- !u!1 &1682874200
 GameObject:
   m_ObjectHideFlags: 0
@@ -20797,6 +21781,7 @@ MonoBehaviour:
   maxHealth: 40
   speed: 20
   exp: 10
+  enemyType: 0
 --- !u!54 &1703710402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20828,6 +21813,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1703710404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20891,6 +21883,114 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 259264567}
+--- !u!1 &1704416075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1704416076}
+  - 95: {fileID: 1704416079}
+  - 114: {fileID: 1704416078}
+  - 65: {fileID: 1704416077}
+  - 114: {fileID: 1704416080}
+  - 54: {fileID: 1704416081}
+  m_Layer: 0
+  m_Name: spaceworm_middle_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1704416076
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  m_GameObject: {fileID: 1704416075}
+  m_LocalRotation: {x: .653281569, y: .270597845, z: .270597845, w: .653281569}
+  m_LocalPosition: {x: 1.35583496, y: -.250000179, z: -62.9109573}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 6485973}
+  m_Father: {fileID: 1680602271}
+--- !u!65 &1704416077
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704416075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: .5, z: 0}
+--- !u!114 &1704416078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704416075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfb550d1e5d78b4f927413f99dd00e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPath: {fileID: 1951741200}
+  rotateToPath: 1
+--- !u!95 &1704416079
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: 202d7c501a18e094a8ce502592f62eec,
+    type: 3}
+  m_PrefabInternal: {fileID: 434529012}
+  m_GameObject: {fileID: 1704416075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 202d7c501a18e094a8ce502592f62eec, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
+--- !u!114 &1704416080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704416075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  destructionTime: 4
+  explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
+--- !u!54 &1704416081
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704416075}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1708257380
 GameObject:
   m_ObjectHideFlags: 0
@@ -21031,6 +22131,7 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 0
   exp: 10
+  enemyType: 0
 --- !u!114 &1734404645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21045,6 +22146,13 @@ MonoBehaviour:
   explosion: {fileID: 0}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1734404646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21237,6 +22345,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1763519753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21268,6 +22377,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1763519755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21554,6 +22670,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1775277230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21585,6 +22702,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1775277232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21822,6 +22946,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &1794646260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21853,6 +22978,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &1794646262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22084,6 +23216,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!1 &1827852976
 GameObject:
   m_ObjectHideFlags: 0
@@ -22323,6 +23456,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1863743171
 Renderer:
   m_ObjectHideFlags: 0
@@ -22730,6 +23864,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1900639254
 Renderer:
   m_ObjectHideFlags: 0
@@ -22839,6 +23974,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1901767157}
   m_Mesh: {fileID: 4300000, guid: 9b748def344594e4483888cc5fcea325, type: 3}
+--- !u!1 &1914201825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1914201826}
+  m_Layer: 0
+  m_Name: p5
+  m_TagString: Untagged
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1914201826
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1914201825}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 83.5797729, y: 0, z: 126.812607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1951741200}
 --- !u!1 &1926161008
 GameObject:
   m_ObjectHideFlags: 0
@@ -23067,6 +24228,7 @@ Transform:
   - {fileID: 946953373}
   - {fileID: 1502290590}
   - {fileID: 549350258}
+  - {fileID: 1914201826}
   m_Father: {fileID: 0}
 --- !u!114 &1951741201
 MonoBehaviour:
@@ -23115,6 +24277,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &1959625218
 Renderer:
   m_ObjectHideFlags: 0
@@ -23641,6 +24804,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &2008148904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23672,6 +24836,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &2008148906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23806,6 +24977,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &2038886382
 Renderer:
   m_ObjectHideFlags: 0
@@ -23892,6 +25064,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &2041039962
 Renderer:
   m_ObjectHideFlags: 0
@@ -23978,6 +25151,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &2047340471
 Renderer:
   m_ObjectHideFlags: 0
@@ -24180,6 +25354,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &2076694956
 Renderer:
   m_ObjectHideFlags: 0
@@ -24600,6 +25775,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!54 &2094975498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24631,6 +25807,13 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 4ef9b759157c4144dbcee41ff74fda5e, type: 2}
   destructionTime: 1
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  whiteEffect: {fileID: 0}
+  redEffect: {fileID: 0}
+  currentHealth: 0
+  bool: 1
+  lastFlash: 0
+  newMats: []
 --- !u!65 &2094975500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24958,6 +26141,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &2121165222
 Renderer:
   m_ObjectHideFlags: 0
@@ -25164,6 +26348,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 1
   exp: 10
+  enemyType: 0
 --- !u!23 &2142212617
 Renderer:
   m_ObjectHideFlags: 0

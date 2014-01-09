@@ -13,7 +13,12 @@ var creditsThisLevel : int = 0;
 private var beginOverheat : float;
 var levelUp : AudioClip; 
 
-
+enum WeaponType {
+	Projectile,
+	Explosive,
+	Energy,
+	Device
+}
 class WeaponLevel extends System.Object{
 	var damage : float;
 	var heatCost : float;
@@ -31,6 +36,7 @@ class Weapon extends System.Object {
 	var level1 : WeaponLevel;
 	var level2 : WeaponLevel;
 	var level3 : WeaponLevel;
+	var weaponType : WeaponType = weaponType.Projectile;
 	@System.NonSerialized
 	var input : String;
 	@System.NonSerialized

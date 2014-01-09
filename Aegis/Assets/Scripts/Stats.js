@@ -13,5 +13,11 @@ var health : float = 10;
 var maxHealth : float = 100;
 var speed : float = 1;
 var exp : float = 10;
+var enemyType : EnemyType = EnemyType.Physical;
 
-
+public enum EnemyType {
+	Physical,
+	Organic,
+	Voltaic,
+	Player
+}

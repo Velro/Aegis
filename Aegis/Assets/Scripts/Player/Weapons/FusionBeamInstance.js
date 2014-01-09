@@ -1,9 +1,10 @@
 ﻿#pragma strict
-//TODO inherit damage from fusion beam levelling
 
 var damage : float;
 var player : GameObject;
 private var nozzle : Transform;
+var weaponType : WeaponType = WeaponType.Energy;
+var strongAgainst : EnemyType = EnemyType.Voltaic;
 
 function Awake () {
 	player = GameObject.FindWithTag("Player");
@@ -17,8 +18,13 @@ function Update (){
 	transform.position = nozzle.position;
 }	
 function OnTriggerStay (other : Collider){
-	other.GetComponent(Stats).health -= damage * Time.deltaTime;
-	Debug.Log("dealing fusion beam damage");
+	if (other.gameObject.GetComponent(Stats) != null){
+		other.gameObject.GetComponent(Stats).health -= damage * Time.deltaTime;
+	} else if (other.transform.parent.gameObject.GetComponent(Stats) != null){
+		other.transform.parent.gameObject.GetComponent(Stats).health -= damage * Time.deltaTime;
+	} else {
+		Debug.Log("Fusion beam found no health to remove");
+	}
 }	
 
 

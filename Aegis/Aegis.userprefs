@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DealDamage.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\ShipMovement.js">
     <Files>
-      <File FileName="Assets\Scripts\DealDamage.js" Line="119" Column="46" />
-      <File FileName="Assets\Scripts\Player\Weapons\VulcanCannon.js" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\MoveBullet.js" Line="11" Column="11" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="163" Column="32" />
+      <File FileName="Assets\Scripts\Player\Weapons\FusionBeamInstance.js" Line="28" Column="17" />
+      <File FileName="Assets\Scripts\MoveBullet.js" Line="43" Column="11" />
+      <File FileName="Assets\Scripts\Player\ShipMovement.js" Line="41" Column="48" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

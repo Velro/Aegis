@@ -13,15 +13,17 @@ private var player : GameObject;
 var damageEffects : boolean = true;
 var whiteEffect : Material;
 var redEffect : Material;
+var beginFlashingRed : boolean = false;
+private var flashingRed : boolean = false; 
 private var r : Renderer;
 private var m : Material[];
 var currentHealth : float;
-private var flashing : boolean = false;
+private var flashingWhite : boolean = false;
 private var beganFlashing : float;
 private var flashDuration : float;
 
 function Awake () {
-	flashDuration = 0.5;
+	flashDuration = 0.1;
 	player = GameObject.FindWithTag("Player");
 	if (damageEffects == true){
 		whiteEffect = Resources.Load("Materials/flash_white_mat", Material);
@@ -40,23 +42,23 @@ function OnCollisionEnter (other : Collision){
 			damage = other.gameObject.GetComponent(Stats).damage; //retrieve how much damage "other" does
 		} else if (other.transform.parent.gameObject.GetComponent(Stats) != null){
 			damage = other.transform.parent.gameObject.GetComponent(Stats).damage;
-			Debug.Log("parent's damage grabbed");
+			//Debug.Log("parent's damage grabbed");
 		} else {
-			Debug.Log("No Stats on gameObject or parent");
+			//Debug.Log("No Stats on gameObject or parent");
 		}
 		
 		if (gameObject.GetComponent(Stats) != null){
 			gameObject.GetComponent(Stats).health -= damage;
 		} else if (transform.parent.gameObject.GetComponent(Stats) != null && other.transform.parent != transform.parent){
 			transform.parent.gameObject.GetComponent(Stats).health -= damage;
-			Debug.Log("Child of "+transform.parent.gameObject.name+" hit");	
+			//Debug.Log("Child of "+transform.parent.gameObject.name+" hit");	
 		}
 		if (other.gameObject.tag == "Bullet"){
 			Destroy (other.gameObject);
 		}
 	}
 	if (gameObject.tag == "Player"){
-		Debug.Log("Player hitting "+other.gameObject.name);
+		//Debug.Log("Player hitting "+other.gameObject.name);
 	}
 }
 
@@ -82,18 +84,31 @@ function Update () {
 		Destroy (gameObject);
 	}
 	if (damageEffects == true){
+		/**** Flash White ****/
 		if (currentHealth > FindHealth()){
 			currentHealth = FindHealth();
 			beganFlashing = Time.time + flashDuration;
-			flashing = true;
+			flashingWhite = true;
 		}
-		if (flashing == true && Time.time < beganFlashing){
+		if (flashingWhite == true && Time.time < beganFlashing){
 			FlashWhite();	
 		}
-		if (flashing == true && Time.time > beganFlashing){   
-			Debug.Log("end flashing");
+		if (flashingWhite == true && Time.time > beganFlashing){   
 			r.materials = m; 
-			flashing = false;
+			flashingWhite = false;
+		}
+		/**** Flash Red ****/
+		if (beginFlashingRed == true){
+			beganFlashing = Time.time + flashDuration;
+			beginFlashingRed = false;
+			flashingRed = true;
+		}
+		if (flashingRed == true && Time.time < beganFlashing){
+			FlashRed();	
+		}
+		if (flashingRed == true && Time.time > beganFlashing){   
+			r.materials = m; 
+			flashingRed = false;
 		}
 	}
 }
@@ -114,24 +129,41 @@ var bool : boolean = true;
 var lastFlash : float = 0;
 var newMats : Material[];
 function FlashWhite () {
-	
 	if (bool == false && Time.time > lastFlash){
 		newMats = new Material[r.materials.length];
 		for (var i : int = 0; i < r.materials.length; i++){
 			newMats[i] = whiteEffect;
 		}
 		r.materials = newMats;
-		lastFlash = Time.time + 0.015;
+		lastFlash = Time.time + 0.02;
 		bool = !bool;
 	}
 	if (bool == true && Time.time > lastFlash){
 		r.materials = m; 
-		lastFlash = Time.time + 0.015;
+		lastFlash = Time.time + 0.02;
 		bool = !bool;
 	}
 }
 
-
+var bool1 : boolean = true;
+var lastFlash1 : float = 0;
+var newMats1 : Material[];
+function FlashRed () {
+	if (bool1 == false && Time.time > lastFlash1){
+		newMats1 = new Material[r.materials.length];
+		for (var i : int = 0; i < r.materials.length; i++){
+			newMats1[i] = redEffect;
+		}
+		r.materials = newMats1;
+		lastFlash1 = Time.time + 0.05;
+		bool1 = !bool1;
+	}
+	if (bool1 == true && Time.time > lastFlash1){
+		r.materials = m; 
+		lastFlash1 = Time.time + 0.05;
+		bool1 = !bool1;
+	}
+}
 
 
 

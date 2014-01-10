@@ -104,7 +104,7 @@ function CheckLevel () {
 		if (weapon.currentExp >= 100){
 			weapon.level += 1;
 			weapon.currentExp -= 100;
-			Debug.Log(weapon.name+" levelled up!");
+			//Debug.Log(weapon.name+" levelled up!");
 			audio.PlayOneShot(levelUp, 1);
 			Camera.main.GetComponent(MyGUI).levelledName = weapon.name;
 			Camera.main.GetComponent(MyGUI).levelledLevel = weapon.level;

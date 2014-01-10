@@ -85,7 +85,7 @@ function Update (){
 			currentChargeTime = 0;
 		}
 		if (currentShootTime >= duration){ //held through hold duration
-			if(thisBeam != null)Debug.Log("end shoot"+"Destroy "+thisBeam.name);
+			//if(thisBeam != null)Debug.Log("end shoot"+"Destroy "+thisBeam.name);
 			Destroy (thisBeam);
 			playerStats.FusionBeamStats.currentLevel.lastShot = Time.time;
 			instantiateBeamOnce = false;

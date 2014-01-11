@@ -16,6 +16,7 @@ function Start () {
 function Update (){
 	CheckStats();
 	transform.position = nozzle.position;
+	if (player == null)Destroy(gameObject);
 }	
 var bool : boolean = false;
 function OnTriggerStay (other : Collider){

@@ -31,49 +31,49 @@ public class JoystickController : MonoBehaviour {
 	/// </summary>
 	void getAxis()
 	{
-		if(Input.GetAxisRaw("X axis")> 0.3|| Input.GetAxisRaw("X axis") < -0.3)
+		if(Input.GetAxisRaw("X axis")> 0.95|| Input.GetAxisRaw("X axis") < -0.95)
 		{
 			currentAxis = "X axis";
 			axisInput = Input.GetAxisRaw("X axis");
 		}
 		
-		if(Input.GetAxisRaw("Y axis")> 0.3|| Input.GetAxisRaw("Y axis") < -0.3)
+		if(Input.GetAxisRaw("Y axis")> 0.95|| Input.GetAxisRaw("Y axis") < -0.95)
 		{
 			currentAxis = "Y axis";
 			axisInput = Input.GetAxisRaw("Y axis");
 		}
 		
-		if(Input.GetAxisRaw("3rd axis")> 0.3|| Input.GetAxisRaw("3rd axis") < -0.3)
+		if(Input.GetAxisRaw("3rd axis")> 0.95|| Input.GetAxisRaw("3rd axis") < -0.95)
 		{
 			currentAxis = "3rd axis";
 			axisInput = Input.GetAxisRaw("3rd axis");
 		}
 		
-		if(Input.GetAxisRaw("4th axis")> 0.3|| Input.GetAxisRaw("4th axis") < -0.3)
+		if(Input.GetAxisRaw("4th axis")> 0.95|| Input.GetAxisRaw("4th axis") < -0.95)
 		{
 			currentAxis = "4th axis";
 			axisInput = Input.GetAxisRaw("4th axis");
 		}
 		
-		if(Input.GetAxisRaw("5th axis")> 0.3|| Input.GetAxisRaw("5th axis") < -0.3)
+		if(Input.GetAxisRaw("5th axis")> 0.95|| Input.GetAxisRaw("5th axis") < -0.95)
 		{
 			currentAxis = "5th axis";
 			axisInput = Input.GetAxisRaw("5th axis");
 		}
 		
-		if(Input.GetAxisRaw("6th axis")> 0.3|| Input.GetAxisRaw("6th axis") < -0.3)
+		if(Input.GetAxisRaw("6th axis")> 0.95|| Input.GetAxisRaw("6th axis") < -0.95)
 		{
 			currentAxis = "6th axis";
 			axisInput = Input.GetAxisRaw("6th axis");
 		}
 		
-		if(Input.GetAxisRaw("7th axis")> 0.3|| Input.GetAxisRaw("7th axis") < -0.3)
+		if(Input.GetAxisRaw("7th axis")> 0.95|| Input.GetAxisRaw("7th axis") < -0.95)
 		{
 			currentAxis = "7th axis";
 			axisInput = Input.GetAxisRaw("7th axis");
 		}
 		
-		if(Input.GetAxisRaw("8th axis") > 0.3|| Input.GetAxisRaw("8th axis") < -0.3)
+		if(Input.GetAxisRaw("8th axis") > 0.95|| Input.GetAxisRaw("8th axis") < -0.95)
 		{
 			currentAxis = "8th axis";
 			axisInput = Input.GetAxisRaw("8th axis");
@@ -124,8 +124,8 @@ public class JoystickController : MonoBehaviour {
 		if(Input.GetButton("joystick button 12"))
 			currentButton = "joystick button 12";
 		   
-		if(Input.GetButton("joystick button 13"))
-			currentButton = "joystick button 13";
+		if(Input.GetButton("joystick button 16"))
+			currentButton = "joystick button 16";
 		   
 		if(Input.GetButton("joystick button 14"))
 			currentButton = "joystick button 14";
@@ -162,7 +162,7 @@ public class JoystickController : MonoBehaviour {
 	{
 		GUI.TextArea(new Rect(400, 100, 250, 50), "Current Button : " + currentButton);
 		GUI.TextArea(new Rect(400, 200, 250, 50), "Current Axis : " + currentAxis);
-		GUI.TextArea(new Rect(400, 300, 250, 50), "Axis Value : " +  axisInput);
+		GUI.TextArea(new Rect(400, 600, 250, 50), "Axis Value : " +  axisInput);
 	}
 	*/
 }

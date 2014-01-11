@@ -13,15 +13,11 @@ var superEffectiveCoef : float = 2;
 function Update () {
 	CheckStats();
 	if (right){
-		//transform.rotation.x += 90;
-		//transform.rotation.z = 0;
 		transform.position += transform.right * speed * Time.deltaTime;
 		transform.position.y = 0;
 
 	}
 	if (left){
-		//transform.rotation.x += 90;
-		//transform.rotation.z = 0;
 		transform.position -= transform.right * speed * Time.deltaTime;
 		transform.position.y = 0;
 	}
@@ -32,6 +28,7 @@ function OnTriggerEnter (other : Collider) {
 		if (other.gameObject.GetComponent(Stats).enemyType == strongAgainst){
 			other.gameObject.GetComponent(Stats).health -= damage * superEffectiveCoef;
 			other.gameObject.GetComponent(DealDamage).beginFlashingRed = true;
+			InstantiateSuperEffectiveSystem(other);
 			Debug.Log("SUPER EFFECTIVE");
 		} else {
 			other.gameObject.GetComponent(Stats).health -= damage;
@@ -41,6 +38,7 @@ function OnTriggerEnter (other : Collider) {
 			if (other.transform.parent.gameObject.GetComponent(Stats).enemyType == strongAgainst){
 				other.transform.parent.gameObject.GetComponent(Stats).health -= damage*superEffectiveCoef;
 				other.gameObject.GetComponent(DealDamage).beginFlashingRed = true;
+				InstantiateSuperEffectiveSystem(other);
 				Debug.Log("SUPER EFFECTIVE");
 			} else {
 				other.transform.parent.gameObject.GetComponent(Stats).health -= damage;
@@ -50,6 +48,16 @@ function OnTriggerEnter (other : Collider) {
 		Debug.Log("other and its parents has no stats");
 	}
 	if (gameObject != null)Destroy (gameObject);
+}
+
+function InstantiateSuperEffectiveSystem (other : Collider) {
+		var instance : GameObject = Instantiate(other.gameObject.GetComponent(DealDamage).effectiveDebris, 
+				transform.position,
+				Quaternion.identity);
+		instance.transform.parent = other.transform;
+		instance.transform.rotation = Quaternion.Euler(transform.rotation.y - 180, 270, 90);
+		Debug.Log(instance.name);
+		Destroy(instance, 3);
 }
 
 function CheckStats () {

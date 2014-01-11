@@ -21,6 +21,7 @@ var currentHealth : float;
 private var flashingWhite : boolean = false;
 private var beganFlashing : float;
 private var flashDuration : float;
+var effectiveDebris : GameObject;
 
 function Awake () {
 	flashDuration = 0.1;

@@ -26,8 +26,8 @@ function Update () {
 	
 	/**** Controller Input ****/
 	if (InputCoordinator.usingController){
-		var xAxis = Input.GetAxis(InputCoordinator.rightStickHor);
-		var yAxis = Input.GetAxis(InputCoordinator.rightStickVert);
+		var xAxis = Input.GetAxis(InputCoordinator.rightStickHor.axis);
+		var yAxis = Input.GetAxis(InputCoordinator.rightStickVert.axis);
 		if (xAxis != 0 || yAxis != 0){
 			var relativePos = (transform.position+Vector3(yAxis,0, xAxis)) - transform.position;
 			var rotation = Quaternion.LookRotation(relativePos, Vector3.up);

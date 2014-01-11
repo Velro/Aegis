@@ -1,11 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\ShipMovement.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InputCoordinator.js">
     <Files>
-      <File FileName="Assets\Scripts\DealDamage.js" Line="163" Column="32" />
-      <File FileName="Assets\Scripts\Player\Weapons\FusionBeamInstance.js" Line="28" Column="17" />
-      <File FileName="Assets\Scripts\MoveBullet.js" Line="43" Column="11" />
-      <File FileName="Assets\Scripts\Player\ShipMovement.js" Line="41" Column="48" />
+      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="95" Column="45" />
+      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="378" Column="3" />
+      <File FileName="Assets\Plugins\JoystickController.cs" Line="76" Column="80" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

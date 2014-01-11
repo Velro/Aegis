@@ -18,17 +18,24 @@ private var physicalWeaponsRect : Rect = new Rect(0,0,Screen.width/8,Screen.heig
 private var energyWeaponsRect : Rect = new Rect(0,0,Screen.width/8,Screen.height - Screen.height/4);
 private var explosiveWeaponsRect : Rect = new Rect(0,0,Screen.width/8,Screen.height - Screen.height/4);
 private var devicesRect : Rect = new Rect(0,0,Screen.width/4,Screen.height - Screen.height/4);
-private var buttonRect : Rect = new Rect(0,0,Screen.width/8-10,60); 
+private var buttonRect : Rect = new Rect(0,0,Screen.width/8-30,60); 
 physicalWeaponsRect.center = new Vector2(Screen.width/8, Screen.height/2);
 energyWeaponsRect.center = new Vector2((Screen.width/8)*2+15, Screen.height/2);
 explosiveWeaponsRect.center = new Vector2((Screen.width/8)*3 + 30, Screen.height/2);
 devicesRect.center = new Vector2((Screen.width/8)*5, Screen.height/2);
 supportBayRect.center = new Vector2(Screen.width/2, Screen.height/2);
+var optionsCooldown : float = 0.25;
+var optionsLastHit : float = 0;
+var popupRect = Rect(400,300,250,150);
+var optionsRect = Rect(0,0,Screen.width/2,(Screen.height/4)*3);
+optionsRect.center = Vector2(Screen.width/2, Screen.height/2);
+
 enum Menu {
 	SupportBay,
 	EquipEquipables,
 	BuyEquipables,
-	BuyUpgrades
+	BuyUpgrades,
+	Options
 }
 
 var currentState : Menu = Menu.SupportBay;
@@ -45,7 +52,7 @@ function Start (){
 	width = Screen.width;
 	height = Screen.height;
 }
-var popupRect = Rect(400,300,250,150);
+
 function OnGUI (){
 	Title();
 	if (confirmStarMap == true){
@@ -57,9 +64,14 @@ function OnGUI (){
 	if (equipSelectionBool == true){
 		GUI.Window(3, popupRect, EquipSelection, "Bind Equipment");
 	}
+
 	switch (currentState){
 		case Menu.SupportBay:
 			GUI.Window(0,supportBayRect, SupportBay, "Support Bay");
+			if (Input.GetButtonDown("Pause") && Time.time > optionsLastHit + optionsCooldown){
+				currentState = Menu.Options;
+				optionsLastHit = Time.time;
+			}
 			break;
 		case Menu.EquipEquipables:
 			Equips();
@@ -72,6 +84,9 @@ function OnGUI (){
 		case Menu.BuyUpgrades:
 			BuyUpgrades();
 			if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
+			break;
+		case Menu.Options:
+			GUI.Window(4, optionsRect, Options, "Options");
 			break;
 	}
 	ButtonLabels();         
@@ -116,7 +131,7 @@ function Equips (){
 	for (var i : int = 0; i < 4; i++){
 		if (allUpgrades[i].bought == true){
 			var strA : String = allUpgrades[i].name;
-			buttonRect.center = Vector2(physicalWeaponsRect.center.x, Screen.height/4 + (i * 80));
+			buttonRect.center = Vector2(physicalWeaponsRect.center.x, Screen.height/4 + (i * 100));
 			/**** Equipping ****/
 			if (GUI.Button(buttonRect,strA) && allUpgrades[i].selected == false){
 				toBeEquipped = i;
@@ -133,7 +148,7 @@ function Equips (){
 	for (var j : int = 4; j < 8; j++){
 		if (allUpgrades[j].bought == true){
 			var strB : String = allUpgrades[j].name;
-			buttonRect.center = Vector2(energyWeaponsRect.center.x, Screen.height/4 + ((j - 4) * 80));
+			buttonRect.center = Vector2(energyWeaponsRect.center.x, Screen.height/4 + ((j - 4) * 100));
 			/**** Equipping ****/
 			if (GUI.Button(buttonRect,strB) && allUpgrades[j].selected == false){
 				toBeEquipped = j;
@@ -150,7 +165,7 @@ function Equips (){
 	for (var k : int = 8; k < 12; k++){
 		if (allUpgrades[k].bought == true){
 			var strC : String = allUpgrades[k].name;
-			buttonRect.center = Vector2(explosiveWeaponsRect.center.x, Screen.height/4 + ((k - 8) * 80));
+			buttonRect.center = Vector2(explosiveWeaponsRect.center.x, Screen.height/4 + ((k - 8) * 100));
 			/**** Equipping ****/
 			if (GUI.Button(buttonRect,strC) && allUpgrades[k].selected == false){
 				toBeEquipped = k;
@@ -167,7 +182,7 @@ function Equips (){
 	for (var l : int = 12; l < 16; l++){
 		if (allUpgrades[l].bought == true){
 			var strD : String = allUpgrades[l].name;
-			buttonRect.center = Vector2(devicesRect.center.x - buttonRect.width/2, Screen.height/4 + ((l - 12) * 80));
+			buttonRect.center = Vector2(devicesRect.center.x - buttonRect.width/2, Screen.height/4 + ((l - 12) * 100));
 			/**** Equipping ****/
 			if (GUI.Button(buttonRect,strD) && allUpgrades[l].selected  == false){
 				toBeEquipped = l;
@@ -184,7 +199,7 @@ function Equips (){
 	for (var m : int = 16; m < 20; m++){
 		if (allUpgrades[m].bought == true){
 			var strE : String = allUpgrades[m].name;
-			buttonRect.center = Vector2(devicesRect.center.x + buttonRect.width/2 + 2, Screen.height/4 + ((m - 16) * 80));
+			buttonRect.center = Vector2(devicesRect.center.x + buttonRect.width/2 + 2, Screen.height/4 + ((m - 16) * 100));
 			/**** Equipping ****/
 			if (GUI.Button(buttonRect,strE) && allUpgrades[m].selected == false){
 				toBeEquipped = m;
@@ -208,7 +223,7 @@ function BuyEquips (){
 	/****Physical Weapons ****/
 	for (var i : int = 0; i < 4; i++){
 		var str : String = allUpgrades[i].name;
-		buttonRect.center = Vector2(physicalWeaponsRect.center.x, Screen.height/4 + (i * 80));
+		buttonRect.center = Vector2(physicalWeaponsRect.center.x, Screen.height/4 + (i * 100));
 		/**** Buying ****/
 		if (GUI.Button(buttonRect,str) && allUpgrades[i].bought == false){
 			toBeBought = i;
@@ -223,7 +238,7 @@ function BuyEquips (){
 	/**** Energy Weapons ****/
 	for (var j : int = 4; j < 8; j++){
 		var str1 : String = allUpgrades[j].name;
-		buttonRect.center = Vector2(energyWeaponsRect.center.x, Screen.height/4 + ((j - 4) * 80));
+		buttonRect.center = Vector2(energyWeaponsRect.center.x, Screen.height/4 + ((j - 4) * 100));
 		/**** Buying ****/
 		if (GUI.Button(buttonRect,str1) && allUpgrades[j].bought == false){
 			toBeBought = j;
@@ -238,7 +253,7 @@ function BuyEquips (){
 	/**** Explosive Weapons ****/
 	for (var k : int = 8; k < 12; k++){
 		var str2 : String = allUpgrades[k].name;
-		buttonRect.center = Vector2(explosiveWeaponsRect.center.x, Screen.height/4 + ((k - 8) * 80));
+		buttonRect.center = Vector2(explosiveWeaponsRect.center.x, Screen.height/4 + ((k - 8) * 100));
 		/**** Buying ****/
 		if (GUI.Button(buttonRect,str2) && allUpgrades[k].bought == false){
 			toBeBought = k;
@@ -253,7 +268,7 @@ function BuyEquips (){
 	/**** Devices1 ****/
 	for (var l : int = 12; l < 16; l++){
 		var str3 : String = allUpgrades[l].name;
-		buttonRect.center = Vector2(devicesRect.center.x - buttonRect.width/2 - 2, Screen.height/4 + ((l - 12) * 80));
+		buttonRect.center = Vector2(devicesRect.center.x - buttonRect.width/2 - 2, Screen.height/4 + ((l - 12) * 100));
 				/**** Buying ****/
 		if (GUI.Button(buttonRect,str3) && allUpgrades[l].bought == false){
 			toBeBought = l;
@@ -264,13 +279,13 @@ function BuyEquips (){
 			GUI.Button(buttonRect,str3);
 			GUI.Label(buttonRect,"",checkStyle);
 		}
-		otherCamera.GetComponent(ThreeDeeIcons).Go();
+		otherCamera.GetComponent(ThreeDeeIconsCamera).Go();
 	}
 	
 	/**** Devices2 ****/
 	for (var m : int = 16; m < 20; m++){
 		var str4 : String = allUpgrades[m].name;
-		buttonRect.center = Vector2(devicesRect.center.x + buttonRect.width/2 + 2, Screen.height/4 + ((m - 16) * 80));
+		buttonRect.center = Vector2(devicesRect.center.x + buttonRect.width/2 + 2, Screen.height/4 + ((m - 16) * 100));
 				/**** Buying ****/
 		if (GUI.Button(buttonRect,str4) && allUpgrades[m].bought == false){
 			toBeBought = m;
@@ -340,7 +355,37 @@ function EquipSelection (windowID : int){
 	if (currentState != Menu.EquipEquipables)equipSelectionBool = false;
 }
 
+enum OptionsMenu {
+	Base,
+	InputOptions
+}
+var optionsCurrentState : OptionsMenu = OptionsMenu.Base;
+
+function Options (windowID : int) {
+	//var optionsButtonRect : Rect = Rect(0,0,optionsRect.width - 10, optionsRect.height - 10);
+	//optionsButtonRect.center = Vector2(Screen.width/2, (Screen.height/8) * 4);
+	GUILayout.Space(10);
+	switch (optionsCurrentState){
+		case OptionsMenu.Base:
+			if (GUILayout.Button("Input Options")){
+				optionsCurrentState = OptionsMenu.InputOptions;
+			}
+			break;
+		
+		case OptionsMenu.InputOptions:
+			gameObject.GetComponent(InputCoordinator).InputDialogOptions();
+			break;
+	}
+
+	
+	if (Input.GetButtonDown("Pause") && Time.time > optionsLastHit + optionsCooldown){
+		currentState = Menu.SupportBay;
+		optionsLastHit = Time.time;
+	}
+}
+
 function ButtonLabels (){
 	GUI.Label(Rect(Screen.width - 200, Screen.height - 50, 80, 40), "A - Select", "Button"); 
 	GUI.Label(Rect(Screen.width - 100, Screen.height - 50, 80, 40), "B - Back", "Button");
 }
+

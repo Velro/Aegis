@@ -20,8 +20,8 @@ function Update () {
 	var horizontal : float;
 	var vertical : float;
 	if (InputCoordinator.usingController == true){
-		horizontal = Input.GetAxis(InputCoordinator.leftStickHor);
-		vertical = Input.GetAxis(InputCoordinator.leftStickVert);
+		horizontal = Input.GetAxis(InputCoordinator.leftStickHor.axis);
+		vertical = Input.GetAxis(InputCoordinator.leftStickVert.axis);
 	}
 	if (InputCoordinator.usingMouseAndKeyboard == true){
 		horizontal = Input.GetAxis("MoveHorizontalKey");

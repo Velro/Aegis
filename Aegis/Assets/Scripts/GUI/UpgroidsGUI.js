@@ -395,7 +395,9 @@ function Options (windowID : int) {
 }
 
 function ButtonLabels (){
-	GUI.Label(Rect(Screen.width - 200, Screen.height - 50, 80, 40), "A - Select", "Button"); 
-	GUI.Label(Rect(Screen.width - 100, Screen.height - 50, 80, 40), "B - Back", "Button");
+	GUI.Label(Rect(Screen.width - (Screen.width/15)*2, Screen.height - (Screen.height/15), Screen.width/15, Screen.height/15), "A - Select", "Button");
+	if (GUI.Button(Rect(Screen.width - (Screen.width/15), Screen.height - (Screen.height/15), Screen.width/15, Screen.height/15), "B - Back")){
+		currentState = Menu.SupportBay;
+	}
 }
 

@@ -283,6 +283,20 @@ MonoBehaviour:
     type: 3}
   rightStickMovedRightController: {fileID: 2800000, guid: cf45ae7f53ec85e4d865fa1e35d891cd,
     type: 3}
+  rightTriggerController: {fileID: 2800000, guid: edbfdb5f28cb04b4e8f10e18424606a4,
+    type: 3}
+  rightBumperController: {fileID: 2800000, guid: f73892c11925f294d8e996f21bbbda6b,
+    type: 3}
+  leftTriggerController: {fileID: 2800000, guid: e22b6115d1b0da24ab23a0df01dbe205,
+    type: 3}
+  leftBumperController: {fileID: 2800000, guid: 26457658500d1e849a7f3f6a83992aa4,
+    type: 3}
+  confirmButtonController: {fileID: 2800000, guid: f7e39ea10e21c984cb7711190f75a524,
+    type: 3}
+  backButtonController: {fileID: 2800000, guid: cd8fc7cc2c63314469461dad2655e254,
+    type: 3}
+  pauseButtonController: {fileID: 2800000, guid: e9fc8014d7498524780b0ae6f3969e20,
+    type: 3}
   controllerTexRect:
     serializedVersion: 2
     x: 0
@@ -354,7 +368,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  delayBetween: 2
+  delayBetween: .25
   lastTime: 0
   currentChoice: 0
 --- !u!92 &571807121

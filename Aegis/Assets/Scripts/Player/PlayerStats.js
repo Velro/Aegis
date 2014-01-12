@@ -106,10 +106,10 @@ function CheckLevel () {
 			weapon.currentExp -= 100;
 			//Debug.Log(weapon.name+" levelled up!");
 			audio.PlayOneShot(levelUp, 1);
-			Camera.main.GetComponent(MyGUI).levelledName = weapon.name;
-			Camera.main.GetComponent(MyGUI).levelledLevel = weapon.level;
-			Camera.main.GetComponent(MyGUI).levelledTime = weapon.currentLevel.lastShot;
-			Camera.main.GetComponent(MyGUI).boolLevel = true;
+			Camera.main.GetComponent(GameOverlayGUI).levelledName = weapon.name;
+			Camera.main.GetComponent(GameOverlayGUI).levelledLevel = weapon.level;
+			Camera.main.GetComponent(GameOverlayGUI).levelledTime = weapon.currentLevel.lastShot;
+			Camera.main.GetComponent(GameOverlayGUI).boolLevel = true;
 		}
 	}
 	if (VulcanCannonStats.level == 0)VulcanCannonStats.currentLevel = VulcanCannonStats.level0;

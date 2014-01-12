@@ -27,7 +27,7 @@ function OnTriggerEnter (other : Collider) {
 	if (other.gameObject.GetComponent(Stats) != null){
 		if (other.gameObject.GetComponent(Stats).enemyType == strongAgainst){
 			other.gameObject.GetComponent(Stats).health -= damage * superEffectiveCoef;
-			other.gameObject.GetComponent(DealDamage).beginFlashingRed = true;
+			other.gameObject.GetComponent(Stats).hitWithWeakness = true;
 			InstantiateSuperEffectiveSystem(other);
 			Debug.Log("SUPER EFFECTIVE");
 		} else {
@@ -37,7 +37,7 @@ function OnTriggerEnter (other : Collider) {
 		if (other.transform.parent.gameObject.GetComponent(Stats) != null){
 			if (other.transform.parent.gameObject.GetComponent(Stats).enemyType == strongAgainst){
 				other.transform.parent.gameObject.GetComponent(Stats).health -= damage*superEffectiveCoef;
-				other.gameObject.GetComponent(DealDamage).beginFlashingRed = true;
+				other.transform.parent.	gameObject.GetComponent(Stats).hitWithWeakness = true;
 				InstantiateSuperEffectiveSystem(other);
 				Debug.Log("SUPER EFFECTIVE");
 			} else {

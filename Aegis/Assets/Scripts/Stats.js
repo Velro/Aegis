@@ -15,6 +15,9 @@ var speed : float = 1;
 var exp : float = 10;
 var enemyType : EnemyType = EnemyType.Physical;
 
+//@System.NonSerialized
+var hitWithWeakness : boolean = false;
+
 public enum EnemyType {
 	Physical,
 	Organic,

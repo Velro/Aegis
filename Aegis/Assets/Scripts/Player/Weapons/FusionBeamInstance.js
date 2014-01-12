@@ -13,11 +13,13 @@ function Awake () {
 function Start () {
 	nozzle = player.transform.FindChild("nozzle");
 }
+
 function Update (){
 	CheckStats();
 	transform.position = nozzle.position;
 	if (player == null)Destroy(gameObject);
 }	
+
 var bool : boolean = false;
 function OnTriggerStay (other : Collider){
 	if (other.gameObject.GetComponent(Stats) != null){
@@ -25,7 +27,7 @@ function OnTriggerStay (other : Collider){
 			Debug.Log("SUPER EFFECTIVE");
 			other.gameObject.GetComponent(Stats).health -= (damage*2) * Time.deltaTime;
 			if (bool == false){
-				other.gameObject.GetComponent(DealDamage).beginFlashingRed = true;
+				other.gameObject.GetComponent(Stats).hitWithWeakness = true;
 				bool = true;	
 			}
 		} else {

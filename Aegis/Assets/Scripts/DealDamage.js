@@ -11,9 +11,10 @@ var explosionPosition : Vector3 = Vector3.zero; //explosion position offset if w
 private var damage : float;
 private var player : GameObject;
 var damageEffects : boolean = true;
+@System.NonSerialized
 var whiteEffect : Material;
+@System.NonSerialized
 var redEffect : Material;
-var beginFlashingRed : boolean = false;
 private var flashingRed : boolean = false; 
 private var r : Renderer;
 private var m : Material[];
@@ -99,9 +100,9 @@ function Update () {
 			flashingWhite = false;
 		}
 		/**** Flash Red ****/
-		if (beginFlashingRed == true){
+		if (FindHitWithWeakness() == true){
 			beganFlashing = Time.time + flashDuration;
-			beginFlashingRed = false;
+			RevertHitWithWeakness();
 			flashingRed = true;
 		}
 		if (flashingRed == true && Time.time < beganFlashing){
@@ -126,8 +127,33 @@ function FindHealth () {
 	return health;
 }
 
+function FindHitWithWeakness (){
+	var hit : boolean = false;
+	if (gameObject.GetComponent(Stats) != null){
+		hit = gameObject.GetComponent(Stats).hitWithWeakness;
+	} else if (transform.parent.gameObject.GetComponent(Stats) != null){
+		hit = transform.parent.gameObject.GetComponent(Stats).hitWithWeakness;
+	} else {
+		Debug.Log("No stats found");
+	}
+	return hit;
+}
+
+function RevertHitWithWeakness(){
+	if (gameObject.GetComponent(Stats) != null){
+		gameObject.GetComponent(Stats).hitWithWeakness = false;
+	} else if (transform.parent.gameObject.GetComponent(Stats) != null){
+		transform.parent.gameObject.GetComponent(Stats).hitWithWeakness = false;
+	} else {
+		Debug.Log("No stats found");
+	}
+}
+
+@System.NonSerialized
 var bool : boolean = true;
+@System.NonSerialized
 var lastFlash : float = 0;
+@System.NonSerialized
 var newMats : Material[];
 function FlashWhite () {
 	if (bool == false && Time.time > lastFlash){
@@ -145,9 +171,11 @@ function FlashWhite () {
 		bool = !bool;
 	}
 }
-
+@System.NonSerialized
 var bool1 : boolean = true;
+@System.NonSerialized
 var lastFlash1 : float = 0;
+@System.NonSerialized
 var newMats1 : Material[];
 function FlashRed () {
 	if (bool1 == false && Time.time > lastFlash1){
@@ -173,3 +201,4 @@ function FlashRed () {
 
 
 
+	

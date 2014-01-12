@@ -1,7 +1,7 @@
 #pragma strict
-private var width : float;
-private var height : float;
-var otherCamera : GameObject;
+@script AddComponentMenu("GUI/UpgroidsUI")
+var render : boolean = true;
+var backgroundTex : Texture;
 public static var selections = new Array();
 var allUpgrades : Upgrades[];
 private var unlockedUpgrades = new Array();
@@ -14,6 +14,7 @@ private var supportBayRect : Rect = Rect(20, 20, 400, 400);
 private var confirmStarMap : boolean = false;
 var xStyle : GUIStyle;
 var checkStyle : GUIStyle;
+var buttonStyle : GUIStyle;
 private var physicalWeaponsRect : Rect = new Rect(0,0,Screen.width/8,Screen.height-(Screen.height/4));
 private var energyWeaponsRect : Rect = new Rect(0,0,Screen.width/8,Screen.height - Screen.height/4);
 private var explosiveWeaponsRect : Rect = new Rect(0,0,Screen.width/8,Screen.height - Screen.height/4);
@@ -24,11 +25,14 @@ energyWeaponsRect.center = new Vector2((Screen.width/8)*2+15, Screen.height/2);
 explosiveWeaponsRect.center = new Vector2((Screen.width/8)*3 + 30, Screen.height/2);
 devicesRect.center = new Vector2((Screen.width/8)*5, Screen.height/2);
 supportBayRect.center = new Vector2(Screen.width/2, Screen.height/2);
-var optionsCooldown : float = 0.25;
-var optionsLastHit : float = 0;
-var popupRect = Rect(400,300,250,150);
-var optionsRect = Rect(0,0,Screen.width/2,(Screen.height/4)*3);
+private var optionsCooldown : float = 0.25;
+private var optionsLastHit : float = 0;
+private var popupRect = Rect(0,0,Screen.width/4,Screen.height/4);
+popupRect.center = Vector2(Screen.width/2, Screen.height/2);
+private var optionsRect = Rect(0,0,Screen.width/2,(Screen.height/4)*3);
 optionsRect.center = Vector2(Screen.width/2, Screen.height/2);
+var otherCamera : GameObject;
+var inputCoordinatorCamera : GameObject;
 
 enum Menu {
 	SupportBay,
@@ -49,11 +53,12 @@ class Upgrades extends System.Object{
 }
 
 function Start (){
-	width = Screen.width;
-	height = Screen.height;
+
 }
 
 function OnGUI (){
+	if (render == true){
+	GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height),backgroundTex,ScaleMode.StretchToFill,true,1.0);
 	Title();
 	if (confirmStarMap == true){
 		GUI.Window(1, popupRect, ConfirmStarMap, "Confirm");
@@ -89,7 +94,8 @@ function OnGUI (){
 			GUI.Window(4, optionsRect, Options, "Options");
 			break;
 	}
-	ButtonLabels();         
+	ButtonLabels();
+	}         
 }
 
 function Title (){
@@ -373,7 +379,11 @@ function Options (windowID : int) {
 			break;
 		
 		case OptionsMenu.InputOptions:
-			gameObject.GetComponent(InputCoordinator).InputDialogOptions();
+			if (GUILayout.Button("Controller Setup")){
+				inputCoordinatorCamera.GetComponent(InputCoordinator).controllerSetup = true;
+				render = false;
+			}
+			
 			break;
 	}
 

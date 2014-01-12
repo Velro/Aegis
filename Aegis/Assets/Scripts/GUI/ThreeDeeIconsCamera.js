@@ -1,5 +1,5 @@
 ﻿#pragma strict
-
+@script AddComponentMenu("GUI/ThreeDeeIconsCamera")
 function Start () {
 
 }

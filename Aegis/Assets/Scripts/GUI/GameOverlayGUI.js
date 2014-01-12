@@ -1,4 +1,5 @@
 ﻿#pragma strict
+@script AddComponentMenu("GUI/GameOverlayGUI")
 /*
 *  This class has the potential to become monolithic. May be broken down into some 
 *  sub-scripts that aren't components. GUI code is weird. Check out the UnityGUI learning resources if you're confused, they're nice.
@@ -39,6 +40,9 @@ var levelledLevel : int;
 @System.NonSerializedAttribute
 var levelledTime : float;
 
+private var creditsRect : Rect = new Rect(0,0,Screen.width, Screen.height/60);
+creditsRect.center = new Vector2(Screen.width/2, (Screen.height/60)*2);
+
 function Awake (){
 	playerStats = player.GetComponent(PlayerStats);
 	
@@ -65,13 +69,13 @@ function OnGUI () {
 	/**** Health bar ****/
 	if (player != null){
 		//Rects work at Rect(screenPosition X, screenPosition Y, width, height) all in pixels
-		GUI.Label (Rect(30, 25, 110 * PercentHealth(player), 29),"", healthbar);
-		GUI.Label (Rect(30-1, 24, 112, 30),
+		GUI.Label (Rect(Screen.width/30, Screen.height/30, (Screen.width/10)* PercentHealth(player), Screen.height/20),"", healthbar);
+		GUI.Label (Rect((Screen.width/30)-1, (Screen.height/30)-1, (Screen.width/10)+2, (Screen.height/20)+2),
 			""+Mathf.RoundToInt(player.GetComponent(Stats).health)+" / "+player.GetComponent(Stats).maxHealth, border);
 	//		
 	/**** Heat bar ****/
-		GUI.Label (Rect(155, 25, 110 * PercentHeat(), 29),"", heat);
-		GUI.Label (Rect(155-1, 24, 112, 30),
+		GUI.Label (Rect((Screen.width/30)*4.5, Screen.height/30, (Screen.width/10) * PercentHeat(), Screen.height/20),"", heat);
+		GUI.Label (Rect(((Screen.width/30)*4.5)-1, (Screen.height/30) - 1, (Screen.width/10)+2, (Screen.height/20)+2),
 			""+Mathf.RoundToInt(playerStats.heat)+" / "+playerStats.maxHeat, border);
 			
 	/**** Overheat ****/
@@ -80,24 +84,24 @@ function OnGUI () {
 				"OVERHEAT");
 		}		
 	/**** Credits ****/
-		GUI.Label (Rect(Screen.width/2,25, 110, 30), "Credits "+playerStats.creditsThisLevel, credits);
+		GUI.Label (creditsRect, "Credits "+playerStats.creditsThisLevel, credits);
 		
 	/**** Weapons ****/
-		GUI.BeginGroup (Rect(Screen.width-300, 30, Screen.width-30, 120));
-			GUI.Box(Rect(0,0,Screen.width,Screen.height),"", weaponsBackground);
+		GUI.BeginGroup (Rect(Screen.width - (Screen.width/3.5), Screen.height/30, Screen.width/3.5 - Screen.width/30, Screen.height/6));
+			//GUI.Box(Rect(0,0,Screen.width,Screen.height),"", weaponsBackground);
 			//weapon 0ne 
-			GUI.Label(Rect(11,11,118*percentCooldown(0),43), "", cooldown);
-			GUI.Label(Rect(10,10,120,45), playerStats.weapons[0].name, border);
+			GUI.Label(Rect(Screen.width/60,Screen.height/60,(Screen.width/10)*percentCooldown(0),Screen.height/20), "", cooldown);
+			GUI.Label(Rect(Screen.width/60-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), playerStats.weapons[0].name, border);
 			//weapon two
-			GUI.Label(Rect(141,11,118*percentCooldown(1),43), "", cooldown);
-			GUI.Label(Rect(140,10,120,45), playerStats.weapons[1].name, border);
+			GUI.Label(Rect((Screen.width/60)*8,Screen.height/60,(Screen.width/10)*percentCooldown(1),Screen.height/20), "", cooldown);
+			GUI.Label(Rect((Screen.width/60)*8-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), playerStats.weapons[1].name, border);
 			//weapon three
-			GUI.Label(Rect(11,66,118*percentCooldown(2),43), "", cooldown);
-			GUI.Label(Rect(10,65,120,45), playerStats.weapons[2].name, border);
+			GUI.Label(Rect((Screen.width/60),(Screen.height/60)*5,(Screen.width/10)*percentCooldown(2),Screen.height/20), "", cooldown);
+			GUI.Label(Rect(Screen.width/60-1,(Screen.height/60)*5-1,Screen.width/10+2,Screen.height/20+2), playerStats.weapons[2].name, border);
 			//weapon four
 			//GUI.Label(Rect(11,11,118,63), "", cooldown);
-			GUI.Label(Rect(141,66,118*percentCooldown(3),43), "", cooldown);
-			GUI.Label(Rect(140,65,120,45), playerStats.weapons[3].name, border);
+			GUI.Label(Rect((Screen.width/60)*8,(Screen.height/60)*5,(Screen.width/10)*percentCooldown(3),Screen.height/20), "", cooldown);
+			GUI.Label(Rect((Screen.width/60)*8-1,(Screen.height/60)*5-1,Screen.width/10+2,Screen.height/20+2), playerStats.weapons[3].name, border);
 		GUI.EndGroup ();
 		
 	} else {

@@ -1,4 +1,5 @@
 ﻿#pragma strict
+@script AddComponentMenu("GUI/MainMenuGUI")
 var level1 : String;
 var background : Texture2D;
 private var optionsMenu : boolean = false;

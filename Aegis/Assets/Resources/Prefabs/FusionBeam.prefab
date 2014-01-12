@@ -172,6 +172,8 @@ MonoBehaviour:
   health: 1e+07
   maxHealth: 9999999830000
   speed: 0
+  exp: 10
+  enemyType: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,6 +188,10 @@ MonoBehaviour:
   explosion: {fileID: 0}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
+  damageEffects: 1
+  beginFlashingRed: 0
+  currentHealth: 0
+  effectiveDebris: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +207,8 @@ MonoBehaviour:
   health: 10
   maxHealth: 100
   speed: 1
+  exp: 10
+  enemyType: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,6 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 50
   player: {fileID: 0}
+  weaponType: 2
+  strongAgainst: 2
+  bool: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

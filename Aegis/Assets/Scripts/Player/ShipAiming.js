@@ -15,7 +15,7 @@ function Start () {
 function Update () {
 	
 	/**** Mouse Input ***/
-	if (InputCoordinator.usingMouseAndKeyboard && Camera.main.GetComponent(MyGUI).paused == false){
+	if (InputCoordinator.usingMouseAndKeyboard && Camera.main.GetComponent(GameOverlayGUI).paused == false){
 		mouseX = Input.mousePosition.x;
 		mouseY = Input.mousePosition.y;
 		var worldPos = Camera.main.ScreenToWorldPoint(Vector3(mouseX, mouseY, diff));

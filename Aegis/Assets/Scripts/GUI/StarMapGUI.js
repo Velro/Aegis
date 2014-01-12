@@ -1,4 +1,6 @@
 ﻿#pragma strict
+@script AddComponentMenu("GUI/StarmapGUI")
+
 var paused : boolean = false;
 private var pausedCooldown : float = 0.15;
 private var pausedLastHit : float = 0;

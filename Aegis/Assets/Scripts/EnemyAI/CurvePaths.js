@@ -4,7 +4,7 @@
 //var paths : Transform[,] = new Transform[10,3];
 var parentPath : Transform;
 private var pathPoints : Transform[];
-private var speed : float = 25;
+var speed : float = 25;
 var rotateToPath : boolean = false;
 private var t : float;
 private var q : Quaternion;
@@ -14,10 +14,10 @@ function Start () {
 	for (var i : int = 0; i < parentPath.childCount; i++){
 		pathPoints[i] = parentPath.GetChild(i);
 	}
-	if (gameObject.GetComponent(Stats) == null){
-		speed = transform.parent.gameObject.GetComponent(Stats).speed;
-	} else if (gameObject.GetComponent(Stats) != null){
+	if (gameObject.GetComponent(Stats) != null){
 		speed = gameObject.GetComponent(Stats).speed;
+	} else if (transform.parent != null){
+		speed = transform.parent.gameObject.GetComponent(Stats).speed;
 	} else {
 		Debug.Log("No Stats attached on "+gameObject.name+" or parent");
 	}

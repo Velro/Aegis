@@ -1,4 +1,5 @@
 ﻿#pragma strict
+@script AddComponentMenu("GUI/ThreeDeeIcon")
 var mousePosition : Vector3;
 var mouseX : float;
 var mouseY : float;

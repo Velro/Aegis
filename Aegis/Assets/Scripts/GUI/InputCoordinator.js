@@ -5,6 +5,7 @@
 class AxisInput {
 	var axis : String = null;
 	var positive : boolean;
+	var button : String = null;
 }
 var backgroundTex : Texture;
 
@@ -177,7 +178,7 @@ function  OnGUI() {
 			case ControllerInputChoice.RightTrigger:
 				GUI.DrawTexture(controllerTexRect, baseController, ScaleMode.StretchToFill, true, 1.0);
 				Countdown();
-				if (rightTrigger.axis == null || rightTrigger.axis == ""){
+				if ((rightTrigger.axis == null || rightTrigger.axis == "") && (rightTrigger.button == "" || rightTrigger.button == null)){
 					if (Time.time > lastTime + delayBetween){
 						GUI.DrawTexture(controllerTexRect, rightTriggerController, ScaleMode.StretchToFill, true, 1.0);//rightTrigger
 						GUI.Label(controllerLabelRect,"Press right trigger", labelStyle);
@@ -187,14 +188,19 @@ function  OnGUI() {
 							returned != leftStickVert.axis &&
 							returned != leftStickHor.axis){
 								rightTrigger.axis = returned;
+						} else if (gameObject.GetComponent(JoystickController).GetCurrentButton() != null){
+							returned = gameObject.GetComponent(JoystickController).GetCurrentButton();
+							rightTrigger.button = returned;
 						}
 					}
 				} else {
 					GUI.Label(controllerLabelRect,"Found right trigger", labelStyle);
-					if (Input.GetAxisRaw(rightTrigger.axis) > 0){
-						rightTrigger.positive = true;
-					} else {
-						rightTrigger.positive = false;
+					if (rightTrigger.axis != null || rightTrigger.axis != ""){
+						if (Input.GetAxisRaw(rightTrigger.axis) > 0){
+							rightTrigger.positive = true;
+						} else {
+							rightTrigger.positive = false;
+						}
 					}
 					currentChoice = ControllerInputChoice.LeftTrigger;
 					lastTime = Time.time;
@@ -206,27 +212,37 @@ function  OnGUI() {
 				GUI.DrawTexture(controllerTexRect, baseController, ScaleMode.StretchToFill, true, 1.0);
 				Countdown();
 				if (Time.time > lastTime + delayBetween){
-					if (leftTrigger.axis == null || leftTrigger.axis == ""){
-						GUI.DrawTexture(controllerTexRect, leftTriggerController, ScaleMode.StretchToFill, true, 1.0);//rightTrigger
+					Debug.Log(leftTrigger.axis +" QQQQ "+leftTrigger.button);
+					if ((leftTrigger.axis == null || leftTrigger.axis == "") && (leftTrigger.button == "" || leftTrigger.button == null)){
+						Debug.Log("all blank/null");
+						GUI.DrawTexture(controllerTexRect, leftTriggerController, ScaleMode.StretchToFill, true, 1.0);
 						GUI.Label(controllerLabelRect,"Press left trigger", labelStyle);
 						var returned1 = gameObject.GetComponent(JoystickController).GetCurrentAxis();
-						if (returned1 != rightStickVert.axis &&
-							returned1 != rightStickHor.axis &&
-							returned1 != leftStickVert.axis &&
-							returned1 != leftStickHor.axis &&
-							((Input.GetAxisRaw(returned1) > 0 && rightTrigger.positive == false)) || (Input.GetAxisRaw(returned1) < 0 && rightTrigger.positive == true)){
-								leftTrigger.axis = returned1;
+						var buttonReturned = gameObject.GetComponent(JoystickController).GetCurrentButton();
+						if (((Input.GetAxisRaw(returned1) > 0 && rightTrigger.positive == false)) || 
+								(Input.GetAxisRaw(returned1) < 0 && rightTrigger.positive == true)){
+							leftTrigger.axis = returned1;
+							Debug.Log(returned1);
+						} else if (buttonReturned != rightTrigger.button){
+							leftTrigger.button = buttonReturned;
+							Debug.Log("HIT "+	leftTrigger.button);
+						
 						}
 					} else {
 						GUI.Label(controllerLabelRect,"Found left trigger", labelStyle);
-						if (leftTrigger.axis == rightTrigger.axis){
-							leftTrigger.positive = !rightTrigger.positive;
+						if (leftTrigger.axis != null || leftTrigger.axis != ""){
+							if (leftTrigger.axis == rightTrigger.axis){
+								leftTrigger.positive = !rightTrigger.positive;
+							}
+							//Debug.Log("Right trigger "+rightTrigger.axis+" rightbool "+rightTrigger.positive+" left trigger "+leftTrigger.axis+" leftbool "+leftTrigger.positive);
 						}
-						currentChoice = ControllerInputChoice.RightBumper;
-						lastTime = Time.time;
-						//Debug.Log("Right trigger "+rightTrigger.axis+" rightbool "+rightTrigger.positive+" left trigger "+leftTrigger.axis+" leftbool "+leftTrigger.positive);
+					currentChoice = ControllerInputChoice.RightBumper;
+					lastTime = Time.time;
+					Debug.Log(leftTrigger.axis +" QQQQ "+leftTrigger.button);
 					}
 				}
+
+				
 				break;
 			
 			/**** RIGHT BUMPER ***/

@@ -212,9 +212,9 @@ function  OnGUI() {
 				GUI.DrawTexture(controllerTexRect, baseController, ScaleMode.StretchToFill, true, 1.0);
 				Countdown();
 				if (Time.time > lastTime + delayBetween){
-					Debug.Log(leftTrigger.axis +" QQQQ "+leftTrigger.button);
+					//Debug.Log(leftTrigger.axis +" QQQQ "+leftTrigger.button);
 					if ((leftTrigger.axis == null || leftTrigger.axis == "") && (leftTrigger.button == "" || leftTrigger.button == null)){
-						Debug.Log("all blank/null");
+						//Debug.Log("all blank/null");
 						GUI.DrawTexture(controllerTexRect, leftTriggerController, ScaleMode.StretchToFill, true, 1.0);
 						GUI.Label(controllerLabelRect,"Press left trigger", labelStyle);
 						var returned1 = gameObject.GetComponent(JoystickController).GetCurrentAxis();
@@ -222,10 +222,10 @@ function  OnGUI() {
 						if (((Input.GetAxisRaw(returned1) > 0 && rightTrigger.positive == false)) || 
 								(Input.GetAxisRaw(returned1) < 0 && rightTrigger.positive == true)){
 							leftTrigger.axis = returned1;
-							Debug.Log(returned1);
+							//Debug.Log(returned1);
 						} else if (buttonReturned != rightTrigger.button){
 							leftTrigger.button = buttonReturned;
-							Debug.Log("HIT "+	leftTrigger.button);
+							//Debug.Log("HIT "+	leftTrigger.button);
 						
 						}
 					} else {
@@ -238,7 +238,7 @@ function  OnGUI() {
 						}
 					currentChoice = ControllerInputChoice.RightBumper;
 					lastTime = Time.time;
-					Debug.Log(leftTrigger.axis +" QQQQ "+leftTrigger.button);
+					//Debug.Log(leftTrigger.axis +" QQQQ "+leftTrigger.button);
 					}
 				}
 

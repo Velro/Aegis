@@ -1,30 +1,32 @@
 ﻿#pragma strict
 //Largely credited to Alex Hackl on unifycommunity
-var Up : Texture2D;
-var Hover : Texture2D;
-var Down : Texture2D;
+var Up : Texture;
+var Hover : Texture;
+var Down : Texture;
 var text : String;
 var buttonRect : Rect;
 var isPressed : boolean;
 var isFocused : boolean;
+var enabled : boolean; 
 
-class JoyGUIButton(rect : Rect, label : String){
-	enabled = true;
-	text = label;
-	buttonRect = rect;
-	isPressed = false;
-	isFocused = false;
-};
+class JoyGUIButton{
+	function JoyGUIButton(rect : Rect, label : String){
+		text = label;
+		buttonRect = rect;
+		isPressed = false;
+		isFocused = false;
+		enabled = true;
+	}
+
 
 function Display(){
 	if(enabled){
-		GUI.skin.button.normal.background = Up;
-		GUI.skin.button.hover.background = Hover;
-		GUI.skin.button.active.background = Down;
-
+		Up = GUI.skin.button.normal.background as Texture;	
+		Hover = GUI.skin.button.hover.background as Texture; 
+		Down = GUI.skin.button.active.background as Texture;
 		if (!isFocused && !isPressed){
 			GUI.DrawTexture(buttonRect,Up);
-			GUI.skin.label.normal.textColor = GUI.skin.button.normal.textColor;
+			GUI.skin.label.normal.textColor = GUI.skin.button.normal.textColor;//ensures label and button have same text color?
 			GUI.Label(buttonRect,text);
 		} else if (isFocused && !isPressed){
 			GUI.DrawTexture(buttonRect,Hover);
@@ -58,3 +60,4 @@ function UnClick(){
 		isPressed = false;
 	}
 }
+};

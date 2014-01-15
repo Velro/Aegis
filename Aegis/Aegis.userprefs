@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\JoyGUIButton.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\JoyGUIMenu.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\JoyGUIButton.js" Line="33" Column="13" />
-      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="241" Column="8" />
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="111" Column="48" />
+      <File FileName="Assets\Scripts\GUI\JoyGUIButton.js" Line="64" Column="3" />
+      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="80" Column="21" />
+      <File FileName="Assets\Scripts\GUI\JoyGUIMenu.js" Line="73" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

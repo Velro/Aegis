@@ -36,13 +36,20 @@ var inputCoordinatorCamera : GameObject;
 
 enum Menu {
 	SupportBay,
-	EquipEquipables,
-	BuyEquipables,
-	BuyUpgrades,
-	Options
+	EquipEquipables = 0,
+	BuyEquipables = 1,
+	BuyUpgrades = 2,
+	Options = 3
 }
 
 var currentState : Menu = Menu.SupportBay;
+
+//Joy vars
+var supportBay : JoyGUIMenu;
+var equipEquipables : JoyGUIMenu;
+var mySkin : GUISkin;
+var delayBetweenButtons : float = 0.25;
+//end Joy Vars
 
 class Upgrades extends System.Object{
 	var name : String;
@@ -54,11 +61,58 @@ class Upgrades extends System.Object{
 
 function Start (){
 
+	var supportBayRects : Rect[] = new Rect[4];
+	var supportBayStrings : String[] = new String[4];
+	var equipRect : Rect = new Rect(0,0,180,40);
+	var buyEquipsRect : Rect = new Rect(0,0,180,40); 
+	var buyUpgradesRect : Rect = new Rect(0,0,180,40);
+	var exitBayRect : Rect = new Rect(0,0,180,40);
+	equipRect.center = new Vector2(supportBayRect.width/2, 50);
+	buyEquipsRect.center = new Vector2(supportBayRect.width/2, 100);
+	buyUpgradesRect.center = new Vector2(supportBayRect.width/2, 150);
+	exitBayRect.center = new Vector2(supportBayRect.width/2, 200);
+	supportBayRects[0] = equipRect;
+	supportBayRects[1] = buyEquipsRect;
+	supportBayRects[2] = buyUpgradesRect;
+	supportBayRects[3] = exitBayRect;
+	
+	var	buyEquipablesRects : Rect[] = new Rect[8];
+	var buyEquipablesLabels : String[] = new String[8];
+	for (var i : int = 0; i < 4; i++){
+		var ri : Rect = buttonRect;
+		var si : String = ""+i;
+		ri.center = Vector2(physicalWeaponsRect.center.x, Screen.height/4 + (i * 100));
+		buyEquipablesRects[i] = ri;
+		buyEquipablesLabels[i] = si;
+	}
+	for (var j : int = 4; j < 8; j++){
+		var rj : Rect = buttonRect;
+		var sj : String = ""+j;
+		rj.center = Vector2(energyWeaponsRect.center.x, Screen.height/4 + ((j - 4) * 100));
+		buyEquipablesRects[i] = rj;
+		buyEquipablesLabels[i] = sj;
+	}
+	equipEquipables = JoyGUIMenu(4, buyEquipablesRects, buyEquipablesLabels, "joystick button 0", "Y axis", "X axis");
+	
 }
 
+function Update (){
+	if (supportBay.CheckJoyAxis()){
+		Invoke("Delay", delayBetweenButtons);
+	}
+	currentState = supportBay.CheckJoyButton();
+	supportBay.CheckMousePosition();
+	SupportBay(supportBay.CheckMouseClick());
+}
 function OnGUI (){
+	GUI.skin = mySkin;
+	supportBay.Display();
+
+	//menu.DebugFunc();
+	//Debug.Log(Input.GetAxisRaw("Y axis"));
+
 	if (render == true){
-	GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height),backgroundTex,ScaleMode.StretchToFill,true,1.0);
+	//GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height),backgroundTex,ScaleMode.StretchToFill,true,1.0);
 	Title();
 	if (confirmStarMap == true){
 		GUI.Window(1, popupRect, ConfirmStarMap, "Confirm");
@@ -71,31 +125,31 @@ function OnGUI (){
 	}
 
 	switch (currentState){
-		case Menu.SupportBay:
-			GUI.Window(0,supportBayRect, SupportBay, "Support Bay");
+		case -1:
 			if (Input.GetButtonDown("Pause") && Time.time > optionsLastHit + optionsCooldown){
 				currentState = Menu.Options;
 				optionsLastHit = Time.time;
 			}
 			break;
-		case Menu.EquipEquipables:
+		case 0:
 			Equips();
 			if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
 			break;
-		case Menu.BuyEquipables:
+		case 1:
 			BuyEquips();
 			if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
 			break;
-		case Menu.BuyUpgrades:
+		case 2:
 			BuyUpgrades();
 			if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
 			break;
-		case Menu.Options:
+		case 3:
 			GUI.Window(4, optionsRect, Options, "Options");
 			break;
 	}
 	ButtonLabels();
-	}         
+	} 
+	       
 }
 
 function Title (){
@@ -104,26 +158,20 @@ function Title (){
 	GUI.Label(creditsRect, "Total Credits: "+PlayerStats.totalCredits);
 }
 
-function SupportBay(){
-	var equipRect : Rect = new Rect(0,0,180,40);
-	var buyEquipsRect : Rect = new Rect(0,0,180,40); 
-	var buyUpgradesRect : Rect = new Rect(0,0,180,40);
-	var exitBayRect : Rect = new Rect(0,0,180,40);
-	equipRect.center = new Vector2(supportBayRect.width/2, 50);
-	buyEquipsRect.center = new Vector2(supportBayRect.width/2, 100);
-	buyUpgradesRect.center = new Vector2(supportBayRect.width/2, 150);
-	exitBayRect.center = new Vector2(supportBayRect.width/2, 200);
-	if (GUI.Button(equipRect,"Equip Weapons and Devices")){
-		currentState = Menu.EquipEquipables;
-	}
-	if (GUI.Button(buyEquipsRect, "Buy Equipment")){
-		currentState = Menu.BuyEquipables;
-	}
-	if (GUI.Button(buyUpgradesRect, "Upgrade Ship")){
-		currentState = Menu.BuyUpgrades;
-	}
-	if (GUI.Button(exitBayRect, "Exit Support Bay")){
-		confirmStarMap = true;
+function SupportBay(buttonHit : int){
+	switch (buttonHit){
+		case 0:
+			currentState = Menu.EquipEquipables;
+			break;
+		case 1:
+			currentState = Menu.BuyEquipables;
+			break;
+		case 2:
+			currentState = Menu.BuyUpgrades;
+			break;
+		case 3:
+			confirmStarMap = true;
+			break;
 	}
 }
 
@@ -401,3 +449,7 @@ function ButtonLabels (){
 	}
 }
 
+function Delay (){
+		supportBay.isCheckingJoy = false;
+		equipEquipables.isCheckingJoy = false;
+}	

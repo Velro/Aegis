@@ -799,6 +799,16 @@ MonoBehaviour:
   otherCamera: {fileID: 1080122349}
   inputCoordinatorCamera: {fileID: 571807118}
   currentState: 0
+  menu:
+    vertAxis: 
+    horAxis: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentColumn: 0
+    currentFocus: 0
+    buttons: []
+  mySkin: {fileID: 11400000, guid: 1855fb5ab0937914fbe26eded4d1a545, type: 2}
   optionsCurrentState: 0
 --- !u!81 &1237392900
 AudioListener:

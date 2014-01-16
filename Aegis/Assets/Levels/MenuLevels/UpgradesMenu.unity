@@ -798,17 +798,50 @@ MonoBehaviour:
     m_StretchHeight: 0
   otherCamera: {fileID: 1080122349}
   inputCoordinatorCamera: {fileID: 571807118}
+  inputCoordinator: {fileID: 0}
   currentState: 0
-  menu:
+  supportBay:
     vertAxis: 
     horAxis: 
+    inButton: 
     numberOfColumns: 0
     buttonsPerColumn: 0
     isCheckingJoy: 0
-    currentColumn: 0
     currentFocus: 0
     buttons: []
+    enabled: 1
+  equipEquipables:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
+  buyEquipables:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
+  confirmBuyEquipable:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
   mySkin: {fileID: 11400000, guid: 1855fb5ab0937914fbe26eded4d1a545, type: 2}
+  delayBetweenButtons: .25
   optionsCurrentState: 0
 --- !u!81 &1237392900
 AudioListener:

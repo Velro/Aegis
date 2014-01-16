@@ -13,20 +13,19 @@ public static var weaponOne : String;
 public static var weaponTwo : String;
 public static var weaponThree : String;
 public static var weaponFour : String;
-
-public static var usingController : boolean = false; //xbox stated explicitly because setup will be a little different with other controllers *sigh*
-public static var usingMouseAndKeyboard : boolean = true;
-static var rightTrigger : AxisInput;
-static var leftTrigger : AxisInput;
-static var rightBumper : String;
-static var leftBumper : String;
-static var leftStickHor : AxisInput;
-static var leftStickVert : AxisInput;
-static var rightStickHor : AxisInput;
-static var rightStickVert : AxisInput;
-static var confirm : String;
-static var back : String;
-static var pause : String;
+public static var usingController : boolean = true;
+public static var usingMouseAndKeyboard : boolean = false;
+public static var rightTrigger : AxisInput;
+public static var leftTrigger : AxisInput;
+public static var rightBumper : String;
+public static var leftBumper : String;
+public static var leftStickHor : AxisInput;
+public static var leftStickVert : AxisInput;
+public static var rightStickHor : AxisInput;
+public static var rightStickVert : AxisInput;
+public static var confirm : String = "joystick button 0";
+public static var back : String = "joystick button 1";
+public static var pause : String;
 
 public var controllerSetup : boolean = false;
 
@@ -376,7 +375,9 @@ function  OnGUI() {
 }
 function Start (){
 	leftStickVert = new AxisInput();
+	leftStickVert.axis = "Y axis";
 	leftStickHor = new AxisInput();
+	leftStickHor.axis = "X axis";
 	rightStickVert = new AxisInput();
 	rightStickHor = new AxisInput();
 	rightTrigger = new AxisInput();

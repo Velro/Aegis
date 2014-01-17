@@ -24,12 +24,11 @@ energyWeaponsRect.center = 		new Vector2((Screen.width/8)*2+15, Screen.height/2)
 explosiveWeaponsRect.center = 	new Vector2((Screen.width/8)*3+30, Screen.height/2);
 devicesRect.center = 			new Vector2((Screen.width/8)*5, Screen.height/2);
 supportBayRect.center = 		new Vector2(Screen.width/2, Screen.height/2);
-private var optionsCooldown : float = 0.25;
 private var optionsLastHit : float = 0;
 private var popupRect = Rect(0,0,Screen.width/4,Screen.height/4);
 popupRect.center = Vector2(Screen.width/2, Screen.height/2);
-private var optionsRect = Rect(0,0,Screen.width/2,(Screen.height/4)*3);
-optionsRect.center = Vector2(Screen.width/2, Screen.height/2);
+private var optionsMenuRect = Rect(0,0,Screen.width/2,(Screen.height/4)*3);
+optionsMenuRect.center = Vector2(Screen.width/2, Screen.height/2);
 var otherCamera : GameObject;
 var inputCoordinatorCamera : GameObject;
 var inputCoordinator : InputCoordinator;
@@ -40,16 +39,20 @@ enum Menu {
 	BuyEquipables,
 	ConfirmBuyEquipable,
 	BuyUpgrades,
-	Options
+	Options,
+	InputOptions
 }
 
 var currentState : Menu = Menu.SupportBay;
 
 //Joy vars
-var supportBay : JoyGUIMenu;
-var equipEquipables : JoyGUIMenu;
-var buyEquipables : JoyGUIMenu;
-var confirmBuyEquipable : JoyGUIMenu;
+var supportBayMenu : JoyGUIMenu;
+var equipEquipablesMenu : JoyGUIMenu;
+var buyEquipablesMenu : JoyGUIMenu;
+var confirmBuyEquipableMenu : JoyGUIMenu;
+var optionsMenu : JoyGUIMenu;
+var inputOptionsMenu : JoyGUIMenu;
+
 var mySkin : GUISkin;
 var delayBetweenButtons : float = 0.25;
 //end Joy Vars
@@ -82,7 +85,7 @@ function Start (){
 	supportBayLabels[1] = "Buy Equipment";
 	supportBayLabels[2] = "Buy Upgrades";
 	supportBayLabels[3] = "Exit Support Bay";
-	supportBay = JoyGUIMenu(4, supportBayRects, supportBayLabels,  InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
+	supportBayMenu = JoyGUIMenu(4, supportBayRects, supportBayLabels,  InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
 	
 	var	buyEquipablesRects : Rect[] = new Rect[20];
 	var buyEquipablesLabels : String[] = new String[20];
@@ -115,82 +118,143 @@ function Start (){
 	for (var n : int = 0; n < allUpgrades.length; n++){
 		buyEquipablesLabels[n] = allUpgrades[n].name;
 	}
-	buyEquipables = JoyGUIMenu(4, buyEquipablesRects, buyEquipablesLabels,  InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
+	buyEquipablesMenu = JoyGUIMenu(4, buyEquipablesRects, buyEquipablesLabels,  InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
 	
 	var confirmBuyEquipableRects : Rect[] = new Rect[2];
-	confirmBuyEquipableRects[0] = new Rect(popupRect.center.x - (buttonRect.width/2), popupRect.center.y+buttonRect.height, buttonRect.width, buttonRect.height);
-	confirmBuyEquipableRects[1] = new Rect(popupRect.center.x + (buttonRect.width/2), popupRect.center.y+buttonRect.height, buttonRect.width, buttonRect.height);
+	confirmBuyEquipableRects[0] = new Rect(popupRect.center.x - (buttonRect.width*0.75), popupRect.center.y, buttonRect.width*0.75, buttonRect.height*0.75);
+	confirmBuyEquipableRects[1] = new Rect(popupRect.center.x + (buttonRect.width*0.25), popupRect.center.y, buttonRect.width*0.75, buttonRect.height*0.75);
 	var confirmBuyEquipableLabels : String[] = new String[2];
 	confirmBuyEquipableLabels[0] = "Confirm";
 	confirmBuyEquipableLabels[1] = "Back";
-	confirmBuyEquipable = JoyGUIMenu(1, confirmBuyEquipableRects, confirmBuyEquipableLabels, InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
+	confirmBuyEquipableMenu = JoyGUIMenu(1, confirmBuyEquipableRects, confirmBuyEquipableLabels, InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
 	
-	supportBay.enabled = true;
-	equipEquipables.enabled = false;
-	buyEquipables.enabled = false;
-	confirmBuyEquipable.enabled = false;
+	var optionsMenuRects : Rect[] = new Rect[2];
+	var optionsMenuLabels : String[] = new String[2];
+	optionsMenuRects[0] = new Rect(0,0,buttonRect.width, buttonRect.height);
+	optionsMenuRects[1] = new Rect(0,0,buttonRect.width, buttonRect.height);
+	optionsMenuRects[0].center = new Vector2(optionsMenuRect.center.x, optionsMenuRect.y+(buttonRect.height*2));
+	optionsMenuRects[1].center = new Vector2(optionsMenuRect.center.x, optionsMenuRect.y+(buttonRect.height*3.5));
+	optionsMenuLabels[0] = "Input";
+	optionsMenuLabels[1] = "Sound";
+	optionsMenu = JoyGUIMenu(2,optionsMenuRects,optionsMenuLabels,InputCoordinator.confirm,InputCoordinator.leftStickVert.axis,inputCoordinator.leftStickHor.axis);
+	
+	var inputOptionsMenuRects : Rect[] = new Rect[1];
+	var inputOptionsMenuLabels : String[] = new String[1];
+	inputOptionsMenuRects[0] = new Rect(0,0,buttonRect.width,buttonRect.height);
+	inputOptionsMenuRects[0].center = new Vector2(optionsMenuRect.center.x, optionsMenuRect.y + buttonRect.height/2);
+	inputOptionsMenuLabels[0] = "Controller Setup";
+	inputOptionsMenu = JoyGUIMenu(1, inputOptionsMenuRects, inputOptionsMenuLabels,InputCoordinator.confirm,InputCoordinator.leftStickVert.axis,inputCoordinator.leftStickHor.axis);
+	
+	supportBayMenu.enabled = true;
+	equipEquipablesMenu.enabled = false;
+	buyEquipablesMenu.enabled = false;
+	confirmBuyEquipableMenu.enabled = false;
+	optionsMenu.enabled = false;
+	inputOptionsMenu.enabled = false;
 }
 
 function Update (){
 	
 	switch (currentState){
 		case Menu.SupportBay:
-			supportBay.enabled = true;
-			equipEquipables.enabled = false;
-			buyEquipables.enabled = false;
+			supportBayMenu.enabled = true;
+			equipEquipablesMenu.enabled = false;
+			buyEquipablesMenu.enabled = false;
+			optionsMenu.enabled = false;
+			inputOptionsMenu.enabled = false;
 			if (InputCoordinator.usingController){
-				if (supportBay.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
-				SupportBay(supportBay.CheckJoyButton());
+				if (supportBayMenu.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
+				SupportBay(supportBayMenu.CheckJoyButton());
 			}
 			if (InputCoordinator.usingMouseAndKeyboard){
-				supportBay.CheckMousePosition();
-				SupportBay(supportBay.CheckMouseClick());	
+				supportBayMenu.CheckMousePosition();
+				SupportBay(supportBayMenu.CheckMouseClick());	
 			}
-			if (Input.GetButtonDown("Pause") && Time.time > optionsLastHit + optionsCooldown){
+			if ((Input.GetButtonDown("Pause") || (Input.GetButtonDown(InputCoordinator.pause))) && Time.time > optionsLastHit + 0.25){
 					currentState = Menu.Options;
 					optionsLastHit = Time.time;
-			}	
-			break;
-		case Menu.EquipEquipables:
-			equipEquipables.enabled = true;
-			Equips(equipEquipables.CheckMouseClick());
-			Equips(equipEquipables.CheckJoyButton());
-			break;
-		case Menu.ConfirmBuyEquipable:
-			buyEquipables.enabled = true;
-			confirmBuyEquipable.enabled = true;
-			if (InputCoordinator.usingController){
-				if (confirmBuyEquipable.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
-				ConfirmEquipPurchase(confirmBuyEquipable.CheckJoyButton());
-			}	
-			if (InputCoordinator.usingMouseAndKeyboard){
-				confirmBuyEquipable.CheckMousePosition();
-				ConfirmEquipPurchase(confirmBuyEquipable.CheckMouseClick());
 			}
 			break;
-		case Menu.BuyEquipables:
-			supportBay.enabled = false;
-			buyEquipables.enabled = true;
+		case Menu.EquipEquipables:
+			equipEquipablesMenu.enabled = true;
+			Equips(equipEquipablesMenu.CheckMouseClick());
+			Equips(equipEquipablesMenu.CheckJoyButton());
+			break;
+		case Menu.ConfirmBuyEquipable:
+			buyEquipablesMenu.enabled = true;
+			confirmBuyEquipableMenu.enabled = true;
 			if (InputCoordinator.usingController){
-				if (buyEquipables.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
-				BuyEquips(buyEquipables.CheckJoyButton());
+				if (confirmBuyEquipableMenu.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
+				ConfirmEquipPurchase(confirmBuyEquipableMenu.CheckJoyButton());
 			}	
 			if (InputCoordinator.usingMouseAndKeyboard){
-				buyEquipables.CheckMousePosition();
-				BuyEquips(buyEquipables.CheckMouseClick());
+				confirmBuyEquipableMenu.CheckMousePosition();
+				ConfirmEquipPurchase(confirmBuyEquipableMenu.CheckMouseClick());
+			}
+			
+			break;
+		case Menu.BuyEquipables:
+			supportBayMenu.enabled = false;
+			buyEquipablesMenu.enabled = true;
+			if (InputCoordinator.usingController){
+				if (buyEquipablesMenu.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
+				BuyEquips(buyEquipablesMenu.CheckJoyButton());
+				if (Input.GetButtonDown(InputCoordinator.back)){
+					currentState = Menu.SupportBay;
+					buyEquipablesMenu.UnClickAll();
+				}
+			}	
+			if (InputCoordinator.usingMouseAndKeyboard){
+				buyEquipablesMenu.CheckMousePosition();
+				BuyEquips(buyEquipablesMenu.CheckMouseClick());
+			}
+
+			break;
+		case Menu.Options:
+			optionsMenu.enabled = true;
+			if (InputCoordinator.usingController){
+				if (optionsMenu.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
+				Options(optionsMenu.CheckJoyButton());
+				if (Input.GetButtonDown(InputCoordinator.back)){
+					currentState = Menu.SupportBay;
+					optionsMenu.UnClickAll();
+				}
+			}
+			if (InputCoordinator.usingMouseAndKeyboard){
+				optionsMenu.CheckMousePosition();
+				Options(optionsMenu.CheckMouseClick());
+			}
+			if ((Input.GetButtonDown("Pause") || (Input.GetButtonDown(InputCoordinator.pause))) && Time.time > optionsLastHit + 0.25){
+				currentState = Menu.SupportBay;
+				optionsLastHit = Time.time;
+			}
+			break;
+		case Menu.InputOptions:
+			inputOptionsMenu.enabled = true;
+			if (InputCoordinator.usingController){
+				if (inputOptionsMenu.CheckJoyAxis())Invoke("Delay", delayBetweenButtons);
+				InputOptions(inputOptionsMenu.CheckJoyButton());
+				if (Input.GetButtonDown(InputCoordinator.back)){
+					currentState = Menu.SupportBay;
+					inputOptionsMenu.UnClickAll();
+				}
+			}
+			if (InputCoordinator.usingMouseAndKeyboard){
+				inputOptionsMenu.CheckMousePosition();
+				InputOptions(inputOptionsMenu.CheckMouseClick());
+			}
+			if ((Input.GetButtonDown("Pause") || (Input.GetButtonDown(InputCoordinator.pause))) && Time.time > optionsLastHit + 0.25){
+				currentState = Menu.SupportBay;
+				optionsLastHit = Time.time;
 			}
 			break;
 	}
-
-
-	
 
 }
 
 function OnGUI (){
 	GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height),backgroundTex,ScaleMode.StretchToFill,true,1.0);
 	GUI.skin = mySkin;
-	
 	
 	if (render == true){
 		Title();
@@ -203,8 +267,7 @@ function OnGUI (){
 
 		switch (currentState){
 			case Menu.SupportBay:
-
-				supportBay.Display();
+				supportBayMenu.Display();
 				break;
 			case Menu.EquipEquipables:
 				if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
@@ -213,7 +276,7 @@ function OnGUI (){
 				GUI.Box(energyWeaponsRect, "Energy Weapons");
 				GUI.Box(explosiveWeaponsRect, "Explosive Weapons");
 				GUI.Box(devicesRect, "Devices");
-				equipEquipables.Display();
+				equipEquipablesMenu.Display();
 				break;
 			case Menu.BuyEquipables:
 				if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
@@ -222,22 +285,27 @@ function OnGUI (){
 				GUI.Box(energyWeaponsRect, "Energy Weapons");
 				GUI.Box(explosiveWeaponsRect, "Explosive Weapons");
 				GUI.Box(devicesRect, "Devices");
-				buyEquipables.Display();
+				buyEquipablesMenu.Display();
 				break;
 			case Menu.ConfirmBuyEquipable:
 				GUI.Box(physicalWeaponsRect,"Physical Weapons");
 				GUI.Box(energyWeaponsRect, "Energy Weapons");
 				GUI.Box(explosiveWeaponsRect, "Explosive Weapons");
 				GUI.Box(devicesRect, "Devices");
-				buyEquipables.Display();
-				GUI.Box(popupRect, "Confirm");
-				confirmBuyEquipable.Display();
+				buyEquipablesMenu.Display();
+				GUI.Box(popupRect, "Confirm", "window");
+				confirmBuyEquipableMenu.Display();
 			case Menu.BuyUpgrades:
 				BuyUpgrades();
 				if (Input.GetButtonDown("Pause"))currentState = Menu.SupportBay;
 				break;
 			case Menu.Options:
-				GUI.Window(4, optionsRect, Options, "Options");
+				GUI.Box(optionsMenuRect, "Options", "window");
+				optionsMenu.Display();
+				break;
+			case Menu.InputOptions:
+				GUI.Box(optionsMenuRect, "Input Options", "window");
+				inputOptionsMenu.Display();
 				break;
 		}
 		ButtonLabels();
@@ -255,12 +323,15 @@ function SupportBay(buttonHit : int){
 	switch (buttonHit){
 		case 0:
 			currentState = Menu.EquipEquipables;
+			supportBayMenu.UnClickAll();
 			break;
 		case 1:
 			currentState = Menu.BuyEquipables;
+			supportBayMenu.UnClickAll();
 			break;
 		case 2:
 			currentState = Menu.BuyUpgrades;
+			supportBayMenu.UnClickAll();
 			break;
 		case 3:
 			confirmStarMap = true;
@@ -310,15 +381,18 @@ function ConfirmEquipPurchase(currentSelection : int){
 			PlayerStats.totalCredits -= allUpgrades[toBeBought].cost;
 			unlockedUpgrades.Push(allUpgrades[toBeBought]);
 			allUpgrades[toBeBought].bought = true;
-			buyEquipables.buttons[toBeBought].bought = true;
-			buyEquipables.buttons[toBeBought].enabled = false;
+			buyEquipablesMenu.buttons[toBeBought].bought = true;
+			buyEquipablesMenu.buttons[toBeBought].enabled = false;
 			currentState = Menu.BuyEquipables;
 			break;
 		case 1:
 			currentState = Menu.BuyEquipables;
 			break;
 	}
-	if (Input.GetButtonDown(InputCoordinator.back))currentState = Menu.BuyEquipables;
+	if (Input.GetButtonDown(InputCoordinator.back)){
+		currentState = Menu.BuyEquipables;
+		buyEquipablesMenu.UnClickAll();
+	}
 }
 
 function EquipSelection (windowID : int){
@@ -357,37 +431,25 @@ function EquipSelection (windowID : int){
 	}*/
 }
 
-enum OptionsMenu {
-	Base,
-	InputOptions
+function Options (buttonHit : int) {
+	switch (buttonHit){
+		case 0:
+			currentState = Menu.InputOptions;
+			optionsMenu.UnClickAll();
+			break;
+	}
+
 }
-var optionsCurrentState : OptionsMenu = OptionsMenu.Base;
 
-function Options (windowID : int) {
-	//var optionsButtonRect : Rect = Rect(0,0,optionsRect.width - 10, optionsRect.height - 10);
-	//optionsButtonRect.center = Vector2(Screen.width/2, (Screen.height/8) * 4);
-	GUILayout.Space(10);
-	switch (optionsCurrentState){
-		case OptionsMenu.Base:
-			if (GUILayout.Button("Input Options")){
-				optionsCurrentState = OptionsMenu.InputOptions;
-			}
-			break;
-		
-		case OptionsMenu.InputOptions:
-			if (GUILayout.Button("Controller Setup")){
-				inputCoordinatorCamera.GetComponent(InputCoordinator).controllerSetup = true;
-				render = false;
-			}
-			
+function InputOptions (buttonHit : int){
+	switch (buttonHit){
+		case 0:
+			inputCoordinatorCamera.GetComponent(InputCoordinator).controllerSetup = true;
+			render = false;
+			optionsMenu.UnClickAll();
 			break;
 	}
 
-	
-	if (Input.GetButtonDown("Pause") && Time.time > optionsLastHit + optionsCooldown){
-		currentState = Menu.SupportBay;
-		optionsLastHit = Time.time;
-	}
 }
 
 function ButtonLabels (){
@@ -398,10 +460,12 @@ function ButtonLabels (){
 }
 
 function Delay (){
-		supportBay.isCheckingJoy = false;
-		equipEquipables.isCheckingJoy = false;
-		buyEquipables.isCheckingJoy = false;
-		confirmBuyEquipable.isCheckingJoy = false;
+		supportBayMenu.isCheckingJoy = false;
+		equipEquipablesMenu.isCheckingJoy = false;
+		buyEquipablesMenu.isCheckingJoy = false;
+		confirmBuyEquipableMenu.isCheckingJoy = false;
+		optionsMenu.isCheckingJoy = false;
+		inputOptionsMenu.isCheckingJoy = false;
 }	
 
 function CheckInputCoordinator(){

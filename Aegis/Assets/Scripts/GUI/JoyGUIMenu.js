@@ -28,7 +28,7 @@ class JoyGUIMenu {
 		for (var z : int = 0; z < rectangles.length; z++){
 			buttons[z] = new JoyGUIButton(rectangles[z], labels[z]);
 		}
-		//buttons[0].Focus(true);
+		buttons[0].Focus(true);
 	}
 
 	function DebugFunc (){
@@ -149,7 +149,12 @@ class JoyGUIMenu {
 		return pressedButton;
 	}
 
-
+	function UnClickAll (){
+		for (var butt : JoyGUIButton in buttons){
+			butt.UnClick();
+		}
+	}
+	
 	function Display(){
 		if (enabled){
 			for (var butt : JoyGUIButton in buttons){

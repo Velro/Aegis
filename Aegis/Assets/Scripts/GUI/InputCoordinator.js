@@ -25,7 +25,7 @@ public static var rightStickHor : AxisInput;
 public static var rightStickVert : AxisInput;
 public static var confirm : String = "joystick button 0";
 public static var back : String = "joystick button 1";
-public static var pause : String;
+public static var pause : String = "joystick button 7";
 
 public var controllerSetup : boolean = false;
 
@@ -365,9 +365,10 @@ function  OnGUI() {
 			case ControllerInputChoice.Complete:
 				//write preferences to UserPrefs
 				//if (controllerSetup == true)GUI.Label(controllerLabelRect,"Setup Complete!", labelStyle);
-				if (Time.time > lastTime + 4){
+				if (Time.time > lastTime + 0.25){
 					Camera.main.gameObject.GetComponent(UpgroidsGUI).render = true;
-					controllerSetup = true;
+					Camera.main.gameObject.GetComponent(UpgroidsGUI).currentState = Menu.InputOptions;
+					controllerSetup = false;
 				}
 				break;
 		}
@@ -402,7 +403,9 @@ function SetupKeyboard (){
 function SetupController(){
 
 }
-
+function WipeCurrentLayout (){
+	
+}
 function Countdown (){
 	if (Time.time < lastTime + delayBetween){
 		//GUI.Label(controllerLabelRect,"Next input in "+(Mathf.RoundToInt((lastTime + delayBetween) - Time.time)+1),labelStyle);

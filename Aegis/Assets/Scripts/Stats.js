@@ -13,13 +13,14 @@ var health : float = 10;
 var maxHealth : float = 100;
 var speed : float = 1;
 var exp : float = 10;
-var enemyType : EnemyType = EnemyType.Physical;
+var enemyType : EnemyType = EnemyType.None;
 
 //@System.NonSerialized
 var hitWithWeakness : boolean = false;
 
 public enum EnemyType {
-	Physical,
+	None,
+	Armored,
 	Organic,
 	Voltaic,
 	Player

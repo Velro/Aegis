@@ -1,5 +1,7 @@
 ﻿#pragma strict
+@script AddComponentMenu("Player/Weapons/FusionBeamInstance")
 
+@System.NonSerializedAttribute
 var damage : float;
 var player : GameObject;
 private var nozzle : Transform;

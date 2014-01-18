@@ -42,8 +42,9 @@ function OnCollisionEnter (other : Collision){
 		
 		if (other.gameObject.GetComponent(Stats)!= null){
 			damage = other.gameObject.GetComponent(Stats).damage; //retrieve how much damage "other" does
-		} else if (other.transform.parent.gameObject.GetComponent(Stats) != null){
-			damage = other.transform.parent.gameObject.GetComponent(Stats).damage;
+		} else if (other.transform.parent != null){
+			if (other.transform.parent.gameObject.GetComponent(Stats) != null)
+				damage = other.transform.parent.gameObject.GetComponent(Stats).damage;
 			//Debug.Log("parent's damage grabbed");
 		} else {
 			//Debug.Log("No Stats on gameObject or parent");

@@ -8,6 +8,7 @@ var overheatTime : float = 1;			//time you are overheated
 var speedReduction : float = 0.5;		//overheat penalty
 var expWindow : float = 2;
 
+var invincible : boolean = false;
 public static var totalCredits : int  = 5000;
 var creditsThisLevel : int = 0;
 private var beginOverheat : float;
@@ -47,19 +48,20 @@ class Weapon extends System.Object {
 
 var allEquipables = new Array();
 var weapons : Weapon[];
-selections = new String[4];
+var selections = new String[4];
+
 var VulcanCannonStats : Weapon;
 var FusionBeamStats : Weapon;
 var ShieldStats : Weapon;
 var CoolantTankStats : Weapon;
-var selections : String[];
+var ArcNadeStats : Weapon;
 
 
 function Awake () {
 	if (Application.platform != RuntimePlatform.WindowsEditor){
 		selections = UpgroidsGUI.selections.ToBuiltin(String) as String[];
 	}
-	var allEquipables = new Array(VulcanCannonStats, FusionBeamStats,ShieldStats,CoolantTankStats);
+	var allEquipables = new Array(VulcanCannonStats, FusionBeamStats, ArcNadeStats, ShieldStats, CoolantTankStats);
 	var convAllEquipables :Weapon[] = allEquipables.ToBuiltin(Weapon) as Weapon[];
 	weapons = new Weapon[4];
 	var weaponsIndex : int = 0;
@@ -97,6 +99,9 @@ function Update () {
 		
 		gameObject.GetComponent(Stats).speed /= speedReduction;
 	}
+	if (invincible){
+		gameObject.GetComponent(Stats).health = 100;
+	}
 }
 
 function CheckLevel () {
@@ -131,6 +136,11 @@ function CheckLevel () {
 	if (CoolantTankStats.level == 1)CoolantTankStats.currentLevel = CoolantTankStats.level1;
 	if (CoolantTankStats.level == 2)CoolantTankStats.currentLevel = CoolantTankStats.level2;
 	if (CoolantTankStats.level == 3)CoolantTankStats.currentLevel = CoolantTankStats.level3;
+	
+	if (ArcNadeStats.level == 0)ArcNadeStats.currentLevel = ArcNadeStats.level0;
+	if (ArcNadeStats.level == 1)ArcNadeStats.currentLevel = ArcNadeStats.level1;
+	if (ArcNadeStats.level == 2)ArcNadeStats.currentLevel = ArcNadeStats.level2;
+	if (ArcNadeStats.level == 3)ArcNadeStats.currentLevel = ArcNadeStats.level3;
 }
 
 function GiveExp (exp : float, time : float){

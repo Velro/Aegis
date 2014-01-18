@@ -1,11 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InputCoordinator.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Stats.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\JoyGUIMenu.js" Line="153" Column="42" />
-      <File FileName="Assets\Scripts\GUI\JoyGUIButton.js" Line="69" Column="4" />
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="402" Column="85" />
-      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNade.js" Line="47" Column="75" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="59" Column="46" />
+      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="33" Column="28" />
+      <File FileName="Assets\Scripts\Player\Weapons\VulcanCannon.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MoveBullet.js" Line="53" Column="1" />
+      <File FileName="Assets\Scripts\Stats.js" Line="16" Column="43" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="47" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -8,7 +8,7 @@ var toEnable : GameObject[];
 function OnTriggerEnter (other : Collider){
 	if (other.tag == "Player"){
 		hit = true;
-		Debug.Log("Entered trigger "+gameObject.name);
+//		Debug.Log("Entered trigger "+gameObject.name);
 		for (var object : GameObject in toEnable){
 			if (object != null){
 				object.SetActive(true);

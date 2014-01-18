@@ -6,13 +6,16 @@ var parentPath : Transform;
 private var pathPoints : Transform[];
 var speed : float = 25;
 var rotateToPath : boolean = false;
-private var t : float;
+@System.NonSerializedAttribute
+var t : float;
 private var q : Quaternion;
+var waitingForParentPathAssignment : boolean = false;
 
 function Start () {
-	pathPoints = new Transform[parentPath.childCount];
-	for (var i : int = 0; i < parentPath.childCount; i++){
-		pathPoints[i] = parentPath.GetChild(i);
+	if (parentPath != null){
+		AssignParentPath();
+	} else {
+		waitingForParentPathAssignment = true;
 	}
 	if (gameObject.GetComponent(Stats) != null){
 		speed = gameObject.GetComponent(Stats).speed;
@@ -25,14 +28,26 @@ function Start () {
 }
 
 function Update () {
-	if (!rotateToPath){
-	    transform.position = Spline.MoveOnPath(pathPoints, transform.position, t,
-	    	speed,100,EasingType.Sine, true, true);
-    }
-    if (rotateToPath){
-    	transform.position = Spline.MoveOnPath(pathPoints, transform.position, t, q,
-	    	speed,100f,EasingType.Sine, true, true);
-	    q.eulerAngles.x = 90;
-	    transform.rotation = q;
-    }
+	if (!waitingForParentPathAssignment){
+		if (!rotateToPath){
+		    transform.position = Spline.MoveOnPath(pathPoints, transform.position, t,
+		    	speed,100,EasingType.Sine, true, true);
+	    }
+	    if (rotateToPath){
+	    	transform.position = Spline.MoveOnPath(pathPoints, transform.position, t, q,
+		    	speed,100f,EasingType.Sine, true, true);
+		    q.eulerAngles.x = 90;
+		    transform.rotation = q;
+	    }
+	} else if (waitingForParentPathAssignment && parentPath != null){
+		AssignParentPath();
+	}
+}
+
+function AssignParentPath (){
+		pathPoints = new Transform[parentPath.childCount];
+		for (var i : int = 0; i < parentPath.childCount; i++){
+			pathPoints[i] = parentPath.GetChild(i);
+		}
+		waitingForParentPathAssignment = false;
 }

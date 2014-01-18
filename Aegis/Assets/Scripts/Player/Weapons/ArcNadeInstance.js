@@ -1,35 +1,36 @@
 ﻿#pragma strict
-/*
-* Script for pushing our linear bullets. 
-*/
-private var speed : float;
-private var damage : float;
-var left : boolean = false;
-var right : boolean = false;
-var strongAgainst : EnemyType = EnemyType.Organic;
-var weaponType : WeaponType = WeaponType.Projectile;
+@script AddComponentMenu("Player/Weapons/ArcNadeInstance")
+
+@System.NonSerializedAttribute
+var damage : float = 0;
+var explosionRadius : float = 10;
+var strongAgainst : EnemyType = EnemyType.Armored;
+var weaponType : WeaponType = WeaponType.Explosive;
 var superEffectiveCoef : float = 2;
+
+function Start () {
+	CheckStats();
+}
 
 function Update () {
 	CheckStats();
-	if (right){
-		transform.position += transform.right * speed * Time.deltaTime;
-		transform.position.y = 0;
-
+	if (gameObject.GetComponent(CurvePaths).t == 1){
+		Explode();
 	}
-	if (left){
-		transform.position -= transform.right * speed * Time.deltaTime;
-		transform.position.y = 0;
-	}
+	
 }
 
-function OnTriggerEnter (other : Collider) {
+function OnCollisionEnter (){
+	Explode();
+}
+
+function OnTriggerEnter (other : Collider){
 	if (other.gameObject.GetComponent(Stats) != null){
 		if (other.gameObject.GetComponent(Stats).enemyType == strongAgainst){
 			other.gameObject.GetComponent(Stats).health -= damage * superEffectiveCoef;
 			other.gameObject.GetComponent(Stats).hitWithWeakness = true;
 			InstantiateSuperEffectiveSystem(other);
-	//		Debug.Log("SUPER EFFECTIVE");
+			Debug.Log("SUPER EFFECTIVE");
 		} else {
 			other.gameObject.GetComponent(Stats).health -= damage;
 		}
@@ -39,7 +40,7 @@ function OnTriggerEnter (other : Collider) {
 				other.transform.parent.gameObject.GetComponent(Stats).health -= damage*superEffectiveCoef;
 				other.transform.parent.	gameObject.GetComponent(Stats).hitWithWeakness = true;
 				InstantiateSuperEffectiveSystem(other);
-//				Debug.Log("SUPER EFFECTIVE");
+				Debug.Log("SUPER EFFECTIVE");
 			} else {
 				other.transform.parent.gameObject.GetComponent(Stats).health -= damage;
 			}
@@ -47,7 +48,21 @@ function OnTriggerEnter (other : Collider) {
 	} else {
 		Debug.Log("other and its parents has no stats");
 	}
-	if (gameObject != null)Destroy (gameObject);
+}
+
+private var thisExplosionEffect : GameObject; 
+function Explode (){
+	var l = Mathf.Lerp(0,explosionRadius, Time.time);
+	gameObject.GetComponent(SphereCollider).enabled = true;
+	gameObject.GetComponent(SphereCollider).radius = l;
+	if (l == explosionRadius){
+		gameObject.GetComponent(Stats).health = -1;
+	
+	}
+}	
+
+function CheckStats(){
+	damage = gameObject.GetComponent(Stats).damage;
 }
 
 function InstantiateSuperEffectiveSystem (other : Collider) {
@@ -58,9 +73,4 @@ function InstantiateSuperEffectiveSystem (other : Collider) {
 		instance.transform.rotation = Quaternion.Euler(transform.rotation.y - 180, 270, 90);
 //		Debug.Log(instance.name);
 		Destroy(instance, 3);
-}
-
-function CheckStats () {
-	speed = gameObject.GetComponent(Stats).speed;
-	damage = gameObject.GetComponent(Stats).damage;
 }

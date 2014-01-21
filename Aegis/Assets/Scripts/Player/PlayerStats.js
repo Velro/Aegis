@@ -55,13 +55,13 @@ var FusionBeamStats : Weapon;
 var ShieldStats : Weapon;
 var CoolantTankStats : Weapon;
 var ArcNadeStats : Weapon;
-
+var BlunderBusterStats : Weapon;
 
 function Awake () {
 	if (Application.platform != RuntimePlatform.WindowsEditor){
 		selections = UpgroidsGUI.selections.ToBuiltin(String) as String[];
 	}
-	var allEquipables = new Array(VulcanCannonStats, FusionBeamStats, ArcNadeStats, ShieldStats, CoolantTankStats);
+	var allEquipables = new Array(VulcanCannonStats, FusionBeamStats, ArcNadeStats, BlunderBusterStats, ShieldStats, CoolantTankStats);
 	var convAllEquipables :Weapon[] = allEquipables.ToBuiltin(Weapon) as Weapon[];
 	weapons = new Weapon[4];
 	var weaponsIndex : int = 0;
@@ -141,6 +141,11 @@ function CheckLevel () {
 	if (ArcNadeStats.level == 1)ArcNadeStats.currentLevel = ArcNadeStats.level1;
 	if (ArcNadeStats.level == 2)ArcNadeStats.currentLevel = ArcNadeStats.level2;
 	if (ArcNadeStats.level == 3)ArcNadeStats.currentLevel = ArcNadeStats.level3;
+	
+	if (BlunderBusterStats.level == 0)BlunderBusterStats.currentLevel = BlunderBusterStats.level0;
+	if (BlunderBusterStats.level == 1)BlunderBusterStats.currentLevel = BlunderBusterStats.level1;
+	if (BlunderBusterStats.level == 2)BlunderBusterStats.currentLevel = BlunderBusterStats.level2;
+	if (BlunderBusterStats.level == 3)BlunderBusterStats.currentLevel = BlunderBusterStats.level3;
 }
 
 function GiveExp (exp : float, time : float){

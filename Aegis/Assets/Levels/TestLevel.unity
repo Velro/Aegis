@@ -2436,7 +2436,7 @@ MonoBehaviour:
   weapons: []
   selections:
   - Fusion Beam
-  - Vulcan Cannon
+  - Blunder Buster
   - Arc Nade
   - Coolant Tank
   VulcanCannonStats:
@@ -2539,6 +2539,26 @@ MonoBehaviour:
       heatCost: 40
       cooldown: 1.5
     weaponType: 1
+  BlunderBusterStats:
+    level: 0
+    name: Blunder Buster
+    level0:
+      damage: 20
+      heatCost: 10
+      cooldown: 2
+    level1:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+    level2:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+    level3:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+    weaponType: 0
 --- !u!82 &157646185
 AudioSource:
   m_ObjectHideFlags: 0

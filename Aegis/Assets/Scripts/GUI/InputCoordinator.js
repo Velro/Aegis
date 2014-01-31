@@ -382,7 +382,7 @@ function Start (){
 	rightStickVert = new AxisInput();
 	rightStickVert.axis = "4th axis";
 	rightStickHor = new AxisInput();
-	rightStickhor.axis = "5th axis";
+	rightStickHor.axis = "5th axis";
 	rightTrigger = new AxisInput();
 	rightTrigger.axis = "3rd axis";
 	leftTrigger = new AxisInput();

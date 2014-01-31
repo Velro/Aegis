@@ -380,9 +380,14 @@ function Start (){
 	leftStickHor = new AxisInput();
 	leftStickHor.axis = "X axis";
 	rightStickVert = new AxisInput();
+	rightStickVert.axis = "4th axis";
 	rightStickHor = new AxisInput();
+	rightStickhor.axis = "5th axis";
 	rightTrigger = new AxisInput();
+	rightTrigger.axis = "3rd axis";
 	leftTrigger = new AxisInput();
+	leftTrigger.axis = "4th axis";
+	
 	controllerTexRect = new Rect(0,0,(Screen.width/4)*2,(Screen.height/4)*2);
 	controllerTexRect.center = new Vector2(Screen.width/2, Screen.height/3);
 	controllerLabelRect = new Rect(0,0,(Screen.width), Screen.height/10);

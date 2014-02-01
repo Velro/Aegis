@@ -193,13 +193,4 @@ function FlashRed () {
 		lastFlash1 = Time.time + 0.05;
 		bool1 = !bool1;
 	}
-}
-
-
-
-
-
-
-
-
-	
+}	

@@ -27,22 +27,40 @@ function Update () {
 		var instance1 : GameObject;
 		var instance2 : GameObject;
 		var instance3 : GameObject;
-		if (playerStats.BlunderBusterStats.level == 0){
-			var sightRotation : Quaternion = sight.transform.rotation;
-			var instance1rotation : Quaternion = sightRotation;
+		var sightRotation : Quaternion = sight.transform.rotation;
+		var instance1rotation : Quaternion = sightRotation;
+		var instance2rotation : Quaternion = sightRotation;
+		var instance3rotation : Quaternion = sightRotation;
+		var instance4rotation : Quaternion = sightRotation;
+		if (playerStats.BlunderBusterStats.level == 0){		
 			instance1rotation.eulerAngles.y -= 15;
-			instance1rotation.eulerAngles.x += 90; //because XZ plane
-			var instance2rotation : Quaternion = sightRotation;
+			instance1rotation.eulerAngles.x += 90; //because XZ plane		
 			instance2rotation.eulerAngles.y += 15;
-			instance2rotation.eulerAngles.x += 90; //because XZ plane
-			
+			instance2rotation.eulerAngles.x += 90; //because XZ plane	
 			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
 			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
+			instance1.GetComponent(Stats).damage = damage;
+			instance2.GetComponent(Stats).damage = damage;
+			Destroy (instance1, 1); //after 5 seconds the bullet is way off the screen. This is for clean up
 		}
-		instance1.GetComponent(Stats).damage = damage;
+		if (playerStats.BlunderBusterStats.level == 1){
+			instance1rotation.eulerAngles.y -= 15;
+			instance1rotation.eulerAngles.x += 90; //because XZ plane
+			instance2rotation.eulerAngles.y += 15;
+			instance2rotation.eulerAngles.x += 90; //because XZ plane
+			instance3rotation.eulerAngles.y = 0;
+			instance3rotation.eulerAngles.x += 90; //because XZ plane
+			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
+			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
+			instance1.GetComponent(Stats).damage = damage;
+			instance2.GetComponent(Stats).damage = damage;
+			instance3.GetComponent(Stats).damage = damage;		
+		}
+		
 		audio.PlayOneShot(laser);
 		
-		Destroy (instance1, 5); //after 5 seconds the bullet is way off the screen. This is for clean up
+
 		playerStats.BlunderBusterStats.currentLevel.lastShot = Time.time;
 	}
 }

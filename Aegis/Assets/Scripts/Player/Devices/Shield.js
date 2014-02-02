@@ -29,7 +29,7 @@ function Update () {
 		thisShield = Instantiate(shield, sight.position, Quaternion.Euler(90,0,0));
 		thisShield.transform.parent = sight;
 		thisShield.transform.localPosition.x = distanceFromShip;
-		//Debug.Log("Instantiate "+thisShield.name);
+		Debug.Log("Instantiate "+thisShield.name);
 		instantiateOnce = true;
 		gameObject.GetComponent(PlayerStats).heat += heatPerSecond * Time.deltaTime;
 	} else if (Input.GetButton(input) && instantiateOnce && thisShield != null){ //tick heat while held

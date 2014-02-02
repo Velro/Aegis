@@ -2439,7 +2439,7 @@ MonoBehaviour:
   - Fusion Beam
   - Blunder Buster
   - Arc Nade
-  - Coolant Tank
+  - Shield
   VulcanCannonStats:
     level: 0
     name: Vulcan Cannon
@@ -27381,7 +27381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  explosion: {fileID: 100000, guid: 88324f760c579473199bfbc4f1073097, type: 2}
   destructionTime: 4
   explosionPosition: {x: 0, y: 0, z: 0}
   damageEffects: 1

@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Camera\ParallaxSpeed.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Credit.js">
     <Files>
-      <File FileName="Assets\Scripts\Camera\ParallaxSpeed.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Credit.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="45" Column="2" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Weapons\BlunderBuster.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

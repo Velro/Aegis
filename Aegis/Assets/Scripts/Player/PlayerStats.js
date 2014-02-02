@@ -106,7 +106,7 @@ function Update () {
 
 function CheckLevel () {
 	for (var weapon : Weapon in weapons){
-		if (weapon.currentExp >= 100){
+		if (weapon.currentExp >= 100 && weapon.level < 3){
 			weapon.level += 1;
 			weapon.currentExp -= 100;
 			//Debug.Log(weapon.name+" levelled up!");

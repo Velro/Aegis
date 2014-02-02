@@ -27,6 +27,7 @@ function Update () {
 		var instance1 : GameObject;
 		var instance2 : GameObject;
 		var instance3 : GameObject;
+		var instance4 : GameObject;
 		var sightRotation : Quaternion = sight.transform.rotation;
 		var instance1rotation : Quaternion = sightRotation;
 		var instance2rotation : Quaternion = sightRotation;
@@ -42,22 +43,69 @@ function Update () {
 			instance1.GetComponent(Stats).damage = damage;
 			instance2.GetComponent(Stats).damage = damage;
 			Destroy (instance1, 1); //after 5 seconds the bullet is way off the screen. This is for clean up
+			Destroy (instance2, 1);
 		}
 		if (playerStats.BlunderBusterStats.level == 1){
 			instance1rotation.eulerAngles.y -= 15;
 			instance1rotation.eulerAngles.x += 90; //because XZ plane
 			instance2rotation.eulerAngles.y += 15;
 			instance2rotation.eulerAngles.x += 90; //because XZ plane
-			instance3rotation.eulerAngles.y = 0;
 			instance3rotation.eulerAngles.x += 90; //because XZ plane
 			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
 			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
 			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
 			instance1.GetComponent(Stats).damage = damage;
 			instance2.GetComponent(Stats).damage = damage;
-			instance3.GetComponent(Stats).damage = damage;		
+			instance3.GetComponent(Stats).damage = damage;
+			Destroy (instance1, 1);
+			Destroy(instance2, 1);
+			Destroy(instance3, 1);
 		}
 		
+		if (playerStats.BlunderBusterStats.level == 2){
+			instance1rotation.eulerAngles.y -= 15;
+			instance1rotation.eulerAngles.x += 90; //because XZ plane
+			instance2rotation.eulerAngles.y += 15;
+			instance2rotation.eulerAngles.x += 90; //because XZ plane
+			instance3rotation.eulerAngles.y += 5;
+			instance3rotation.eulerAngles.x += 90; //because XZ plane
+			instance4rotation.eulerAngles.y -= 5;
+			instance4rotation.eulerAngles.x += 90; //because XZ plane
+			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
+			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
+			instance4 = Instantiate (bullet, sight.transform.position, instance4rotation);
+			instance1.GetComponent(Stats).damage = damage;
+			instance2.GetComponent(Stats).damage = damage;
+			instance3.GetComponent(Stats).damage = damage;
+			instance4.GetComponent(Stats).damage = damage;
+			Destroy (instance1, 1);
+			Destroy (instance2, 1);
+			Destroy (instance3, 1);
+			Destroy (instance4, 1);
+		}
+		if (playerStats.BlunderBusterStats.level == 3){
+			instance1rotation.eulerAngles.y -= 15;
+			instance1rotation.eulerAngles.x += 90; //because XZ plane
+			instance2rotation.eulerAngles.y += 15;
+			instance2rotation.eulerAngles.x += 90; //because XZ plane
+			instance3rotation.eulerAngles.y += 5;
+			instance3rotation.eulerAngles.x += 90; //because XZ plane
+			instance4rotation.eulerAngles.y -= 5;
+			instance4rotation.eulerAngles.x += 90; //because XZ plane
+			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
+			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
+			instance4 = Instantiate (bullet, sight.transform.position, instance4rotation);
+			instance1.GetComponent(Stats).damage = damage;
+			instance2.GetComponent(Stats).damage = damage;
+			instance3.GetComponent(Stats).damage = damage;
+			instance4.GetComponent(Stats).damage = damage;
+			Destroy (instance1, 2);
+			Destroy (instance2, 2);
+			Destroy (instance3, 2);
+			Destroy (instance4, 2);
+		}
 		audio.PlayOneShot(laser);
 		
 

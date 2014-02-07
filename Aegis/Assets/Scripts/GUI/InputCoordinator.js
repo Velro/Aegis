@@ -8,17 +8,18 @@ class AxisInput {
 	var button : String = null;
 }
 var backgroundTex : Texture;
-
-public static var weaponOne : String;
-public static var weaponTwo : String;
-public static var weaponThree : String;
-public static var weaponFour : String;
-public static var usingController : boolean = false;
-public static var usingMouseAndKeyboard : boolean = true;
 public static var rightTrigger : AxisInput;
 public static var leftTrigger : AxisInput;
 public static var rightBumper : String;
 public static var leftBumper : String;
+
+public static var weaponOne : String = "3rd axis";
+public static var weaponTwo : String = "3rd axis";
+public static var weaponThree : String = "joystick button 5";
+public static var weaponFour : String = "joystick button 4";
+public static var usingController : boolean = false;
+public static var usingMouseAndKeyboard : boolean = true;
+
 public static var leftStickHor : AxisInput;
 public static var leftStickVert : AxisInput;
 public static var rightStickHor : AxisInput;
@@ -380,13 +381,13 @@ function Start (){
 	leftStickHor = new AxisInput();
 	leftStickHor.axis = "X axis";
 	rightStickVert = new AxisInput();
-	rightStickVert.axis = "4th axis";
+	rightStickVert.axis = "5th axis";
 	rightStickHor = new AxisInput();
-	rightStickHor.axis = "5th axis";
+	rightStickHor.axis = "4th axis";
 	rightTrigger = new AxisInput();
 	rightTrigger.axis = "3rd axis";
 	leftTrigger = new AxisInput();
-	leftTrigger.axis = "4th axis";
+	leftTrigger.axis = "3th axis";
 	
 	controllerTexRect = new Rect(0,0,(Screen.width/4)*2,(Screen.height/4)*2);
 	controllerTexRect.center = new Vector2(Screen.width/2, Screen.height/3);
@@ -400,10 +401,11 @@ function Awake (){
 }
 
 function SetupKeyboard (){
-	weaponOne = "Fire1";
+/*	weaponOne = "Fire1";
 	weaponTwo = "Fire2";
 	weaponThree = "Fire3";
 	weaponFour = "Fire4";	
+*/
 }
 function SetupController(){
 

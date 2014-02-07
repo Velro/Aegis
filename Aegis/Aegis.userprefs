@@ -1,12 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Credit.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InputCoordinator.js">
     <Files>
-      <File FileName="Assets\Scripts\Credit.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="45" Column="2" />
-      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Weapons\BlunderBuster.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DealDamage.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="384" Column="26" />
+      <File FileName="Assets\Scripts\GUI\MainMenuGUI.js" Line="26" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

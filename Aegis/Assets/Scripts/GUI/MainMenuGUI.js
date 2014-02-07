@@ -11,7 +11,7 @@ function OnGUI () {
 	GUI.Box(Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 200),"Main Menu"); //just to see the menu
 	if (!optionsMenu && !inputMenu){
 		if (GUI.Button(Rect(10,10,180,30),"Adventure")){
-			Application.LoadLevel(level1);
+			Application.LoadLevel("StarMap");
 		}
 		if (GUI.Button(Rect(10,50,180,30),"Options")){
 			optionsMenu = true;

@@ -19,6 +19,7 @@ public static var weaponThree : String = "joystick button 5";
 public static var weaponFour : String = "joystick button 4";
 public static var usingController : boolean = false;
 public static var usingMouseAndKeyboard : boolean = true;
+var lastMousePosition : Vector2 = Vector2.zero;
 
 public static var leftStickHor : AxisInput;
 public static var leftStickVert : AxisInput;
@@ -376,6 +377,7 @@ function  OnGUI() {
 	}
 }
 function Start (){
+	lastMousePosition = Input.mousePosition;
 	leftStickVert = new AxisInput();
 	leftStickVert.axis = "Y axis";
 	leftStickHor = new AxisInput();
@@ -400,16 +402,28 @@ function Awake (){
 	if (usingMouseAndKeyboard == false && usingController == true)SetupController();
 }
 
+function Update (){
+	if (Input.mousePosition != lastMousePosition && usingController){
+		SetupKeyboard();
+		Debug.Log("switch to keyboard");
+	}
+	if (Input.GetAxis(leftStickHor.axis) != 0 || Input.GetAxis(rightStickHor.axis) != 0){
+		SetupController();
+		Debug.Log("switch to controller");
+	}
+}
+
 function SetupKeyboard (){
-/*	weaponOne = "Fire1";
+	weaponOne = "Fire1";
 	weaponTwo = "Fire2";
 	weaponThree = "Fire3";
 	weaponFour = "Fire4";	
-*/
+	
 }
 function SetupController(){
 
 }
+
 function WipeCurrentLayout (){
 	
 }

@@ -11,6 +11,6 @@ function Start () {
 function Update () {
 	if (player != null){
 		transform.LookAt(player.transform.position);
-		transform.position += transform.forward * (speed/10);
+		transform.position += transform.forward * (speed) * Time.deltaTime;
 	}
 }

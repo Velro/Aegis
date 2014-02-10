@@ -17,8 +17,8 @@ public static var weaponOne : String = "3rd axis";
 public static var weaponTwo : String = "3rd axis";
 public static var weaponThree : String = "joystick button 5";
 public static var weaponFour : String = "joystick button 4";
-public static var usingController : boolean = false;
-public static var usingMouseAndKeyboard : boolean = true;
+public static var usingController : boolean = true;
+public static var usingMouseAndKeyboard : boolean = false;
 var lastMousePosition : Vector2 = Vector2.zero;
 
 public static var leftStickHor : AxisInput;
@@ -414,10 +414,10 @@ function Update (){
 }
 
 function SetupKeyboard (){
-	weaponOne = "Fire1";
-	weaponTwo = "Fire2";
-	weaponThree = "Fire3";
-	weaponFour = "Fire4";	
+	//weaponOne = "Fire1";
+	//weaponTwo = "Fire2";
+	//weaponThree = "Fire3";
+	//weaponFour = "Fire4";	
 	
 }
 function SetupController(){

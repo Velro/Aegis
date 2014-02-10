@@ -2182,6 +2182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundTex: {fileID: 0}
+  lastMousePosition: {x: 0, y: 0}
   controllerSetup: 0
   baseController: {fileID: 0}
   leftStickMovedUpController: {fileID: 0}
@@ -6784,6 +6785,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 423262527}
   - 95: {fileID: 423262526}
+  - 54: {fileID: 423262529}
+  - 65: {fileID: 423262528}
   m_Layer: 0
   m_Name: quickjet_mesh
   m_TagString: Untagged
@@ -6818,6 +6821,33 @@ Transform:
   m_Children:
   - {fileID: 1946163574}
   m_Father: {fileID: 0}
+--- !u!65 &423262528
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 423262525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &423262529
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 423262525}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &428207964
 GameObject:
   m_ObjectHideFlags: 0
@@ -17993,7 +18023,31 @@ MonoBehaviour:
   - {fileID: 0}
   paused: 0
   alphagrey: {fileID: 2800000, guid: 6ddf99b6acb8c3d418806dffd989e853, type: 3}
+  timeLastSwitch: 0
   levelUpDisplayTime: 5
+  currentPausedMenuState: 0
+  menuSkin: {fileID: 0}
+  mainPauseMenu:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
+  optionsMenu:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
+  delayBetweenButtons: .25
 --- !u!1 &1384129097
 GameObject:
   m_ObjectHideFlags: 0

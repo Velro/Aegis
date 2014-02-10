@@ -26,43 +26,136 @@ var enemiesForHealthbars : GameObject[];
 var paused : boolean = false; //are we paused?!
 var alphagrey : Texture2D;
 private var timePausedHit : float = 0;
+var timeLastSwitch : float = 0;
 private var pausedCooldown : float = 1; //without this the Input manager will register pause/unpause several times in a frame
 private var inputMenu : boolean = false; //are we in the input submenu?
 private var playerStats : PlayerStats;
 var levelUpDisplayTime : float;
 
 @System.NonSerializedAttribute
-var boolLevel : boolean = false;
+	var boolLevel : boolean = false;
 @System.NonSerializedAttribute
-var levelledName : String;
+	var levelledName : String;
 @System.NonSerializedAttribute
-var levelledLevel : int;
+	var levelledLevel : int;
 @System.NonSerializedAttribute
-var levelledTime : float;
+	var levelledTime : float;
+
+enum pausedMenuState {
+	mainMenu,
+	optionsMenu,
+	inputMenu,
+	soundMenu,
+	graphicsMenu
+}
+var currentPausedMenuState : pausedMenuState = pausedMenuState.mainMenu;
 
 private var creditsRect : Rect = new Rect(0,0,Screen.width, Screen.height/60);
 creditsRect.center = new Vector2(Screen.width/2, (Screen.height/60)*2);
+
+var menuSkin : GUISkin;
+var mainPauseMenu : JoyGUIMenu;
+var optionsMenu : JoyGUIMenu;
+var delayBetweenButtons : float = 0.25;
 
 function Awake (){
 	playerStats = player.GetComponent(PlayerStats);
 	
 }
 function Start (){
+	var mainPauseMenuRects : Rect[] = new Rect[3];
+		mainPauseMenuRects[0] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		mainPauseMenuRects[1] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		mainPauseMenuRects[2] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		mainPauseMenuRects[0].center = new Vector2(Screen.width/2, (Screen.height/30) * 8);
+		mainPauseMenuRects[1].center = new Vector2(Screen.width/2, (Screen.height/30) * 12);
+		mainPauseMenuRects[2].center = new Vector2(Screen.width/2, (Screen.height/30) * 16);
+	var mainPauseMenuStrings : String[] = new String [3];
+		mainPauseMenuStrings[0] = "Options";
+		mainPauseMenuStrings[1] = "Return to Star Map";
+		mainPauseMenuStrings[2] = "Exit Aegis";
+	mainPauseMenu = new JoyGUIMenu(3, mainPauseMenuRects, mainPauseMenuStrings, InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
+	mainPauseMenu.enabled = false;
 	
-
+	var optionsMenuRects : Rect[] = new Rect[3];
+		optionsMenuRects[0] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		optionsMenuRects[1] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		optionsMenuRects[2] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		optionsMenuRects[0].center = new Vector2(Screen.width/2, (Screen.height/30) * 8);
+		optionsMenuRects[1].center = new Vector2(Screen.width/2, (Screen.height/30) * 12);
+		optionsMenuRects[2].center = new Vector2(Screen.width/2, (Screen.height/30) * 16);
+	var optionsMenuStrings : String[] = new String [3];
+		optionsMenuStrings[0] = "Input";
+		optionsMenuStrings[1] = "Sound";
+		optionsMenuStrings[2] = "Graphics";
+	optionsMenu = new JoyGUIMenu(3, optionsMenuRects, optionsMenuStrings, InputCoordinator.confirm, InputCoordinator.leftStickVert.axis, InputCoordinator.leftStickHor.axis);
+	optionsMenu.enabled = false;
 }
+
 function Update (){
 	if (Input.GetButtonDown("Pause") && paused == false && Time.realtimeSinceStartup - timePausedHit > pausedCooldown){	//pause game
 		Time.timeScale = 0;
 		timePausedHit = Time.realtimeSinceStartup;
 		paused = true;
 		Debug.Log("pause");
+		mainPauseMenu.enabled = true;
+		currentPausedMenuState = pausedMenuState.mainMenu;
 	}
 	if (Input.GetButtonDown("Pause") && paused == true && Time.realtimeSinceStartup - timePausedHit > pausedCooldown){	//and unpause
 		Time.timeScale = 1;
 		timePausedHit = Time.realtimeSinceStartup;
 		paused = false;
 		Debug.Log("unpause");
+		mainPauseMenu.enabled = false;
+		currentPausedMenuState = pausedMenuState.mainMenu;
+		mainPauseMenu.UnClickAll();
+		optionsMenu.UnClickAll();
+	}
+	if (paused){
+		switch (currentPausedMenuState){
+		case pausedMenuState.mainMenu:
+			mainPauseMenu.enabled = true;
+			optionsMenu.enabled = false;
+			if (InputCoordinator.usingController){
+				if (timeLastSwitch + delayBetweenButtons < Time.realtimeSinceStartup){
+					if (mainPauseMenu.CheckJoyAxis()){
+						Delay();
+						timeLastSwitch = Time.realtimeSinceStartup;
+					}
+				}
+				Pause(mainPauseMenu.CheckJoyButton());
+				if (Input.GetButtonDown(InputCoordinator.back)){
+					//currentState = Menu.SupportBay;
+					mainPauseMenu.UnClickAll();
+				}
+			}
+			if (InputCoordinator.usingMouseAndKeyboard){
+				mainPauseMenu.CheckMousePosition();
+				Pause(mainPauseMenu.CheckMouseClick());
+			}
+			break;
+		case pausedMenuState.optionsMenu:
+			mainPauseMenu.enabled = false;
+			optionsMenu.enabled = true;
+			if (InputCoordinator.usingController){
+				if (timeLastSwitch + delayBetweenButtons < Time.realtimeSinceStartup){
+					if (optionsMenu.CheckJoyAxis()){
+						Delay();
+						timeLastSwitch = Time.realtimeSinceStartup;
+					}
+				}
+				Pause(mainPauseMenu.CheckJoyButton());
+				if (Input.GetButtonDown(InputCoordinator.back)){
+					currentPausedMenuState = pausedMenuState.mainMenu;
+					optionsMenu.UnClickAll();
+				}
+			}
+			if (InputCoordinator.usingMouseAndKeyboard){
+				optionsMenu.CheckMousePosition();
+				Pause(optionsMenu.CheckMouseClick());
+			}
+			break;	
+		}	
 	}
 }
 function OnGUI () {
@@ -130,43 +223,21 @@ function OnGUI () {
 			GUI.Label(Rect(Screen.width/2, Screen.height/2, 200, 100), levelledName+" is level "+levelledLevel, levelUp);
 		}
 	}
-		
-	
+			
 	/**** Pause Menu ****/
 	if (paused){	//pause game
-		
 		GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height),alphagrey,ScaleMode.StretchToFill, true, 1.0f); //dim the screen with negro-engineered filter since filters are only for Pro
-		GUI.BeginGroup(Rect(Screen.width/2 - 50, Screen.height/2 - 50, 140, 140)); //GUI organization tool
-		GUI.Box (Rect(0, 0, 140, 140),"Paused");
-		//basic menu
-		if (!inputMenu){
-			if (GUI.Button (Rect(30,20,80,30),"Main Menu")){
-				paused = false;
-				Time.timeScale = 1;
-				Application.LoadLevel("MainMenu");
-				
-			}
-			if (GUI.Button (Rect(30,60,80,30),"Input")){
-				inputMenu = true;
-				//another box of buttons
-			}
+		var pausedBox : Rect = new Rect(0, 0, Screen.width/3, (Screen.height/4)*3);
+		pausedBox.center = new Vector2(Screen.width/2,Screen.height/2);
+		GUI.Box (pausedBox,"Paused");
+		switch (currentPausedMenuState){
+			case pausedMenuState.mainMenu:
+				mainPauseMenu.Display();
+				break;
+			case pausedMenuState.optionsMenu:
+				optionsMenu.Display();
+				break;
 		}
-		
-		//input submenu
-		if (inputMenu){
-			if (GUI.Button (Rect(5,20,110,30),"Mouse/Keyboard")){
-				InputCoordinator.usingMouseAndKeyboard = true;
-				InputCoordinator.usingController = false;
-			}
-			if (GUI.Button (Rect(15,60,110,30),"Controller")){
-				InputCoordinator.usingController = true;
-				InputCoordinator.usingMouseAndKeyboard = false;
-			}
-			if (GUI.Button (Rect(15,100,110,30),"Back")){
-				inputMenu = false;
-			}
-		}
-		GUI.EndGroup ();
 	}
 }
 
@@ -192,5 +263,45 @@ function percentCooldown (weaponNumber : int){
 	return percent;
 }
 
+function Pause (hit : int){
+	switch (hit){
+		case 0:
+			currentPausedMenuState = pausedMenuState.optionsMenu;
+			mainPauseMenu.UnClickAll();
+			break;
+		
+		case 1:
+			paused = false;
+			Time.timeScale = 1;
+			Application.LoadLevel("MainMenu");
+			mainPauseMenu.UnClickAll();
+			break;
+			
+		case 2:
+			paused = false;
+			Time.timeScale = 1;
+			Application.Quit();
+			mainPauseMenu.UnClickAll();
+			break;
+	}		
+}
+function Options (hit : int){
+	switch (hit){
+		case 0:
+			currentPausedMenuState = pausedMenuState.inputMenu;
+			break;
+		case 1:
+			currentPausedMenuState = pausedMenuState.soundMenu;
+			break;
+		case 2:
+			currentPausedMenuState = pausedMenuState.graphicsMenu;
+			break;
+	}
+		
+}
 
+function Delay (){
+	mainPauseMenu.isCheckingJoy = false;
+	optionsMenu.isCheckingJoy = false;
+}	
 

@@ -1,12 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InputCoordinator.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\ScreenShakeOnDamage.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="411" Column="21" />
-      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="411" Column="21" />
-      <File FileName="Assets\Scripts\GUI\MainMenuGUI.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\ShipMovement.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\ShipAiming.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\GameOverlayGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="207" Column="46" />
+      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\JoyGUIButton.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\JoyGUIMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\ScreenShakeOnDamage.js" Line="15" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

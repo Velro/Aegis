@@ -14,13 +14,11 @@ var enabled : boolean = true;
 
 class JoyGUIMenu {
 	function JoyGUIMenu (numberOfButtonsPerColumn : int, rectangles : Rect[],
-		labels : String[],  inputButton : String, verticalAxis : String, horizontalAxis : String){
+		labels : String[], inputButton : String, verticalAxis : String, horizontalAxis : String){
 		vertAxis = verticalAxis;
 		horAxis = horizontalAxis;
 		inButton = inputButton;
 		
-		if (rectangles.length != labels.length)Debug.Log("Array lengths are not even! Check rectangles[] and labels[]");
-		if (rectangles.length % numberOfButtonsPerColumn)Debug.Log("column lengths don't fit evenly into rectangles");
 		numberOfColumns = rectangles.length % numberOfButtonsPerColumn;
 		buttonsPerColumn = numberOfButtonsPerColumn;
 		
@@ -136,7 +134,6 @@ class JoyGUIMenu {
 				if (buttons[i].buttonRect.Contains(mousePos)){
 					buttons[i].Click();
 					pressedButton = i;
-					Debug.Log("GOTCHA");
 					}
 				}
 			}

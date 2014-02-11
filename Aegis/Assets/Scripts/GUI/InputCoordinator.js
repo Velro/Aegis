@@ -377,6 +377,7 @@ function  OnGUI() {
 	}
 }
 function Start (){
+	//PlayerPrefs.
 	lastMousePosition = Input.mousePosition;
 	leftStickVert = new AxisInput();
 	leftStickVert.axis = "Y axis";
@@ -403,6 +404,7 @@ function Awake (){
 }
 
 function Update (){
+	/*
 	if (Input.mousePosition != lastMousePosition && usingController){
 		SetupKeyboard();
 		Debug.Log("switch to keyboard");
@@ -411,6 +413,7 @@ function Update (){
 		SetupController();
 		Debug.Log("switch to controller");
 	}
+	*/
 }
 
 function SetupKeyboard (){

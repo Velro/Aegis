@@ -66,11 +66,13 @@ function CheckStats(){
 }
 
 function InstantiateSuperEffectiveSystem (other : Collider) {
-		var instance : GameObject = Instantiate(other.gameObject.GetComponent(DealDamage).effectiveDebris, 
-				transform.position,
-				Quaternion.identity);
-		instance.transform.parent = other.transform;
-		instance.transform.rotation = Quaternion.Euler(transform.rotation.y - 180, 270, 90);
-//		Debug.Log(instance.name);
-		Destroy(instance, 3);
+		if (other.gameObject.GetComponent(DealDamage).effectiveDebris != null){
+			var instance : GameObject = Instantiate(other.gameObject.GetComponent(DealDamage).effectiveDebris, 
+					transform.position,
+					Quaternion.identity);
+			instance.transform.parent = other.transform;
+			instance.transform.rotation = Quaternion.Euler(transform.rotation.y - 180, 270, 90);
+	//		Debug.Log(instance.name);
+			Destroy(instance, 3);
+		}
 }

@@ -16,8 +16,8 @@ GameObject:
   - 143: {fileID: 14300000}
   - 114: {fileID: 11400010}
   - 82: {fileID: 8200000}
-  - 81: {fileID: 8100000}
   - 114: {fileID: 11400008}
+  - 114: {fileID: 11400022}
   m_Layer: 9
   m_Name: player
   m_TagString: Player
@@ -134,6 +134,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 114: {fileID: 11400016}
+  - 81: {fileID: 8100000}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -332,8 +333,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: -100, z: -60}
-  m_LocalScale: {x: 150, y: 150, z: 1}
+  m_LocalPosition: {x: 0, y: -100, z: -30}
+  m_LocalScale: {x: 300, y: 300, z: 1}
   m_Children: []
   m_Father: {fileID: 400014}
 --- !u!4 &400018
@@ -556,7 +557,7 @@ AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 100014}
   m_Enabled: 1
 --- !u!82 &8200000
 AudioSource:
@@ -712,6 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundTex: {fileID: 0}
+  lastMousePosition: {x: 0, y: 0}
   controllerSetup: 0
   baseController: {fileID: 0}
   leftStickMovedUpController: {fileID: 0}
@@ -822,10 +824,10 @@ MonoBehaviour:
   levelUp: {fileID: 8300000, guid: 7f8c0af0bf757dc42a7f3f67432c361c, type: 3}
   weapons: []
   selections:
-  - Fusion Beam
   - Blunder Buster
-  - Arc Nade
   - Shield
+  - Fusion Beam
+  - Arc Nade
   VulcanCannonStats:
     level: 0
     name: Vulcan Cannon
@@ -932,19 +934,19 @@ MonoBehaviour:
     level0:
       damage: 20
       heatCost: 4
-      cooldown: .300000012
+      cooldown: 1
     level1:
       damage: 20
       heatCost: 5
-      cooldown: .300000012
+      cooldown: .899999976
     level2:
       damage: 20
       heatCost: 6
-      cooldown: .300000012
+      cooldown: .800000012
     level3:
       damage: 24
       heatCost: 8
-      cooldown: .200000003
+      cooldown: .699999988
     weaponType: 0
 --- !u!114 &11400012
 MonoBehaviour:
@@ -1680,7 +1682,46 @@ MonoBehaviour:
   - {fileID: 0}
   paused: 0
   alphagrey: {fileID: 2800000, guid: 6ddf99b6acb8c3d418806dffd989e853, type: 3}
+  timeLastSwitch: 0
   levelUpDisplayTime: 5
+  currentPausedMenuState: 0
+  menuSkin: {fileID: 0}
+  mainPauseMenu:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
+  optionsMenu:
+    vertAxis: 
+    horAxis: 
+    inButton: 
+    numberOfColumns: 0
+    buttonsPerColumn: 0
+    isCheckingJoy: 0
+    currentFocus: 0
+    buttons: []
+    enabled: 0
+  delayBetweenButtons: .25
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c189076c39fc910409ca0e7b456e6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xShakeSpeed: .0199999996
+  xShakeRange: {x: -4, y: 4}
+  shakeDuration: .200000003
+  shaking: 0
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

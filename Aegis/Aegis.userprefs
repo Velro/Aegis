@@ -1,13 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\ScreenShakeOnDamage.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Devices\Shield.js">
     <Files>
-      <File FileName="Assets\Scripts\GUI\GameOverlayGUI.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\UpgroidsGUI.js" Line="207" Column="46" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\JoyGUIButton.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\JoyGUIMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\ScreenShakeOnDamage.js" Line="15" Column="2" />
+      <File FileName="Assets\Scripts\Player\Weapons\BlunderBuster.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Weapons\FusionBeam.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNade.js" Line="34" Column="146" />
+      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="28" Column="148" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

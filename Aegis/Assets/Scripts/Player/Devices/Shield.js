@@ -25,7 +25,8 @@ function Start () {
 }
 
 function Update () {
-	if (Input.GetButton(input) && !instantiateOnce){ //instantiate shield
+	if (((Input.GetButtonDown(input) && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis(input) > 0.5 ))) 
+		 && !instantiateOnce){ //instantiate shield
 		thisShield = Instantiate(shield, sight.position, Quaternion.Euler(90,0,0));
 		thisShield.transform.parent = sight;
 		thisShield.transform.localPosition.x = distanceFromShip;

@@ -1,7 +1,7 @@
 ﻿#pragma strict
 @script AddComponentMenu("Player/Weapons/Blunder Buster")
 
-var sight : GameObject;
+var nozzle : GameObject;
 var bullet : GameObject;
 private var heatCost : float = 0;
 private var cooldown : float = 0;
@@ -14,7 +14,7 @@ private var input : String;
 function Start () {
 	bullet = Resources.Load("Prefabs/GreenLaser", GameObject);
 	playerStats = gameObject.GetComponent(PlayerStats);
-	sight = transform.FindChild("gun").gameObject;
+	nozzle = GameObject.Find("nozzle");
 }
 
 function Update () {
@@ -28,18 +28,18 @@ function Update () {
 		var instance2 : GameObject;
 		var instance3 : GameObject;
 		var instance4 : GameObject;
-		var sightRotation : Quaternion = sight.transform.rotation;
-		var instance1rotation : Quaternion = sightRotation;
-		var instance2rotation : Quaternion = sightRotation;
-		var instance3rotation : Quaternion = sightRotation;
-		var instance4rotation : Quaternion = sightRotation;
+		var nozzleRotation : Quaternion = nozzle.transform.rotation;
+		var instance1rotation : Quaternion = nozzleRotation;
+		var instance2rotation : Quaternion = nozzleRotation;
+		var instance3rotation : Quaternion = nozzleRotation;
+		var instance4rotation : Quaternion = nozzleRotation;
 		if (playerStats.BlunderBusterStats.level == 0){		
 			instance1rotation.eulerAngles.y -= 15;
 			instance1rotation.eulerAngles.x += 90; //because XZ plane		
 			instance2rotation.eulerAngles.y += 15;
 			instance2rotation.eulerAngles.x += 90; //because XZ plane	
-			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
-			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
+			instance1 = Instantiate (bullet, nozzle.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, nozzle.transform.position,instance2rotation);
 			instance1.GetComponent(Stats).damage = damage;
 			instance2.GetComponent(Stats).damage = damage;
 			Destroy (instance1, 1); //after 5 seconds the bullet is way off the screen. This is for clean up
@@ -51,9 +51,9 @@ function Update () {
 			instance2rotation.eulerAngles.y += 15;
 			instance2rotation.eulerAngles.x += 90; //because XZ plane
 			instance3rotation.eulerAngles.x += 90; //because XZ plane
-			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
-			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
-			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
+			instance1 = Instantiate (bullet, nozzle.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, nozzle.transform.position,instance2rotation);
+			instance3 = Instantiate (bullet, nozzle.transform.position,instance3rotation);
 			instance1.GetComponent(Stats).damage = damage;
 			instance2.GetComponent(Stats).damage = damage;
 			instance3.GetComponent(Stats).damage = damage;
@@ -71,10 +71,10 @@ function Update () {
 			instance3rotation.eulerAngles.x += 90; //because XZ plane
 			instance4rotation.eulerAngles.y -= 5;
 			instance4rotation.eulerAngles.x += 90; //because XZ plane
-			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
-			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
-			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
-			instance4 = Instantiate (bullet, sight.transform.position, instance4rotation);
+			instance1 = Instantiate (bullet, nozzle.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, nozzle.transform.position,instance2rotation);
+			instance3 = Instantiate (bullet, nozzle.transform.position,instance3rotation);
+			instance4 = Instantiate (bullet, nozzle.transform.position, instance4rotation);
 			instance1.GetComponent(Stats).damage = damage;
 			instance2.GetComponent(Stats).damage = damage;
 			instance3.GetComponent(Stats).damage = damage;
@@ -93,10 +93,10 @@ function Update () {
 			instance3rotation.eulerAngles.x += 90; //because XZ plane
 			instance4rotation.eulerAngles.y -= 5;
 			instance4rotation.eulerAngles.x += 90; //because XZ plane
-			instance1 = Instantiate (bullet, sight.transform.position, instance1rotation);
-			instance2 = Instantiate (bullet, sight.transform.position,instance2rotation);
-			instance3 = Instantiate (bullet, sight.transform.position,instance3rotation);
-			instance4 = Instantiate (bullet, sight.transform.position, instance4rotation);
+			instance1 = Instantiate (bullet, nozzle.transform.position, instance1rotation);
+			instance2 = Instantiate (bullet, nozzle.transform.position,instance2rotation);
+			instance3 = Instantiate (bullet, nozzle.transform.position,instance3rotation);
+			instance4 = Instantiate (bullet, nozzle.transform.position, instance4rotation);
 			instance1.GetComponent(Stats).damage = damage;
 			instance2.GetComponent(Stats).damage = damage;
 			instance3.GetComponent(Stats).damage = damage;

@@ -30,13 +30,12 @@ function Start () {
 	damage = playerStats.FusionBeamStats.currentLevel.damage;
 	cooldown = playerStats.FusionBeamStats.currentLevel.cooldown;
 	input = playerStats.FusionBeamStats.input;
-	nozzle = transform.FindChild("nozzle");
+	nozzle = GameObject.Find("nozzle").transform;
 }
 
 private var thisBeam : GameObject;
 private var thisBeamCharging : GameObject;
 function Update (){
-	
 	if (((Input.GetButton(input) && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis(input) > 0.5 || Input.GetButtonDown(input)))) 
 			&& !gameObject.GetComponent(PlayerStats).overheat //make sure we're not overheating
 			&& Time.time - playerStats.FusionBeamStats.currentLevel.lastShot > cooldown)
@@ -64,7 +63,7 @@ function Update (){
 	if (currentChargeTime >= chargeTime)
 	{ //charge maxed
 		if (currentShootTime < duration && Input.GetButton(input) && instantiateBeamOnce == false){ //start beam
-			thisBeam = Instantiate(beam, transform.FindChild("nozzle").position, Quaternion.identity);	
+			thisBeam = Instantiate(beam, nozzle.position, Quaternion.identity);	
 			instantiateBeamOnce = true;
 			thisBeam.GetComponent(Stats).damage = damage;
 			if (playerStats.FusionBeamStats.level == 0)thisBeam.transform.localScale = level0Size; 

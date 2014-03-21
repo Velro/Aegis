@@ -1,15 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Devices\Shield.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Weapons\FusionBeamInstance.js">
     <Files>
-      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Weapons\BlunderBuster.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Weapons\FusionBeam.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Weapons\ArcNade.js" Line="34" Column="146" />
-      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="28" Column="148" />
-      <File FileName="Assets\Scripts\Player\Weapons\ArcNadeInstance.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerStats.js" Line="5" Column="17" />
+      <File FileName="Assets\Scripts\GUI\InputCoordinator.js" Line="426" Column="2" />
+      <File FileName="Assets\Scripts\Player\Weapons\ArcNade.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DealDamage.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Weapons\FusionBeam.js" Line="66" Column="48" />
+      <File FileName="Assets\Scripts\Player\Devices\Shield.js" Line="29" Column="24" />
+      <File FileName="Assets\Scripts\Player\Weapons\BlunderBuster.js" Line="17" Column="36" />
+      <File FileName="Assets\Scripts\Player\NozzleAdjustment.js" Line="10" Column="35" />
+      <File FileName="Assets\Scripts\Player\Weapons\FusionBeamInstance.js" Line="16" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

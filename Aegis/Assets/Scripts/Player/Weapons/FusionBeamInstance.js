@@ -13,7 +13,7 @@ function Awake () {
 }
 
 function Start () {
-	nozzle = player.transform.FindChild("nozzle");
+	nozzle = GameObject.Find("nozzle").transform;
 }
 
 function Update (){

@@ -17,8 +17,10 @@ public static var weaponOne : String = "3rd axis";
 public static var weaponTwo : String = "3rd axis";
 public static var weaponThree : String = "joystick button 5";
 public static var weaponFour : String = "joystick button 4";
-public static var usingController : boolean = true;
-public static var usingMouseAndKeyboard : boolean = false;
+
+public static var usingController : boolean = false;
+public static var usingMouseAndKeyboard : boolean = true;
+
 var lastMousePosition : Vector2 = Vector2.zero;
 
 public static var leftStickHor : AxisInput;
@@ -396,6 +398,7 @@ function Start (){
 	controllerTexRect.center = new Vector2(Screen.width/2, Screen.height/3);
 	controllerLabelRect = new Rect(0,0,(Screen.width), Screen.height/10);
 	controllerLabelRect.center = new Vector2(Screen.width/2, (Screen.height/3)*2);
+
 }
 function Awake (){
 	//pick up UserPrefs 
@@ -417,10 +420,10 @@ function Update (){
 }
 
 function SetupKeyboard (){
-	//weaponOne = "Fire1";
-	//weaponTwo = "Fire2";
-	//weaponThree = "Fire3";
-	//weaponFour = "Fire4";	
+	weaponOne = "Fire1";
+	weaponTwo = "Fire2";
+	weaponThree = "Fire3";
+	weaponFour = "Fire4";	
 	
 }
 function SetupController(){

@@ -59,19 +59,19 @@ function Update () {
 	}
 	
 	if (horizontal > 0){
-		rotateRight += Time.deltaTime*horizontalSpeedOfRotation;
+		rotateRight += Time.deltaTime * horizontalSpeedOfRotation;
 		rotateLeft = 0;
 		rotateReturn = 0;
 		transform.eulerAngles.z = Mathf.LerpAngle(transform.eulerAngles.z,horizontalDistanceRotate, rotateRight);
 	} else if (horizontal < 0){
 		rotateRight = 0;
-		rotateLeft += Time.deltaTime*horizontalSpeedOfRotation;
+		rotateLeft += Time.deltaTime * horizontalSpeedOfRotation;
 		rotateReturn = 0;
 		transform.eulerAngles.z = Mathf.LerpAngle(transform.eulerAngles.z, -horizontalDistanceRotate, rotateLeft);
 	} else {
 		rotateRight = 0;
 		rotateLeft = 0;
-		rotateReturn = Time.deltaTime *horizontalSpeedOfRotation;
+		rotateReturn += Time.deltaTime * horizontalSpeedOfRotation;
 		transform.eulerAngles.z = Mathf.LerpAngle(transform.eulerAngles.z, 0, rotateReturn);
 	}
 }

@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 157646175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4eec6d07be0efb4fa1e4e5c3454a458, type: 3}
+  m_Script: {fileID: 11500000, guid: 5886d63c5ad7d6e4e86fd449898233a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   heat: 10
@@ -2640,13 +2640,13 @@ MonoBehaviour:
   levelUp: {fileID: 8300000, guid: 7f8c0af0bf757dc42a7f3f67432c361c, type: 3}
   weapons: []
   selections:
-  - Fusion Beam
-  - Blunder Buster
-  - Arc Nade
-  - Shield
+  - 467573696f6e204265616d
+  - 426c756e64657220427573746572
+  - 417263204e616465
+  - 536869656c64
   VulcanCannonStats:
     level: 0
-    name: Vulcan Cannon
+    name: 56756c63616e2043616e6e6f6e
     level0:
       damage: 10
       heatCost: 3.20000005
@@ -2666,7 +2666,7 @@ MonoBehaviour:
     weaponType: 0
   FusionBeamStats:
     level: 0
-    name: Fusion Beam
+    name: 467573696f6e204265616d
     level0:
       damage: 50
       heatCost: 50
@@ -2686,7 +2686,7 @@ MonoBehaviour:
     weaponType: 2
   ShieldStats:
     level: 0
-    name: Shield
+    name: 536869656c64
     level0:
       damage: 0
       heatCost: 10
@@ -2706,7 +2706,7 @@ MonoBehaviour:
     weaponType: 3
   CoolantTankStats:
     level: 0
-    name: Coolant Tank
+    name: 436f6f6c616e742054616e6b
     level0:
       damage: 0
       heatCost: 0
@@ -2726,7 +2726,7 @@ MonoBehaviour:
     weaponType: 3
   ArcNadeStats:
     level: 0
-    name: Arc Nade
+    name: 417263204e616465
     level0:
       damage: 50
       heatCost: 25
@@ -2746,7 +2746,7 @@ MonoBehaviour:
     weaponType: 1
   BlunderBusterStats:
     level: 0
-    name: Blunder Buster
+    name: 426c756e64657220427573746572
     level0:
       damage: 20
       heatCost: 10
@@ -2856,7 +2856,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 173895557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77e5ceda30d5cb4fa8d78c6544bee52, type: 3}
+  m_Script: {fileID: 11500000, guid: dc456e70b939ea143aa4a6e6805e4dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
@@ -15875,7 +15875,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1022104096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77e5ceda30d5cb4fa8d78c6544bee52, type: 3}
+  m_Script: {fileID: 11500000, guid: dc456e70b939ea143aa4a6e6805e4dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
@@ -17869,7 +17869,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1182443236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77e5ceda30d5cb4fa8d78c6544bee52, type: 3}
+  m_Script: {fileID: 11500000, guid: dc456e70b939ea143aa4a6e6805e4dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
@@ -21217,7 +21217,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406289477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77e5ceda30d5cb4fa8d78c6544bee52, type: 3}
+  m_Script: {fileID: 11500000, guid: dc456e70b939ea143aa4a6e6805e4dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
@@ -27640,7 +27640,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926161008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77e5ceda30d5cb4fa8d78c6544bee52, type: 3}
+  m_Script: {fileID: 11500000, guid: dc456e70b939ea143aa4a6e6805e4dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0

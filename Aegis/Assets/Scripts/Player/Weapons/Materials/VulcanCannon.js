@@ -1,4 +1,5 @@
 ﻿#pragma strict
+/*
 @script AddComponentMenu("Player/Weapons/Vulcan Cannon")
 
 var sight : GameObject;
@@ -40,3 +41,4 @@ function CheckStats(){
 	cooldown = playerStats.VulcanCannonStats.currentLevel.cooldown;
 	input = playerStats.VulcanCannonStats.input;
 }
+*/

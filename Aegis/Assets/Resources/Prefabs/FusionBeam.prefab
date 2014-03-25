@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400006}
   - 65: {fileID: 6500000}
-  - 114: {fileID: 11400004}
   m_Layer: 10
   m_Name: FusionBeam
   m_TagString: Untagged
@@ -192,23 +191,6 @@ MonoBehaviour:
   beginFlashingRed: 0
   currentHealth: 0
   effectiveDebris: {fileID: 0}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85b0937f7a91f94ab206a2d60b62322, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
-  health: 10
-  maxHealth: 100
-  speed: 1
-  exp: 10
-  enemyType: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,14 +199,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c9e435a2eab69149bfb5a920e883217, type: 3}
+  m_Script: {fileID: 11500000, guid: 41e95c023a19bd0488c27f3d1a8c299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  player: {fileID: 0}
-  weaponType: 2
-  strongAgainst: 2
-  bool: 0
+  damage: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

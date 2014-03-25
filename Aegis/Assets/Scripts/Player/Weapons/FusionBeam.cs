@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FusionBeam : MonoBehaviour {
+public class FusionBeam : MonoBehaviour 
+{
 
     public GameObject beam;
     public GameObject beamCharging;
@@ -44,8 +45,12 @@ public class FusionBeam : MonoBehaviour {
 			    && !GetComponent<PlayerStats>().overheat //make sure we're not overheating
 			    && Time.time - fusionBeam.currentLevel.ltShot > fusionBeam.currentLevel.cooldown)
 	    {
-		    if (currentChargeTime  < chargeTime){
-			    if (instantiateChargingOnce == false){
+            Debug.Log("charging");
+		    if (currentChargeTime  < chargeTime)
+            {
+			    if (instantiateChargingOnce == false)
+                {
+                    
 				    thisBeamCharging = Instantiate(beamCharging, nozzle.transform.position, Quaternion.Euler(90,0,0)) as GameObject;
 				    instantiateChargingOnce = true;
 				    instantiateChargingOnceTime = Time.time;
@@ -57,19 +62,23 @@ public class FusionBeam : MonoBehaviour {
 			    thisBeamCharging.renderer.material.SetColor("_TintColor",color); 
 
 		    }
-	    }
-	    if ((currentChargeTime > 0 && instantiateChargingOnce == true && Input.GetButton("Fire2") == false) 
-			    || currentChargeTime >= chargeTime){ //if button is let go before fully charged, empty
+	    } 
+        else if ((currentChargeTime > 0 && instantiateChargingOnce == true && Input.GetButton("Fire2") == false) 
+			    || currentChargeTime >= chargeTime)
+        { //if button is let go before fully charged, empty
 	 	    Destroy(thisBeamCharging);
 	 	    instantiateChargingOnce = false;
+            Debug.Log("cut off early");
 	     }
 
 	    if (currentChargeTime >= chargeTime)
 	    { //charge maxed
-		    if (currentShootTime < duration && Input.GetButton("Fire2") && instantiateBeamOnce == false){ //start beam
+		    if (currentShootTime < duration && Input.GetButton("Fire2") && instantiateBeamOnce == false)
+            { //start beam
+                print("fusion beam firing");
 			    thisBeam = Instantiate(beam, nozzle.transform.position, Quaternion.identity) as GameObject;	
 			    instantiateBeamOnce = true;
-			    thisBeam.GetComponent<FusionBeamInstance>().damage = fusionBeam.currentLevel.damage;
+			    thisBeam.GetComponent<FusionBeamInstance>().Damage = fusionBeam.currentLevel.damage;
 			    if (fusionBeam.level == 0)thisBeam.transform.localScale = level0Size; 
 			    if (fusionBeam.level == 1)thisBeam.transform.localScale = level1Size;
 			    if (fusionBeam.level == 2)thisBeam.transform.localScale = level2Size;
@@ -77,17 +86,22 @@ public class FusionBeam : MonoBehaviour {
 			    //Debug.Log("Beam Instantiated");
 			    fusionBeam.currentLevel.ltShot = Time.time;
 			    GetComponent<PlayerStats>().heat += fusionBeam.currentLevel.heatCost;	
-		    } else if (Input.GetButton("Fire2") && instantiateBeamOnce == true){ //tick time shot while held
+		    } 
+            else if (Input.GetButton("Fire2") && instantiateBeamOnce == true)
+            { //tick time shot while held
 			    //Debug.Log("tick");
 			    currentShootTime += Time.deltaTime;
-		    } else if (instantiateBeamOnce == true && Input.GetButton("Fire2") == false){ //let Go
+		    } 
+            else if (instantiateBeamOnce == true && Input.GetButton("Fire2") == false)
+            { //let Go
 			    //Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);
 			    Destroy (thisBeam);
 			    instantiateBeamOnce = false;
 			    currentShootTime = 0;
 			    currentChargeTime = 0;
 		    }
-		    if (currentShootTime >= duration){ //held through hold duration
+		    if (currentShootTime >= duration)
+            { //held through hold duration
 			    //if(thisBeam != null)Debug.Log("end shoot"+"Destroy "+thisBeam.name);
 			    Destroy (thisBeam);
 			    fusionBeam.currentLevel.ltShot = Time.time;

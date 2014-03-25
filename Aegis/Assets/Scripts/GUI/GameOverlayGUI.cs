@@ -21,7 +21,7 @@ public class GameOverlayGUI : MonoBehaviour
 
     public GameObject[] enemiesForHealthbars;
 
-    bool paused = false;
+    public bool paused = false;
     Texture2D alphagrey;
     float ltPausedHit = 0;
     float ltSwitch = 0;
@@ -171,7 +171,7 @@ public class GameOverlayGUI : MonoBehaviour
 		    //Rects work at Rect(screenPosition X, screenPosition Y, width, height) all in pixels
 		    GUI.Label (new Rect(Screen.width/30, Screen.height/30, (Screen.width/10)* PercentHealth(player), Screen.height/20),"", healthbar);
 		    GUI.Label (new Rect((Screen.width/30)-1, (Screen.height/30)-1, (Screen.width/10)+2, (Screen.height/20)+2),
-			    ""+Mathf.RoundToInt(player.GetComponent<Stats>().health)+" / "+player.GetComponent<Stats>().maxHealth, border);
+			    ""+Mathf.RoundToInt(player.GetComponent<PlayerStats>().health)+" / "+player.GetComponent<PlayerStats>().maxHealth, border);
 	    //		
 	    /**** Heat bar ****/
 		    GUI.Label (new Rect((Screen.width/30)*4.5f, Screen.height/30, (Screen.width/10) * PercentHeat(), Screen.height/20),"", heat);
@@ -224,16 +224,16 @@ public class GameOverlayGUI : MonoBehaviour
 		    GUI.Label (new Rect(Screen.width/2, Screen.height/2, Screen.width/2-100, Screen.height/2+120), 
 			    "End Test Level");
 	    }
-	    /**** Enemy health bars ****/
-	    foreach (GameObject enemy in enemiesForHealthbars)
+        /**** Enemy health bars ***
+        foreach (GameObject enemy in enemiesForHealthbars)
         {
-		    if (enemy == null)
+            if (enemy == null)
                 return;
-			GUI.Label (new Rect(camera.WorldToScreenPoint(enemy.transform.position).x-14,
-				camera.WorldToScreenPoint(enemy.transform.position).y+140//coefficient needed to lift bar above unit
-				,40*PercentHealth(enemy),4),"",healthbar);
-	    }
-	    /**** Level Up ****/
+            GUI.Label (new Rect(camera.WorldToScreenPoint(enemy.transform.position).x-14,
+                camera.WorldToScreenPoint(enemy.transform.position).y+140//coefficient needed to lift bar above unit
+                ,40*PercentHealth(enemy),4),"",healthbar);
+        }*/
+        /**** Level Up ****/
 	    if (boolLevel)
         {
 		    if (Time.time < levelledTime + levelUpDisplayTime){
@@ -263,11 +263,10 @@ public class GameOverlayGUI : MonoBehaviour
     float PercentHealth (GameObject gameObject)
     {
 	   float percent = 0;
-	    if (player != null)
-        {
-		    float thisMaxHealth = gameObject.GetComponent<Stats>().maxHealth;
-		    percent =  gameObject.GetComponent<Stats>().health/thisMaxHealth;
-	    }
+       if (player == null)
+           return 0;
+		float thisMaxHealth = gameObject.GetComponent<PlayerStats>().maxHealth;
+        percent = gameObject.GetComponent<PlayerStats>().health / thisMaxHealth;
 	    return percent;
     }
 

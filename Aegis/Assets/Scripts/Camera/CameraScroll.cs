@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraScroll : MonoBehaviour 
 {
-    GameObject startPoint;
+    public GameObject startPoint;
     public GameObject endPoint;
     public float scrollSpeed;
 

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon 
+[System.Serializable]
+public class Weapon
 {
    public int level = 0;
     public string name;

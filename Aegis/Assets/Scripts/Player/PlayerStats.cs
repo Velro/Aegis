@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>, IMoves {
+public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float> {
+    public float Health
+    {
+        get { return Health; }
+        set { Health = value; }
+    }
+    public float health;
+    public float maxHealth;
     public float speed = 5;
     public float heat = 10;
     public float maxHeat = 100;
@@ -32,30 +39,30 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>, IMoves 
             heat = maxHeat;
             overheat = true;
             ltOverheat = Time.time;
-            GetComponent<Stats>().speed *= speedReduction;
+            speed *= speedReduction;
         }
         if (overheat && Time.time - ltOverheat >= overheatTime)
         {
             overheat = false;
             heat = 99.9f;
-            GetComponent<Stats>().speed /= speedReduction;
+            speed /= speedReduction;
         }
         if (invincible)
-            GetComponent<Stats>().health = 100;
+            health = 100;
 	}
 
-    void Damage(float damage)
+    public void Damage(float damage)
     {
 
     }
     void GiveExp (float exp, float time){
-	    foreach (Component weapon in weapons){
-		    if (Time.time - weapon.currentLevel.lastShot < expWindow){
-			    weapon.currentExp += exp;
-		    }
-	    }
+	   // foreach (Component weapon in weapons){
+		//    if (Time.time - weapon.currentLevel.lastShot < expWindow){
+		//	    weapon.currentExp += exp;
+		//    }
+	   // }
     }
-    void Kill()
+    public void Kill()
     {
         
     }

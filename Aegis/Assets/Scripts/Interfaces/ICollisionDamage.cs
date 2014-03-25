@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface ICollisionDamage {
+public interface ICollisionDamage 
+{
     float Damage
     {
         get;

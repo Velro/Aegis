@@ -2,29 +2,32 @@
 using System.Collections;
 
 public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
+    [SerializeField]
+    private float damage;
     public float Damage
     {
         get { return damage; }
-        set { }
+        set { damage = value; }
     }
-    public float damage;
-    public float speed;
+    [SerializeField]
+    private float speed;
     public float Speed
     {
         get { return speed; }
-        set { }
+        set { speed = value; }
     }
     float collisionDamage;
-    bool left = false;
-    bool right = false;
+    public bool left = false;
+    public bool right = true;
     EnemyType strongAgainst = EnemyType.Organic;
     WeaponType weaponType = WeaponType.Projectile;
 
     void Update () {
 	    if (right)
-		    transform.position += transform.right * speed * Time.deltaTime;
+		    transform.position += transform.right * Speed * Time.deltaTime;
+        //Debug.Log(speed);
 	    if (left)
-		    transform.position -= transform.right * speed * Time.deltaTime;
+		    transform.position -= transform.right * Speed * Time.deltaTime;
     }
 
     void OnTriggerEnter (Collider other) {

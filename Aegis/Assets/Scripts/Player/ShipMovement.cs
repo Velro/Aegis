@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipMovement : MonoBehaviour {
 
-    Vector3 moveDirection = Vector3.zero;
+    public Vector3 moveDirection = Vector3.zero;
     CharacterController controller;
     float rotateUp = 0;
     float rotateDown = 0;
@@ -22,8 +22,8 @@ public class ShipMovement : MonoBehaviour {
 
     void Update () {
     /**** Move Ship Input ****/
-	    float horizontal;
-	    float vertical;
+	    float horizontal = 0;
+	    float vertical = 0;
 	    if (InputCoordinator.usingController == true){
 		    horizontal = Input.GetAxis("4th axis");
 		    vertical = Input.GetAxis("3rd axis");

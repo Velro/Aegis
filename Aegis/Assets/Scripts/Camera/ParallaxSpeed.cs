@@ -8,12 +8,12 @@ public class ParallaxSpeed : MonoBehaviour {
     public float texSizeX = 200; //largely arbitrary. Adjust until it looks right
     public float texSizeY = 150;
     public bool parallaxing = true;
-    private float screenSpeed = 0;
+    //private float screenSpeed = 0;
     public Vector2 screenSize;
     public Vector2 tileSize;
     void Start () {
 	    screenSize = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
-	    screenSpeed = transform.parent.GetComponent<CameraScroll>().scrollSpeed;
+	    //screenSpeed = transform.parent.GetComponent<CameraScroll>().scrollSpeed;
 	    transform.localScale = new Vector2(screenSize.x, screenSize.y);
 	    tileSize.x = screenSize.x / texSizeX;
 	    tileSize.y = screenSize.x / texSizeY;

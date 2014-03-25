@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Weapons\FusionBeamInstanceJJ.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Old Javascript\NozzleAdjustment.js">
     <Files>
-      <File FileName="Assets\Scripts\Camera\CameraScrollJJ.js" Line="3" Column="1" />
-      <File FileName="Assets\Scripts\Camera\ParallaxSpeedJJ.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Weapons\FusionBeamInstanceJJ.js" Line="23" Column="3" />
-      <File FileName="Assets\Scripts\Player\Weapons\FusionBeamJJ.js" Line="3" Column="1" />
+      <File FileName="..\Old Javascript\NozzleAdjustment.js" Line="10" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

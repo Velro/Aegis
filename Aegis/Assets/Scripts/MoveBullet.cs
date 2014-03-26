@@ -4,7 +4,7 @@ using System.Collections;
 public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
     [SerializeField]
     private float damage;
-    public float Damage
+    public float CollisionDamage
     {
         get { return damage; }
         set { damage = value; }
@@ -16,7 +16,6 @@ public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
         get { return speed; }
         set { speed = value; }
     }
-    float collisionDamage;
     public bool left = false;
     public bool right = true;
     EnemyType strongAgainst = EnemyType.Organic;
@@ -31,7 +30,7 @@ public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
     }
 
     void OnTriggerEnter (Collider other) {
-        other.SendMessageUpwards("Damage", collisionDamage);
+        other.SendMessageUpwards("DamageProjectile", CollisionDamage);
 	    if (gameObject != null)Destroy (gameObject);
         Kill();
     }

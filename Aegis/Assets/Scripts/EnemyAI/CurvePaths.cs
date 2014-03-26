@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class CurvePaths : MonoBehaviour {
-
-    public Transform parentPath;
-    public Transform[] pathPoints;
     public float speed;
+    public Transform parentPath;
+    Transform[] pathPoints;
+   
     public Component containsSpeed;
     public bool rotateToPath = false;
     public float t = 0f;

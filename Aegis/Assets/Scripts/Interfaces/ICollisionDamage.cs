@@ -3,7 +3,7 @@ using System.Collections;
 
 public interface ICollisionDamage 
 {
-    float Damage
+    float CollisionDamage
     {
         get;
         set;

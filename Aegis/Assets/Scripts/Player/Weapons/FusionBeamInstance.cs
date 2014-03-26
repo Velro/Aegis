@@ -5,7 +5,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
 {
     [SerializeField]
     private float damage;
-    public float Damage
+    public float CollisionDamage
     {
         get { return damage; }
         set { damage = value; }
@@ -29,7 +29,8 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
 
     void OnTriggerStay (Collider other)
     {
-        other.SendMessageUpwards("Damage", Damage * Time.deltaTime);
+        other.SendMessageUpwards("DamageExplosive", CollisionDamage * Time.deltaTime);
+        //other.SendMessageUpwards("Damage", CollisionDamage * Time.deltaTime);
     }
 
     public void Kill()

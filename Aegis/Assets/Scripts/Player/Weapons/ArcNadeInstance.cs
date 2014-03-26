@@ -12,7 +12,7 @@ public class ArcNadeInstance : MonoBehaviour, IMoves, ICollisionDamage, IKillabl
     }
     [SerializeField]
     private float damage;
-    public float Damage
+    public float CollisionDamage
     {
         get { return damage; }
         set { damage = value; }

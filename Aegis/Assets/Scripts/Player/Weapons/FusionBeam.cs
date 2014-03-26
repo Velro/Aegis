@@ -78,7 +78,7 @@ public class FusionBeam : MonoBehaviour
                 print("fusion beam firing");
 			    thisBeam = Instantiate(beam, nozzle.transform.position, Quaternion.identity) as GameObject;	
 			    instantiateBeamOnce = true;
-			    thisBeam.GetComponent<FusionBeamInstance>().Damage = fusionBeam.currentLevel.damage;
+			    thisBeam.GetComponent<FusionBeamInstance>().CollisionDamage = fusionBeam.currentLevel.damage;
 			    if (fusionBeam.level == 0)thisBeam.transform.localScale = level0Size; 
 			    if (fusionBeam.level == 1)thisBeam.transform.localScale = level1Size;
 			    if (fusionBeam.level == 2)thisBeam.transform.localScale = level2Size;

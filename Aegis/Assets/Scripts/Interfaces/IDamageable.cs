@@ -8,4 +8,8 @@ public interface IDamageable<T> {
         set;
     }
     void Damage(T damageTaken);
+    void DamageProjectile(T damageTaken);
+    void DamageExplosive(T damageTaken);
+    void DamageEnergy(T damageTaken);
+    void SuperEffectiveSystem();
 }

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float> {
+public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float> 
+{
+    [SerializeField]
+    private float health;
     public float Health
     {
-        get { return Health; }
-        set { Health = value; }
+        get { return health; }
+        set { health = value; }
     }
-    public float health;
+    
     public float maxHealth;
     public float speed = 5;
     public float heat = 10;
@@ -53,9 +56,9 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float> {
 
     public void Damage(float damage)
     {
-
+        Health = Health - damage;
     }
-    void GiveExp (float exp, float time){
+    public void GiveExp (float exp, float time){
 	   // foreach (Component weapon in weapons){
 		//    if (Time.time - weapon.currentLevel.lastShot < expWindow){
 		//	    weapon.currentExp += exp;
@@ -67,4 +70,24 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float> {
         
     }
 
+
+
+    public void DamageProjectile(float damageTaken)
+    {
+        Damage(damageTaken);
+    }
+
+    public void DamageExplosive(float damageTaken)
+    {
+        Damage(damageTaken);
+    }
+
+    public void DamageEnergy(float damageTaken)
+    {
+        Damage(damageTaken);
+    }
+
+    public void SuperEffectiveSystem()
+    {
+    }
 }

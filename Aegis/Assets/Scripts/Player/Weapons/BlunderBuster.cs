@@ -20,7 +20,7 @@ public class BlunderBuster : MonoBehaviour {
         blunderBuster.Awake();
     }
     void Start () {
-	    bullet = Resources.Load<GameObject>("Prefabs/GreenLaser");
+	    bullet = Resources.Load<GameObject>("Prefabs/BlunderBusterBullet");
 	    nozzle = GameObject.Find("nozzle");
     }
 
@@ -44,8 +44,8 @@ public class BlunderBuster : MonoBehaviour {
                 instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y + 15, instance2rotation.eulerAngles.z);
                 instance1 = Instantiate(bullet, nozzle.transform.position, instance1rotation) as GameObject;
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
-                instance1.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance2.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
+                instance1.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 Destroy(instance1, 1); //after 5 seconds the bullet is way off the screen. This is for clean up
                 Destroy(instance2, 1);
             }
@@ -57,9 +57,9 @@ public class BlunderBuster : MonoBehaviour {
                 instance1 = Instantiate(bullet, nozzle.transform.position, instance1rotation) as GameObject;
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance3 = Instantiate(bullet, nozzle.transform.position, instance3rotation) as GameObject;
-                instance1.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance2.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance3.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
+                instance1.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance3.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 Destroy(instance1, 1);
                 Destroy(instance2, 1);
                 Destroy(instance3, 1);
@@ -75,10 +75,10 @@ public class BlunderBuster : MonoBehaviour {
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance3 = Instantiate(bullet, nozzle.transform.position, instance3rotation) as GameObject;
                 instance4 = Instantiate(bullet, nozzle.transform.position, instance4rotation) as GameObject;
-                instance1.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance2.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance3.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance4.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
+                instance1.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance3.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance4.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 Destroy(instance1, 1);
                 Destroy(instance2, 1);
                 Destroy(instance3, 1);
@@ -94,10 +94,10 @@ public class BlunderBuster : MonoBehaviour {
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance3 = Instantiate(bullet, nozzle.transform.position, instance3rotation) as GameObject;
                 instance4 = Instantiate(bullet, nozzle.transform.position, instance4rotation) as GameObject;
-                instance1.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance2.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance3.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
-                instance4.GetComponent<MoveBullet>().Damage = blunderBuster.currentLevel.damage;
+                instance1.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance3.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
+                instance4.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 Destroy(instance1, 1.5f);
                 Destroy(instance2, 1.5f);
                 Destroy(instance3, 1.5f);

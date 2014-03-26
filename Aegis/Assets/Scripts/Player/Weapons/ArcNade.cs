@@ -35,7 +35,7 @@ public class ArcNade : MonoBehaviour
 	    {
 		    thisCanister = Instantiate(canister, nozzle.transform.position, nozzle.transform.rotation) as GameObject;
 		    //thisCanister.transform.parent = nozzle;
-		    thisCanister.GetComponent<ArcNadeInstance>().Damage = arcNade.currentLevel.damage;
+		    thisCanister.GetComponent<ArcNadeInstance>().CollisionDamage = arcNade.currentLevel.damage;
 		    arcNade.currentLevel.ltShot = Time.time;
 		    gameObject.GetComponent<PlayerStats>().heat += arcNade.currentLevel.heatCost;
 		    playerSpeed = gameObject.GetComponent<ShipMovement>().moveDirection.normalized.magnitude + 1;

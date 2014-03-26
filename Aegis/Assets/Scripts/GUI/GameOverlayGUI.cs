@@ -171,7 +171,7 @@ public class GameOverlayGUI : MonoBehaviour
 		    //Rects work at Rect(screenPosition X, screenPosition Y, width, height) all in pixels
 		    GUI.Label (new Rect(Screen.width/30, Screen.height/30, (Screen.width/10)* PercentHealth(player), Screen.height/20),"", healthbar);
 		    GUI.Label (new Rect((Screen.width/30)-1, (Screen.height/30)-1, (Screen.width/10)+2, (Screen.height/20)+2),
-			    ""+Mathf.RoundToInt(player.GetComponent<PlayerStats>().health)+" / "+player.GetComponent<PlayerStats>().maxHealth, border);
+			    ""+Mathf.RoundToInt(player.GetComponent<PlayerStats>().Health)+" / "+player.GetComponent<PlayerStats>().maxHealth, border);
 	    //		
 	    /**** Heat bar ****/
 		    GUI.Label (new Rect((Screen.width/30)*4.5f, Screen.height/30, (Screen.width/10) * PercentHeat(), Screen.height/20),"", heat);
@@ -266,7 +266,7 @@ public class GameOverlayGUI : MonoBehaviour
        if (player == null)
            return 0;
 		float thisMaxHealth = gameObject.GetComponent<PlayerStats>().maxHealth;
-        percent = gameObject.GetComponent<PlayerStats>().health / thisMaxHealth;
+        percent = gameObject.GetComponent<PlayerStats>().Health / thisMaxHealth;
 	    return percent;
     }
 

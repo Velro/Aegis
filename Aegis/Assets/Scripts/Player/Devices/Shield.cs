@@ -7,7 +7,10 @@ public class Shield : MonoBehaviour {
     public float distanceFromShip = 13; //alter this directly to change
     private GameObject sight;
     public float heatPerSecond = 0;
-    public Vector3 size = Vector3.zero;
+    public Vector3 size0 = Vector3.zero;
+    public Vector3 size1 = Vector3.zero;
+    public Vector3 size2 = Vector3.zero;
+    public Vector3 size3 = Vector3.zero;
     private bool instantiateOnce;
     private GameObject thisShield;
     private float mouseX = 0;
@@ -27,13 +30,16 @@ public class Shield : MonoBehaviour {
 	    diff = Camera.main.transform.position.y + sight.transform.position.y;
     }
 
-    void Update () {
+    void Update () 
+    {
 	    if (((Input.GetButtonDown("Fire4") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis("3rd axis") > 0.5 ))) 
 		     && !instantiateOnce){ //instantiate shield
 		    thisShield = Instantiate(shieldObj, sight.transform.position, Quaternion.Euler(90,0,0)) as GameObject;
 		    thisShield.transform.parent = sight.transform;
 		    thisShield.transform.localPosition = new Vector3(thisShield.transform.localPosition.x + distanceFromShip, thisShield.transform.localPosition.y, thisShield.transform.localPosition.z);
 		    //Debug.Log("Instantiate "+thisShield.name);
+            if (shield.level == 0)
+                thisShield.transform.localScale = size0;
 		    instantiateOnce = true;
 		    GetComponent<PlayerStats>().heat += heatPerSecond * Time.deltaTime;
 	    } else if (Input.GetButton("Fire4") && instantiateOnce && thisShield != null){ //tick heat while held

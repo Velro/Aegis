@@ -193,17 +193,17 @@ public class GameOverlayGUI : MonoBehaviour
 			    GUI.Label(new Rect(Screen.width/60,Screen.height/60,
                     (Screen.width / 10) * percentCooldown(player.GetComponent<BlunderBuster>().blunderBuster.currentLevel.cooldown, player.GetComponent<BlunderBuster>().blunderBuster.currentLevel.ltShot), Screen.height / 20), 
                     "", cooldown);
-			    GUI.Label(new Rect(Screen.width/60-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), "Weapon 1", border);
+			    GUI.Label(new Rect(Screen.width/60-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), "Blunder Buster", border);
 			    //weapon two
-			  //  GUI.Label(new Rect((Screen.width/60)*8,Screen.height/60,
-              //      (Screen.width / 10) * percentCooldown(player.GetComponent<WeaponName>().cooldown, player.GetComponent<WeaponName>.ltShot),Screen.height/20),
-             //       "", cooldown);
-			  //  GUI.Label(new Rect((Screen.width/60)*8-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), "Weapon 2", border);
+			    GUI.Label(new Rect((Screen.width/60)*8,Screen.height/60,
+                    (Screen.width / 10) * percentCooldown(player.GetComponent<FusionBeam>().fusionBeam.currentLevel.cooldown, player.GetComponent<FusionBeam>().fusionBeam.currentLevel.ltShot),Screen.height/20),
+                    "", cooldown);
+			    GUI.Label(new Rect((Screen.width/60)*8-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), "Fusion Beam", border);
 			    //weapon three
-              //  GUI.Label(new Rect((Screen.width / 60), (Screen.height / 60) * 5, 
-               //     (Screen.width / 10) * percentCooldown(player.GetComponent<WeaponName>().cooldown, player.GetComponent<WeaponName>.ltShot), Screen.height / 20), 
-               //     "", cooldown);
-              //  GUI.Label(new Rect(Screen.width / 60 - 1, (Screen.height / 60) * 5 - 1, Screen.width / 10 + 2, Screen.height / 20 + 2), "Weapon 3", border);
+                GUI.Label(new Rect((Screen.width / 60), (Screen.height / 60) * 5,
+                    (Screen.width / 10) * percentCooldown(player.GetComponent<ArcNade>().arcNade.currentLevel.cooldown, player.GetComponent<ArcNade>().arcNade.currentLevel.ltShot), Screen.height / 20), 
+                    "", cooldown);
+                GUI.Label(new Rect(Screen.width / 60 - 1, (Screen.height / 60) * 5 - 1, Screen.width / 10 + 2, Screen.height / 20 + 2), "Arc Nade", border);
 			    //weapon four
 			    //GUI.Label(Rect(11,11,118,63), "", cooldown);
               //  GUI.Label(new Rect((Screen.width / 60) * 8, (Screen.height / 60) * 5,
@@ -267,7 +267,7 @@ public class GameOverlayGUI : MonoBehaviour
            return 0;
 		float thisMaxHealth = gameObject.GetComponent<PlayerStats>().maxHealth;
         percent = gameObject.GetComponent<PlayerStats>().Health / thisMaxHealth;
-	    return percent;
+	    return Mathf.Clamp01(percent);
     }
 
     float PercentHeat()
@@ -279,8 +279,8 @@ public class GameOverlayGUI : MonoBehaviour
     float percentCooldown (float cooldown, float lastTimeShot)
     {
 	    float percent = (Time.time - lastTimeShot) / cooldown; 
-	    if (percent > 0.99)percent = 1;
-	    return percent;
+	    //if (percent > 0.99)percent = 1;
+	    return Mathf.Clamp01(percent);
     }
 
     void Options (int hit)

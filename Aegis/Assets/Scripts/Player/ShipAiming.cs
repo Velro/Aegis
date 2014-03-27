@@ -19,9 +19,9 @@ public class ShipAiming : MonoBehaviour {
 		    mouseX = Input.mousePosition.x;
 		    mouseY = Input.mousePosition.y;
 		    var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, diff));
-		    sight.transform.LookAt(worldPos);
-		    sight.transform.rotation *= Quaternion.Euler(0,-90,0);
-		    sight.transform.eulerAngles = new Vector3(sight.transform.eulerAngles.x, 0, sight.transform.eulerAngles.z);
+		    sight.transform.LookAt(worldPos, Vector3.up);
+		   // sight.transform.rotation *= Quaternion.Euler(0,-90,0);
+            sight.transform.eulerAngles = new Vector3(sight.transform.eulerAngles.x, sight.transform.eulerAngles.y - 90, sight.transform.eulerAngles.z);
 	    }
 	
 	    /**** Controller Input ****/

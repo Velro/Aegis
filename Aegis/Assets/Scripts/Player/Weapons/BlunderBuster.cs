@@ -27,7 +27,6 @@ public class BlunderBuster : MonoBehaviour {
 
     void Update () {
         //Debug.Log(nozzle.transform.position);
-        blunderBuster.CheckForLevelUp(0.2f);
         if (((Input.GetButtonDown(input) && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis(input) < -0.5)))
                 && !GetComponent<PlayerStats>().overheat //make sure we're not overheating
                 && Time.time - blunderBuster.currentLevel.ltShot > blunderBuster.currentLevel.cooldown)
@@ -52,8 +51,8 @@ public class BlunderBuster : MonoBehaviour {
             if (blunderBuster.level == 1)
             {
                 instance1rotation.eulerAngles = new Vector3(instance1rotation.eulerAngles.x + 90, instance1rotation.eulerAngles.y - 15, instance1rotation.eulerAngles.z);
-                instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y - 15, instance2rotation.eulerAngles.z);
-                instance3rotation.eulerAngles = new Vector3(instance3rotation.eulerAngles.x + 90, instance3rotation.eulerAngles.y - 15, instance3rotation.eulerAngles.z);
+                instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y, instance2rotation.eulerAngles.z);
+                instance3rotation.eulerAngles = new Vector3(instance3rotation.eulerAngles.x + 90, instance3rotation.eulerAngles.y + 15, instance3rotation.eulerAngles.z);
                 instance1 = Instantiate(bullet, nozzle.transform.position, instance1rotation) as GameObject;
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance3 = Instantiate(bullet, nozzle.transform.position, instance3rotation) as GameObject;
@@ -67,10 +66,10 @@ public class BlunderBuster : MonoBehaviour {
 
             if (blunderBuster.level == 2)
             {
-                instance1rotation.eulerAngles = new Vector3(instance1rotation.eulerAngles.x + 90, instance1rotation.eulerAngles.y - 15, instance1rotation.eulerAngles.z);
-                instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y - 15, instance2rotation.eulerAngles.z);
-                instance3rotation.eulerAngles = new Vector3(instance3rotation.eulerAngles.x + 90, instance3rotation.eulerAngles.y - 15, instance3rotation.eulerAngles.z);
-                instance4rotation.eulerAngles = new Vector3(instance4rotation.eulerAngles.x + 90, instance4rotation.eulerAngles.y - 15, instance4rotation.eulerAngles.z);
+                instance1rotation.eulerAngles = new Vector3(instance1rotation.eulerAngles.x + 90, instance1rotation.eulerAngles.y - 20, instance1rotation.eulerAngles.z);
+                instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y - 10, instance2rotation.eulerAngles.z);
+                instance3rotation.eulerAngles = new Vector3(instance3rotation.eulerAngles.x + 90, instance3rotation.eulerAngles.y + 10, instance3rotation.eulerAngles.z);
+                instance4rotation.eulerAngles = new Vector3(instance4rotation.eulerAngles.x + 90, instance4rotation.eulerAngles.y + 20, instance4rotation.eulerAngles.z);
                 instance1 = Instantiate(bullet, nozzle.transform.position, instance1rotation) as GameObject;
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance3 = Instantiate(bullet, nozzle.transform.position, instance3rotation) as GameObject;
@@ -86,10 +85,10 @@ public class BlunderBuster : MonoBehaviour {
             }
             if (blunderBuster.level == 3)
             {
-                instance1rotation.eulerAngles = new Vector3(instance1rotation.eulerAngles.x + 90, instance1rotation.eulerAngles.y - 15, instance1rotation.eulerAngles.z);
-                instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y - 15, instance2rotation.eulerAngles.z);
-                instance3rotation.eulerAngles = new Vector3(instance3rotation.eulerAngles.x + 90, instance3rotation.eulerAngles.y - 15, instance3rotation.eulerAngles.z);
-                instance4rotation.eulerAngles = new Vector3(instance4rotation.eulerAngles.x + 90, instance4rotation.eulerAngles.y - 15, instance4rotation.eulerAngles.z);
+                instance1rotation.eulerAngles = new Vector3(instance1rotation.eulerAngles.x + 90, instance1rotation.eulerAngles.y - 20, instance1rotation.eulerAngles.z);
+                instance2rotation.eulerAngles = new Vector3(instance2rotation.eulerAngles.x + 90, instance2rotation.eulerAngles.y - 10, instance2rotation.eulerAngles.z);
+                instance3rotation.eulerAngles = new Vector3(instance3rotation.eulerAngles.x + 90, instance3rotation.eulerAngles.y + 10, instance3rotation.eulerAngles.z);
+                instance4rotation.eulerAngles = new Vector3(instance4rotation.eulerAngles.x + 90, instance4rotation.eulerAngles.y + 20, instance4rotation.eulerAngles.z);
                 instance1 = Instantiate(bullet, nozzle.transform.position, instance1rotation) as GameObject;
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance3 = Instantiate(bullet, nozzle.transform.position, instance3rotation) as GameObject;

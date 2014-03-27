@@ -435,7 +435,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -925,7 +925,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -1325,6 +1325,7 @@ GameObject:
   - 114: {fileID: 157646179}
   - 114: {fileID: 157646187}
   - 114: {fileID: 157646181}
+  - 114: {fileID: 157646188}
   m_Layer: 9
   m_Name: player
   m_TagString: Player
@@ -1397,32 +1398,27 @@ MonoBehaviour:
       heatCost: 5
       cooldown: 1
       expToNext: 100
-      ltShot: 0
     level1:
-      damage: 0
-      heatCost: 0
-      cooldown: 0
-      expToNext: 0
-      ltShot: 0
+      damage: 10
+      heatCost: 10
+      cooldown: .800000012
+      expToNext: 200
     level2:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     level3:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     weaponType: 0
     currentLevel:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     currentExp: 0
   fired: {fileID: 8300000, guid: 2027b73ca6905b643b8ec3685e04671c, type: 3}
 --- !u!114 &157646180
@@ -1457,36 +1453,31 @@ MonoBehaviour:
     level: 0
     name: 
     level0:
-      damage: 0
-      heatCost: 0
-      cooldown: 0
+      damage: 30
+      heatCost: 10
+      cooldown: 2
       expToNext: 0
-      ltShot: 0
     level1:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     level2:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     level3:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     weaponType: 0
     currentLevel:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     currentExp: 0
   canister: {fileID: 100002, guid: 9ac2ee9fd19f4f54a80b5ac18f84e94b, type: 2}
   path: {fileID: 100010, guid: 9c35cd5d43c590649bec446e42b3e2f4, type: 2}
@@ -1499,7 +1490,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 157646175}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7bced7b2f5b5d849a12106c2d40e739, type: 3}
   m_Name: 
@@ -1530,7 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
+  maxHealth: 100
   speed: 40
   heat: 10
   maxHeat: 100
@@ -1620,47 +1611,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa1b1239f3de594b93397a6a5e5a228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beam: {fileID: 100000, guid: 8c1751d3bd417fe42ad8fccdb4f02f93, type: 2}
-  beamCharging: {fileID: 100000, guid: b60c41874faecf4479ba592695f0f90f, type: 2}
   fusionBeam:
     level: 0
     name: 
     level0:
-      damage: 0
-      heatCost: 0
-      cooldown: 0
+      damage: 20
+      heatCost: 20
+      cooldown: 5
       expToNext: 0
-      ltShot: 0
     level1:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     level2:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     level3:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     weaponType: 0
     currentLevel:
       damage: 0
       heatCost: 0
       cooldown: 0
       expToNext: 0
-      ltShot: 0
     currentExp: 0
   blast: {fileID: 8300000, guid: 2027b73ca6905b643b8ec3685e04671c, type: 3}
   chargeTime: 1
   duration: 2
   nozzle: {fileID: 382401630}
+--- !u!114 &157646188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 157646175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293855456ec6b294792502da343fffe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield:
+    level: 0
+    name: 
+    level0:
+      damage: 0
+      heatCost: 1
+      cooldown: 0
+      expToNext: 0
+    level1:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+      expToNext: 0
+    level2:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+      expToNext: 0
+    level3:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+      expToNext: 0
+    weaponType: 0
+    currentLevel:
+      damage: 0
+      heatCost: 0
+      cooldown: 0
+      expToNext: 0
+    currentExp: 0
+  shieldObj: {fileID: 100000, guid: aaa8b364ea4ff154fb6545b4dadce7f3, type: 2}
+  distanceFromShip: 15
+  heatPerSecond: 2
+  size0: {x: 20, y: 20, z: 20}
+  size1: {x: 25, y: 25, z: 25}
+  size2: {x: 30, y: 30, z: 30}
+  size3: {x: 35, y: 35, z: 35}
 --- !u!1 &173895557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2101,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -2366,7 +2398,6 @@ GameObject:
   - 114: {fileID: 259264572}
   - 54: {fileID: 259264570}
   - 114: {fileID: 259264569}
-  - 114: {fileID: 259264568}
   - 82: {fileID: 259264576}
   m_Layer: 12
   m_Name: enemy
@@ -2388,17 +2419,6 @@ Transform:
   - {fileID: 1342738265}
   - {fileID: 1703802620}
   m_Father: {fileID: 1786309926}
---- !u!114 &259264568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 259264566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d91d18771b0a494fbfc0bad3a7db1f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &259264569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,7 +2467,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -4585,7 +4605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 157646175}
-  distance: 10
+  distance: 14
 --- !u!1 &394240807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5846,7 +5866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &600447748
 Transform:
   m_ObjectHideFlags: 0
@@ -6139,7 +6159,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -11505,7 +11525,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -11802,7 +11822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1335909572
 Transform:
   m_ObjectHideFlags: 0
@@ -12237,10 +12257,10 @@ MonoBehaviour:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -12259,7 +12279,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 8ab0b02a6facee94abbcd2d2729dc229, type: 3}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -12332,7 +12352,7 @@ MonoBehaviour:
     m_Name: 
     m_Normal:
       m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -12374,10 +12394,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
+    m_Font: {fileID: 12800000, guid: 8ab0b02a6facee94abbcd2d2729dc229, type: 3}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -12685,7 +12705,7 @@ MonoBehaviour:
   cooldown:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 6ddf99b6acb8c3d418806dffd989e853, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -15112,7 +15132,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -15639,7 +15659,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
@@ -16402,9 +16422,9 @@ Transform:
   m_LocalPosition: {x: -533.919434, y: 0, z: 2.7020607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 230845266}
   - {fileID: 1290047212}
   - {fileID: 259264567}
-  - {fileID: 230845266}
   m_Father: {fileID: 0}
 --- !u!114 &1786309927
 MonoBehaviour:

@@ -29,6 +29,8 @@ public class CurvePaths : MonoBehaviour {
     }
 
     void Update () {
+        if (transform == null || parentPath == null)
+            return;
 	    if (!waitingForParentPathAssignment){
 		    if (!rotateToPath){
                 transform.position = Spline.MoveOnPath(pathPoints, transform.position, ref t,

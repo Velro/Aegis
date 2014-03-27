@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Old Javascript\NozzleAdjustment.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Ignore for now\Credit.js">
     <Files>
       <File FileName="..\Old Javascript\NozzleAdjustment.js" Line="10" Column="35" />
+      <File FileName="..\Ignore for now\Credit.js" Line="2" Column="1" />
+      <File FileName="..\Ignore for now\CreditsDispenser.js" Line="3" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

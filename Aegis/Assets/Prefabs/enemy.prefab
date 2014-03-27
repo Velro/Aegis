@@ -253,7 +253,7 @@ MonoBehaviour:
   bulletDamage: 10
   collisionDamage: 20
   health: 20
-  expGiven: 10
+  expGiven: 50
   superEffectiveMod: 2
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,

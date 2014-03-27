@@ -8,6 +8,6 @@ public class WeaponLevel
     public float heatCost = 0;
     public float cooldown = 0;
     public float expToNext = 0;
-
+    [System.NonSerialized]
     public float ltShot = 0;
 }

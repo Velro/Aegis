@@ -25,13 +25,11 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>
 
     public bool invincible = false;
 
-    public static int totalCredit = 5000; //convert to playerPrefs
-    public int creditsThisLevel = 0;
+    public static float totalCredit = 5000; //convert to playerPrefs
+    public float creditsThisLevel = 0;
 
     public AudioClip levelUp;
 
-    Component[] weapons;
-	
 	// Update is called once per frame
 	void Update () 
     {
@@ -58,16 +56,22 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>
     {
         Health = Health - damage;
     }
-    public void GiveExp (float exp, float time){
-	   // foreach (Component weapon in weapons){
-		//    if (Time.time - weapon.currentLevel.lastShot < expWindow){
-		//	    weapon.currentExp += exp;
-		//    }
-	   // }
+    public void GiveExp (float exp)
+    {
+        float[] times = new float[3];
+        times[0] = GetComponent<BlunderBuster>().blunderBuster.currentLevel.ltShot;
+        times[1] = GetComponent<FusionBeam>().fusionBeam.currentLevel.ltShot;
+        times[2] = GetComponent<ArcNade>().arcNade.currentLevel.ltShot;
+        float greatest = Mathf.Max(times);
+        if (greatest == times[0])
+        {
+            GetComponent<BlunderBuster>().blunderBuster.GiveExp(exp);
+            GetComponent<BlunderBuster>().blunderBuster.CheckForLevelUp();
+        }
     }
     public void Kill()
     {
-        
+        //GetComponent<GameOverlayGUI>().lost = true;
     }
 
 

@@ -106,7 +106,7 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
 
     public void GiveExp (float exp)
     {
-        player.GetComponent<PlayerStats>().GiveExp(exp, Time.time);
+        player.SendMessage("GiveExp", exp);
     }
 
     public void Kill()

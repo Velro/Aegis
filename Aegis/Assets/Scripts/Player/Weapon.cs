@@ -20,10 +20,10 @@ public class Weapon
         currentLevel = level0;
     }
 
-    public IEnumerator CheckForLevelUp (float timeBetweenChecks)
+    public void CheckForLevelUp ()
     {
-        yield return new WaitForSeconds(timeBetweenChecks);
-        if (currentExp > currentLevel.expToNext)
+        
+        if (currentExp >= currentLevel.expToNext)
         {
             level++;
             currentExp = 0;
@@ -34,5 +34,10 @@ public class Weapon
             currentLevel = level2;
         if (level == 3)
             currentLevel = level3;
+    }
+
+    public void GiveExp(float exp)
+    {
+        currentExp += exp;
     }
 }

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Destructor : MonoBehaviour, IDamageable<float> {
 
-	void OnCollisionEnter (Collider other)
+	void OnCollisionEnter (Collision other)
     {
-        Destroy(other);
+        Destroy(other.gameObject);
     }
 
     public float Health

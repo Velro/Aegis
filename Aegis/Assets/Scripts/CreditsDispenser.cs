@@ -12,6 +12,18 @@ public class CreditsDispenser : MonoBehaviour {
     float medium = 20;
     float large = 30;
 
+    bool isQuitting = false;
+
+    void OnApplicationQuit ()
+    {
+        isQuitting = true;
+    }
+    void OnDestroy ()
+    {
+        if (!isQuitting)
+            RollToDrop();
+    }
+
     void RollToDrop ()
     {
 	    if (customAmount == 0)

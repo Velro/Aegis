@@ -27,9 +27,10 @@ GameObject:
   - 95: {fileID: 9500000}
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400004}
-  - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
+  - 54: {fileID: 5400000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400002}
   m_Layer: 12
   m_Name: enemy
   m_TagString: Untagged
@@ -234,11 +235,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
   parentPath: {fileID: 0}
-  containsSpeed: {fileID: 0}
+  objectContainsSpeed: {fileID: 0}
+  componentContainsSpeed: {fileID: 11400004}
   rotateToPath: 0
   t: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa1797c857bc4444b2475d547f3874b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallCredit: {fileID: 100000, guid: 5a86a1d3d333e9c49bcaac04856671ae, type: 2}
+  mediumCredit: {fileID: 100000, guid: e860a4814a20df0419c47e87e0c338a6, type: 2}
+  largeCredit: {fileID: 100000, guid: cab674faf200e77408b222b33fec6be6, type: 2}
+  customAmount: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe7843263dee6248b969a49b75906d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   bulletDamage: 10
   collisionDamage: 20
   health: 20

@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shield : MonoBehaviour {
+public class Shield : MonoBehaviour 
+{
     public Weapon shield = new Weapon();
     public GameObject shieldObj;
     public float distanceFromShip = 13; //alter this directly to change
     private GameObject sight;
     public float heatPerSecond = 0;
+
     public Vector3 size0 = Vector3.zero;
     public Vector3 size1 = Vector3.zero;
     public Vector3 size2 = Vector3.zero;
@@ -22,8 +24,7 @@ public class Shield : MonoBehaviour {
         shield.Awake();
     }
     void Start () 
-    {
-        
+    {      
 	    shieldObj = Resources.Load<GameObject>("Prefabs/Shield");
 	    heatPerSecond = shield.currentLevel.heatCost;
 	    sight = gameObject.transform.FindChild("gun").gameObject;
@@ -33,7 +34,8 @@ public class Shield : MonoBehaviour {
     void Update () 
     {
 	    if (((Input.GetButtonDown("Fire4") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis("3rd axis") > 0.5 ))) 
-		     && !instantiateOnce){ //instantiate shield
+		     && !instantiateOnce)
+        { //instantiate shield
 		    thisShield = Instantiate(shieldObj, sight.transform.position, Quaternion.Euler(90,0,0)) as GameObject;
 		    thisShield.transform.parent = sight.transform;
 		    thisShield.transform.localPosition = new Vector3(thisShield.transform.localPosition.x + distanceFromShip, thisShield.transform.localPosition.y, thisShield.transform.localPosition.z);
@@ -42,15 +44,23 @@ public class Shield : MonoBehaviour {
                 thisShield.transform.localScale = size0;
 		    instantiateOnce = true;
 		    GetComponent<PlayerStats>().heat += heatPerSecond * Time.deltaTime;
-	    } else if (Input.GetButton("Fire4") && instantiateOnce && thisShield != null){ //tick heat while held
+	    } 
+        else if ((Input.GetButton("Fire4") || (Input.GetAxis("3rd axis") > 0.5f )) && instantiateOnce && thisShield != null)
+        { //tick heat while held
 		    //Debug.Log("tick shield");
 		    GetComponent<PlayerStats>().heat += heatPerSecond * Time.deltaTime;
 	    }
-	    if (!Input.GetButton("Fire4") && thisShield != null || GetComponent<PlayerStats>().heat > GetComponent<PlayerStats>().maxHeat){ //destroy if too hot or let go
+	    if (!(Input.GetButton("Fire4") || (Input.GetAxis("3rd axis") > 0.5f )) && thisShield != null || GetComponent<PlayerStats>().heat > GetComponent<PlayerStats>().maxHeat)
+        { //destroy if too hot or let go
 		    Destroy(thisShield);
 		    instantiateOnce = false;
 	    }
 	    if (thisShield != null)
 		    thisShield.transform.localRotation = Quaternion.Euler(270, 0, 0);
+    }
+
+    void OnCollisionEnter ()
+    {
+        shield.GiveExp(1);
     }
 }

@@ -9,12 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
-  m_Layer: 0
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  m_Layer: 12
   m_Name: rammer_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +30,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: rammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,14 +137,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85b0937f7a91f94ab206a2d60b62322, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aa1797c857bc4444b2475d547f3874b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  health: 25
-  maxHealth: 100
-  speed: 5
-  exp: 20
+  smallCredit: {fileID: 100000, guid: 5a86a1d3d333e9c49bcaac04856671ae, type: 2}
+  mediumCredit: {fileID: 100000, guid: e860a4814a20df0419c47e87e0c338a6, type: 2}
+  largeCredit: {fileID: 100000, guid: cab674faf200e77408b222b33fec6be6, type: 2}
+  customAmount: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,23 +152,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be2ba87e7dd48ba4b8422ba0828ae835, type: 3}
+  m_Script: {fileID: 11500000, guid: ca65405285823634789931e36d87c24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc5324d8f8b7414783cfb374960cf44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 100000, guid: bd943c792514675e464dfc7a8c26d3e0, type: 2}
-  destructionTime: 4
-  explosionPosition: {x: 0, y: 0, z: 0}
+  collisionDamage: 20
+  speed: 40
+  health: 40
+  expGiven: 20
+  superEffectiveMod: 2
+  superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
+    type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

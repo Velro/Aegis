@@ -8,7 +8,7 @@ public class BlunderBuster : MonoBehaviour {
     public Weapon blunderBuster = new Weapon();
     public AudioClip fired;
 
-    private string input = "Fire1";
+    private string input = "3rd axis";
 
     GameObject instance1;
     GameObject instance2;

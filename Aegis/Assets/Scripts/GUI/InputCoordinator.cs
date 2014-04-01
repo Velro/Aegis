@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class InputCoordinator : MonoBehaviour {
-    public static bool usingMouseAndKeyboard = true;
-    public static bool usingController = false;
+    public static bool usingMouseAndKeyboard = false;
+    public static bool usingController = true;
 	// Use this for initialization
 	void Start () {
 	

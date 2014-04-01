@@ -157,12 +157,12 @@ public class JoystickController : MonoBehaviour {
 	/// <summary>
 	/// show the data onGUI
 	/// </summary>
-	/*
+	
 	void OnGUI()
 	{
 		GUI.TextArea(new Rect(400, 100, 250, 50), "Current Button : " + currentButton);
 		GUI.TextArea(new Rect(400, 200, 250, 50), "Current Axis : " + currentAxis);
 		GUI.TextArea(new Rect(400, 600, 250, 50), "Axis Value : " +  axisInput);
 	}
-	*/
+	
 }

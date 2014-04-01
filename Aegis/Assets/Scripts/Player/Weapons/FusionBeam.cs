@@ -40,7 +40,7 @@ public class FusionBeam : MonoBehaviour
     private GameObject thisBeamCharging;
     void Update ()
     {
-	    if (((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis("3rd axis") > 0.5 || Input.GetButtonDown("Fire2")))) 
+	    if (((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))) 
 			    && !GetComponent<PlayerStats>().overheat //make sure we're not overheating
 			    && Time.time - fusionBeam.currentLevel.ltShot > fusionBeam.currentLevel.cooldown)
 	    {
@@ -65,7 +65,7 @@ public class FusionBeam : MonoBehaviour
 
 		    }
 	    } 
-        else if ((currentChargeTime > 0 && instantiateChargingOnce == true && Input.GetButton("Fire2") == false) 
+        else if (currentChargeTime > 0 && instantiateChargingOnce == true && ((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController &&  Input.GetButtonDown("joystick button 5"))) 
 			    || currentChargeTime >= chargeTime)
         { //if button is let go before fully charged, empty
 	 	    Destroy(thisBeamCharging);
@@ -75,10 +75,10 @@ public class FusionBeam : MonoBehaviour
 
 	    if (currentChargeTime >= chargeTime)
 	    { //charge maxed
-		    if (currentShootTime < duration && Input.GetButton("Fire2") && instantiateBeamOnce == false)
+		    if (currentShootTime < duration && (Input.GetButton("Fire2") || Input.GetButton("joystick button 5")) && instantiateBeamOnce == false)
             { //start beam
                 Destroy(thisBeamCharging);
-                print("fusion beam firing");
+                //print("fusion beam firing");
 			    thisBeam = Instantiate(beamObj, nozzle.transform.position, Quaternion.Euler(Vector3.zero)) as GameObject;	
 			    instantiateBeamOnce = true;
 			    thisBeam.GetComponent<FusionBeamInstance>().CollisionDamage = fusionBeam.currentLevel.damage;
@@ -90,12 +90,13 @@ public class FusionBeam : MonoBehaviour
 			    fusionBeam.currentLevel.ltShot = Time.time;
 			    GetComponent<PlayerStats>().heat += fusionBeam.currentLevel.heatCost;	
 		    } 
-            else if (Input.GetButton("Fire2") && instantiateBeamOnce == true)
+            else if ((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5")) && instantiateBeamOnce == true)
             { //tick time shot while held
 			    //Debug.Log("tick");
 			    currentShootTime += Time.deltaTime;
+                fusionBeam.currentLevel.ltShot = Time.time;
 		    } 
-            else if (instantiateBeamOnce == true && Input.GetButton("Fire2") == false)
+            else if (instantiateBeamOnce == true && !((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))))
             { //let Go
 			    //Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);
 			    Destroy (thisBeam);

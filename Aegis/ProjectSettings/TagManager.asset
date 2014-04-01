@@ -15,7 +15,7 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: ScreenBounds
+  User Layer 8: OnlyPlayerCollides
   User Layer 9: Player
   User Layer 10: PlayerBullet
   User Layer 11: EnemyBullet

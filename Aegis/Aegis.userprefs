@@ -1,10 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Ignore for now\Credit.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Old Javascript\UpgroidsGUI.js">
     <Files>
-      <File FileName="..\Old Javascript\NozzleAdjustment.js" Line="10" Column="35" />
-      <File FileName="..\Ignore for now\Credit.js" Line="2" Column="1" />
-      <File FileName="..\Ignore for now\CreditsDispenser.js" Line="3" Column="1" />
+      <File FileName="..\Old Javascript\NozzleAdjustment.js" Line="1" Column="1" />
+      <File FileName="..\Ignore for now\Credit.js" Line="1" Column="1" />
+      <File FileName="..\Ignore for now\CreditsDispenser.js" Line="1" Column="1" />
+      <File FileName="..\Ignore for now\RammerAI.js" Line="1" Column="1" />
+      <File FileName="..\Ignore for now\MainMenuGUI.js" Line="9" Column="75" />
+      <File FileName="..\Ignore for now\StarMapGUI.js" Line="70" Column="19" />
+      <File FileName="..\Old Javascript\GameOverlayGUIJJ.js" Line="118" Column="31" />
+      <File FileName="..\Old Javascript\UpgroidsGUI.js" Line="57" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

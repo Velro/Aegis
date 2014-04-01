@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
-public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
+public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage 
+{
     [SerializeField]
     private float damage;
     public float CollisionDamage
@@ -21,7 +23,8 @@ public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
     EnemyType strongAgainst = EnemyType.Organic;
     WeaponType weaponType = WeaponType.Projectile;
 
-    void Update () {
+    void Update () 
+    {
 	    if (right)
 		    transform.position += transform.right * Speed * Time.deltaTime;
         //Debug.Log(speed);
@@ -29,12 +32,19 @@ public class MoveBullet : MonoBehaviour, IKillable, IMoves, ICollisionDamage {
 		    transform.position -= transform.right * Speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter (Collider other) {
-        other.SendMessageUpwards("DamageProjectile", CollisionDamage);
+    void OnTriggerEnter (Collider other) 
+    {
+        other.SendMessageUpwards("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
 	    if (gameObject != null)Destroy (gameObject);
         Kill();
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        other.gameObject.SendMessageUpwards("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
+        if (gameObject != null) Destroy(gameObject);
+        Kill();
+    }
     
     public void Kill ()
     {

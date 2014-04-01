@@ -25,14 +25,14 @@ public class ShipMovement : MonoBehaviour {
 	    float horizontal = 0;
 	    float vertical = 0;
 	    if (InputCoordinator.usingController == true){
-		    horizontal = Input.GetAxis("4th axis");
-		    vertical = Input.GetAxis("3rd axis");
+		    horizontal = Input.GetAxis("X axis");
+		    vertical = Input.GetAxis("Y axis");
 	    }
 	    if (InputCoordinator.usingMouseAndKeyboard == true){
 		    horizontal = Input.GetAxis("MoveHorizontalKey");
 		    vertical = Input.GetAxis("MoveVerticalKey");	
 	    }	
-	    moveDirection = new Vector3(horizontal, 0, vertical) * GetComponent<PlayerStats>().speed;
+	    moveDirection = new Vector3(horizontal, 0, vertical) * GetComponent<PlayerStats>().Speed;
 	    controller.Move(moveDirection * Time.deltaTime);
 	
     /**** Physics ****/

@@ -25,15 +25,21 @@ public class ShipAiming : MonoBehaviour {
 	    }
 	
 	    /**** Controller Input ****/
-	    if (InputCoordinator.usingController){
-		    var xAxis = Input.GetAxis("4th axis");
-		    var yAxis = Input.GetAxis("3rd axis");
-		    if (xAxis != 0 || yAxis != 0){
-			    var relativePos = (transform.position+new Vector3(yAxis,0, xAxis)) - transform.position;
+	    if (InputCoordinator.usingController)
+        {
+		    var xAxis = Input.GetAxis("5th axis");
+		    var yAxis = Input.GetAxis("4th axis");
+		    if (xAxis != 0 || yAxis != 0)
+            {
+			    var relativePos = (transform.position+new Vector3(xAxis,0, yAxis)) - transform.position;
 			    var rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 			    sight.transform.rotation = rotation;
-		    } else {
-			    sight.transform.localRotation = Quaternion.identity;
+                
+		    } 
+            else 
+            {
+			    sight.transform.rotation = Quaternion.EulerAngles (0, 0, 0);
+                //print(xAxis + "  " + yAxis);
 		    }
 	    }
     }

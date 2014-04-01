@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArcNadeInstance : MonoBehaviour, IMoves, ICollisionDamage, IKillable 
+public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillable 
 {
     [SerializeField]
     private float speed;
@@ -10,7 +10,6 @@ public class ArcNadeInstance : MonoBehaviour, IMoves, ICollisionDamage, IKillabl
         get { return speed; }
         set { speed = value; }
     }
-    [SerializeField]
     private float damage;
     public float CollisionDamage
     {
@@ -20,9 +19,15 @@ public class ArcNadeInstance : MonoBehaviour, IMoves, ICollisionDamage, IKillabl
     public float explosionRadius = 10;
     public EnemyType strongAgainst = EnemyType.Armored;
     public WeaponType weaponType = WeaponType.Explosive;
-    float superEffectiveCoef = 2;
+    public float superEffectiveCoef = 2;
+    public GameObject explosionEffect;
 
-    void Update () {
+    void Start ()
+    {
+        //Debug.Log(Speed);
+    }
+    void Update () 
+    {
 	    if (gameObject.GetComponent<CurvePaths>().t == 1)
         {
 		    Explode();
@@ -35,25 +40,23 @@ public class ArcNadeInstance : MonoBehaviour, IMoves, ICollisionDamage, IKillabl
 	    Explode();
     }
 
-    void OnTriggerEnter (Collider other)
-    {
-	    other.SendMessage("Damage", damage);
-    }
-
-    private GameObject thisExplosionEffect; 
+     
     void Explode ()
     {
-	    float l = Mathf.Lerp(0,explosionRadius, Time.time);
-	    gameObject.GetComponent<SphereCollider>().enabled = true;
-	    gameObject.GetComponent<SphereCollider>().radius = l;
-	    if (l == explosionRadius){
-            Kill();
-	
-	    }
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+		for (var i = 0; i < hitColliders.Length; i++) {
+            hitColliders[i].SendMessage("DamageExplosive", damage, SendMessageOptions.DontRequireReceiver);
+           // Debug.Log("damage message sent");
+		}
+        Kill();
     }
 
+    private GameObject thisExplosionEffect;
     public void Kill()
     {
         Destroy(gameObject);
+        thisExplosionEffect = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;
+        Destroy(thisExplosionEffect, 3);
     }
 }

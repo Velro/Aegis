@@ -20,13 +20,16 @@ public class Weapon
         currentLevel = level0;
     }
 
-    public void CheckForLevelUp ()
+    public void CheckForLevelUp (GameObject cam)
     {
         
         if (currentExp >= currentLevel.expToNext)
         {
             level++;
             currentExp = 0;
+            cam.SendMessage("SetLevelledName", name);
+            cam.SendMessage("SetLevelledLevel", level);
+            cam.SendMessage("SetLevelledTime", Time.time);
         }
         if (level == 1)
             currentLevel = level1;

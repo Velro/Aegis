@@ -16,7 +16,6 @@ public class MoveTowardDestination : MonoBehaviour
 	
 	void Start () 
     {
-        speed = GetComponent<Stats>().speed;
         start = transform.position;
         end = destination.transform.position;
         journeyLength = Vector3.Distance(start, end);

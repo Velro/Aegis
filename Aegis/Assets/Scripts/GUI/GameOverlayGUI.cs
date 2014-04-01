@@ -22,16 +22,15 @@ public class GameOverlayGUI : MonoBehaviour
     public GameObject[] enemiesForHealthbars;
 
     public bool paused = false;
-    Texture2D alphagrey;
+    public Texture2D alphagrey;
     float ltPausedHit = 0;
     float ltSwitch = 0;
     public float pausedCooldown = 0.25f;
     public float levelUpDisplayTime = 1;
 
-    bool boolLevel = false;
     string levelledName;
     int levelledLevel;
-    float levelledTime;
+    float levelledTime = -10f;
 
     enum PausedMenuState
     {
@@ -43,8 +42,8 @@ public class GameOverlayGUI : MonoBehaviour
     }
     PausedMenuState currentPausedMenuState = PausedMenuState.mainMenu;
 
-    JoyGUIMenu mainPauseMenu;
-    JoyGUIMenu optionsMenu;
+    public JoyGUIMenu mainPauseMenu;
+    public JoyGUIMenu optionsMenu;
     public float delayBetweenButtons = 0.25f;
 
     void Awake()
@@ -85,7 +84,7 @@ public class GameOverlayGUI : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Pause") && paused == false && Time.realtimeSinceStartup - ltPausedHit > pausedCooldown)
+        if ((Input.GetButtonDown("Pause") || Input.GetButtonDown("joystick button 7")) && paused == false && Time.realtimeSinceStartup - ltPausedHit > pausedCooldown)
         {	//pause game
             Time.timeScale = 0;
             ltPausedHit = Time.realtimeSinceStartup;
@@ -109,18 +108,24 @@ public class GameOverlayGUI : MonoBehaviour
         {
             switch (currentPausedMenuState)
             {
-                case PausedMenuState.mainMenu:
-                    mainPauseMenu.enabled = true;
+                case PausedMenuState.mainMenu: 
                     optionsMenu.enabled = false;
                     if (InputCoordinator.usingController)
                     {
+                        //Debug.Log("ltSwitch: " + ltSwitch + ", RealtimesinceStartup " + Time.realtimeSinceStartup);
                         if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
                         {
+                            //Debug.Log("hit");
+                            mainPauseMenu.enabled = true;
                             if (mainPauseMenu.CheckJoyAxis())
                             {
-                                Delay();
                                 ltSwitch = Time.realtimeSinceStartup;
                             }
+                        } 
+                        else
+                        {
+                            mainPauseMenu.enabled = false;
+                            //Debug.Log("tih");
                         }
                         Pause(mainPauseMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
@@ -135,6 +140,7 @@ public class GameOverlayGUI : MonoBehaviour
                         Pause(mainPauseMenu.CheckMouseClick());
                     }
                     break;
+
                 case PausedMenuState.optionsMenu:
                     mainPauseMenu.enabled = false;
                     optionsMenu.enabled = true;
@@ -142,9 +148,9 @@ public class GameOverlayGUI : MonoBehaviour
                     {
                         if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
                         {
+                            mainPauseMenu.enabled = true;
                             if (optionsMenu.CheckJoyAxis())
                             {
-                                Delay();
                                 ltSwitch = Time.realtimeSinceStartup;
                             }
                         }
@@ -214,10 +220,13 @@ public class GameOverlayGUI : MonoBehaviour
 		
 	    } else {
 	    /**** Dying ****/
+            //print("dead");
 		    if (GUI.Button (new Rect((Screen.width/2)-35, (Screen.height/2)-15, 70, 30), 
 				    "Replay?")){
 			    Application.LoadLevel("MainMenu");
 		    }
+            Time.timeScale = 0;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width + 10, Screen.height + 10), alphagrey, ScaleMode.StretchToFill, true, 1.0f);
 	    }
 	    /**** Kill boss ****/
 	    if (boss == null){
@@ -233,18 +242,16 @@ public class GameOverlayGUI : MonoBehaviour
                 camera.WorldToScreenPoint(enemy.transform.position).y+140//coefficient needed to lift bar above unit
                 ,40*PercentHealth(enemy),4),"",healthbar);
         }*/
+
         /**** Level Up ****/
-	    if (boolLevel)
-        {
 		    if (Time.time < levelledTime + levelUpDisplayTime){
-			    GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 100), levelledName+" is level "+levelledLevel, levelUp);
-		    }
+			    GUI.Label(new Rect(0, 0, Screen.width, Screen.height - Screen.height/4), levelledName+" is level "+levelledLevel, levelUp);
 	    }
 			
 	    /**** Pause Menu ****/
 	    if (paused)
         {	//pause game
-		    GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),alphagrey,ScaleMode.StretchToFill, true, 1.0f); //dim the screen with negro-engineered filter since filters are only for Pro
+		    GUI.DrawTexture(new Rect(0,0,Screen.width + 10,Screen.height + 10),alphagrey,ScaleMode.StretchToFill, true, 1.0f); //dim the screen with negro-engineered filter since filters are only for Pro
 		    Rect pausedRect = new Rect(0, 0, Screen.width/3, (Screen.height/4)*3);
 		    pausedRect.center = new Vector2(Screen.width/2,Screen.height/2);
 		    GUI.Box (pausedRect,"Paused");
@@ -258,6 +265,21 @@ public class GameOverlayGUI : MonoBehaviour
 				    break;
 		    }
 	    }
+    }
+
+    public void SetLevelledLevel (int i)
+    {
+        levelledLevel = i;
+    }
+
+    public void SetLevelledTime(float time)
+    {
+        levelledTime = time;
+    }
+
+    public void SetLevelledName(string name)
+    {
+        levelledName = name;
     }
 
     float PercentHealth (GameObject gameObject)
@@ -281,22 +303,6 @@ public class GameOverlayGUI : MonoBehaviour
 	    float percent = (Time.time - lastTimeShot) / cooldown; 
 	    //if (percent > 0.99)percent = 1;
 	    return Mathf.Clamp01(percent);
-    }
-
-    void Options (int hit)
-    {
-        switch (hit)
-        {
-            case 0:
-                currentPausedMenuState = PausedMenuState.inputMenu;
-                break;
-            case 1:
-                currentPausedMenuState = PausedMenuState.soundMenu;
-                break;
-            case 2:
-                currentPausedMenuState = PausedMenuState.graphicsMenu;
-                break;
-        }
     }
 
     void Pause (int hit)
@@ -324,9 +330,19 @@ public class GameOverlayGUI : MonoBehaviour
         }
     }
 
-    public void Delay ()
+    void Options(int hit)
     {
-        mainPauseMenu.enabled = false;
-        optionsMenu.enabled = false;
+        switch (hit)
+        {
+            case 0:
+                currentPausedMenuState = PausedMenuState.inputMenu;
+                break;
+            case 1:
+                currentPausedMenuState = PausedMenuState.soundMenu;
+                break;
+            case 2:
+                currentPausedMenuState = PausedMenuState.graphicsMenu;
+                break;
+        }
     }
 }

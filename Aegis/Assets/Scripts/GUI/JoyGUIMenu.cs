@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class JoyGUIMenu {
 
     string vertAxis;
     string horAxis;
     string inButton;
 
-    int numberOfColumns;
-    int buttonsPerColumn; 
+    public int numberOfColumns;
+    public int buttonsPerColumn; 
 
-    bool isCheckingJoy;
-    int currentFocus = 0;
-    JoyGUIButton[] buttons;
+    public  bool isCheckingJoy;
+    public int currentFocus = 0;
+    public JoyGUIButton[] buttons;
     public bool enabled = true;
 
 	public JoyGUIMenu (int numberOfButtonsPerColumn, Rect[] rectangles,
@@ -69,52 +70,69 @@ public class JoyGUIMenu {
 		return pressedButton;
 	}
 	
-	public void SetFocus(int change){
+	public void SetFocus(int change)
+    {
 		if (enabled){
-			if (change == -1){	//down on stick
+			if (change == -1
+                ){	//down on stick
 				currentFocus++;	//down the array
-				if ((currentFocus % buttonsPerColumn) == 0){
+				if ((currentFocus % buttonsPerColumn) == 0)
+                {
 					currentFocus = 0; //loop back to the top
 				}
-			} else if (change == 1){// up on stick
+			}
+            else if (change == 1)
+            {// up on stick
 				currentFocus--; // up the array
-				if (currentFocus == -1){
+				if (currentFocus == -1)
+                {
 					currentFocus = buttonsPerColumn - 1; // loop to bottom from top
 				}
 			}
-			for (int i = 0; i < buttons.Length; i++){
+			for (int i = 0; i < buttons.Length; i++)
+            {
 				buttons[i].Focus(false);
 				if (i == currentFocus)buttons[i].Focus(true);
 			}
 		}
 	}
 	
-	public void SetColumn(int change){
-		if (enabled){
+	public void SetColumn(int change)
+    {
+		if (enabled)
+        {
 			if (change == -1){
 				currentFocus -= buttonsPerColumn;
-				if (currentFocus < 0){
+				if (currentFocus < 0)
+                {
 					currentFocus = buttons.Length + currentFocus;
 				}
-			} else if (change == 1){
+			} else if (change == 1)
+            {
 				currentFocus += buttonsPerColumn;
-				if (currentFocus > buttons.Length-1){	//loop back to top
+				if (currentFocus > buttons.Length-1)
+                {	//loop back to top
 					currentFocus = currentFocus % buttonsPerColumn;
 				}
 			}
-			for (int i = 0; i < buttons.Length; i++){
+			for (int i = 0; i < buttons.Length; i++)
+            {
 				buttons[i].Focus(false);
 				if (i == currentFocus)buttons[i].Focus(true);
 			}
 		}
 	}
 	
-	public void CheckMousePosition (){
-		if (enabled){
+	public void CheckMousePosition ()
+    {
+		if (enabled)
+        {
 			var mousePos = Input.mousePosition;
 			mousePos.y = Screen.height - mousePos.y;
-			foreach (JoyGUIButton butt in buttons){
-				if (butt.buttonRect.Contains(mousePos)){
+			foreach (JoyGUIButton butt in buttons)
+            {
+				if (butt.buttonRect.Contains(mousePos))
+                {
 					butt.Focus(true);
 				} else {
 					butt.Focus(false);
@@ -122,37 +140,49 @@ public class JoyGUIMenu {
 			}
 		}
 	}
-	public int CheckMouseClick (){
+	public int CheckMouseClick ()
+    {
 		int pressedButton = -1;
-		if (enabled){
-			if (Input.GetButtonDown("Fire1")){
-			var mousePos = Input.mousePosition;
-			mousePos.y = Screen.height - mousePos.y;
-			for (int i = 0; i < buttons.Length; i++){
-				if (buttons[i].buttonRect.Contains(mousePos)){
-					buttons[i].Click();
-					pressedButton = i;
-					}
-				}
+		if (enabled)
+        {
+			if (Input.GetButtonDown("Fire1"))
+            {
+			    Vector2 mousePos = Input.mousePosition;
+			    mousePos.y = Screen.height - mousePos.y;
+			    for (int i = 0; i < buttons.Length; i++)
+                {
+				    if (buttons[i].buttonRect.Contains(mousePos))
+                    {
+					    buttons[i].Click();
+					    pressedButton = i;
+					    }
+				    }
 			}
 		}
-		if (Input.GetButtonUp("Fire1")){
-			foreach (JoyGUIButton b in buttons){
+		if (Input.GetButtonUp("Fire1"))
+        {
+			foreach (JoyGUIButton b in buttons)
+            {
 				b.UnClick();
 			}
 		}
 		return pressedButton;
 	}
 
-	public void UnClickAll (){
-		foreach (JoyGUIButton butt in buttons){
+	public void UnClickAll ()
+    {
+		foreach (JoyGUIButton butt in buttons)
+        {
 			butt.UnClick();
 		}
 	}
 	
-	public void Display(){
-		if (enabled){
-			foreach (JoyGUIButton butt in buttons){
+	public void Display()
+    {
+		if (enabled)
+        {
+			foreach (JoyGUIButton butt in buttons)
+            {
 				butt.Display();
 			}
 		}

@@ -2,7 +2,15 @@
 using System.Collections;
 
 [AddComponentMenu("EnemyAI/Corsair")]
-public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable<float>, IGivesExp<float> {
+public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable<float>, IGivesExp<float>, ISpeed
+{
+    [SerializeField]
+    private float speed;
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
     public float bulletDamage;
     [SerializeField]
     private float collisionDamage;
@@ -73,6 +81,7 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
 
         if (health <= 0)
         {
+            GiveExp(ExpGiven);
             Kill();
         }
     }
@@ -104,6 +113,12 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
         health -= damageTaken;
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        other.gameObject.SendMessage("Damage", CollisionDamage);
+        //print("HIT");
+    }
+
     public void GiveExp (float exp)
     {
         player.SendMessage("GiveExp", exp);
@@ -112,7 +127,6 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
     public void Kill()
     {
         Destroy(gameObject);
-        GiveExp(ExpGiven);
     }
 
 

@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float> 
+public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>, ICollisionDamage, ISpeed
 {
+    [SerializeField]
+    private float speed;
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
     [SerializeField]
     private float health;
     public float Health
@@ -10,9 +17,14 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>
         get { return health; }
         set { health = value; }
     }
-    
+    [SerializeField]
+    private float collisionDamage;
+    public float CollisionDamage
+    {
+        get { return collisionDamage; }
+        set { collisionDamage = value; }
+    }
     public float maxHealth;
-    public float speed = 5;
     public float heat = 10;
     public float maxHeat = 100;
     public float heatCooldownRate = 1;
@@ -50,6 +62,10 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>
         }
         if (invincible)
             health = 100;
+        if (health <= 0)
+        {
+            Kill();
+        }
 	}
 
     public void Damage(float damage)
@@ -66,15 +82,29 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>
         if (greatest == times[0])
         {
             GetComponent<BlunderBuster>().blunderBuster.GiveExp(exp);
-            GetComponent<BlunderBuster>().blunderBuster.CheckForLevelUp();
+            GetComponent<BlunderBuster>().blunderBuster.CheckForLevelUp(Camera.main.gameObject);
+        }
+        if (greatest == times[1])
+        {
+            GetComponent<FusionBeam>().fusionBeam.GiveExp(exp);
+            GetComponent<FusionBeam>().fusionBeam.CheckForLevelUp(Camera.main.gameObject);
+        }
+        if (greatest == times[2])
+        {
+            GetComponent<ArcNade>().arcNade.GiveExp(exp);
+            GetComponent<ArcNade>().arcNade.CheckForLevelUp(Camera.main.gameObject);
         }
     }
     public void Kill()
     {
         //GetComponent<GameOverlayGUI>().lost = true;
+        Destroy(gameObject);
     }
 
-
+    public void OnCollisionEnter (Collision other)
+    {
+        other.gameObject.SendMessage("Damage", CollisionDamage);
+    }
 
     public void DamageProjectile(float damageTaken)
     {

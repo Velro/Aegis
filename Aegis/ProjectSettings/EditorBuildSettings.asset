@@ -8,8 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/MenuLevels/MainMenu.unity
   - enabled: 1
+    path: Assets/Levels/MenuLevels/StarMap.unity
+  - enabled: 1
     path: Assets/Levels/MenuLevels/UpgradesMenu.unity
   - enabled: 1
+    path: Assets/Levels/SurfaceLevel.unity
+  - enabled: 0
     path: Assets/Levels/TestLevel.unity
-  - enabled: 1
-    path: Assets/Levels/MenuLevels/StarMap.unity

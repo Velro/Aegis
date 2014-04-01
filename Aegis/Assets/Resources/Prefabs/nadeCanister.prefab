@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -960.510986, y: 0, z: 29.771904}
+  m_LocalPosition: {x: -820.322571, y: 210.161362, z: -62.9345245}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 400000}
@@ -98,7 +98,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 4}
+  m_Size: {x: 3, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9500000
 Animator:
@@ -126,9 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: {fileID: 400010, guid: 9c35cd5d43c590649bec446e42b3e2f4, type: 2}
-  pathPoints: []
-  speed: 5
-  containsSpeed: {fileID: 0}
+  objectContainsSpeed: {fileID: 0}
+  componentContainsSpeed: {fileID: 11400004}
   rotateToPath: 0
   t: 0
 --- !u!114 &11400004
@@ -142,11 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444f6816aac54a44ebb2f4fdbeec645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  damage: 0
-  explosionRadius: 10
+  speed: 100
+  explosionRadius: 20
   strongAgainst: 1
   weaponType: 1
+  superEffectiveCoef: 2
+  explosionEffect: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -155,7 +155,7 @@ SphereCollider:
   m_GameObject: {fileID: 100002}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 9.99999975e-06
   m_Center: {x: 0, y: 0, z: 0}

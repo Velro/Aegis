@@ -1,21 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CurvePaths : MonoBehaviour {
-    public float speed;
+public class CurvePaths : MonoBehaviour 
+{
+    float speed;
     public Transform parentPath;
     Transform[] pathPoints;
-   
-    public Component containsSpeed;
+    public GameObject objectContainsSpeed;
+    public Component componentContainsSpeed;
     public bool rotateToPath = false;
     public float t = 0f;
     private Quaternion q;
-    bool waitingForParentPathAssignment = false;
-    
-    void Start () {
+    bool waitingForParentPathAssignment = false;    
+
+    void Awake ()
+    {
+        GameObject g;
+        if (componentContainsSpeed == null)
+        {
+            g = objectContainsSpeed;
+            if (objectContainsSpeed == null)
+                throw new System.NotImplementedException();
+        }
+        else
+        {
+            g = gameObject;
+        }
+
+        float componentSpeed = 0;
+        if (g.GetComponent<CorsairAI>() != null)componentSpeed = g.GetComponent<CorsairAI>().Speed;
+        if (g.GetComponent<RammerAI>() != null) componentSpeed = g.GetComponent<CorsairAI>().Speed;
+        if (g.GetComponent<SpaceWormMaster>() != null) componentSpeed = g.GetComponent<SpaceWormMaster>().Speed;
+        if (g.GetComponent<ArcNadeInstance>() != null) componentSpeed = g.GetComponent<ArcNadeInstance>().Speed;
+        speed = componentSpeed;
+        if (speed == 0)
+            print(gameObject.name + " could not find a speed!");
+    }
+
+    void Start () 
+    {
 	    if (parentPath != null){
 		    AssignParentPath();
-	    } /*else {
+	    }/*else {
 		    waitingForParentPathAssignment = true;
 	    }
 	    if (gameObject.GetComponent(Stats) != null){
@@ -28,23 +54,27 @@ public class CurvePaths : MonoBehaviour {
 	    q = transform.rotation;*/
     }
 
-    void Update () {
+    void Update () 
+    {
         if (transform == null || parentPath == null)
             return;
-	    if (!waitingForParentPathAssignment){
-		    if (!rotateToPath){
+	    if (!waitingForParentPathAssignment)
+        {
+		    if (!rotateToPath)
+            {
                 transform.position = Spline.MoveOnPath(pathPoints, transform.position, ref t,
                     speed);
-               // Debug.Log(t);
+                //Debug.Log(gameObject.name+": "+speed);
 	        }
-	        if (rotateToPath){
+	        if (rotateToPath)
+            {
 	    	    transform.position = Spline.MoveOnPath(pathPoints, transform.position, ref t, ref q,
 		    	    speed,100f,EasingType.Sine, true, true);
 		        q.eulerAngles = new Vector3(q.eulerAngles.x + 90, q.eulerAngles.y, q.eulerAngles.z);
 		        transform.rotation = q;
-               
 	        }
-	    } else if (waitingForParentPathAssignment && parentPath != null){
+	    } else if (waitingForParentPathAssignment && parentPath != null)
+        {
 		    AssignParentPath();
 	    }
     }

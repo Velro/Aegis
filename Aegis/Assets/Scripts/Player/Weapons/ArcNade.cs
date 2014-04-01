@@ -29,7 +29,7 @@ public class ArcNade : MonoBehaviour
 
     void Update () 
     {
-	    if (((Input.GetButtonDown("Fire3") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController &&  Input.GetButtonDown("joystick button 7"))) 
+	    if (((Input.GetButtonDown("Fire3") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController &&  Input.GetButtonDown("joystick button 4"))) 
 			    && !gameObject.GetComponent<PlayerStats>().overheat //make sure we're not overheating
 			    && Time.time - arcNade.currentLevel.ltShot > arcNade.currentLevel.cooldown)
 	    {
@@ -42,7 +42,7 @@ public class ArcNade : MonoBehaviour
 		    thisCanister.GetComponent<ArcNadeInstance>().Speed *= playerSpeed;
 		
 		    thisPath = Instantiate(path, nozzle.transform.position, nozzle.transform.rotation) as GameObject;
-		    if (nozzle.transform.eulerAngles.y > 180)thisPath.transform.eulerAngles = new Vector3(180, thisPath.transform.eulerAngles.y, thisPath.transform.eulerAngles.z);
+		    //if (nozzle.transform.eulerAngles.y > 180)thisPath.transform.eulerAngles = new Vector3(180, thisPath.transform.eulerAngles.y, thisPath.transform.eulerAngles.z);
 		    thisCanister.GetComponent<CurvePaths>().parentPath = thisPath.transform;
 		
 		    Destroy(thisPath,5);

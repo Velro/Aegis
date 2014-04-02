@@ -99,7 +99,7 @@ public class FusionBeam : MonoBehaviour
             else if (instantiateBeamOnce == true && !((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))))
             { //let Go
 			    //Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);
-			    Destroy (thisBeam);
+			   // Destroy (thisBeam);
 			    instantiateBeamOnce = false;
 			    currentShootTime = 0;
 			    currentChargeTime = 0;
@@ -107,7 +107,7 @@ public class FusionBeam : MonoBehaviour
 		    if (currentShootTime >= duration)
             { //held through hold duration
 			    //if(thisBeam != null)Debug.Log("end shoot"+"Destroy "+thisBeam.name);
-			    Destroy (thisBeam);
+			   // Destroy (thisBeam);
 			    fusionBeam.currentLevel.ltShot = Time.time;
 			    instantiateBeamOnce = false;
 			    currentShootTime = 0;

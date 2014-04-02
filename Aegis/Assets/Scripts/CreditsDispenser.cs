@@ -50,15 +50,20 @@ public class CreditsDispenser : MonoBehaviour {
 
     void Drop (float amount){
         GameObject instance;
-	    if (amount > 0 && amount < 20){
+
+        if (isQuitting)
+            return;
+	    if (amount > 0 && amount < 20 && !isQuitting){
 		    instance = Instantiate (smallCredit, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity) as GameObject;
 		    instance.GetComponent<Credit>().amount = amount;
 	    }
-	    if (amount >= 20 && amount < 30){
+        if (amount >= 20 && amount < 30 && !isQuitting)
+        {
             instance = Instantiate(mediumCredit, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity) as GameObject;
 		    instance.GetComponent<Credit>().amount = amount;
 	    }
-	    if (amount >= 30){
+        if (amount >= 30 && !isQuitting)
+        {
             instance = Instantiate(largeCredit, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity) as GameObject;
 		    instance.GetComponent<Credit>().amount = amount;
 	    }

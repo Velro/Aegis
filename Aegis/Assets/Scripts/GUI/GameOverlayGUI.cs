@@ -54,6 +54,10 @@ public class GameOverlayGUI : MonoBehaviour
     Rect[] optionsMenuRects = new Rect[3];
     string[] optionsMenuStrings = new string[3];
 
+    public JoyGUIMenu inputMenu;
+    Rect[] inputMenuRects = new Rect[2];
+    string[] inputMenuStrings = new string[2];
+
     public float delayBetweenButtons = 0.25f;
 
     void Awake()
@@ -103,6 +107,23 @@ public class GameOverlayGUI : MonoBehaviour
             b.hover = hoverButton;
             b.down = downButton;
         }
+
+        inputMenuRects[0] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
+        inputMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
+        inputMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 8);
+        inputMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 12);
+
+        inputMenuStrings[0] = "Use Keyboard";
+        inputMenuStrings[1] = "Use Controller";
+        inputMenu = new JoyGUIMenu(2, inputMenuRects, inputMenuStrings, "joystick button 0", "Y axis", "X axis");
+        inputMenu.enabled = false;
+
+        foreach (JoyGUIButton b in inputMenu.buttons)
+        {
+            b.up = upButton;
+            b.hover = hoverButton;
+            b.down = downButton;
+        }
     }
 	
 	// Update is called once per frame
@@ -126,6 +147,7 @@ public class GameOverlayGUI : MonoBehaviour
             currentPausedMenuState = PausedMenuState.mainMenu;
             mainPauseMenu.UnClickAll();
             optionsMenu.UnClickAll();
+            inputMenu.UnClickAll();
         }
         if (paused)
         {
@@ -134,12 +156,11 @@ public class GameOverlayGUI : MonoBehaviour
                 case PausedMenuState.mainMenu:
                     mainPauseMenu.enabled = true;
                     optionsMenu.enabled = false;
+                    inputMenu.enabled = false;
                     if (InputCoordinator.usingController)
                     {
-                        //Debug.Log("ltSwitch: " + ltSwitch + ", RealtimesinceStartup " + Time.realtimeSinceStartup);
                         if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
                         {
-                            //Debug.Log("hit");
                             mainPauseMenu.isCheckingJoy = false;
                             if (mainPauseMenu.CheckJoyAxis())
                             {
@@ -149,7 +170,6 @@ public class GameOverlayGUI : MonoBehaviour
                         Pause(mainPauseMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
                         {
-                            //currentState = Menu.SupportBay;
                             mainPauseMenu.UnClickAll();
                         }
                     }
@@ -163,17 +183,18 @@ public class GameOverlayGUI : MonoBehaviour
                 case PausedMenuState.optionsMenu:
                     mainPauseMenu.enabled = false;
                     optionsMenu.enabled = true;
+                    inputMenu.enabled = false;
                     if (InputCoordinator.usingController)
                     {
                         if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
                         {
-                            mainPauseMenu.isCheckingJoy = false;
+                            optionsMenu.isCheckingJoy = false;
                             if (optionsMenu.CheckJoyAxis())
                             {
                                 ltSwitch = Time.realtimeSinceStartup;
                             }
                         }
-                        Pause(mainPauseMenu.CheckJoyButton());
+                        Options(optionsMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
                         {
                             currentPausedMenuState = PausedMenuState.mainMenu;
@@ -183,7 +204,35 @@ public class GameOverlayGUI : MonoBehaviour
                     if (InputCoordinator.usingMouseAndKeyboard)
                     {
                         optionsMenu.CheckMousePosition();
-                        Pause(optionsMenu.CheckMouseClick());
+                        Options(optionsMenu.CheckMouseClick());
+                    }
+                    break;
+
+                case PausedMenuState.inputMenu:
+                    mainPauseMenu.enabled = false;
+                    optionsMenu.enabled = false;
+                    inputMenu.enabled = true;
+                    if (InputCoordinator.usingController)
+                    {
+                        if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
+                        {
+                            inputMenu.isCheckingJoy = false;
+                            if (inputMenu.CheckJoyAxis())
+                            {
+                                ltSwitch = Time.realtimeSinceStartup;
+                            }
+                        }
+                        InputMenuLogic(inputMenu.CheckJoyButton());
+                        if (Input.GetButtonDown("joystick button 1"))
+                        {
+                            currentPausedMenuState = PausedMenuState.optionsMenu;
+                            inputMenu.UnClickAll();
+                        }
+                    }
+                    if (InputCoordinator.usingMouseAndKeyboard)
+                    {
+                        inputMenu.CheckMousePosition();
+                        InputMenuLogic(inputMenu.CheckMouseClick());
                     }
                     break;
             }
@@ -239,7 +288,6 @@ public class GameOverlayGUI : MonoBehaviour
 		
 	    } else {
 	    /**** Dying ****/
-            //print("dead");
 		    if (GUI.Button (new Rect((Screen.width/2)-35, (Screen.height/2)-15, 70, 30), 
 				    "Replay?")){
 			    Application.LoadLevel("MainMenu");
@@ -282,6 +330,9 @@ public class GameOverlayGUI : MonoBehaviour
 			    case PausedMenuState.optionsMenu:
 				    optionsMenu.Display();
 				    break;
+                case PausedMenuState.inputMenu:
+                    inputMenu.Display();
+                    break;
 		    }
 	    }
     }
@@ -355,12 +406,34 @@ public class GameOverlayGUI : MonoBehaviour
         {
             case 0:
                 currentPausedMenuState = PausedMenuState.inputMenu;
+                optionsMenu.UnClickAll();
                 break;
             case 1:
                 currentPausedMenuState = PausedMenuState.soundMenu;
+                optionsMenu.UnClickAll();
                 break;
             case 2:
                 currentPausedMenuState = PausedMenuState.graphicsMenu;
+                optionsMenu.UnClickAll();
+                break;
+        }
+    }
+
+    void InputMenuLogic(int hit)
+    {
+        if (hit != -1)
+            print(hit);
+        switch (hit)
+        {
+            case 0:
+                player.GetComponent<InputCoordinator>().SwitchToMouseAndKeyboard();
+                print("switchA");
+                inputMenu.UnClickAll();
+                break;
+            case 1:
+                player.GetComponent<InputCoordinator>().SwitchToController();
+                print("switchC");
+                inputMenu.UnClickAll();
                 break;
         }
     }

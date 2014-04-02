@@ -2,7 +2,8 @@
 using System.Collections;
 
 //[System.Serializable]
-public class JoyGUIMenu {
+public class JoyGUIMenu 
+{
 
     string vertAxis;
     string horAxis;
@@ -134,7 +135,8 @@ public class JoyGUIMenu {
 				if (butt.buttonRect.Contains(mousePos))
                 {
 					butt.Focus(true);
-				} else {
+				} else 
+                {
 					butt.Focus(false);
 				}
 			}
@@ -155,8 +157,8 @@ public class JoyGUIMenu {
                     {
 					    buttons[i].Click();
 					    pressedButton = i;
-					    }
-				    }
+					}
+				}
 			}
 		}
 		if (Input.GetButtonUp("Fire1"))

@@ -1470,7 +1470,7 @@ MonoBehaviour:
   maxHealth: 100
   heat: 10
   maxHeat: 100
-  heatCooldownRate: 8
+  heatCooldownRate: 4
   overheat: 0
   overheatTime: 1
   speedReduction: .5
@@ -1552,12 +1552,12 @@ MonoBehaviour:
     level: 0
     name: Fusion Beam
     level0:
-      damage: 5
+      damage: 8
       heatCost: 20
       cooldown: 5
       expToNext: 100
     level1:
-      damage: 7
+      damage: 10
       heatCost: 22
       cooldown: 4.5
       expToNext: 100
@@ -1579,7 +1579,6 @@ MonoBehaviour:
       expToNext: 0
     currentExp: 0
   blast: {fileID: 8300000, guid: 2027b73ca6905b643b8ec3685e04671c, type: 3}
-  chargeTime: 1
   duration: 2
   nozzle: {fileID: 382401630}
 --- !u!114 &157646188

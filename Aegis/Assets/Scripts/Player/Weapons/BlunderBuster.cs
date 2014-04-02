@@ -27,7 +27,7 @@ public class BlunderBuster : MonoBehaviour {
 
     void Update () {
         //Debug.Log(nozzle.transform.position);
-        if (((Input.GetButtonDown(input) && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis(input) < -0.5)))
+        if (((Input.GetButtonDown("Fire1") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis(input) < -0.5)))
                 && !GetComponent<PlayerStats>().overheat //make sure we're not overheating
                 && Time.time - blunderBuster.currentLevel.ltShot > blunderBuster.currentLevel.cooldown)
         {
@@ -47,6 +47,7 @@ public class BlunderBuster : MonoBehaviour {
                 instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 Destroy(instance1, lifetime); //after 5 seconds the bullet is way off the screen. This is for clean up
                 Destroy(instance2, lifetime);
+               // print("go");
             }
             if (blunderBuster.level == 1)
             {

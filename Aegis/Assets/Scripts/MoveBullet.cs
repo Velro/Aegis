@@ -25,7 +25,7 @@ public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage
 
     void Start ()
     {
-        rigidbody.AddForce(-transform.right * 100, ForceMode.VelocityChange);
+        //rigidbody.AddForce(-transform.right * 100, ForceMode.VelocityChange);
     }
 
     void FixedUpdate ()
@@ -36,12 +36,12 @@ public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage
     void Update () 
     {
         
-	   // if (right)
+	    if (right)
             
-		    //transform.position += transform.right * Speed * Time.deltaTime;
+		    transform.position += transform.right * Speed * Time.deltaTime;
         //Debug.Log(speed);
-	  //  if (left)
-		   // transform.position -= transform.right * Speed * Time.deltaTime;
+	    if (left)
+		    transform.position -= transform.right * Speed * Time.deltaTime;
     }
 
     void OnTriggerEnter (Collider other) 

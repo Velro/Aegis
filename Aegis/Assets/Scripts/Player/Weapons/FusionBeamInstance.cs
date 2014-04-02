@@ -36,7 +36,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
     {
         if (extended == false)
         {
-            lerpOut += Time.deltaTime / extensionSpeed;
+            Mathf.Clamp01(lerpOut += Time.deltaTime / extensionSpeed);
             gameObject.transform.localScale = new Vector3(lerpOut * endWidth, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
             if (lerpOut >= 1)
             {
@@ -48,7 +48,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
         {
             if (Time.time > ltExtended + timeExtended) // begin retracting
             {
-                lerpOut -= Time.deltaTime / extensionSpeed;
+                Mathf.Clamp01(lerpOut -= Time.deltaTime / extensionSpeed);
                 gameObject.transform.localScale = new Vector3(lerpOut * endWidth, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
                 if (lerpOut <= 0)
                 {

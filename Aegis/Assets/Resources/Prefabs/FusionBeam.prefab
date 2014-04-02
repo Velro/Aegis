@@ -165,9 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e95c023a19bd0488c27f3d1a8c299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extensionSpeed: .200000003
+  extensionSpeed: 1
   timeExtended: 1
-  retractionSpeed: .200000003
+  retractionSpeed: .5
   endWidth: 4
   damage: 3
   offsetFromNozzle: -4

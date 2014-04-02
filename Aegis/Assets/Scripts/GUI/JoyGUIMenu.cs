@@ -4,7 +4,8 @@ using System.Collections;
 //[System.Serializable]
 public class JoyGUIMenu 
 {
-
+    public delegate void LogicType(int hit); 
+    public LogicType myLogicType;
     string vertAxis;
     string horAxis;
     string inButton;
@@ -18,11 +19,12 @@ public class JoyGUIMenu
     public bool enabled = true;
 
 	public JoyGUIMenu (int numberOfButtonsPerColumn, Rect[] rectangles,
-		string[] labels, string inputButton, string verticalAxis, string horizontalAxis)
+		string[] labels, LogicType logic, string inputButton, string verticalAxis, string horizontalAxis)
     {
 		vertAxis = verticalAxis;
 		horAxis = horizontalAxis;
 		inButton = inputButton;
+        myLogicType = logic;
 		
 		numberOfColumns = rectangles.Length % numberOfButtonsPerColumn;
 		buttonsPerColumn = numberOfButtonsPerColumn;
@@ -189,4 +191,31 @@ public class JoyGUIMenu
 			}
 		}
 	}
+
+    public float ltSwitch = 0;
+    public float delayBetweenButtons = 0.2f;
+    public void CheckInput()
+    {
+        if (myLogicType == null)
+        {
+            Debug.Log("myLogicType == null");
+            return;
+        } 
+        if (InputCoordinator.usingController)
+        {
+            if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
+            {
+                isCheckingJoy = false;
+                if (CheckJoyAxis())
+                    ltSwitch = Time.realtimeSinceStartup;
+            }
+            myLogicType(CheckJoyButton());
+        }
+
+        if (InputCoordinator.usingMouseAndKeyboard)
+        {
+            CheckMousePosition();
+            myLogicType(CheckMouseClick());
+        }
+    }
 }

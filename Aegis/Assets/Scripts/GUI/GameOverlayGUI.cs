@@ -78,7 +78,7 @@ public class GameOverlayGUI : MonoBehaviour
 		mainPauseMenuStrings[0] = "Options";
 		mainPauseMenuStrings[1] = "Return to Star Map";
 		mainPauseMenuStrings[2] = "Exit Aegis";
-	    mainPauseMenu = new JoyGUIMenu(3, mainPauseMenuRects, mainPauseMenuStrings, "joystick button 0", "Y axis", "X axis");
+	    mainPauseMenu = new JoyGUIMenu(3, mainPauseMenuRects, mainPauseMenuStrings, Pause, "joystick button 0", "Y axis", "X axis");
 	    mainPauseMenu.enabled = false;
 
         foreach (JoyGUIButton b in mainPauseMenu.buttons)
@@ -98,7 +98,7 @@ public class GameOverlayGUI : MonoBehaviour
 		optionsMenuStrings[0] = "Input";
 		optionsMenuStrings[1] = "Sound";
 		optionsMenuStrings[2] = "Graphics";
-	    optionsMenu = new JoyGUIMenu(3, optionsMenuRects, optionsMenuStrings, "joystick button 0", "Y axis", "X axis");
+	    optionsMenu = new JoyGUIMenu(3, optionsMenuRects, optionsMenuStrings, Options, "joystick button 0", "Y axis", "X axis");
 	    optionsMenu.enabled = false;
 
         foreach (JoyGUIButton b in optionsMenu.buttons)
@@ -115,7 +115,7 @@ public class GameOverlayGUI : MonoBehaviour
 
         inputMenuStrings[0] = "Use Keyboard";
         inputMenuStrings[1] = "Use Controller";
-        inputMenu = new JoyGUIMenu(2, inputMenuRects, inputMenuStrings, "joystick button 0", "Y axis", "X axis");
+        inputMenu = new JoyGUIMenu(2, inputMenuRects, inputMenuStrings, InputMenuLogic, "joystick button 0", "Y axis", "X axis");
         inputMenu.enabled = false;
 
         foreach (JoyGUIButton b in inputMenu.buttons)
@@ -157,17 +157,9 @@ public class GameOverlayGUI : MonoBehaviour
                     mainPauseMenu.enabled = true;
                     optionsMenu.enabled = false;
                     inputMenu.enabled = false;
+                    mainPauseMenu.CheckInput();
                     if (InputCoordinator.usingController)
                     {
-                        if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
-                        {
-                            mainPauseMenu.isCheckingJoy = false;
-                            if (mainPauseMenu.CheckJoyAxis())
-                            {
-                                ltSwitch = Time.realtimeSinceStartup;
-                            }
-                        }
-                        Pause(mainPauseMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
                         {
                             mainPauseMenu.UnClickAll();
@@ -175,8 +167,7 @@ public class GameOverlayGUI : MonoBehaviour
                     }
                     if (InputCoordinator.usingMouseAndKeyboard)
                     {
-                        mainPauseMenu.CheckMousePosition();
-                        Pause(mainPauseMenu.CheckMouseClick());
+
                     }
                     break;
 
@@ -184,27 +175,16 @@ public class GameOverlayGUI : MonoBehaviour
                     mainPauseMenu.enabled = false;
                     optionsMenu.enabled = true;
                     inputMenu.enabled = false;
+                    optionsMenu.CheckInput();
                     if (InputCoordinator.usingController)
-                    {
-                        if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
-                        {
-                            optionsMenu.isCheckingJoy = false;
-                            if (optionsMenu.CheckJoyAxis())
-                            {
-                                ltSwitch = Time.realtimeSinceStartup;
-                            }
-                        }
-                        Options(optionsMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
                         {
                             currentPausedMenuState = PausedMenuState.mainMenu;
                             optionsMenu.UnClickAll();
                         }
-                    }
                     if (InputCoordinator.usingMouseAndKeyboard)
                     {
-                        optionsMenu.CheckMousePosition();
-                        Options(optionsMenu.CheckMouseClick());
+
                     }
                     break;
 
@@ -212,17 +192,9 @@ public class GameOverlayGUI : MonoBehaviour
                     mainPauseMenu.enabled = false;
                     optionsMenu.enabled = false;
                     inputMenu.enabled = true;
+                    inputMenu.CheckInput();
                     if (InputCoordinator.usingController)
                     {
-                        if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
-                        {
-                            inputMenu.isCheckingJoy = false;
-                            if (inputMenu.CheckJoyAxis())
-                            {
-                                ltSwitch = Time.realtimeSinceStartup;
-                            }
-                        }
-                        InputMenuLogic(inputMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
                         {
                             currentPausedMenuState = PausedMenuState.optionsMenu;
@@ -231,8 +203,7 @@ public class GameOverlayGUI : MonoBehaviour
                     }
                     if (InputCoordinator.usingMouseAndKeyboard)
                     {
-                        inputMenu.CheckMousePosition();
-                        InputMenuLogic(inputMenu.CheckMouseClick());
+
                     }
                     break;
             }

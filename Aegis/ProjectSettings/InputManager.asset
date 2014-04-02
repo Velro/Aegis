@@ -73,7 +73,7 @@ InputManager:
     descriptiveName: Mouse Fire3
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left shift
+    positiveButton: q
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -89,7 +89,7 @@ InputManager:
     descriptiveName: Mouse Fire4
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left ctrl
+    positiveButton: e
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000

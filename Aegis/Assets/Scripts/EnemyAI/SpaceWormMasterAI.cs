@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpaceWormMaster : MonoBehaviour, ISpeed, ICollisionDamage, IDamageable<float>, IKillable, IGivesExp<float>
+public class SpaceWormMasterAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageable<float>, IKillable, IGivesExp<float>
 {
     [SerializeField]
     private float expGiven = 40;

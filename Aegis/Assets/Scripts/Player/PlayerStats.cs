@@ -103,7 +103,7 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>, ICollis
 
     public void OnCollisionEnter (Collision other)
     {
-        other.gameObject.SendMessage("Damage", CollisionDamage);
+        other.gameObject.SendMessage("Damage", CollisionDamage, SendMessageOptions.DontRequireReceiver);
     }
 
     public void DamageProjectile(float damageTaken)

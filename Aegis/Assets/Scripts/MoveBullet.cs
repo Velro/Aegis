@@ -4,6 +4,8 @@ using System.Collections;
 
 public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage 
 {
+    public Vector3 d = Vector3.zero;
+    public Vector3 r = Vector3.zero;
     [SerializeField]
     private float damage;
     public float CollisionDamage
@@ -20,30 +22,46 @@ public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage
     }
     public bool left = false;
     public bool right = true;
-    EnemyType strongAgainst = EnemyType.Organic;
-    WeaponType weaponType = WeaponType.Projectile;
+
+    void Start ()
+    {
+        rigidbody.AddForce(-transform.right * 100, ForceMode.VelocityChange);
+    }
+
+    void FixedUpdate ()
+    {
+        //rigidbody.AddForce(-transform.right * 100, ForceMode.Force);
+    }
 
     void Update () 
     {
-	    if (right)
-		    transform.position += transform.right * Speed * Time.deltaTime;
+        
+	   // if (right)
+            
+		    //transform.position += transform.right * Speed * Time.deltaTime;
         //Debug.Log(speed);
-	    if (left)
-		    transform.position -= transform.right * Speed * Time.deltaTime;
+	  //  if (left)
+		   // transform.position -= transform.right * Speed * Time.deltaTime;
     }
 
     void OnTriggerEnter (Collider other) 
     {
-        other.SendMessageUpwards("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
+        other.SendMessage("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
 	    if (gameObject != null)Destroy (gameObject);
-        Kill();
+        //Kill();
     }
 
     void OnCollisionEnter(Collision other)
     {
-        other.gameObject.SendMessageUpwards("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
-        if (gameObject != null) Destroy(gameObject);
-        Kill();
+        other.gameObject.SendMessage("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
+        //if (gameObject != null) Destroy(gameObject);
+        //Kill();
+        if (other.gameObject.name == "Shield")
+        {
+            d = other.transform.position - transform.position;
+            r = Vector3.Reflect(d, Vector3.right);
+            rigidbody.AddForce(r * 100, ForceMode.VelocityChange);
+        }
     }
     
     public void Kill ()

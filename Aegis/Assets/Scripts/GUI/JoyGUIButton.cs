@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class JoyGUIButton {
-    Texture up;
-    Texture hover;
-    Texture down;
+    public GUIStyle up;
+    public GUIStyle hover;
+    public GUIStyle down;
     Texture check;
     string text;
     public Rect buttonRect;
@@ -24,23 +25,23 @@ public class JoyGUIButton {
 	public void Display(){
 		if (bought){
 			check = GUI.skin.customStyles[0].normal.background;
-			GUI.DrawTexture(buttonRect, check);
+			GUI.Label(buttonRect, check);
 			GUI.Label(buttonRect, text);
 		} else {
 			if(enabled){
-				up = GUI.skin.button.normal.background as Texture;	
-				hover = GUI.skin.button.hover.background as Texture; 
-				down = GUI.skin.button.active.background as Texture;
+				//up = GUI.skin.button.normal.background as Texture;	
+				//hover = GUI.skin.button.hover.background as Texture; 
+				//down = GUI.skin.button.active.background as Texture;
 				if (!isFocused && !isPressed){
-					GUI.DrawTexture(buttonRect, up);
+					GUI.Label(buttonRect,"", up);
 					GUI.skin.label.normal.textColor = GUI.skin.button.normal.textColor;
 					GUI.Label(buttonRect,text);
 				} else if (isFocused && !isPressed){
-					GUI.DrawTexture(buttonRect, hover);
+                    GUI.Label(buttonRect, "", hover);
 					GUI.skin.label.normal.textColor = GUI.skin.button.hover.textColor;
 					GUI.Label(buttonRect,text);
 				} else if (isFocused && isPressed){
-					GUI.DrawTexture(buttonRect, down);
+                    GUI.Label(buttonRect, "", down);
 					GUI.skin.label.normal.textColor = GUI.skin.button.active.textColor;
 					GUI.Label(buttonRect,text);
 				}

@@ -19,6 +19,10 @@ public class GameOverlayGUI : MonoBehaviour
     public GUIStyle cooldown;
     public GUIStyle levelUp;
 
+    public GUIStyle upButton;
+    public GUIStyle hoverButton;
+    public GUIStyle downButton;
+
     public GameObject[] enemiesForHealthbars;
 
     public bool paused = false;
@@ -43,7 +47,13 @@ public class GameOverlayGUI : MonoBehaviour
     PausedMenuState currentPausedMenuState = PausedMenuState.mainMenu;
 
     public JoyGUIMenu mainPauseMenu;
+    Rect[] mainPauseMenuRects = new Rect[3];
+    string[] mainPauseMenuStrings = new string[3];
+
     public JoyGUIMenu optionsMenu;
+    Rect[] optionsMenuRects = new Rect[3];
+    string[] optionsMenuStrings = new string[3];
+
     public float delayBetweenButtons = 0.25f;
 
     void Awake()
@@ -53,33 +63,46 @@ public class GameOverlayGUI : MonoBehaviour
     }
 	// Use this for initialization
 	void Start () {
-        Rect[] mainPauseMenuRects = new Rect[3];
+        
         mainPauseMenuRects[0] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
-            mainPauseMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
-            mainPauseMenuRects[2] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
-            mainPauseMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 8);
-            mainPauseMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 12);
-            mainPauseMenuRects[2].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 16);
-        string[] mainPauseMenuStrings = new string [3];
-		    mainPauseMenuStrings[0] = "Options";
-		    mainPauseMenuStrings[1] = "Return to Star Map";
-		    mainPauseMenuStrings[2] = "Exit Aegis";
+        mainPauseMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
+        mainPauseMenuRects[2] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
+        mainPauseMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 8);
+        mainPauseMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 12);
+        mainPauseMenuRects[2].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 16);
+        
+		mainPauseMenuStrings[0] = "Options";
+		mainPauseMenuStrings[1] = "Return to Star Map";
+		mainPauseMenuStrings[2] = "Exit Aegis";
 	    mainPauseMenu = new JoyGUIMenu(3, mainPauseMenuRects, mainPauseMenuStrings, "joystick button 0", "Y axis", "X axis");
 	    mainPauseMenu.enabled = false;
-	
-	    Rect[] optionsMenuRects = new Rect[3];
-		    optionsMenuRects[0] = new Rect(0,0,Screen.width/5, Screen.height/10);
-		    optionsMenuRects[1] = new Rect(0,0,Screen.width/5, Screen.height/10);
-		    optionsMenuRects[2] = new Rect(0,0,Screen.width/5, Screen.height/10);
-		    optionsMenuRects[0].center = new Vector2(Screen.width/2, (Screen.height/30) * 8);
-		    optionsMenuRects[1].center = new Vector2(Screen.width/2, (Screen.height/30) * 12);
-		    optionsMenuRects[2].center = new Vector2(Screen.width/2, (Screen.height/30) * 16);
-	    string[] optionsMenuStrings = new string [3];
-		    optionsMenuStrings[0] = "Input";
-		    optionsMenuStrings[1] = "Sound";
-		    optionsMenuStrings[2] = "Graphics";
+
+        foreach (JoyGUIButton b in mainPauseMenu.buttons)
+        {
+            b.up = upButton;
+            b.hover = hoverButton;
+            b.down = downButton;
+        }
+	    
+		optionsMenuRects[0] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		optionsMenuRects[1] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		optionsMenuRects[2] = new Rect(0,0,Screen.width/5, Screen.height/10);
+		optionsMenuRects[0].center = new Vector2(Screen.width/2, (Screen.height/30) * 8);
+		optionsMenuRects[1].center = new Vector2(Screen.width/2, (Screen.height/30) * 12);
+		optionsMenuRects[2].center = new Vector2(Screen.width/2, (Screen.height/30) * 16);
+	    
+		optionsMenuStrings[0] = "Input";
+		optionsMenuStrings[1] = "Sound";
+		optionsMenuStrings[2] = "Graphics";
 	    optionsMenu = new JoyGUIMenu(3, optionsMenuRects, optionsMenuStrings, "joystick button 0", "Y axis", "X axis");
 	    optionsMenu.enabled = false;
+
+        foreach (JoyGUIButton b in optionsMenu.buttons)
+        {
+            b.up = upButton;
+            b.hover = hoverButton;
+            b.down = downButton;
+        }
     }
 	
 	// Update is called once per frame
@@ -108,7 +131,8 @@ public class GameOverlayGUI : MonoBehaviour
         {
             switch (currentPausedMenuState)
             {
-                case PausedMenuState.mainMenu: 
+                case PausedMenuState.mainMenu:
+                    mainPauseMenu.enabled = true;
                     optionsMenu.enabled = false;
                     if (InputCoordinator.usingController)
                     {
@@ -116,16 +140,11 @@ public class GameOverlayGUI : MonoBehaviour
                         if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
                         {
                             //Debug.Log("hit");
-                            mainPauseMenu.enabled = true;
+                            mainPauseMenu.isCheckingJoy = false;
                             if (mainPauseMenu.CheckJoyAxis())
                             {
                                 ltSwitch = Time.realtimeSinceStartup;
                             }
-                        } 
-                        else
-                        {
-                            mainPauseMenu.enabled = false;
-                            //Debug.Log("tih");
                         }
                         Pause(mainPauseMenu.CheckJoyButton());
                         if (Input.GetButtonDown("joystick button 1"))
@@ -148,7 +167,7 @@ public class GameOverlayGUI : MonoBehaviour
                     {
                         if (ltSwitch + delayBetweenButtons < Time.realtimeSinceStartup)
                         {
-                            mainPauseMenu.enabled = true;
+                            mainPauseMenu.isCheckingJoy = false;
                             if (optionsMenu.CheckJoyAxis())
                             {
                                 ltSwitch = Time.realtimeSinceStartup;
@@ -315,16 +334,16 @@ public class GameOverlayGUI : MonoBehaviour
                 break;
 
             case 1:
+                Application.LoadLevel("MainMenu");
                 paused = false;
                 Time.timeScale = 1;
-                Application.LoadLevel("MainMenu");
                 mainPauseMenu.UnClickAll();
                 break;
 
             case 2:
-                paused = false;
-                Time.timeScale = 1;
                 Application.Quit();
+                paused = false;
+                Time.timeScale = 1;                
                 mainPauseMenu.UnClickAll();
                 break;
         }

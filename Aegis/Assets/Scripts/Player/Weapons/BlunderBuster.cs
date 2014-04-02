@@ -7,7 +7,7 @@ public class BlunderBuster : MonoBehaviour {
     public GameObject bullet;
     public Weapon blunderBuster = new Weapon();
     public AudioClip fired;
-
+    public float lifetime = 1.5f;
     private string input = "3rd axis";
 
     GameObject instance1;
@@ -45,8 +45,8 @@ public class BlunderBuster : MonoBehaviour {
                 instance2 = Instantiate(bullet, nozzle.transform.position, instance2rotation) as GameObject;
                 instance1.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
-                Destroy(instance1, 1); //after 5 seconds the bullet is way off the screen. This is for clean up
-                Destroy(instance2, 1);
+                Destroy(instance1, lifetime); //after 5 seconds the bullet is way off the screen. This is for clean up
+                Destroy(instance2, lifetime);
             }
             if (blunderBuster.level == 1)
             {
@@ -59,9 +59,9 @@ public class BlunderBuster : MonoBehaviour {
                 instance1.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance3.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
-                Destroy(instance1, 1);
-                Destroy(instance2, 1);
-                Destroy(instance3, 1);
+                Destroy(instance1, lifetime);
+                Destroy(instance2, lifetime);
+                Destroy(instance3, lifetime);
             }
 
             if (blunderBuster.level == 2)
@@ -78,10 +78,10 @@ public class BlunderBuster : MonoBehaviour {
                 instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance3.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance4.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
-                Destroy(instance1, 1);
-                Destroy(instance2, 1);
-                Destroy(instance3, 1);
-                Destroy(instance4, 1);
+                Destroy(instance1, lifetime);
+                Destroy(instance2, lifetime);
+                Destroy(instance3, lifetime);
+                Destroy(instance4, lifetime);
             }
             if (blunderBuster.level == 3)
             {
@@ -97,10 +97,10 @@ public class BlunderBuster : MonoBehaviour {
                 instance2.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance3.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
                 instance4.GetComponent<MoveBullet>().CollisionDamage = blunderBuster.currentLevel.damage;
-                Destroy(instance1, 1.5f);
-                Destroy(instance2, 1.5f);
-                Destroy(instance3, 1.5f);
-                Destroy(instance4, 1.5f);
+                Destroy(instance1, lifetime);
+                Destroy(instance2, lifetime);
+                Destroy(instance3, lifetime);
+                Destroy(instance4, lifetime);
             }
             audio.PlayOneShot(fired);
 

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpaceWormSegment : MonoBehaviour, ISpeed, ICollisionDamage, IDamageable<float>, IKillable 
+
+public class SpaceWormSegmentAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageable<float>, IKillable 
 {
     private float speed;
     public float Speed
@@ -25,9 +26,9 @@ public class SpaceWormSegment : MonoBehaviour, ISpeed, ICollisionDamage, IDamage
 
     void Awake ()
     {
-        Speed = transform.parent.GetComponent<SpaceWormMaster>().Speed;
-        CollisionDamage = transform.parent.GetComponent<SpaceWormMaster>().CollisionDamage;
-        superEffectiveSystem = transform.parent.GetComponent<SpaceWormMaster>().superEffectiveSystem;
+        Speed = transform.parent.GetComponent<SpaceWormMasterAI>().Speed;
+        CollisionDamage = transform.parent.GetComponent<SpaceWormMasterAI>().CollisionDamage;
+        superEffectiveSystem = transform.parent.GetComponent<SpaceWormMasterAI>().superEffectiveSystem;
     }
 	// Use this for initialization
 	void Start () 
@@ -75,7 +76,7 @@ public class SpaceWormSegment : MonoBehaviour, ISpeed, ICollisionDamage, IDamage
     GameObject instance;
     public void SuperEffectiveSystem()
     {
-        instance = GameObject.Instantiate(transform.parent.GetComponent<SpaceWormMaster>().superEffectiveSystem, transform.position, transform.rotation) as GameObject;
+        instance = GameObject.Instantiate(transform.parent.GetComponent<SpaceWormMasterAI>().superEffectiveSystem, transform.position, transform.rotation) as GameObject;
         Destroy(instance, 2);   
     }
 

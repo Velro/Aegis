@@ -115,7 +115,7 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
 
     void OnCollisionEnter(Collision other)
     {
-        other.gameObject.SendMessage("Damage", CollisionDamage);
+        other.gameObject.SendMessage("Damage", CollisionDamage, SendMessageOptions.DontRequireReceiver);
         //print("HIT");
     }
 
@@ -128,6 +128,4 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
     {
         Destroy(gameObject);
     }
-
-
 }

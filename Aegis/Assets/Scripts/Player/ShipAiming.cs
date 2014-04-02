@@ -15,7 +15,8 @@ public class ShipAiming : MonoBehaviour {
     void Update () {
 	
 	    /**** Mouse Input ***/
-	    if (InputCoordinator.usingMouseAndKeyboard && Camera.main.GetComponent<GameOverlayGUI>().paused == false){
+	    if (InputCoordinator.usingMouseAndKeyboard && Camera.main.GetComponent<GameOverlayGUI>().paused == false)
+        {
 		    mouseX = Input.mousePosition.x;
 		    mouseY = Input.mousePosition.y;
 		    var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, diff));
@@ -38,7 +39,7 @@ public class ShipAiming : MonoBehaviour {
 		    } 
             else 
             {
-			    sight.transform.rotation = Quaternion.EulerAngles (0, 0, 0);
+			    sight.transform.rotation = Quaternion.Euler (0, 0, 0);
                 //print(xAxis + "  " + yAxis);
 		    }
 	    }

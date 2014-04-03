@@ -7,6 +7,8 @@ public class GameOverlayGUI : MonoBehaviour
     public GameObject boss;
     PlayerStats playerStats;
 
+    public GUISkin mySkin;
+
     public GUIStyle healthbar;
     public GUIStyle border;
     public GUIStyle heat;
@@ -19,16 +21,11 @@ public class GameOverlayGUI : MonoBehaviour
     public GUIStyle cooldown;
     public GUIStyle levelUp;
 
-    public GUIStyle upButton;
-    public GUIStyle hoverButton;
-    public GUIStyle downButton;
-
     public GameObject[] enemiesForHealthbars;
 
     public bool paused = false;
     public Texture2D alphagrey;
     float ltPausedHit = 0;
-    float ltSwitch = 0;
     public float pausedCooldown = 0.25f;
     public float levelUpDisplayTime = 1;
 
@@ -58,16 +55,14 @@ public class GameOverlayGUI : MonoBehaviour
     Rect[] inputMenuRects = new Rect[2];
     string[] inputMenuStrings = new string[2];
 
-    public float delayBetweenButtons = 0.25f;
-
     void Awake()
     {
         playerStats = player.GetComponent<PlayerStats>();
 
     }
 	// Use this for initialization
-	void Start () {
-        
+	void Start () 
+    {
         mainPauseMenuRects[0] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
         mainPauseMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
         mainPauseMenuRects[2] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
@@ -78,15 +73,8 @@ public class GameOverlayGUI : MonoBehaviour
 		mainPauseMenuStrings[0] = "Options";
 		mainPauseMenuStrings[1] = "Return to Star Map";
 		mainPauseMenuStrings[2] = "Exit Aegis";
-	    mainPauseMenu = new JoyGUIMenu(3, mainPauseMenuRects, mainPauseMenuStrings, Pause, "joystick button 0", "Y axis", "X axis");
+	    mainPauseMenu = new JoyGUIMenu(3, mainPauseMenuRects, mainPauseMenuStrings, Pause, "joystick button 0", "Y axis", "X axis", mySkin);
 	    mainPauseMenu.enabled = false;
-
-        foreach (JoyGUIButton b in mainPauseMenu.buttons)
-        {
-            b.up = upButton;
-            b.hover = hoverButton;
-            b.down = downButton;
-        }
 	    
 		optionsMenuRects[0] = new Rect(0,0,Screen.width/5, Screen.height/10);
 		optionsMenuRects[1] = new Rect(0,0,Screen.width/5, Screen.height/10);
@@ -98,15 +86,8 @@ public class GameOverlayGUI : MonoBehaviour
 		optionsMenuStrings[0] = "Input";
 		optionsMenuStrings[1] = "Sound";
 		optionsMenuStrings[2] = "Graphics";
-	    optionsMenu = new JoyGUIMenu(3, optionsMenuRects, optionsMenuStrings, Options, "joystick button 0", "Y axis", "X axis");
+	    optionsMenu = new JoyGUIMenu(3, optionsMenuRects, optionsMenuStrings, Options, "joystick button 0", "Y axis", "X axis", mySkin);
 	    optionsMenu.enabled = false;
-
-        foreach (JoyGUIButton b in optionsMenu.buttons)
-        {
-            b.up = upButton;
-            b.hover = hoverButton;
-            b.down = downButton;
-        }
 
         inputMenuRects[0] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
         inputMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
@@ -115,15 +96,8 @@ public class GameOverlayGUI : MonoBehaviour
 
         inputMenuStrings[0] = "Use Keyboard";
         inputMenuStrings[1] = "Use Controller";
-        inputMenu = new JoyGUIMenu(2, inputMenuRects, inputMenuStrings, InputMenuLogic, "joystick button 0", "Y axis", "X axis");
+        inputMenu = new JoyGUIMenu(2, inputMenuRects, inputMenuStrings, InputMenuLogic, "joystick button 0", "Y axis", "X axis", mySkin);
         inputMenu.enabled = false;
-
-        foreach (JoyGUIButton b in inputMenu.buttons)
-        {
-            b.up = upButton;
-            b.hover = hoverButton;
-            b.down = downButton;
-        }
     }
 	
 	// Update is called once per frame
@@ -158,17 +132,6 @@ public class GameOverlayGUI : MonoBehaviour
                     optionsMenu.enabled = false;
                     inputMenu.enabled = false;
                     mainPauseMenu.CheckInput();
-                    if (InputCoordinator.usingController)
-                    {
-                        if (Input.GetButtonDown("joystick button 1"))
-                        {
-                            mainPauseMenu.UnClickAll();
-                        }
-                    }
-                    if (InputCoordinator.usingMouseAndKeyboard)
-                    {
-
-                    }
                     break;
 
                 case PausedMenuState.optionsMenu:
@@ -392,18 +355,14 @@ public class GameOverlayGUI : MonoBehaviour
 
     void InputMenuLogic(int hit)
     {
-        if (hit != -1)
-            print(hit);
         switch (hit)
         {
             case 0:
                 player.GetComponent<InputCoordinator>().SwitchToMouseAndKeyboard();
-                print("switchA");
                 inputMenu.UnClickAll();
                 break;
             case 1:
                 player.GetComponent<InputCoordinator>().SwitchToController();
-                print("switchC");
                 inputMenu.UnClickAll();
                 break;
         }

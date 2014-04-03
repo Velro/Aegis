@@ -16,10 +16,10 @@ public class JoyGUIMenu
     public  bool isCheckingJoy;
     public int currentFocus = 0;
     public JoyGUIButton[] buttons;
-    public bool enabled = true;
+    public bool enabled = false;
 
 	public JoyGUIMenu (int numberOfButtonsPerColumn, Rect[] rectangles,
-		string[] labels, LogicType logic, string inputButton, string verticalAxis, string horizontalAxis)
+		string[] labels, LogicType logic, string inputButton, string verticalAxis, string horizontalAxis, GUISkin skin)
     {
 		vertAxis = verticalAxis;
 		horAxis = horizontalAxis;
@@ -33,6 +33,12 @@ public class JoyGUIMenu
 		for (int z = 0; z < rectangles.Length; z++){
 			buttons[z] = new JoyGUIButton(rectangles[z], labels[z]);
 		}
+        foreach (JoyGUIButton b in buttons)
+        {
+            b.up = skin.GetStyle("upButton");
+            b.hover = skin.GetStyle("hoverButton");
+            b.down = skin.GetStyle("downButton");
+        }
 		buttons[0].Focus(true);
 	}
 

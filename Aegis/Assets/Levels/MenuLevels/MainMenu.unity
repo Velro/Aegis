@@ -87,6 +87,7 @@ GameObject:
   - 124: {fileID: 2000378305}
   - 81: {fileID: 2000378304}
   - 114: {fileID: 2000378303}
+  - 114: {fileID: 2000378309}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -105,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93842801c579684492fd3715d21b016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 11400000, guid: 1855fb5ab0937914fbe26eded4d1a545, type: 2}
   starMapLevelID: 1
   background: {fileID: 2800000, guid: cf6ebeb7da72df4419823d61010b3ec3, type: 3}
   currentMenuState: 0
@@ -169,3 +171,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &2000378309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000378302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667c36b65d3789a46b4c9b3c3b8f17fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

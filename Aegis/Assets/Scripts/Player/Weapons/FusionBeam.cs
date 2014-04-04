@@ -48,18 +48,19 @@ public class FusionBeam : MonoBehaviour
 			if (fusionBeam.level == 3)thisBeam.transform.localScale = level3Size;
 			//Debug.Log("Beam Instantiated");
 			fusionBeam.currentLevel.ltShot = Time.time;
-			GetComponent<PlayerStats>().heat += fusionBeam.currentLevel.heatCost;	
+				
 		} 
         else if (((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))) && instantiateBeamOnce == true)
         { //tick time shot while held
 			//Debug.Log("tick");
 			currentShootTime += Time.deltaTime;
+            GetComponent<PlayerStats>().heat += fusionBeam.currentLevel.heatCost * Time.deltaTime;
             fusionBeam.currentLevel.ltShot = Time.time;
 		} 
         else if (instantiateBeamOnce == true && !((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))))
         { //let Go
 			//Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);
-			// Destroy (thisBeam);
+			Destroy (thisBeam);
 			instantiateBeamOnce = false;
 			currentShootTime = 0;
 		}

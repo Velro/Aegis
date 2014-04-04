@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  m_Layer: 10
-  m_Name: pCylinder1
+  m_Layer: 0
+  m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,12 +26,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400004}
-  - 114: {fileID: 11400002}
-  - 65: {fileID: 6500000}
-  - 135: {fileID: 13500000}
-  m_Layer: 10
-  m_Name: nadeCanister
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: nadeExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +52,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -820.322571, y: 210.161362, z: -62.9345245}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -8.08407211, y: 181.996887, z: -114.678284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -72,7 +69,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 10bd74aa39848a547a8e7dc5993d0e54, type: 2}
+  - {fileID: 2100000, guid: 90bc2ea6b0e071a489f4c6d82ceead5f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -87,19 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 7ac0949f7d5d2e74a95b7e017677f2e4, type: 3}
---- !u!65 &6500000
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mesh: {fileID: 4300000, guid: 9a2b8c880c2c7d5468be5d9008212d40, type: 3}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
@@ -108,13 +93,13 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 7ac0949f7d5d2e74a95b7e017677f2e4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 9a2b8c880c2c7d5468be5d9008212d40, type: 3}
+  m_Controller: {fileID: 9100000, guid: 6d4ce025add112042819279f475dbf70, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &11400002
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,43 +107,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
+  m_Script: {fileID: 11500000, guid: cfe4e8a4a9f794a48b93097bea8edcbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: {fileID: 400010, guid: 9c35cd5d43c590649bec446e42b3e2f4, type: 2}
-  objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 11400004}
-  rotateToPath: 0
-  t: 0
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 444f6816aac54a44ebb2f4fdbeec645e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 150
-  explosionRadius: 20
-  strongAgainst: 1
-  weaponType: 1
-  superEffectiveCoef: 2
-  explosionEffect: {fileID: 100002, guid: 2af84e0f42c199442a9ec5ed687f4b3d, type: 2}
---- !u!135 &13500000
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 9.99999975e-06
-  m_Center: {x: 0, y: 0, z: 0}
+  durationOfFade: 1
+  delayToFade: 0
+  toFade: {fileID: 100000}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -40,7 +40,12 @@ public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillabl
 	    Explode();
     }
 
-     
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, explosionRadius);
+    }
     void Explode ()
     {
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -49,6 +54,7 @@ public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillabl
             hitColliders[i].SendMessage("DamageExplosive", damage, SendMessageOptions.DontRequireReceiver);
            // Debug.Log("damage message sent");
 		}
+        Instantiate(explosionEffect, transform.position, transform.rotation);
         Kill();
     }
 
@@ -57,6 +63,5 @@ public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillabl
     {
         Destroy(gameObject);
         thisExplosionEffect = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;
-        Destroy(thisExplosionEffect, 3);
     }
 }

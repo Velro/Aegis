@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a214e5e7747609e498d0fc5d880b5074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 11400000, guid: 1855fb5ab0937914fbe26eded4d1a545, type: 2}
+  currentStarmapMenuState: 0
   oomdassaID: 3
   mainMenuID: 0
   upgroidsID: 2

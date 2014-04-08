@@ -6,7 +6,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
     public float extensionSpeed = 2;
     public float timeExtended = 1;
     public float retractionSpeed = 2;
-    public float endWidth = 8;
+    public Vector3 beamSize = Vector3.zero;
     [SerializeField]
     private float damage;
     public float CollisionDamage
@@ -37,7 +37,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
         if (extended == false)
         {
             Mathf.Clamp01(lerpOut += Time.deltaTime / extensionSpeed);
-            gameObject.transform.localScale = new Vector3(lerpOut * endWidth, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            gameObject.transform.localScale = new Vector3(lerpOut * beamSize.x, beamSize.y, beamSize.z);
             if (lerpOut >= 1)
             {
                 extended = true;
@@ -49,7 +49,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
             if (Time.time > ltExtended + timeExtended) // begin retracting
             {
                 Mathf.Clamp01(lerpOut -= Time.deltaTime / extensionSpeed);
-                gameObject.transform.localScale = new Vector3(lerpOut * endWidth, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = new Vector3(lerpOut * beamSize.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
                 if (lerpOut <= 0)
                 {
                     retracted = true;

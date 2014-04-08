@@ -1392,7 +1392,7 @@ MonoBehaviour:
   overheatTime: 1
   speedReduction: .5
   expWindow: 2
-  invincible: 0
+  invincible: 1
   creditsThisLevel: 0
   levelUp: {fileID: 8300000, guid: 7f8c0af0bf757dc42a7f3f67432c361c, type: 3}
 --- !u!82 &157646185
@@ -1471,7 +1471,7 @@ MonoBehaviour:
     level0:
       damage: 8
       heatCost: 20
-      cooldown: 5
+      cooldown: 2
       expToNext: 100
     level1:
       damage: 10
@@ -1498,6 +1498,10 @@ MonoBehaviour:
   blast: {fileID: 8300000, guid: 2027b73ca6905b643b8ec3685e04671c, type: 3}
   duration: 4
   nozzle: {fileID: 382401630}
+  level0Size: {x: 10, y: 4, z: 2}
+  level1Size: {x: 13, y: 4, z: 3}
+  level2Size: {x: 16, y: 4, z: 4}
+  level3Size: {x: 19, y: 4, z: 5}
 --- !u!114 &157646188
 MonoBehaviour:
   m_ObjectHideFlags: 0

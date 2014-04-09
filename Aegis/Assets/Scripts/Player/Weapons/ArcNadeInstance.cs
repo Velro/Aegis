@@ -16,18 +16,24 @@ public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillabl
         get { return damage; }
         set { damage = value; }
     }
+    [System.NonSerialized]
+    public float lifeTime;
     public float explosionRadius = 10;
     public EnemyType strongAgainst = EnemyType.Armored;
     public WeaponType weaponType = WeaponType.Explosive;
     public float superEffectiveCoef = 2;
     public GameObject explosionEffect;
+    private float startTime = 0;
 
     void Start ()
     {
+        startTime = Time.time;
         //Debug.Log(Speed);
     }
     void Update () 
     {
+        if (Time.time > startTime + lifeTime)
+            Explode();
 //	    if (gameObject.GetComponent<CurvePaths>().t == 1)
 //        {
 //		    Explode();
@@ -44,7 +50,7 @@ public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillabl
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, explosionRadius);
+        //Gizmos.DrawSphere(transform.position, explosionRadius);
     }
     void Explode ()
     {

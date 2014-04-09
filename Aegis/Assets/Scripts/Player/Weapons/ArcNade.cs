@@ -39,11 +39,11 @@ public class ArcNade : MonoBehaviour
 		    arcNade.currentLevel.ltShot = Time.time;
 		    gameObject.GetComponent<PlayerStats>().heat += arcNade.currentLevel.heatCost;
 		    playerSpeed = gameObject.GetComponent<ShipMovement>().moveDirection.normalized.magnitude + 1;
-		    thisCanister.GetComponent<ArcNadeInstance>().Speed *= playerSpeed;
+//		    thisCanister.GetComponent<ArcNadeInstance>().Speed *= playerSpeed;
 		
-		    thisPath = Instantiate(path, nozzle.transform.position, nozzle.transform.rotation) as GameObject;
+//		    thisPath = Instantiate(path, nozzle.transform.position, nozzle.transform.rotation) as GameObject;
 		    //if (nozzle.transform.eulerAngles.y > 180)thisPath.transform.eulerAngles = new Vector3(180, thisPath.transform.eulerAngles.y, thisPath.transform.eulerAngles.z);
-		    thisCanister.GetComponent<CurvePaths>().parentPath = thisPath.transform;
+//		    thisCanister.GetComponent<CurvePaths>().parentPath = thisPath.transform;
 		
 		    Destroy(thisPath,5);
 	    }

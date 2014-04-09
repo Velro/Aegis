@@ -28,10 +28,10 @@ public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillabl
     }
     void Update () 
     {
-	    if (gameObject.GetComponent<CurvePaths>().t == 1)
-        {
-		    Explode();
-	    }
+//	    if (gameObject.GetComponent<CurvePaths>().t == 1)
+//        {
+//		    Explode();
+//	    }
 	
     }
 

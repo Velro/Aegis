@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShipMovement : MonoBehaviour {
+public class ShipMovement : MonoBehaviour 
+{
 
     public Vector3 moveDirection = Vector3.zero;
     CharacterController controller;
@@ -16,7 +17,8 @@ public class ShipMovement : MonoBehaviour {
     public float horizontalSpeedOfRotation = 1;
     public float horizontalDistanceRotate = 35;
 
-    void Awake () {
+    void Awake () 
+    {
 	    controller = GetComponent <CharacterController>();
     }
 
@@ -24,11 +26,13 @@ public class ShipMovement : MonoBehaviour {
     /**** Move Ship Input ****/
 	    float horizontal = 0;
 	    float vertical = 0;
-	    if (InputCoordinator.usingController == true){
+	    if (InputCoordinator.usingController == true)
+        {
 		    horizontal = Input.GetAxis("X axis");
 		    vertical = Input.GetAxis("Y axis");
 	    }
-	    if (InputCoordinator.usingMouseAndKeyboard == true){
+	    if (InputCoordinator.usingMouseAndKeyboard == true)
+        {
 		    horizontal = Input.GetAxis("MoveHorizontalKey");
 		    vertical = Input.GetAxis("MoveVerticalKey");	
 	    }	
@@ -39,34 +43,44 @@ public class ShipMovement : MonoBehaviour {
 	    transform.position = new Vector3(transform.position.x, 0, transform.position.z); //dont let collisions knock it out of XZ plane
 	
     /**** Tilting ****/
-	    if (vertical > 0){
+	    if (vertical > 0)
+        {
 		    rotateUp += Time.deltaTime * verticalSpeedOfRotation;
 		    rotateDown = 0;
 		    rotateBack = 0;
 		    transform.eulerAngles = new Vector3 (Mathf.LerpAngle(transform.eulerAngles.x,verticalDistanceRotate, rotateUp), transform.eulerAngles.y, transform.eulerAngles.z);
-	    } else if (vertical < 0){
+	    } 
+        else if (vertical < 0)
+        {
 		    rotateUp = 0;
 		    rotateDown += Time.deltaTime * verticalSpeedOfRotation;
 		    rotateBack = 0;
 		    transform.eulerAngles = new Vector3 (Mathf.LerpAngle(transform.eulerAngles.x,-verticalDistanceRotate, rotateDown), transform.eulerAngles.y, transform.eulerAngles.z);
-	    } else if (transform.eulerAngles.x != 0){
+	    } 
+        else if (transform.eulerAngles.x != 0)
+        {
 		    rotateUp = 0;
 		    rotateDown = 0;
 		    rotateBack += Time.deltaTime * verticalSpeedOfRotation;
 		    transform.eulerAngles = new Vector3 (Mathf.LerpAngle(transform.eulerAngles.x, 0, rotateBack), transform.eulerAngles.y, transform.eulerAngles.z);
 	    }
 	
-	    if (horizontal > 0){
+	    if (horizontal > 0)
+        {
 		    rotateRight += Time.deltaTime * horizontalSpeedOfRotation;
 		    rotateLeft = 0;
 		    rotateReturn = 0;
 		    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.LerpAngle(transform.eulerAngles.z,horizontalDistanceRotate, rotateRight));
-	    } else if (horizontal < 0){
+	    } 
+        else if (horizontal < 0)
+        {
 		    rotateRight = 0;
 		    rotateLeft += Time.deltaTime * horizontalSpeedOfRotation;
 		    rotateReturn = 0;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.LerpAngle(transform.eulerAngles.z, -horizontalDistanceRotate, rotateLeft));
-	    } else {
+	    } 
+        else 
+        {
 		    rotateRight = 0;
 		    rotateLeft = 0;
 		    rotateReturn += Time.deltaTime * horizontalSpeedOfRotation;

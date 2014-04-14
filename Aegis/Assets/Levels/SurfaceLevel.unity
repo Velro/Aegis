@@ -1149,10 +1149,10 @@ MonoBehaviour:
   path: {fileID: 100010, guid: 9c35cd5d43c590649bec446e42b3e2f4, type: 2}
   fire: {fileID: 8300000, guid: fb926a9e8386d1e45a0ca42b6f92ab33, type: 3}
   nozzle: {fileID: 382401630}
-  lifeTime1: 20
+  lifeTime1: 2
   lifeTime2: 3
   lifeTime3: 4
-  lifeTime4: 5
+  lifeTime4: 7
 --- !u!114 &157646182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,7 +1996,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
-  m_MinMoveDistance: 0
+  m_MinMoveDistance: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &280494052
 MonoBehaviour:
@@ -3630,6 +3630,10 @@ Prefab:
     - target: {fileID: 400002, guid: 9ac2ee9fd19f4f54a80b5ac18f84e94b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 9ac2ee9fd19f4f54a80b5ac18f84e94b, type: 2}
+      propertyPath: m_MinMoveDistance
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ac2ee9fd19f4f54a80b5ac18f84e94b, type: 2}

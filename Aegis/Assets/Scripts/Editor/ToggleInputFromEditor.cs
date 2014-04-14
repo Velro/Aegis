@@ -1,6 +1,7 @@
 ﻿// C# example:
 using UnityEngine;
 using UnityEditor;
+
 public class MyWindow : EditorWindow
 {
     bool usingController = false;

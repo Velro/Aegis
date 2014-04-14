@@ -40,21 +40,21 @@ public class JoyGUIButton
 				//down = GUI.skin.button.active.background as Texture;
 				if (!isFocused && !isPressed)
                 {
-					GUI.Label(buttonRect,"", up);
+					GUI.Label(buttonRect, text, up);
 					GUI.skin.label.normal.textColor = GUI.skin.button.normal.textColor;
-					GUI.Label(buttonRect,text);
+					//GUI.Label(buttonRect,text);
 				} 
                 else if (isFocused && !isPressed)
                 {
-                    GUI.Label(buttonRect, "", hover);
+                    GUI.Label(buttonRect, text, hover);
 					GUI.skin.label.normal.textColor = GUI.skin.button.hover.textColor;
-					GUI.Label(buttonRect,text);
+					//GUI.Label(buttonRect,text);
 				} 
                 else if (isFocused && isPressed)
                 {
-                    GUI.Label(buttonRect, "", down);
+                    GUI.Label(buttonRect, text, down);
 					GUI.skin.label.normal.textColor = GUI.skin.button.active.textColor;
-					GUI.Label(buttonRect,text);
+					//GUI.Label(buttonRect,text);
 				}
 			}
 		}

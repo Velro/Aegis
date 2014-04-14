@@ -28,13 +28,13 @@ public class ArcNadeFollowTest : MonoBehaviour
         float vertical = 0;
         if (InputCoordinator.usingController == true)
         {
-            horizontal = Input.GetAxis("X axis");
-            vertical = Input.GetAxis("Y axis");
+            horizontal = Input.GetAxisRaw("X axis");
+            vertical = Input.GetAxisRaw("Y axis");
         }
         if (InputCoordinator.usingMouseAndKeyboard == true)
         {
-            horizontal = Input.GetAxis("MoveHorizontalKey");
-            vertical = Input.GetAxis("MoveVerticalKey");
+            horizontal = Input.GetAxisRaw("MoveHorizontalKey");
+            vertical = Input.GetAxisRaw("MoveVerticalKey");
         }
 
         if (horizontal != 0 || vertical != 0)
@@ -43,9 +43,13 @@ public class ArcNadeFollowTest : MonoBehaviour
             var rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, stransform.eulerAngles.z);
             transform.rotation = rotation;
+            moveDirection = new Vector3(horizontal, 0, vertical) * speed;
+            controller.Move(moveDirection * Time.deltaTime);
+        }
+        else
+        {   
+            controller.Move(transform.forward * speed * Time.deltaTime);
+        }
 
-        } 
-        moveDirection = new Vector3(horizontal, 0, vertical) * speed;
-        controller.Move(moveDirection * Time.deltaTime);
 	}
 }

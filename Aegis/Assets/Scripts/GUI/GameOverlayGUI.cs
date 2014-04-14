@@ -66,9 +66,9 @@ public class GameOverlayGUI : MonoBehaviour
         mainPauseMenuRects[0] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
         mainPauseMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
         mainPauseMenuRects[2] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
-        mainPauseMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 8);
-        mainPauseMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 12);
-        mainPauseMenuRects[2].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 16);
+        mainPauseMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 9);
+        mainPauseMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 13);
+        mainPauseMenuRects[2].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 17);
         
 		mainPauseMenuStrings[0] = "Options";
 		mainPauseMenuStrings[1] = "Return to Star Map";
@@ -79,9 +79,9 @@ public class GameOverlayGUI : MonoBehaviour
 		optionsMenuRects[0] = new Rect(0,0,Screen.width/5, Screen.height/10);
 		optionsMenuRects[1] = new Rect(0,0,Screen.width/5, Screen.height/10);
 		optionsMenuRects[2] = new Rect(0,0,Screen.width/5, Screen.height/10);
-		optionsMenuRects[0].center = new Vector2(Screen.width/2, (Screen.height/30) * 8);
-		optionsMenuRects[1].center = new Vector2(Screen.width/2, (Screen.height/30) * 12);
-		optionsMenuRects[2].center = new Vector2(Screen.width/2, (Screen.height/30) * 16);
+		optionsMenuRects[0].center = new Vector2(Screen.width/2, (Screen.height/30) * 9);
+		optionsMenuRects[1].center = new Vector2(Screen.width/2, (Screen.height/30) * 13);
+		optionsMenuRects[2].center = new Vector2(Screen.width/2, (Screen.height/30) * 17);
 	    
 		optionsMenuStrings[0] = "Input";
 		optionsMenuStrings[1] = "Sound";
@@ -91,8 +91,8 @@ public class GameOverlayGUI : MonoBehaviour
 
         inputMenuRects[0] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
         inputMenuRects[1] = new Rect(0, 0, Screen.width / 5, Screen.height / 10);
-        inputMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 8);
-        inputMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 12);
+        inputMenuRects[0].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 9);
+        inputMenuRects[1].center = new Vector2(Screen.width / 2, (Screen.height / 30) * 13);
 
         inputMenuStrings[0] = "Use Keyboard";
         inputMenuStrings[1] = "Use Controller";
@@ -100,7 +100,6 @@ public class GameOverlayGUI : MonoBehaviour
         inputMenu.enabled = false;
     }
 	
-	// Update is called once per frame
 	void Update () {
         if ((Input.GetButtonDown("Pause") || Input.GetButtonDown("joystick button 7")) && paused == false && Time.realtimeSinceStartup - ltPausedHit > pausedCooldown)
         {	//pause game
@@ -255,7 +254,7 @@ public class GameOverlayGUI : MonoBehaviour
 		    GUI.DrawTexture(new Rect(0,0,Screen.width + 10,Screen.height + 10),alphagrey,ScaleMode.StretchToFill, true, 1.0f); //dim the screen with negro-engineered filter since filters are only for Pro
 		    Rect pausedRect = new Rect(0, 0, Screen.width/3, (Screen.height/4)*3);
 		    pausedRect.center = new Vector2(Screen.width/2,Screen.height/2);
-		    GUI.Box (pausedRect,"Paused");
+		    GUI.Box (pausedRect,"Paused", mySkin.box);
 		    switch (currentPausedMenuState)
             {
 			    case PausedMenuState.mainMenu:

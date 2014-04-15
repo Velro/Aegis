@@ -26,16 +26,19 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
         set { health = value; }
     }
     [SerializeField]
-    private float expGiven;
+    private float exp;
     public float ExpGiven
     {
-        get { return expGiven; }
-        set { expGiven = value; }
+        get { return exp; }
+        set { exp = value; }
     }
+    public float superEffectiveCoef = 2;
+    public GameObject bullet;
+    GameObject player;
 
 	void Start () 
     {
-	    
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	void Update () 
@@ -45,22 +48,23 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
 
     public void Damage(float damageTaken)
     {
-        throw new System.NotImplementedException();
+        Health -= damageTaken;
     }
 
     public void DamageProjectile(float damageTaken)
     {
-        throw new System.NotImplementedException();
+        Health -= damageTaken * superEffectiveCoef;
+        SuperEffectiveSystem();
     }
 
     public void DamageExplosive(float damageTaken)
     {
-        throw new System.NotImplementedException();
+        Damage(damageTaken);
     }
 
     public void DamageEnergy(float damageTaken)
     {
-        throw new System.NotImplementedException();
+        Damage(damageTaken);
     }
 
     public void SuperEffectiveSystem()
@@ -70,13 +74,13 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
 
     public void Kill()
     {
-        throw new System.NotImplementedException();
+        Destroy(gameObject);
     }
 
 
 
     public void GiveExp(float expGiven)
     {
-        throw new System.NotImplementedException();
+        player.SendMessage("GiveExp", exp);
     }
 }

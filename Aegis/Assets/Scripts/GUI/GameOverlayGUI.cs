@@ -208,9 +208,9 @@ public class GameOverlayGUI : MonoBehaviour
 			    GUI.Label(new Rect((Screen.width/60)*8-1,Screen.height/60-1,Screen.width/10+2,Screen.height/20+2), "Fusion Beam", border);
 			    //weapon three
                 GUI.Label(new Rect((Screen.width / 60), (Screen.height / 60) * 5,
-                    (Screen.width / 10) * percentCooldown(player.GetComponent<ArcNade>().arcNade.currentLevel.cooldown, player.GetComponent<ArcNade>().arcNade.currentLevel.ltShot), Screen.height / 20), 
+                    (Screen.width / 10) * percentCooldown(player.GetComponent<RedRocket>().redRocket.currentLevel.cooldown, player.GetComponent<RedRocket>().redRocket.currentLevel.ltShot), Screen.height / 20), 
                     "", cooldown);
-                GUI.Label(new Rect(Screen.width / 60 - 1, (Screen.height / 60) * 5 - 1, Screen.width / 10 + 2, Screen.height / 20 + 2), "Arc Nade", border);
+                GUI.Label(new Rect(Screen.width / 60 - 1, (Screen.height / 60) * 5 - 1, Screen.width / 10 + 2, Screen.height / 20 + 2), "Red Rocket", border);
 			    //weapon four
 			    //GUI.Label(Rect(11,11,118,63), "", cooldown);
               //  GUI.Label(new Rect((Screen.width / 60) * 8, (Screen.height / 60) * 5,

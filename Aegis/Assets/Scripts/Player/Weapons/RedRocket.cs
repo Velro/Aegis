@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArcNade : MonoBehaviour 
+public class RedRocket : MonoBehaviour 
 {
-    public Weapon arcNade = new Weapon();
+    public Weapon redRocket = new Weapon();
     public GameObject canister;
     public GameObject path;
     public AudioClip fire; 
@@ -20,13 +20,12 @@ public class ArcNade : MonoBehaviour
 
     void Awake()
     {
-        arcNade.Awake();
+        redRocket.Awake();
     }
 
     void Start () 
     {
-	    canister = Resources.Load<GameObject>("Prefabs/nadeCanister");
-        path = Resources.Load<GameObject>("Prefabs/nadePath");
+	    canister = Resources.Load<GameObject>("Prefabs/redRocket");
 	    nozzle = GameObject.Find("nozzle").gameObject;
 	
 	    //thisPath.transform.parent = nozzle;
@@ -37,18 +36,18 @@ public class ArcNade : MonoBehaviour
     {
 	    if (((Input.GetButtonDown("Fire3") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController &&  Input.GetButtonDown("joystick button 4"))) 
 			    && !gameObject.GetComponent<PlayerStats>().overheat //make sure we're not overheating
-			    && Time.time - arcNade.currentLevel.ltShot > arcNade.currentLevel.cooldown)
+			    && Time.time - redRocket.currentLevel.ltShot > redRocket.currentLevel.cooldown)
 	    {
-            if (arcNade.level == 0) lifeTime = lifeTime1;
-            if (arcNade.level == 1) lifeTime = lifeTime2;
-            if (arcNade.level == 2) lifeTime = lifeTime3;
-            if (arcNade.level == 3) lifeTime = lifeTime4;
-		    thisCanister = Instantiate(canister, nozzle.transform.position, nozzle.transform.rotation) as GameObject;
+            if (redRocket.level == 0) lifeTime = lifeTime1;
+            if (redRocket.level == 1) lifeTime = lifeTime2;
+            if (redRocket.level == 2) lifeTime = lifeTime3;
+            if (redRocket.level == 3) lifeTime = lifeTime4;
+		    thisCanister = Instantiate(canister, nozzle.transform.position, Quaternion.Euler(new Vector3(0,90,0))) as GameObject;
 		    //thisCanister.transform.parent = nozzle;
-		    thisCanister.GetComponent<ArcNadeInstance>().CollisionDamage = arcNade.currentLevel.damage;
-            thisCanister.GetComponent<ArcNadeInstance>().lifeTime = lifeTime;
-		    arcNade.currentLevel.ltShot = Time.time;
-		    gameObject.GetComponent<PlayerStats>().heat += arcNade.currentLevel.heatCost;
+		    thisCanister.GetComponent<RedRocketInstance>().CollisionDamage = redRocket.currentLevel.damage;
+            thisCanister.GetComponent<RedRocketInstance>().lifeTime = lifeTime;
+		    redRocket.currentLevel.ltShot = Time.time;
+		    gameObject.GetComponent<PlayerStats>().heat += redRocket.currentLevel.heatCost;
 		    playerSpeed = gameObject.GetComponent<ShipMovement>().moveDirection.normalized.magnitude + 1;
 //  		    thisCanister.GetComponent<ArcNadeInstance>().Speed *= playerSpeed;
 		

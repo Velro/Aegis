@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArcNadeFollowTest : MonoBehaviour 
+public class RedRocketPathing : MonoBehaviour 
 {
 
     public float speed;

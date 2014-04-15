@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 143: {fileID: 14300000}
   m_Layer: 0
-  m_Name: nadeCanister
+  m_Name: redRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,8 +54,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -913.285095, y: 16.5269337, z: 42.9419746}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: -786.31604, y: 178.098465, z: -83.6243668}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 400000}
@@ -138,11 +138,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 150
+  damage: 0
   explosionRadius: 20
   strongAgainst: 1
   weaponType: 1
   superEffectiveCoef: 2
   explosionEffect: {fileID: 100002, guid: 2af84e0f42c199442a9ec5ed687f4b3d, type: 2}
+  startTime: 0
+  thisExplosionEffect: {fileID: 0}
 --- !u!143 &14300000
 CharacterController:
   m_ObjectHideFlags: 1

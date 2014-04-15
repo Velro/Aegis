@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArcNadeInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillable 
+public class RedRocketInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKillable 
 {
     [SerializeField]
     private float speed;

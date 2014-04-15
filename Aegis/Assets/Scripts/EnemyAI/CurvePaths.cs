@@ -11,7 +11,12 @@ public class CurvePaths : MonoBehaviour
     public bool rotateToPath = false;
     public float t = 0f;
     private Quaternion q;
-    bool waitingForParentPathAssignment = false;    
+    bool waitingForParentPathAssignment = false;
+
+    //ping pong
+    public bool pingpong = false;
+    bool returning = false;
+    Transform[] backwardsPathPoints;
 
     void Awake ()
     {
@@ -31,7 +36,6 @@ public class CurvePaths : MonoBehaviour
         if (g.GetComponent<CorsairAI>() != null)componentSpeed = g.GetComponent<CorsairAI>().Speed;
         if (g.GetComponent<RammerAI>() != null) componentSpeed = g.GetComponent<CorsairAI>().Speed;
         if (g.GetComponent<SpaceWormMasterAI>() != null) componentSpeed = g.GetComponent<SpaceWormMasterAI>().Speed;
-        if (g.GetComponent<ArcNadeInstance>() != null) componentSpeed = g.GetComponent<ArcNadeInstance>().Speed;
         speed = componentSpeed;
         if (speed == 0)
             print(gameObject.name + " could not find a speed!");
@@ -52,13 +56,18 @@ public class CurvePaths : MonoBehaviour
 		    Debug.Log("No Stats attached on "+gameObject.name+" or parent");
 	    }
 	    q = transform.rotation;*/
+
+        if (pingpong)
+        {
+            backwardsPathPoints = GenerateBackwardsPath(pathPoints);
+        }
     }
 
     void Update () 
     {
         if (transform == null || parentPath == null)
             return;
-	    if (!waitingForParentPathAssignment)
+	    if (!waitingForParentPathAssignment && !pingpong)
         {
 		    if (!rotateToPath)
             {
@@ -73,10 +82,30 @@ public class CurvePaths : MonoBehaviour
 		        q.eulerAngles = new Vector3(q.eulerAngles.x + 90, q.eulerAngles.y, q.eulerAngles.z);
 		        transform.rotation = q;
 	        }
-	    } else if (waitingForParentPathAssignment && parentPath != null)
-        {
-		    AssignParentPath();
 	    }
+        else if (!waitingForParentPathAssignment && pingpong) 
+        {
+            if (t == 1)
+            {
+                returning = !returning;
+                t = 0;
+            }
+                
+            if (returning)
+            {
+                transform.position = Spline.MoveOnPath(backwardsPathPoints, transform.position, ref t, speed);
+            }
+            else
+            {
+                transform.position = Spline.MoveOnPath(pathPoints, transform.position, ref t, speed);
+            }
+        }
+        else if (waitingForParentPathAssignment && parentPath != null)
+        {
+            AssignParentPath();
+        }
+
+
     }
 
      void AssignParentPath ()
@@ -91,4 +120,15 @@ public class CurvePaths : MonoBehaviour
 		    }
 		    waitingForParentPathAssignment = false;
     }
+
+    Transform[] GenerateBackwardsPath (Transform[] incoming)
+     {
+         Transform[] backwardsPath = new Transform[incoming.Length];
+         for (int i = 0; i < incoming.Length; i++ )
+         {
+             backwardsPath[i] = incoming[incoming.Length - 1 - i];
+         }
+
+         return backwardsPath;
+     }
 }

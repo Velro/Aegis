@@ -77,7 +77,7 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>, ICollis
         float[] times = new float[3];
         times[0] = GetComponent<BlunderBuster>().blunderBuster.currentLevel.ltShot;
         times[1] = GetComponent<FusionBeam>().fusionBeam.currentLevel.ltShot;
-        times[2] = GetComponent<ArcNade>().arcNade.currentLevel.ltShot;
+        times[2] = GetComponent<RedRocket>().redRocket.currentLevel.ltShot;
         float greatest = Mathf.Max(times);
         if (greatest == times[0])
         {
@@ -91,8 +91,8 @@ public class PlayerStats : MonoBehaviour, IKillable, IDamageable<float>, ICollis
         }
         if (greatest == times[2])
         {
-            GetComponent<ArcNade>().arcNade.GiveExp(exp);
-            GetComponent<ArcNade>().arcNade.CheckForLevelUp(Camera.main.gameObject);
+            GetComponent<RedRocket>().redRocket.GiveExp(exp);
+            GetComponent<RedRocket>().redRocket.CheckForLevelUp(Camera.main.gameObject);
         }
     }
     public void Kill()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArcNadeExplosionFade : MonoBehaviour 
+public class RedRocketExplosionFade : MonoBehaviour 
 {
     public float durationOfFade = 1;
     public float delayToFade = 1;

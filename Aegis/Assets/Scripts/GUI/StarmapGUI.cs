@@ -21,7 +21,6 @@ public class StarmapGUI : MonoBehaviour
     private float pausedLastHit = 0;
     private Rect confirmMenuRect;
     private Rect pauseMenuRect;
-    bool confirmMenuOpened = false;
     public int oomdassaID = 3;
     public int mainMenuID = 0;
     public int upgroidsID = 2;

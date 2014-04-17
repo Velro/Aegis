@@ -13,12 +13,6 @@ public class RedRocketPathing : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
     }
-
-	// Use this for initialization
-	void Start () 
-    {
-        diff = Camera.main.transform.position.y + transform.position.y;
-	}
 	
 	// Update is called once per frame
 	void Update () 

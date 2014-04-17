@@ -13,7 +13,7 @@ public class JoyGUIButton
     bool isPressed;
     bool isFocused;
     public bool enabled;
-    bool bought;
+//    bool bought;
 
     public JoyGUIButton(Rect rect, string label)
     {
@@ -26,13 +26,14 @@ public class JoyGUIButton
 
 	public void Display()
     {
-		if (bought)
+/*		if (bought)
         {
 			check = GUI.skin.customStyles[0].normal.background;
 			GUI.Label(buttonRect, check);
 			GUI.Label(buttonRect, text);
 		} else 
         {
+ */
 			if(enabled)
             {
 				//up = GUI.skin.button.normal.background as Texture;	
@@ -56,7 +57,7 @@ public class JoyGUIButton
 					GUI.skin.label.normal.textColor = GUI.skin.button.active.textColor;
 					//GUI.Label(buttonRect,text);
 				}
-			}
+//			}
 		}
 	}
 

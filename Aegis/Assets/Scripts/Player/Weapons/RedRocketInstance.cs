@@ -64,10 +64,9 @@ public class RedRocketInstance : MonoBehaviour, ISpeed, ICollisionDamage, IKilla
         Kill();
     }
 
-    private GameObject thisExplosionEffect;
     public void Kill()
     {
         Destroy(gameObject);
-        thisExplosionEffect = Instantiate(explosionEffect, transform.position, transform.rotation) as GameObject;
+        Instantiate(explosionEffect, transform.position, transform.rotation);
     }
 }

@@ -45,7 +45,7 @@ public class ScreenShakeOnDamage : MonoBehaviour
 		    shakingHorizontal = false;
             Camera.main.transform.localPosition = originalPosition;
 	    }
-        if (shakingVertical && Time.time > xShakeStartTime + xShakeDuration)
+        if (shakingVertical && Time.time > yShakeStartTime + yShakeDuration)
         {
             shakingVertical = false;
             Camera.main.transform.localPosition = originalPosition;

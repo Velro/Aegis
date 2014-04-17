@@ -18,12 +18,10 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
     GameObject player;
     GameObject nozzle;
     public float offsetFromNozzle = -4;
-    WeaponType weaponType = WeaponType.Energy;
 
     bool extended = false;
-    float lerpOut = 0;
+    float lerp = 0;
     bool retracted = false;
-    float lerpIn = 0;
     float ltExtended = 0;
 
     void Awake () 
@@ -36,9 +34,9 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
     {
         if (extended == false)
         {
-            Mathf.Clamp01(lerpOut += Time.deltaTime / extensionSpeed);
-            gameObject.transform.localScale = new Vector3(lerpOut * beamSize.x, beamSize.y, beamSize.z);
-            if (lerpOut >= 1)
+            Mathf.Clamp01(lerp += Time.deltaTime / extensionSpeed);
+            gameObject.transform.localScale = new Vector3(lerp * beamSize.x, beamSize.y, beamSize.z);
+            if (lerp >= 1)
             {
                 extended = true;
                 ltExtended = Time.time;
@@ -48,9 +46,9 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
         {
             if (Time.time > ltExtended + timeExtended) // begin retracting
             {
-                Mathf.Clamp01(lerpOut -= Time.deltaTime / extensionSpeed);
-                gameObject.transform.localScale = new Vector3(lerpOut * beamSize.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
-                if (lerpOut <= 0)
+                Mathf.Clamp01(lerp -= Time.deltaTime / extensionSpeed);
+                gameObject.transform.localScale = new Vector3(lerp * beamSize.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                if (lerp <= 0)
                 {
                     retracted = true;
                 }

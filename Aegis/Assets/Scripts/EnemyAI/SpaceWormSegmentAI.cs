@@ -22,25 +22,12 @@ public class SpaceWormSegmentAI : MonoBehaviour, ISpeed, ICollisionDamage, IDama
         get { return health; }
         set { health = value; }
     }
-    private GameObject superEffectiveSystem;
 
     void Awake ()
     {
         Speed = transform.parent.GetComponent<SpaceWormMasterAI>().Speed;
         CollisionDamage = transform.parent.GetComponent<SpaceWormMasterAI>().CollisionDamage;
-        superEffectiveSystem = transform.parent.GetComponent<SpaceWormMasterAI>().superEffectiveSystem;
     }
-	// Use this for initialization
-	void Start () 
-    {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
 
     void OnCollisionEnter (Collision other)
     {

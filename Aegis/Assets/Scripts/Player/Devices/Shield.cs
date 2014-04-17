@@ -15,9 +15,6 @@ public class Shield : MonoBehaviour
     public Vector3 size3 = Vector3.zero;
     private bool instantiateOnce;
     private GameObject thisShield;
-    private float mouseX = 0;
-    private float mouseY = 0;
-    private float diff = 0;
 
     void Awake()
     {
@@ -29,7 +26,6 @@ public class Shield : MonoBehaviour
 	    shieldObj = Resources.Load<GameObject>("Prefabs/Shield");
 	    heatPerSecond = shield.currentLevel.heatCost;
 	    //sight = gameObject.transform.FindChild("gun").gameObject;
-	    diff = Camera.main.transform.position.y + sight.transform.position.y;
     }
 
     void Update () 

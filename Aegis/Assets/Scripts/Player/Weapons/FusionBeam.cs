@@ -7,7 +7,6 @@ public class FusionBeam : MonoBehaviour
     GameObject beamObj;
     public Weapon fusionBeam = new Weapon();
     public AudioClip blast;
-    PlayerStats playerStats;
     //var size : Vector2;
     public float duration;
     float currentShootTime = 0; //private
@@ -26,7 +25,6 @@ public class FusionBeam : MonoBehaviour
     void Start () 
     {
 	    beamObj = Resources.Load<GameObject>("Prefabs/FusionBeam");
-	    playerStats = GetComponent<PlayerStats>();
 	    nozzle = GameObject.Find("nozzle");
     }
 

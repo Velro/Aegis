@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -820.150635, y: 0, z: 77.2209091}
+  m_LocalPosition: {x: 452.689209, y: 0, z: 77.2209091}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe7843263dee6248b969a49b75906d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 30
   bulletDamage: 10
   collisionDamage: 20
   health: 20
@@ -279,6 +279,9 @@ MonoBehaviour:
   cooldown: 2
   blasterSound: {fileID: 8300000, guid: 0ee32600d034bef489ab27db8a9982b2, type: 3}
   wait: 0
+  whiteFlash: {fileID: 2100000, guid: 2a5e2f01bc47a1d489b3b11f8c47d050, type: 2}
+  redFlash: {fileID: 2100000, guid: 81cfd75ab2fc82e478af5b18b9ef9445, type: 2}
+  flashDuration: .200000003
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

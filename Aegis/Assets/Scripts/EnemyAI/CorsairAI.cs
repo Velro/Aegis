@@ -45,9 +45,16 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
     private float grabInitialTime = 0;
     public float wait = 0;		//wait after being activated to shoot, geared towards AI
 
+    public Material whiteFlash;
+    public Material redFlash;
+    public float flashDuration = 0.1f;
+    private float beginFlash = 0;
+    private Material defaultMat;
+
     void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        defaultMat = gameObject.GetComponentInChildren<Renderer>().material;
     }
 
     void Update () 
@@ -85,10 +92,12 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
             Kill();
         }
     }
+
     public void DamageProjectile(float damageTaken)
     {
         health -= damageTaken * superEffectiveMod;
         SuperEffectiveSystem();
+        StartCoroutine(Flash(redFlash, flashDuration));
     }
 
     public void DamageExplosive(float damageTaken)
@@ -101,12 +110,6 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
         Damage(damageTaken);
     }
 
-    public void CriticalHit (float damageTaken)
-    {
-        health -= damageTaken * 2;
-        SuperEffectiveSystem();
-    }
-
     public void SuperEffectiveSystem()
     {
         GameObject inst = Instantiate(superEffectiveParticleSystem, transform.position, transform.rotation) as GameObject;
@@ -117,12 +120,20 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
     public void Damage(float damageTaken)
     {
         health -= damageTaken;
+        StartCoroutine(Flash(whiteFlash, flashDuration));
     }
 
     void OnCollisionEnter(Collision other)
     {
         other.gameObject.SendMessage("Damage", CollisionDamage, SendMessageOptions.DontRequireReceiver);
         //print("HIT");
+    }
+
+    IEnumerator Flash (Material mat, float duration)
+    {
+        gameObject.GetComponentInChildren<Renderer>().material = mat;
+        yield return new WaitForSeconds(duration);
+        gameObject.GetComponentInChildren<Renderer>().material = defaultMat;
     }
 
     public void GiveExp (float exp)

@@ -34,7 +34,8 @@ public class CurvePaths : MonoBehaviour
 
         float componentSpeed = 0;
         if (g.GetComponent<CorsairAI>() != null)componentSpeed = g.GetComponent<CorsairAI>().Speed;
-        if (g.GetComponent<RammerAI>() != null) componentSpeed = g.GetComponent<CorsairAI>().Speed;
+        if (g.GetComponent<RammerAI>() != null) componentSpeed = g.GetComponent<RammerAI>().Speed;
+        if (g.GetComponent<DreadnaughtAI>() != null) componentSpeed = g.GetComponent<DreadnaughtAI>().Speed;
         if (g.GetComponent<SpaceWormMasterAI>() != null) componentSpeed = g.GetComponent<SpaceWormMasterAI>().Speed;
         speed = componentSpeed;
         if (speed == 0)

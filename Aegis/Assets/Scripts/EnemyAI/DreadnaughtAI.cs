@@ -34,7 +34,15 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
     }
     public float superEffectiveCoef = 2;
     public GameObject bullet;
+    public float bulletSpeed;
+    public float bulletDamage;
     GameObject player;
+    public GameObject topGun;
+    public GameObject bottomGun;
+    public GameObject superEffectiveSystem;
+
+    public float fireRate = 0.2f;
+    private float lastShot = 0;
 
 	void Start () 
     {
@@ -43,7 +51,25 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
 	
 	void Update () 
     {
-	    
+	    if (Time.time > lastShot + fireRate)
+        {
+            GameObject topBullet = Instantiate(bullet, topGun.transform.position, Quaternion.Euler(-90, 0, 0)) as GameObject;
+            topBullet.GetComponent<MoveBullet>().Speed = bulletSpeed;
+            topBullet.GetComponent<MoveBullet>().CollisionDamage = bulletDamage;
+            Destroy(topBullet, 4);
+            GameObject bottomBullet = Instantiate(bullet, bottomGun.transform.position, Quaternion.Euler(90, 0, 0)) as GameObject;
+            bottomBullet.GetComponent<MoveBullet>().Speed = bulletSpeed;
+            bottomBullet.GetComponent<MoveBullet>().CollisionDamage = bulletDamage;
+            Destroy(bottomBullet, 4);
+            lastShot = Time.time;
+            GetComponent<Animator>().SetTrigger("machineGunFire");
+        }
+
+        if (health < 0)
+        {
+            GiveExp(exp);
+            Kill();
+        }
 	}
 
     public void Damage(float damageTaken)
@@ -53,8 +79,7 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
 
     public void DamageProjectile(float damageTaken)
     {
-        Health -= damageTaken * superEffectiveCoef;
-        SuperEffectiveSystem();
+        Damage(damageTaken);
     }
 
     public void DamageExplosive(float damageTaken)
@@ -64,12 +89,18 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
 
     public void DamageEnergy(float damageTaken)
     {
-        Damage(damageTaken);
+        Health += damageTaken;
+    }
+
+    public void DamageCriticalHit (float damageTaken)
+    {
+        Health -= damageTaken;
+        SuperEffectiveSystem();
     }
 
     public void SuperEffectiveSystem()
     {
-        throw new System.NotImplementedException();
+        Instantiate(superEffectiveSystem, transform.position, transform.rotation);
     }
 
     public void Kill()

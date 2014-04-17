@@ -101,6 +101,12 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
         Damage(damageTaken);
     }
 
+    public void CriticalHit (float damageTaken)
+    {
+        health -= damageTaken * 2;
+        SuperEffectiveSystem();
+    }
+
     public void SuperEffectiveSystem()
     {
         GameObject inst = Instantiate(superEffectiveParticleSystem, transform.position, transform.rotation) as GameObject;

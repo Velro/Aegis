@@ -3,20 +3,21 @@ using System.Collections;
 
 public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable 
 {
-    public float extensionSpeed = 2;
+    public float timeExtending = 2;
     public float timeExtended = 1;
-    public float retractionSpeed = 2;
+    public float timeRetracting = 2;
+    [HideInInspector]
     public Vector3 beamSize = Vector3.zero;
-    [SerializeField]
     private float damage;
     public float CollisionDamage
     {
         get { return damage; }
         set { damage = value; }
     }
-    
-    GameObject player;
-    GameObject nozzle;
+    [HideInInspector]
+    public GameObject player;
+    [HideInInspector]
+    public GameObject nozzle;
     public float offsetFromNozzle = -4;
 
     bool extended = false;
@@ -24,17 +25,11 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
     bool retracted = false;
     float ltExtended = 0;
 
-    void Awake () 
-    {
-	    player = GameObject.FindWithTag("Player");
-        nozzle = GameObject.Find("nozzle");
-    }
-
     void Update ()
     {
         if (extended == false)
         {
-            Mathf.Clamp01(lerp += Time.deltaTime / extensionSpeed);
+            Mathf.Clamp01(lerp += Time.deltaTime / timeExtending);
             gameObject.transform.localScale = new Vector3(lerp * beamSize.x, beamSize.y, beamSize.z);
             if (lerp >= 1)
             {
@@ -46,7 +41,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
         {
             if (Time.time > ltExtended + timeExtended) // begin retracting
             {
-                Mathf.Clamp01(lerp -= Time.deltaTime / extensionSpeed);
+                Mathf.Clamp01(lerp -= Time.deltaTime / timeExtending);
                 gameObject.transform.localScale = new Vector3(lerp * beamSize.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
                 if (lerp <= 0)
                 {
@@ -60,7 +55,7 @@ public class FusionBeamInstance : MonoBehaviour, ICollisionDamage, IKillable
         }
         Vector3 pos = new Vector3(nozzle.transform.position.x + offsetFromNozzle, nozzle.transform.position.y, nozzle.transform.position.z);
         transform.position = pos;
-	    if (player == null)Destroy(gameObject);
+	   // if (player == null)Destroy(gameObject);
     }	
 
     void OnTriggerStay (Collider other)

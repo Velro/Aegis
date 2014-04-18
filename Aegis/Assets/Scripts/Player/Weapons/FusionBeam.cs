@@ -25,7 +25,6 @@ public class FusionBeam : MonoBehaviour
     void Start () 
     {
 	    beamObj = Resources.Load<GameObject>("Prefabs/FusionBeam");
-	    nozzle = GameObject.Find("nozzle");
     }
 
     private GameObject thisBeam;
@@ -40,6 +39,7 @@ public class FusionBeam : MonoBehaviour
 			thisBeam = Instantiate(beamObj, nozzle.transform.position, Quaternion.Euler(Vector3.zero)) as GameObject;	
 			instantiateBeamOnce = true;
 			thisBeam.GetComponent<FusionBeamInstance>().CollisionDamage = fusionBeam.currentLevel.damage;
+            thisBeam.GetComponent<FusionBeamInstance>().nozzle = nozzle;
             if (fusionBeam.level == 0) thisBeam.GetComponent<FusionBeamInstance>().beamSize = level0Size;
             if (fusionBeam.level == 1) thisBeam.GetComponent<FusionBeamInstance>().beamSize = level1Size;
             if (fusionBeam.level == 2) thisBeam.GetComponent<FusionBeamInstance>().beamSize = level2Size;

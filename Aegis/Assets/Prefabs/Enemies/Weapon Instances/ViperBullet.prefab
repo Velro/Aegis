@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
   - 135: {fileID: 13500000}
   - 65: {fileID: 6500000}
   m_Layer: 11
-  m_Name: BlueLaser
+  m_Name: ViperBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106829, y: 6.18172464e-08, z: -6.18172464e-08, w: -.707106829}
-  m_LocalPosition: {x: -992.822388, y: 91.1020966, z: -1.34656525}
+  m_LocalPosition: {x: 432.568695, y: 107.425896, z: -43.1130905}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ Rigidbody:
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -87,7 +87,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .25, y: .25, z: .25}
   m_Center: {x: -.400000006, y: 0, z: 0}
---- !u!114 &11400002
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,13 +95,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d5a350e0799a304fb5f9c86b9ad53ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 67b004a5f1a3a2f4baca702d8b685ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  d: {x: 0, y: 0, z: 0}
-  r: {x: 0, y: 0, z: 0}
-  damage: 0
   speed: 180
+  heatIncrease: 1
   left: 1
   right: 0
 --- !u!135 &13500000

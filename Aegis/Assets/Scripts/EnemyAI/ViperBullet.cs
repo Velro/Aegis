@@ -1,8 +1,7 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage 
+public class ViperBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage
 {
     Vector3 d = Vector3.zero;
     Vector3 r = Vector3.zero;
@@ -19,34 +18,39 @@ public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage
         get { return speed; }
         set { speed = value; }
     }
+    public float heatIncrease = 1;
     public bool left = false;
     public bool right = true;
 
-    void Start ()
+    void Start()
     {
         //rigidbody.AddForce(-transform.right * 100, ForceMode.VelocityChange);
     }
 
-    void FixedUpdate ()
+    void FixedUpdate()
     {
         //rigidbody.AddForce(-transform.right * 100, ForceMode.Force);
     }
 
-    void Update () 
+    void Update()
     {
-        
-	    if (right)
-            
-		    transform.position += transform.right * Speed * Time.deltaTime;
+
+        if (right)
+
+            transform.position += transform.right * Speed * Time.deltaTime;
         //Debug.Log(speed);
-	    if (left)
-		    transform.position -= transform.right * Speed * Time.deltaTime;
+        if (left)
+            transform.position -= transform.right * Speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter (Collider other) 
+    void OnTriggerEnter(Collider other)
     {
         other.SendMessage("DamageProjectile", CollisionDamage, SendMessageOptions.DontRequireReceiver);
-	    if (gameObject != null)Destroy (gameObject);
+        if (other.name == "player")
+        {
+            other.GetComponent<PlayerStats>().heat += heatIncrease; 
+        }
+        if (gameObject != null) Destroy(gameObject);
         //Kill();
     }
 
@@ -62,8 +66,8 @@ public class MoveBullet : MonoBehaviour, IKillable, ISpeed, ICollisionDamage
             rigidbody.AddForce(r * 100, ForceMode.VelocityChange);
         }
     }
-    
-    public void Kill ()
+
+    public void Kill()
     {
         Destroy(gameObject);
     }

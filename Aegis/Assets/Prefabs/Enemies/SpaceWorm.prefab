@@ -1014,6 +1014,7 @@ MonoBehaviour:
   componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
+  pingpong: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
+  pingpong: 0
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1076,6 +1078,7 @@ MonoBehaviour:
   componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
+  pingpong: 0
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1107,6 +1110,7 @@ MonoBehaviour:
   componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
+  pingpong: 0
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1138,6 +1142,7 @@ MonoBehaviour:
   componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
+  pingpong: 0
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,6 +1174,7 @@ MonoBehaviour:
   componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
+  pingpong: 0
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1252,6 +1258,9 @@ MonoBehaviour:
   health: 175
   superEffectiveCoef: 2
   superEffectiveSystem: {fileID: 100000, guid: d6094f305a62f964eb8b48cc393f340c, type: 2}
+  whiteFlash: {fileID: 0}
+  redFlash: {fileID: 0}
+  flashDuration: .100000001
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -1,0 +1,149 @@
+﻿using UnityEngine;
+using System.Collections;
+
+[AddComponentMenu("EnemyAI/ViperAI")]
+public class ViperAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable<float>, IGivesExp<float>, ISpeed
+{
+    [SerializeField]
+    private float speed;
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+    public float bulletDamage;
+    public float bulletHeatIncrease;
+    [SerializeField]
+    private float collisionDamage;
+    public float CollisionDamage
+    {
+        get { return collisionDamage; }
+        set { collisionDamage = value; }
+    }
+
+    [SerializeField]
+    private float health;
+    public float Health
+    {
+        get { return health; }
+        set { health = value; }
+    }
+    [SerializeField]
+    private float expGiven;
+    public float ExpGiven
+    {
+        get { return expGiven; }
+        set { expGiven = value; }
+    }
+    public float superEffectiveMod = 2;
+    GameObject player;
+    public GameObject bullet;	//gameObject to be used. should be a prefab
+    public GameObject superEffectiveParticleSystem;
+    public float cooldown;		//how long of a wait between shots? in seconds
+    public AudioClip blasterSound;
+    private float lastShot = 0;
+    private bool grabInitialTimeBool = false;
+    private float grabInitialTime = 0;
+    public float wait = 0;		//wait after being activated to shoot, geared towards AI
+
+    public Material whiteFlash;
+    public Material redFlash;
+    public float flashDuration = 0.1f;
+    private Material defaultMat;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        defaultMat = gameObject.GetComponentInChildren<Renderer>().material;
+    }
+
+    void Update()
+    {
+        if (player != null)
+        {
+            transform.LookAt(player.transform, Vector3.up);
+        }
+        if (!grabInitialTimeBool)
+        {
+            grabInitialTime = Time.time;
+            grabInitialTimeBool = true;
+        }
+
+        if (Time.time - lastShot > cooldown && Time.time - grabInitialTime > wait)
+        { //basic forward gun
+            GameObject instance;
+            //var scrollAdjust : float = Camera.main.transform.parent.GetComponent(CameraScroll).scrollSpeed;
+            Quaternion rotation = Quaternion.Euler(90, transform.eulerAngles.y + 90, 0);
+            //Debug.Log("corsairshoot");
+
+            instance = Instantiate(bullet, transform.position, rotation) as GameObject; //  * Quaternion.Euler(0, scrollAdjust, 0)
+            instance.GetComponent<ViperBullet>().CollisionDamage = bulletDamage;
+            instance.GetComponent<ViperBullet>().heatIncrease = bulletHeatIncrease;
+            instance.GetComponent<ViperBullet>().right = false;
+            instance.GetComponent<ViperBullet>().left = true;
+            audio.Play();
+            // Destroy (instance, 5);
+            lastShot = Time.time;
+
+        }
+
+        if (health <= 0)
+        {
+            GiveExp(ExpGiven);
+            Kill();
+        }
+    }
+
+    public void DamageProjectile(float damageTaken)
+    {
+        health -= damageTaken * superEffectiveMod;
+        SuperEffectiveSystem();
+        StartCoroutine(Flash(redFlash, flashDuration));
+    }
+
+    public void DamageExplosive(float damageTaken)
+    {
+        Damage(damageTaken);
+    }
+
+    public void DamageEnergy(float damageTaken)
+    {
+        Damage(damageTaken);
+    }
+
+    public void SuperEffectiveSystem()
+    {
+        GameObject inst = Instantiate(superEffectiveParticleSystem, transform.position, transform.rotation) as GameObject;
+        Destroy(inst, 5);
+
+    }
+
+    public void Damage(float damageTaken)
+    {
+        health -= damageTaken;
+        StartCoroutine(Flash(whiteFlash, flashDuration));
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        other.gameObject.SendMessage("Damage", CollisionDamage, SendMessageOptions.DontRequireReceiver);
+        //print("HIT");
+    }
+
+    IEnumerator Flash(Material mat, float duration)
+    {
+        gameObject.GetComponentInChildren<Renderer>().material = mat;
+        yield return new WaitForSeconds(duration);
+        gameObject.GetComponentInChildren<Renderer>().material = defaultMat;
+    }
+
+    public void GiveExp(float exp)
+    {
+        player.SendMessage("GiveExp", exp);
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+}

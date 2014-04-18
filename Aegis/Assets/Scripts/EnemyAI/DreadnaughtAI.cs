@@ -44,9 +44,22 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
     public float fireRate = 0.2f;
     private float lastShot = 0;
 
+    public Material whiteFlash;
+    public Material redFlash;
+    public Material greenFlash;
+    public float flashDuration = 0.1f;
+    private Material[] defaultMats;
+    private Renderer[] childRenderers;
+
 	void Start () 
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        childRenderers = gameObject.GetComponentsInChildren<Renderer>();
+        defaultMats = new Material[childRenderers.Length];
+        for (int i = 0; i < childRenderers.Length; i++)
+        {
+            defaultMats[i] = childRenderers[i].material;
+        }
 	}
 	
 	void Update () 
@@ -75,11 +88,14 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
     public void Damage(float damageTaken)
     {
         Health -= damageTaken;
+        StartCoroutine(Flash(whiteFlash, flashDuration));
     }
 
     public void DamageProjectile(float damageTaken)
     {
-        Damage(damageTaken);
+        Health -= damageTaken * superEffectiveCoef;
+        StartCoroutine(Flash(redFlash, flashDuration));
+        SuperEffectiveSystem();
     }
 
     public void DamageExplosive(float damageTaken)
@@ -90,6 +106,7 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
     public void DamageEnergy(float damageTaken)
     {
         Health += damageTaken;
+        StartCoroutine(Flash(greenFlash, flashDuration));
     }
 
     public void DamageCriticalHit (float damageTaken)
@@ -102,6 +119,26 @@ public class DreadnaughtAI : MonoBehaviour, ISpeed, ICollisionDamage, IDamageabl
     {
         Instantiate(superEffectiveSystem, transform.position, transform.rotation);
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        other.gameObject.SendMessage("Damage", CollisionDamage, SendMessageOptions.DontRequireReceiver);
+        //print("HIT");
+    }
+
+    IEnumerator Flash(Material mat, float duration)
+    {
+        foreach (Renderer r in childRenderers)
+        {
+            r.material = mat;
+        }
+        yield return new WaitForSeconds(duration);
+        for (int i = 0; i < childRenderers.Length; i++)
+        {
+            childRenderers[i].material = defaultMats[i];
+        }
+    }
+
 
     public void Kill()
     {

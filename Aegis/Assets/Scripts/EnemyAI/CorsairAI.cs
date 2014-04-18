@@ -48,7 +48,6 @@ public class CorsairAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable
     public Material whiteFlash;
     public Material redFlash;
     public float flashDuration = 0.1f;
-    private float beginFlash = 0;
     private Material defaultMat;
 
     void Start ()

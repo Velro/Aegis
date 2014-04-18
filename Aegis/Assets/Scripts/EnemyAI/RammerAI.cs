@@ -35,9 +35,15 @@ public class RammerAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable<
     public GameObject superEffectiveParticleSystem;
     GameObject player;
 
+    public Material whiteFlash;
+    public Material redFlash;
+    public float flashDuration = 0.1f;
+    private Material defaultMat;
+
 	void Start () 
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        defaultMat = gameObject.GetComponentInChildren<Renderer>().material;
 	}
 	
 	void Update () 
@@ -59,6 +65,7 @@ public class RammerAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable<
     public void DamageProjectile(float damageTaken)
     {
         health -= damageTaken * superEffectiveMod;
+        StartCoroutine(Flash(redFlash, flashDuration));
         SuperEffectiveSystem();
     }
 
@@ -82,6 +89,13 @@ public class RammerAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageable<
     public void Damage(float damageTaken)
     {
         health -= damageTaken;
+    }
+
+    IEnumerator Flash(Material mat, float duration)
+    {
+        gameObject.GetComponentInChildren<Renderer>().material = mat;
+        yield return new WaitForSeconds(duration);
+        gameObject.GetComponentInChildren<Renderer>().material = defaultMat;
     }
 
     void OnCollisionEnter(Collision other)

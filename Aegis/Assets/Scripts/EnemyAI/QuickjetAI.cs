@@ -7,6 +7,7 @@ public class QuickjetAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageabl
     public float portMinRange;
     public float portMaxRange;
     public float beamDamage;
+    public float delayToShoot = 0.2f;
     [SerializeField]
     private float collisionDamage;
     public float CollisionDamage
@@ -118,9 +119,10 @@ public class QuickjetAI : MonoBehaviour, ICollisionDamage, IKillable, IDamageabl
         //shoot
         GameObject instance;
         instance = Instantiate(beam, transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z)) as GameObject; //  * Quaternion.Euler(0, scrollAdjust, 0)
-        instance.GetComponent<FusionBeamInstance>().beamSize = beamSize;
-        instance.GetComponent<FusionBeamInstance>().CollisionDamage = beamDamage;
-        instance.GetComponent<FusionBeamInstance>().nozzle = nozzle;
+        instance.GetComponent<QuickjetBeam>().delayToShoot = delayToShoot;
+        instance.GetComponent<QuickjetBeam>().beamSize = beamSize;
+        instance.GetComponent<QuickjetBeam>().CollisionDamage = beamDamage;
+        instance.GetComponent<QuickjetBeam>().nozzle = nozzle;
         audio.PlayOneShot(beamSound);
     }
 

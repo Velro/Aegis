@@ -37,7 +37,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 1
@@ -318,7 +318,7 @@ MonoBehaviour:
   bullet: {fileID: 100000, guid: 388a52d2f1575074eab4ab529f514f0c, type: 2}
   superEffectiveParticleSystem: {fileID: 100000, guid: 3905ad2fce9d61b4c965acca7d840284,
     type: 2}
-  cooldown: 0
+  cooldown: 1
   blasterSound: {fileID: 8300000, guid: 0ee32600d034bef489ab27db8a9982b2, type: 3}
   wait: 0
   whiteFlash: {fileID: 0}

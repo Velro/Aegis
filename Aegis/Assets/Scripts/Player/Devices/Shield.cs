@@ -57,8 +57,9 @@ public class Shield : MonoBehaviour
 		    thisShield.transform.localRotation = Quaternion.Euler(270, 0, 0);
     }
 
-    void OnCollisionEnter ()
+    void OnCollisionEnter (Collision other)
     {
+        print(other.gameObject.name);
         //shield.GiveExp(1);
     }
 }

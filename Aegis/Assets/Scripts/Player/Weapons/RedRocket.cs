@@ -32,7 +32,7 @@ public class RedRocket : MonoBehaviour
 
     void Update () 
     {
-	    if (((Input.GetButtonDown("Fire3") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController &&  Input.GetButtonDown("joystick button 4"))) 
+	    if ((Input.GetButtonDown("Fire3") || Input.GetButtonDown("joystick button 4")) 
 			    && !gameObject.GetComponent<PlayerStats>().overheat //make sure we're not overheating
 			    && Time.time - redRocket.currentLevel.ltShot > redRocket.currentLevel.cooldown)
 	    {

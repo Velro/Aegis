@@ -30,7 +30,7 @@ public class FusionBeam : MonoBehaviour
     private GameObject thisBeam;
     void Update ()
     {
-	    if (((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))) 
+	    if ((Input.GetButton("Fire2") || Input.GetButton("joystick button 5")) 
 			    && !GetComponent<PlayerStats>().overheat //make sure we're not overheating
 			    && Time.time - fusionBeam.currentLevel.ltShot > fusionBeam.currentLevel.cooldown
                 && !instantiateBeamOnce)
@@ -47,7 +47,7 @@ public class FusionBeam : MonoBehaviour
 			//Debug.Log("Beam Instantiated");
 			fusionBeam.currentLevel.ltShot = Time.time;	
 		} 
-        else if (((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5"))) 
+        else if ((Input.GetButton("Fire2") || Input.GetButton("joystick button 5")) 
             && instantiateBeamOnce == true
             && !GetComponent<PlayerStats>().overheat)
         {   //tick time shot while held
@@ -56,7 +56,7 @@ public class FusionBeam : MonoBehaviour
             GetComponent<PlayerStats>().heat += fusionBeam.currentLevel.heatCost * Time.deltaTime;
             fusionBeam.currentLevel.ltShot = Time.time;
 		} 
-        else if (instantiateBeamOnce == true && !((Input.GetButton("Fire2") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && Input.GetButton("joystick button 5")))
+        else if (instantiateBeamOnce == true && !(Input.GetButton("Fire2") || Input.GetButton("joystick button 5"))
                 && !GetComponent<PlayerStats>().overheat )
         {   //let Go
 			//Debug.Log("let go during shoot."+"Destroy "+thisBeam.name);

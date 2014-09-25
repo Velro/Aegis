@@ -26,16 +26,10 @@ public class ShipMovement : MonoBehaviour
     /**** Move Ship Input ****/
 	    float horizontal = 0;
 	    float vertical = 0;
-	    if (InputCoordinator.usingController == true)
-        {
-		    horizontal = Input.GetAxis("X axis");
-		    vertical = Input.GetAxis("Y axis");
-	    }
-	    if (InputCoordinator.usingMouseAndKeyboard == true)
-        {
-		    horizontal = Input.GetAxis("MoveHorizontalKey");
-		    vertical = Input.GetAxis("MoveVerticalKey");	
-	    }	
+
+		horizontal = (Mathf.Abs(Input.GetAxis("X axis")) > Mathf.Abs(Input.GetAxis("MoveHorizontalKey"))) ? Input.GetAxis("X axis") : Input.GetAxis("MoveHorizontalKey");
+        vertical =   (Mathf.Abs(Input.GetAxis("Y axis")) > Mathf.Abs(Input.GetAxis("MoveVerticalKey")))   ? Input.GetAxis("Y axis") : Input.GetAxis("MoveVerticalKey");
+
 	    moveDirection = new Vector3(horizontal, 0, vertical) * GetComponent<PlayerStats>().Speed;
 	    controller.Move(moveDirection * Time.deltaTime);
 	

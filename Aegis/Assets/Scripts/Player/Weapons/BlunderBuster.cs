@@ -27,7 +27,7 @@ public class BlunderBuster : MonoBehaviour {
 
     void Update () {
         //Debug.Log(nozzle.transform.position);
-        if (((Input.GetButtonDown("Fire1") && InputCoordinator.usingMouseAndKeyboard) || (InputCoordinator.usingController && (Input.GetAxis(input) < -0.5)))
+        if ((Input.GetButtonDown("Fire1") || (Input.GetAxis(input) < -0.5F))
                 && !GetComponent<PlayerStats>().overheat //make sure we're not overheating
                 && Time.time - blunderBuster.currentLevel.ltShot > blunderBuster.currentLevel.cooldown)
         {

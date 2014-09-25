@@ -30,8 +30,8 @@ public class Shield : MonoBehaviour
 
     void Update () 
     {
-	    if (((Input.GetButtonDown("Fire4") && InputCoordinator.usingMouseAndKeyboard) || 
-            (InputCoordinator.usingController && (Mathf.Abs(Input.GetAxis("5th axis")) > 0.3 || Mathf.Abs(Input.GetAxis("4th axis")) > 0.3))) 
+	    if ((Input.GetButtonDown("Fire4") ||
+            ((Mathf.Abs(Input.GetAxis("5th axis")) > 0.3 || Mathf.Abs(Input.GetAxis("4th axis")) > 0.3))) 
 		     && !instantiateOnce)
         {   //instantiate shield
 		    thisShield = Instantiate(shieldObj, sight.transform.position, Quaternion.Euler(90,0,0)) as GameObject;

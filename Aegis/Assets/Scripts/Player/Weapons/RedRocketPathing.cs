@@ -20,16 +20,8 @@ public class RedRocketPathing : MonoBehaviour
         /**** Move Ship Input ****/
         float horizontal = 0;
         float vertical = 0;
-        if (InputCoordinator.usingController == true)
-        {
-            horizontal = Input.GetAxisRaw("X axis");
-            vertical = Input.GetAxisRaw("Y axis");
-        }
-        if (InputCoordinator.usingMouseAndKeyboard == true)
-        {
-            horizontal = Input.GetAxisRaw("MoveHorizontalKey");
-            vertical = Input.GetAxisRaw("MoveVerticalKey");
-        }
+        horizontal = (Mathf.Abs(Input.GetAxis("X axis")) > Mathf.Abs(Input.GetAxis("MoveHorizontalKey"))) ? Input.GetAxis("X axis") : Input.GetAxis("MoveHorizontalKey");
+        vertical = (Mathf.Abs(Input.GetAxis("Y axis")) > Mathf.Abs(Input.GetAxis("MoveVerticalKey"))) ? Input.GetAxis("Y axis") : Input.GetAxis("MoveVerticalKey");
 
         if (horizontal != 0 || vertical != 0)
         {

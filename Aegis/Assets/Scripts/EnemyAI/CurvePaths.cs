@@ -3,8 +3,23 @@ using System.Collections;
 
 public class CurvePaths : MonoBehaviour 
 {
+    public enum PathingTypes
+    {
+        zigzagTop,
+        zigzagBottom,
+        archTop,
+        archBottom,
+        left,
+        up,
+        spiral,
+        count
+    }
+    public PathingTypes pathingType = PathingTypes.zigzagTop;
+    public Transform[] pathReferences = new Transform[(int)PathingTypes.count];
+
     float speed;
-    public Transform parentPath;
+
+    Transform parentPath;
     Transform[] pathPoints;
     public GameObject objectContainsSpeed;
     public Component componentContainsSpeed;
@@ -40,24 +55,17 @@ public class CurvePaths : MonoBehaviour
         if (g.GetComponent<SpaceWormMasterAI>() != null) componentSpeed = g.GetComponent<SpaceWormMasterAI>().Speed;
         speed = componentSpeed;
         if (speed == 0)
+        {
             print(gameObject.name + " could not find a speed!");
+        }
+        parentPath = pathReferences[(int)pathingType];
     }
 
     void Start () 
     {
 	    if (parentPath != null){
 		    AssignParentPath();
-	    }/*else {
-		    waitingForParentPathAssignment = true;
 	    }
-	    if (gameObject.GetComponent(Stats) != null){
-		    speed = gameObject.GetComponent(Stats).speed;
-	    } else if (transform.parent != null){
-		    speed = transform.parent.gameObject.GetComponent(Stats).speed;
-	    } else {
-		    Debug.Log("No Stats attached on "+gameObject.name+" or parent");
-	    }
-	    q = transform.rotation;*/
 
         if (pingpong)
         {
@@ -91,8 +99,7 @@ public class CurvePaths : MonoBehaviour
             {
                 returning = !returning;
                 t = 0;
-            }
-                
+            }                
             if (returning)
             {
                 transform.position = Spline.MoveOnPath(backwardsPathPoints, transform.position, ref t, speed);
@@ -106,8 +113,6 @@ public class CurvePaths : MonoBehaviour
         {
             AssignParentPath();
         }
-
-
     }
 
      void AssignParentPath ()
@@ -117,7 +122,7 @@ public class CurvePaths : MonoBehaviour
             {
                 pathPoints[i] = parentPath.GetChild(i);
                // Debug.Log(pathPoints[i].position);
-                pathPoints[i].position = parentPath.GetChild(i).position;
+                pathPoints[i].position = new Vector3(transform.position.x - parentPath.GetChild(i).position.x, parentPath.GetChild(i).position.y, parentPath.GetChild(i).position.z);
                // Debug.Log(pathPoints[i].position);
 		    }
 		    waitingForParentPathAssignment = false;

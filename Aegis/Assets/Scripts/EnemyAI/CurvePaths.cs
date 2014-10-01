@@ -122,8 +122,8 @@ public class CurvePaths : MonoBehaviour
             {
                 pathPoints[i] = parentPath.GetChild(i);
                // Debug.Log(pathPoints[i].position);
-                pathPoints[i].position = new Vector3(transform.position.x - parentPath.GetChild(i).position.x, parentPath.GetChild(i).position.y, parentPath.GetChild(i).position.z);
-               // Debug.Log(pathPoints[i].position);
+                pathPoints[i].position = new Vector3(transform.position.x + parentPath.GetChild(i).position.x, 0, transform.position.z + parentPath.GetChild(i).position.z);
+                Debug.Log(pathPoints[i].position);
 		    }
 		    waitingForParentPathAssignment = false;
     }

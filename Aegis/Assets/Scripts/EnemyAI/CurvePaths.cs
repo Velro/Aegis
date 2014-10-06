@@ -17,12 +17,16 @@ public class CurvePaths : MonoBehaviour
     public PathingTypes pathingType = PathingTypes.zigzagTop;
     public Transform[] pathReferences = new Transform[(int)PathingTypes.count];
 
+    public bool recievingPathElsewhere;
+    public GameObject[] sharePathWith;
+
     float speed;
 
     Transform parentPath;
-    Transform[] pathPoints;
+
+    [HideInInspector]
+    public Vector3[] pathPoints;
     public GameObject objectContainsSpeed;
-    public Component componentContainsSpeed;
     public bool rotateToPath = false;
     public float t = 0f;
     private Quaternion q;
@@ -31,16 +35,15 @@ public class CurvePaths : MonoBehaviour
     //ping pong
     public bool pingpong = false;
     bool returning = false;
-    Transform[] backwardsPathPoints;
+    Vector3[] backwardsPathPoints;
 
     void Awake ()
     {
+
         GameObject g;
-        if (componentContainsSpeed == null)
+        if (objectContainsSpeed != null)
         {
             g = objectContainsSpeed;
-            if (objectContainsSpeed == null)
-                throw new System.NotImplementedException();
         }
         else
         {
@@ -48,7 +51,7 @@ public class CurvePaths : MonoBehaviour
         }
 
         float componentSpeed = 0;
-        if (g.GetComponent<CorsairAI>() != null)componentSpeed = g.GetComponent<CorsairAI>().Speed;
+        if (g.GetComponent<CorsairAI>() != null) componentSpeed = g.GetComponent<CorsairAI>().Speed;
         if (g.GetComponent<ViperAI>() != null) componentSpeed = g.GetComponent<ViperAI>().Speed;
         if (g.GetComponent<RammerAI>() != null) componentSpeed = g.GetComponent<RammerAI>().Speed;
         if (g.GetComponent<DreadnaughtAI>() != null) componentSpeed = g.GetComponent<DreadnaughtAI>().Speed;
@@ -63,13 +66,24 @@ public class CurvePaths : MonoBehaviour
 
     void Start () 
     {
-	    if (parentPath != null){
-		    AssignParentPath();
-	    }
-
-        if (pingpong)
+        if (!recievingPathElsewhere)
         {
-            backwardsPathPoints = GenerateBackwardsPath(pathPoints);
+	        if (parentPath != null){
+		        AssignParentPath();
+	        }
+
+            if (pingpong)
+            {
+                backwardsPathPoints = GenerateBackwardsPath(pathPoints);
+            }
+        }
+        if (sharePathWith != null)
+        {
+            foreach (GameObject g in sharePathWith)
+            {
+                if (g.GetComponent<CurvePaths>() != null)
+                    g.GetComponent<CurvePaths>().pathPoints = pathPoints;
+            }
         }
     }
 
@@ -77,6 +91,7 @@ public class CurvePaths : MonoBehaviour
     {
         if (transform == null || parentPath == null)
             return;
+
 	    if (!waitingForParentPathAssignment && !pingpong)
         {
 		    if (!rotateToPath)
@@ -117,20 +132,18 @@ public class CurvePaths : MonoBehaviour
 
      void AssignParentPath ()
      {
-		    pathPoints = new Transform[parentPath.childCount];
+		    pathPoints = new Vector3[parentPath.childCount];
 		    for (int i = 0; i < parentPath.childCount; i++)
             {
-                pathPoints[i] = parentPath.GetChild(i);
-               // Debug.Log(pathPoints[i].position);
-                pathPoints[i].position = new Vector3(transform.position.x + parentPath.GetChild(i).position.x, 0, transform.position.z + parentPath.GetChild(i).position.z);
-                Debug.Log(pathPoints[i].position);
+                pathPoints[i] = new Vector3(transform.position.x + parentPath.GetChild(i).position.x, 0, transform.position.z + parentPath.GetChild(i).position.z);
+                Debug.Log(pathPoints[i]);
 		    }
 		    waitingForParentPathAssignment = false;
     }
 
-    Transform[] GenerateBackwardsPath (Transform[] incoming)
+    Vector3[] GenerateBackwardsPath (Vector3[] incoming)
      {
-         Transform[] backwardsPath = new Transform[incoming.Length];
+         Vector3[] backwardsPath = new Vector3[incoming.Length];
          for (int i = 0; i < incoming.Length; i++ )
          {
              backwardsPath[i] = incoming[incoming.Length - 1 - i];

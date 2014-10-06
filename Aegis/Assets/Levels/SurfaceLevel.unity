@@ -319,8 +319,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 8678443}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -909,8 +911,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 63189390}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -3513,7 +3517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1 &382401630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,7 +3869,7 @@ Transform:
   - {fileID: 1119144910}
   - {fileID: 54994318}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!1 &458427728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4677,8 +4681,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 611856883}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -4829,7 +4835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathingType: 0
+  pathingType: 3
   pathReferences:
   - {fileID: 400010, guid: 82d35b794af722342a646a9764259de2, type: 2}
   - {fileID: 400006, guid: 75330b8759e75ea46b3745db3b92e98a, type: 2}
@@ -4838,8 +4844,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 1
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 1680602270}
-  componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
   pingpong: 0
@@ -5266,7 +5274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathingType: 0
+  pathingType: 3
   pathReferences:
   - {fileID: 400010, guid: 82d35b794af722342a646a9764259de2, type: 2}
   - {fileID: 400006, guid: 75330b8759e75ea46b3745db3b92e98a, type: 2}
@@ -5275,8 +5283,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 1
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 1680602270}
-  componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
   pingpong: 0
@@ -5374,13 +5384,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758800189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1269.09998, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1680602271}
   - {fileID: 1402511581}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1001 &763434735
 Prefab:
   m_ObjectHideFlags: 0
@@ -5584,7 +5594,7 @@ Transform:
   - {fileID: 1325518321}
   - {fileID: 1996299805}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &781264517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,7 +5889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathingType: 0
+  pathingType: 3
   pathReferences:
   - {fileID: 400010, guid: 82d35b794af722342a646a9764259de2, type: 2}
   - {fileID: 400006, guid: 75330b8759e75ea46b3745db3b92e98a, type: 2}
@@ -5888,8 +5898,15 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 0
+  sharePathWith:
+  - {fileID: 626202537}
+  - {fileID: 920877593}
+  - {fileID: 716817646}
+  - {fileID: 993470345}
+  - {fileID: 1704416075}
+  pathPoints: []
   objectContainsSpeed: {fileID: 1680602270}
-  componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
   pingpong: 0
@@ -6355,7 +6372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathingType: 0
+  pathingType: 3
   pathReferences:
   - {fileID: 400010, guid: 82d35b794af722342a646a9764259de2, type: 2}
   - {fileID: 400006, guid: 75330b8759e75ea46b3745db3b92e98a, type: 2}
@@ -6364,8 +6381,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 1
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 1680602270}
-  componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
   pingpong: 0
@@ -6697,7 +6716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathingType: 0
+  pathingType: 3
   pathReferences:
   - {fileID: 400010, guid: 82d35b794af722342a646a9764259de2, type: 2}
   - {fileID: 400006, guid: 75330b8759e75ea46b3745db3b92e98a, type: 2}
@@ -6706,8 +6725,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 1
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 1680602270}
-  componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
   pingpong: 0
@@ -7641,8 +7662,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 1203814194}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -9380,8 +9403,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 1384129100}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -9649,7 +9674,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1402511580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1679.19995, y: -.00390599994, z: -104.919998}
+  m_LocalPosition: {x: 1553, y: -.00390599994, z: -104.919998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 758800190}
@@ -10748,8 +10773,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 1658109686}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -10904,7 +10931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expGiven: 40
-  speed: 100
+  speed: 50
   collisionDamage: 20
   health: 175
   superEffectiveCoef: 2
@@ -11139,8 +11166,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 0
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 0}
-  componentContainsSpeed: {fileID: 1703710399}
   rotateToPath: 0
   t: 0
   pingpong: 1
@@ -11280,7 +11309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5297d1c0584369d498fbd01360883911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathingType: 0
+  pathingType: 3
   pathReferences:
   - {fileID: 400010, guid: 82d35b794af722342a646a9764259de2, type: 2}
   - {fileID: 400006, guid: 75330b8759e75ea46b3745db3b92e98a, type: 2}
@@ -11289,8 +11318,10 @@ MonoBehaviour:
   - {fileID: 400002, guid: 3cea4d17d7b09844c882894a771b5a63, type: 2}
   - {fileID: 400002, guid: 06bf23ec3afd11b47bf1b1a86aabd653, type: 2}
   - {fileID: 400068, guid: 8e1f99a5df52dee4e8e82591166563ac, type: 2}
+  recievingPathElsewhere: 1
+  sharePathWith: []
+  pathPoints: []
   objectContainsSpeed: {fileID: 1680602270}
-  componentContainsSpeed: {fileID: 0}
   rotateToPath: 1
   t: 0
   pingpong: 0
@@ -12390,7 +12421,7 @@ Transform:
   - {fileID: 611856880}
   - {fileID: 598531181}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!1 &2063865422
 GameObject:
   m_ObjectHideFlags: 0
